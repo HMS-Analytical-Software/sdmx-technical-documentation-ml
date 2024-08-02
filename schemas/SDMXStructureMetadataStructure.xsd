@@ -9,9 +9,9 @@
 		<xs:documentation>The Metadata Structure structure module defines the structure of metadata structure definition constructs.</xs:documentation>
 	</xs:annotation>
 
-	<xs:complexType name="MetadataStructureType">
+	<xs:complexType name="MetadataStructureBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataStructureType is used to describe a metadata structure definition, which is defined as a collection of metadata concepts, their structure and usage when used to collect or disseminate reference metadata.</xs:documentation>
+			<xs:documentation>MetadataStructureBaseType describes base refinement of the StructureType for a metadata structure definition.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="StructureType">
@@ -26,6 +26,19 @@
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:MetadataStructureUrnType" use="optional"/>
 			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MetadataStructureType">
+		<xs:annotation>
+			<xs:documentation>MetadataStructureType defines the structure for a metadata structure definition, which is defined as a collection of metadata concepts, their structure and usage when used to collect or disseminate reference metadata.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="MetadataStructureBaseType">
+				<xs:sequence>
+					<xs:element name="MetadataConstraints" type="common:MetadataConstraintAttachmentType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 

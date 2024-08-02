@@ -614,6 +614,24 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="DimensionConstraintUrnType">
+		<xs:annotation>
+			<xs:documentation>Urn type for a dimension constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="MaintainableUrnType">
+			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AvailabilityConstraintUrnType">
+		<xs:annotation>
+			<xs:documentation>Urn type for an availability constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="MaintainableUrnType">
+			<xs:pattern value=".+\.registry\.AvailabilityConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:simpleType name="MetadataConstraintUrnType">
 		<xs:annotation>
 			<xs:documentation>Urn type for a metadata constraint.</xs:documentation>
@@ -903,10 +921,12 @@
 
 	<xs:simpleType name="ConstraintReferenceType">
 		<xs:annotation>
-			<xs:documentation>A reference for any type of constraint.</xs:documentation>
+			<xs:documentation>A reference for a any constraint.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnReferenceType">
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
+			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
+			<xs:pattern value=".+\.registry\.AvailabilityConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -1289,6 +1309,24 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="DimensionConstraintReferenceType">
+		<xs:annotation>
+			<xs:documentation>A reference type for a dimension constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="ConstraintReferenceType">
+			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AvailabilityConstraintReferenceType">
+		<xs:annotation>
+			<xs:documentation>A reference type for an availability constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="ConstraintReferenceType">
+			<xs:pattern value=".+\.registry\.AvailabilityConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:simpleType name="MetadataConstraintReferenceType">
 		<xs:annotation>
 			<xs:documentation>A reference type for a metadata constraint.</xs:documentation>
@@ -1507,6 +1545,29 @@
 			<xs:pattern value=".+\.transformation\.VtlMappingScheme=.+"/>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<!-- Multiple References -->
+	<xs:complexType name="DataConstraintAttachmentType">
+		<xs:annotation>
+			<xs:documentation>DataConstraintAttachmentType allows referencing one or more data constraints restricting the allowed content of the data flow.</xs:documentation>
+		</xs:annotation>
+		<xs:element name="DataConstraint" type="DataConstraintReferenceType" maxOccurs="unbounded">
+			<xs:annotation>
+				<xs:documentation>DataConstraint is a reference to one data constraint. The reference is provided as a URN. A constraint which is attached to more than one constrainable artefact must only express key sets and/or cube regions where the identifiers of the dimensions are common across all constrainable artefacts to which the constraint is attached.</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+	</xs:complexType>
+
+	<xs:complexType name="MetadataConstraintAttachmentType">
+		<xs:annotation>
+			<xs:documentation>MetadataConstraintAttachmentType allows referencing one or more metadata constraints restricting the allowed content of the metadata flow.</xs:documentation>
+		</xs:annotation>
+		<xs:element name="MetadataConstraint" type="MetadataConstraintReferenceType" maxOccurs="unbounded">
+			<xs:annotation>
+				<xs:documentation>MetadataConstraint is a reference to one metadata constraint. The reference is provided as a URN. A constraint which is attached to more than one constrainable artefact must only express metadata target regions where the identifiers of the dimensions are common across all constrainable artefacts to which the constraint is attached.</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+	</xs:complexType>
 
 	<!-- Version Referencing -->
 	<xs:simpleType name="VersionReferenceType">

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message ../../schemas/SDMXMessage.xsd">
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message ../../schemas/SDMXMessage.xsd">
     <mes:Header>
         <mes:ID>IREF409212</mes:ID>
         <mes:Test>false</mes:Test>
@@ -12,6 +12,10 @@
                 <com:Name xml:lang="en">ECB Exchange Rates</com:Name>
                 <com:Description xml:lang="en">ECB Exchange Rates - example of a 'non-country-specific' data source</com:Description>
                 <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:EXR(1.0)</str:Structure>
+                <str:DimensionConstraint>urn:sdmx:org.sdmx.infomodel.registry.DimensionConstraint=ECB:EXR_DIM_CONSTRAINTS(1.0)<str:DimensionConstraint>
+				<str:DataConstraints>
+					<str:DataConstraint>urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR_CONSTRAINTS(1.0)</str:DataConstraint>
+				</str:DataConstraints>
             </str:Dataflow>
         </str:Dataflows>
     </mes:Structures>

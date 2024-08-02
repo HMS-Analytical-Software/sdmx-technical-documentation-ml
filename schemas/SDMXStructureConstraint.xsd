@@ -44,11 +44,6 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-				<xs:attribute name="role" type="ConstraintRoleType" use="required">
-					<xs:annotation>
-						<xs:documentation>The role attribute indicates whether this constraint states what data is actually present for the constraint attachment, or if it defines what content is allowed.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -64,7 +59,6 @@
 					<xs:element ref="common:Link" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="common:Name" maxOccurs="unbounded"/>
 					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="ConstraintAttachment" type="DataConstraintAttachmentType" minOccurs="0"/>
 					<xs:element name="ReleaseCalendar" type="ReleaseCalendarType" minOccurs="0"/>
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:DataConstraintUrnType" use="optional"/>
@@ -72,9 +66,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="DataConstraintType">
+	<xs:complexType name="DataConstraintType">The constraint contains the allowed values for the referencing artefact.
 		<xs:annotation>
-			<xs:documentation>DataConstraintType defines the structure of a data constraint. A data constraint can specify either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+			<xs:documentation>DataConstraintType defines the structure of a data constraint. A data constraint specifies either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="DataConstraintBaseType">
@@ -94,9 +88,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
+	<xs:complexType name="DimensionConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata, and the only possible role is "Allowed".</xs:documentation>
+			<xs:documentation>DimensionConstraintBaseType is an abstract base refinement of ConstraintType.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -105,11 +99,110 @@
 					<xs:element ref="common:Link" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="common:Name" maxOccurs="unbounded"/>
 					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="ConstraintAttachment" type="MetadataConstraintAttachmentType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="urn" type="common:DimensionConstraintUrnType" use="optional"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DimensionConstraintType">
+		<xs:annotation>
+			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint can specify ... either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="DimensionConstraintBaseType">
+				<xs:sequence>
+					<xs:element name="DimensionList" type="DimensionConstraintDimensionListType">
+						<xs:annotation>
+							<xs:documentation>DimensionList defines dimensions usable in the context of the constrained data flow.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DimensionConstraintDimensionListType">
+		<xs:annotation>
+			<xs:documentation>DimensionConstraintDimensionListType defines dimensions usable in the context of the constrained data flow.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="Dimension" type="common:DimensionReferenceType" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>This is used to reference dimensions in the data structure definition.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TimeDimension" type="common:TimeDimensionReferenceType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>This is used to reference the time dimension in the data structure definition.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="TimeDimension" type="common:TimeDimensionReferenceType">
+					<xs:annotation>
+						<xs:documentation>This is used to reference the time dimension in the data structure definition.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="AvailabilityConstraintBaseType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>AvailabilityConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to artefacts related to data.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ConstraintType">
+				<xs:sequence>
+					<xs:element ref="common:Annotations" minOccurs="0"/>
+					<xs:element ref="common:Link" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="common:Name" maxOccurs="unbounded"/>
+					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ConstraintAttachment" type="AvailabilityConstraintAttachmentType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="urn" type="common:AvailabilityConstraintUrnType" use="optional"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="AvailabilityConstraintType">The constraints contains the actual data currently present for the referencing object.
+		<xs:annotation>
+			<xs:documentation>AvailabilityConstraintType defines the structure of a data constraint. An availability constraint can specify ... either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AvailabilityConstraintBaseType">
+				<xs:sequence>
+					<xs:element name="DataKeySet" type="DataKeySetType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>DataKeySet defines a full, distinct set of dimension values and the attribute values associated with the key.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CubeRegion" type="CubeRegionType" minOccurs="0" maxOccurs="2">
+						<xs:annotation>
+							<xs:documentation>CubeRegion defines a slice of the data set (dimensions and attribute values) for the constrained artefact. A set of included or excluded regions can be described.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata to define allowed content".</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ConstraintType">
+				<xs:sequence>
+					<xs:element ref="common:Annotations" minOccurs="0"/>
+					<xs:element ref="common:Link" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="common:Name" maxOccurs="unbounded"/>
+					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="ReleaseCalendar" type="ReleaseCalendarType" minOccurs="0"/>
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:MetadataConstraintUrnType" use="optional"/>
-				<xs:attribute name="role" type="ConstraintRoleType" use="required" fixed="Allowed"/>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
@@ -172,9 +265,9 @@
 		</xs:attribute>
 	</xs:complexType>
 
-	<xs:complexType name="ConstraintAttachmentType" abstract="true">
+	<xs:complexType name="AvailabilityConstraintAttachmentType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>ConstraintAttachmentType describes a collection of references to constrainable artefacts.</xs:documentation>
+			<xs:documentation>AvailabilityConstraintAttachmentType describes a collection of references to data-related artefacts, for which availability is provided.</xs:documentation>
 		</xs:annotation>
 		<xs:choice>
 			<xs:element name="DataProvider" type="common:DataProviderReferenceType">
@@ -182,84 +275,38 @@
 					<xs:documentation>DataProvider is reference to a data provider to which the constraint is attached. If this is used, then only the release calendar is relevant. The referenced is provided as a URN and/or a full set of reference fields.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="MetadataProvider" type="common:MetadataProviderReferenceType">
-				<xs:annotation>
-					<xs:documentation>MetadataProvider is reference to a metadata provider to which the constraint is attached. If this is used, then only the release calendar is relevant. The referenced is provided as a URN and/or a full set of reference fields.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="MetadataSet" type="common:MetadataSetReferenceType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>MetadataSet is reference to a metadata set to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="SimpleDataSource" type="xs:anyURI" maxOccurs="unbounded">
+			<xs:element name="SimpleDataSource" type="xs:anyURI">
 				<xs:annotation>
 					<xs:documentation>SimpleDataSource describes a simple data source, which is a URL of a SDMX-ML data or metadata message.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:choice>
 				<xs:sequence>
-					<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="unbounded">
+					<xs:element name="DataStructure" type="common:DataStructureReferenceType">
 						<xs:annotation>
 							<xs:documentation>DataStructure is reference to a data structure definition to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint which is attached to more than one data structure must only express key sets and/or cube regions where the identifiers of the dimensions are common across all structures to which the constraint is attached.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>QueryableDataSource describes a queryable data source to which the constraint is attached.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
 				<xs:sequence>
-					<xs:element name="MetadataStructure" type="common:MetadataStructureReferenceType" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>MetadataStructure is reference to a metadata structure definition to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint which is attached to more than one metadata structure must only express key sets and/or target regions where the identifiers of the target objects are common across all structures to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>QueryableDataSource describes a queryable data source to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-				<xs:sequence>
-					<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="unbounded">
+					<xs:element name="Dataflow" type="common:DataflowReferenceType">
 						<xs:annotation>
 							<xs:documentation>Dataflow is reference to a data flow to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one dataflow, and the dataflows do not necessarily have to be usages of the same data structure. However, a constraint which is attached to more than one data structure must only express key sets and/or cube regions where the identifiers of the dimensions are common across all structures to which the constraint is attached.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>QueryableDataSource describes a queryable data source to which the constraint is attached.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
 				<xs:sequence>
-					<xs:element name="Metadataflow" type="common:MetadataflowReferenceType" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Metadataflow is reference to a metadata flow to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one metadataflow, and the metadataflows do not necessarily have to be usages of the same metadata structure. However, a constraint which is attached to more than one metadata structure must only express key sets and/or target regions where the identifiers of the target objects are common across all structures to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>QueryableDataSource describes a queryable data source to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-				<xs:sequence>
-					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision aggreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>QueryableDataSource describes a queryable data source to which the constraint is attached.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-				<xs:sequence>
-					<xs:element name="MetadataProvisionAgreement" type="common:MetadataProvisionAgreementReferenceType" maxOccurs="unbounded">
+					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType">
 						<xs:annotation>
 							<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision aggreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
 						</xs:annotation>
@@ -273,81 +320,6 @@
 			</xs:choice>
 		</xs:choice>
 	</xs:complexType>
-
-	<xs:complexType name="DataConstraintAttachmentType">
-		<xs:annotation>
-			<xs:documentation>DataConstraintAttachmentType restricts the base ConstraintAttachmentType to only allow artefacts related to data.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:restriction base="ConstraintAttachmentType">
-				<xs:choice>
-					<xs:element name="DataProvider" type="common:DataProviderReferenceType"/>
-					<xs:element name="SimpleDataSource" type="xs:anyURI" maxOccurs="unbounded"/>
-					<xs:choice>
-						<xs:sequence>
-							<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-						<xs:sequence>
-							<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-						<xs:sequence>
-							<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:choice>
-				</xs:choice>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="MetadataConstraintAttachmentType">
-		<xs:annotation>
-			<xs:documentation>MetadataConstraintAttachmentType restricts the base ConstraintAttachmentType to only allow artefacts related to metadata.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:restriction base="ConstraintAttachmentType">
-				<xs:choice>
-					<xs:element name="MetadataProvider" type="common:MetadataProviderReferenceType"/>
-					<xs:element name="MetadataSet" type="common:MetadataSetReferenceType" maxOccurs="unbounded"/>
-					<xs:element name="SimpleDataSource" type="xs:anyURI" maxOccurs="unbounded"/>
-					<xs:choice>
-						<xs:sequence>
-							<xs:element name="MetadataStructure" type="common:MetadataStructureReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-						<xs:sequence>
-							<xs:element name="Metadataflow" type="common:MetadataflowReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-						<xs:sequence>
-							<xs:element name="MetadataProvisionAgreement" type="common:MetadataProvisionAgreementReferenceType" maxOccurs="unbounded"/>
-							<xs:element name="QueryableDataSource" type="common:QueryableDataSourceType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:choice>
-				</xs:choice>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:simpleType name="ConstraintRoleType">
-		<xs:annotation>
-			<xs:documentation>ConstraintRoleType defines a list of roles for a content constraint. A constraint can state which data is present or which content is allowed for the constraint attachment.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Allowed">
-				<xs:annotation>
-					<xs:documentation>The constraint contains the allowed values for attachable object.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="Actual">
-				<xs:annotation>
-					<xs:documentation>The constraints contains the actual data present for the attachable object.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
 
 	<xs:complexType name="RegionType" abstract="true">
 		<xs:annotation>
@@ -435,13 +407,11 @@
 
 	<xs:complexType name="DataKeyValueType">
 		<xs:annotation>
-			<xs:documentation>DataKeyValueType is a type for providing a dimension value for the purpose of defining a distinct data key. Only a single value can be provided for the dimension.</xs:documentation>
+			<xs:documentation>DataKeyValueType is a type for providing one or more dimension values for the purpose of defining a distinct data key.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
-				<xs:choice>
-					<xs:element name="Value" type="SimpleKeyValueType"/>
-				</xs:choice>
+				<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
 				<xs:attribute name="id" type="common:SingleNCNameIDType" use="required"/>
 				<xs:attribute name="include" type="xs:boolean" use="optional" fixed="true"/>
 				<xs:attribute name="validFrom" type="common:StandardTimePeriodType" use="prohibited"/>

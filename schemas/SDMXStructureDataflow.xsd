@@ -25,10 +25,16 @@
 							<xs:documentation>Structure provides a reference to the data structure definition which defines the structure of all data for this flow.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="DimensionConstraint" type="common:DimensionConstraintReferenceType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DimensionConstraint provides a reference to the dimension constraint which defines the dimensions being used by this flow.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0"/>
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:DataflowUrnType" use="optional"/>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	
+
 </xs:schema>
