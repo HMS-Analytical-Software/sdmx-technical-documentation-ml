@@ -195,6 +195,16 @@
 							<xs:documentation>Structure references the structure (data structure or metadata structure definition) which the structure usage is based upon. Implementations will have to refine the type to use a concrete structure reference (i.e. either a data structure or metadata structure definition reference).</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="DimensionConstraint" type="common:DimensionConstraintReferenceType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DimensionConstraint provides a reference to the dimension constraint which defines the dimensions being used by this flow.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DataConstraints provides a list of references to the data constraints, which define the allowed data content for this flow.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
