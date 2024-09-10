@@ -33,7 +33,7 @@
 		<xs:complexContent>
 			<xs:extension base="ConstraintBaseType">
 				<xs:sequence>
-					<xs:element name="ConstraintAttachment" type="ConstraintAttachmentType" minOccurs="0">
+					<xs:element name="ConstraintAttachment" type="AvailabilityConstraintAttachmentType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>ConstraintAttachment describes the collection of constrainable artefacts that the constraint is attached to.</xs:documentation>
 						</xs:annotation>
@@ -50,7 +50,7 @@
 
 	<xs:complexType name="DataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to data.</xs:documentation>
+			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed data content. It excludes the constraint attachment.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -66,9 +66,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="DataConstraintType">The constraint contains the allowed values for the referencing artefact.
+	<xs:complexType name="DataConstraintType">
 		<xs:annotation>
-			<xs:documentation>DataConstraintType defines the structure of a data constraint. A data constraint specifies either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+			<xs:documentation>DataConstraintType defines the structure of a data constraint. A data constraint contains the allowed values for the referencing artefact. These values are expressed either as sets of keys (DataKeySets) or sets of component values (CubeRegion) constructed from a data structure definition. Data constraints can be used, e.g., for validation or for defining a partial code list.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="DataConstraintBaseType">
@@ -107,7 +107,7 @@
 
 	<xs:complexType name="DimensionConstraintType">
 		<xs:annotation>
-			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint can specify ... either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint specifies the fixed list of dimensions to which a dataflow may be constrained. It can be used when the dataflow references a data structure definition using wildcards (for the minor version number). New minor DSD version can so still be used by this dataflow even if that DSD version defines new additional dimensions.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="DimensionConstraintBaseType">
@@ -167,9 +167,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="AvailabilityConstraintType">The constraints contains the actual data currently present for the referencing object.
+	<xs:complexType name="AvailabilityConstraintType">
 		<xs:annotation>
-			<xs:documentation>AvailabilityConstraintType defines the structure of a data constraint. An availability constraint can specify ... either the available set of keys (DataKeySet) or set of component values (CubeRegion) in a data source, or the allowable keys that can be constructed from a data structure definition. Multiple such constraints may be present for a constrained artefact. For instance, there may be a constraint that specifies the values allowed for the data source (role is "Allowed") which can be used for validation or for constructing a partial code list, whilst another constraint can specify the actual content of a data source (role is "Actual").</xs:documentation>
+			<xs:documentation>AvailabilityConstraintType defines the structure of an availability constraint. This type of constraint contains the actual data currently present for the referenced object and is used to express data availability either by listing the available sets of keys (DataKeySet) or a set of component values (CubeRegion), e.g., in a data source.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="AvailabilityConstraintBaseType">
@@ -191,7 +191,7 @@
 
 	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata to define allowed content".</xs:documentation>
+			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed metadata content. It excludes the constraint attachment.".</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -411,7 +411,9 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
-				<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
+				<xs:sequence>
+					<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
+				</xs:sequence>
 				<xs:attribute name="id" type="common:SingleNCNameIDType" use="required"/>
 				<xs:attribute name="include" type="xs:boolean" use="optional" fixed="true"/>
 				<xs:attribute name="validFrom" type="common:StandardTimePeriodType" use="prohibited"/>
