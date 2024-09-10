@@ -348,7 +348,7 @@
 						<xs:documentation>The order of the dimensions in the key descriptor (DimensionList element) defines the order of the dimensions in the data structure. This position attribute explicitly specifies the position of the dimension in the data structure. It is optional and if specified must be consistent with the position of the dimension in the key descriptor.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="defaultValue" type="xs:string" use="optional"/>
+				<xs:attribute name="defaultValue" type="xs:string" use="optional">
 					<xs:annotation>
 						<xs:documentation>When a default value is specified then it is used in DSD-related data exchanges of data for dataflows that are restricted to a subset of other dimensions.</xs:documentation>
 					</xs:annotation>
