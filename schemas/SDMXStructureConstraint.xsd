@@ -265,7 +265,7 @@
 		</xs:attribute>
 	</xs:complexType>
 
-	<xs:complexType name="AvailabilityConstraintAttachmentType" abstract="true">
+	<xs:complexType name="AvailabilityConstraintAttachmentType">
 		<xs:annotation>
 			<xs:documentation>AvailabilityConstraintAttachmentType describes a collection of references to data-related artefacts, for which availability is provided.</xs:documentation>
 		</xs:annotation>
