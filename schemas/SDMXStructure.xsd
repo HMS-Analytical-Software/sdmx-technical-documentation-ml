@@ -579,8 +579,8 @@
 				<xs:annotation>
 					<xs:documentation>DimensionConstraint specifies the fixed list of dimensions to which a dataflow may be constrained.</xs:documentation>
 				</xs:annotation>
-				<xs:unique name="DataConstraint_CubeRegionInclusion">
-					<xs:selector xpath="structure:CubeRegion"/>
+				<xs:unique name="DimensionConstraint_DimensionListInclusion">
+					<xs:selector xpath="structure:DimensionList"/>
 					<xs:field xpath="@include"/>
 				</xs:unique>
 			</xs:element>
