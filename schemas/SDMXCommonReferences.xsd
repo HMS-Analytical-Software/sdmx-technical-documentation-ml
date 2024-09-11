@@ -65,7 +65,9 @@
 			<xs:pattern value=".+\.process\.Process=.+"/>
 			<xs:pattern value=".+\.process\.ProcessStep=.+"/>
 			<xs:pattern value=".+\.process\.Transition=.+"/>
+			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
+			<xs:pattern value=".+\.registry\.AvailabilityConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataProvisionAgreement=.+"/>
 			<xs:pattern value=".+\.registry\.ProvisionAgreement=.+"/>
