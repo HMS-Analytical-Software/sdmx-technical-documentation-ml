@@ -12,10 +12,10 @@
                 <com:Name xml:lang="en">ECB Exchange Rates</com:Name>
                 <com:Description xml:lang="en">ECB Exchange Rates - example of a 'non-country-specific' data source</com:Description>
                 <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:EXR(1.0)</str:Structure>
-                <str:DimensionConstraint>urn:sdmx:org.sdmx.infomodel.registry.DimensionConstraint=ECB:EXR_DIM_CONSTRAINTS(1.0)<str:DimensionConstraint>
-				<str:DataConstraints>
-					<str:DataConstraint>urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR_CONSTRAINTS(1.0)</str:DataConstraint>
-				</str:DataConstraints>
+                <str:DimensionConstraint>urn:sdmx:org.sdmx.infomodel.registry.DimensionConstraint=ECB:EXR_DIM_CONSTRAINTS(1.0)</str:DimensionConstraint>
+                <str:DataConstraints>
+                    <com:DataConstraint>urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR_CONSTRAINTS(1.0)</com:DataConstraint>
+                </str:DataConstraints>
             </str:Dataflow>
         </str:Dataflows>
     </mes:Structures>

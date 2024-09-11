@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<message:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common">
-	<message:Header>
-		<message:ID>IREF576479</message:ID>
-		<message:Test>false</message:Test>
-		<message:Prepared>2024-07-30T16:40:44Z</message:Prepared>
-		<message:Sender id="Unknown"/>
-		<message:Receiver id="not_supplied"/>
-	</message:Header>
-	<message:Structures>
-		<str:DataConstraints>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common">
+	<mes:Header>
+		<mes:ID>IREF576479</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2024-07-30T16:40:44Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Constraints>
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=IAEG-SDGs:CN_SERIES_SDG_GLC(1.18)" isExternalReference="false" agencyID="IAEG-SDGs" id="CN_SERIES_SDG_GLC" version="1.18">
 				<com:Name xml:lang="en">SDG Series Level content constraints sub example</com:Name>
 				<com:Description xml:lang="en">Sub-example of SDG Series Level content constraints for the Country Global Dataflow. They define which dimensions/codes are enabled for a set of series.</com:Description>
@@ -73,6 +73,6 @@
 					</str:Key>
 				</str:DataKeySet>
 			</str:DataConstraint>
-		</str:DataConstraints>
-	</message:Structures>
-</message:Structure>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>
