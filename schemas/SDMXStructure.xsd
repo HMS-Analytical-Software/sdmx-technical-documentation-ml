@@ -123,12 +123,24 @@
 					<xs:field xpath="@version"/>
 				</xs:unique>
 			</xs:element>
-			<xs:element name="DataConstraints" type="DataConstraintsType" minOccurs="0">
+			<xs:element name="Constraints" type="ConstraintsType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>DataConstraints contains a collection of data constraint descriptions. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
+					<xs:documentation>Constraints contains a collection of constraints related to data. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
 				</xs:annotation>
+				<xs:unique name="UniqueDimensionConstraint">
+					<xs:selector xpath="structure:DimensionConstraint"/>
+					<xs:field xpath="@id"/>
+					<xs:field xpath="@agencyID"/>
+					<xs:field xpath="@version"/>
+				</xs:unique>
 				<xs:unique name="UniqueDataConstraint">
 					<xs:selector xpath="structure:DataConstraint"/>
+					<xs:field xpath="@id"/>
+					<xs:field xpath="@agencyID"/>
+					<xs:field xpath="@version"/>
+				</xs:unique>
+				<xs:unique name="UniqueAvailabilityConstraint">
+					<xs:selector xpath="structure:AvailabilityConstraint"/>
 					<xs:field xpath="@id"/>
 					<xs:field xpath="@agencyID"/>
 					<xs:field xpath="@version"/>
@@ -558,16 +570,34 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="DataConstraintsType">
+	<xs:complexType name="ConstraintsType">
 		<xs:annotation>
-			<xs:documentation>DataConstraintsType describes the structure of the data constraints container. It contains one or more data constraint, which can be explicitly detailed or referenced from an external structure document or registry service. This container may contain both attachment and content constraints.</xs:documentation>
+			<xs:documentation>ConstraintsType describes the structure of the constraints container. It contains one or more constraints related to data, to list dimensions used, allowed values or available values.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="DataConstraint" type="DataConstraintType" maxOccurs="unbounded">
+			<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>DataConstraint specifies a sub set of the definition of the allowable or available content of a data set in terms of the content or in terms of the set of key combinations.</xs:documentation>
+					<xs:documentation>DimensionConstraint specifies the fixed list of dimensions to which a dataflow may be constrained.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="DataConstraint_CubeRegionInclusion">
+					<xs:selector xpath="structure:CubeRegion"/>
+					<xs:field xpath="@include"/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name="DataConstraint" type="DataConstraintType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>DataConstraint specifies the allowable content of a data set.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="DataConstraint_CubeRegionInclusion">
+					<xs:selector xpath="structure:CubeRegion"/>
+					<xs:field xpath="@include"/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name="AvailabilityConstraint" type="AvailabilityConstraintType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>AvailabilityConstraint specifies the available content of a data set.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="AvailabilityConstraint_CubeRegionInclusion">
 					<xs:selector xpath="structure:CubeRegion"/>
 					<xs:field xpath="@include"/>
 				</xs:unique>
