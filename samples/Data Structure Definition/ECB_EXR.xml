@@ -32,7 +32,6 @@
                         </str:Dimension>
                         <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).EXR_TYPE" id="EXR_TYPE" position="4">
                             <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).EXR_TYPE</str:ConceptIdentity>
-
                             <str:LocalRepresentation>
                                 <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_EXR_TYPE(1.0)</str:Enumeration>
                             </str:LocalRepresentation>
@@ -66,7 +65,6 @@
                     <str:AttributeList urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ECB:ECB_EXR(1.0).AttributeDescriptor" id="AttributeDescriptor">
                         <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR(1.0).TIME_FORMAT" id="TIME_FORMAT" usage="mandatory">
                             <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TIME_FORMAT</str:ConceptIdentity>
-
                             <str:LocalRepresentation minOccurs="1" maxOccurs="1">
                                 <str:TextFormat minLength="3" textType="String" maxLength="3" /></str:LocalRepresentation>
                             <str:AttributeRelationship>
