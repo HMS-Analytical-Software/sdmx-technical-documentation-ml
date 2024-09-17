@@ -8,7 +8,7 @@
 		<mes:Receiver id="not_supplied"/>
 	</mes:Header>
 	<mes:Structures>
-		<str:Constraints>
+		<str:DataConstraints>
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR_CONSTRAINTS(1.0)" isExternalReference="false" agencyID="ECB" id="EXR_CONSTRAINTS" version="1.0">
 				<com:Name xml:lang="en">Allowed data constraints for the EXR dataflow.</com:Name>
 				<str:CubeRegion>
@@ -163,6 +163,6 @@
 					</str:KeyValue>
 				</str:CubeRegion>
 			</str:DataConstraint>
-		</str:Constraints>
+		</str:DataConstraints>
 	</mes:Structures>
 </mes:Structure>

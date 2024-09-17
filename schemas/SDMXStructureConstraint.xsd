@@ -107,14 +107,14 @@
 
 	<xs:complexType name="DimensionConstraintType">
 		<xs:annotation>
-			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint specifies the fixed list of dimensions to which a dataflow may be constrained. It can be used when the dataflow references a data structure definition using wildcards (for the minor version number). New minor DSD version can so still be used by this dataflow even if that DSD version defines new additional dimensions.</xs:documentation>
+			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint specifies the fixed list of dimensions to which a dataflow may be constrained. It can be used when the dataflow references a data structure definition using wildcards (for the minor version number). New minor DSD versions can so still be used by this dataflow even if that DSD version defines new additional dimensions.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="DimensionConstraintBaseType">
 				<xs:sequence>
-					<xs:element name="DimensionList" type="DimensionConstraintDimensionListType">
+					<xs:element name="Dimensions" type="DimensionConstraintDimensionsType">
 						<xs:annotation>
-							<xs:documentation>DimensionList defines dimensions usable in the context of the constrained data flow.</xs:documentation>
+							<xs:documentation>Dimensions defines dimensions usable in the context of the constrained data flow.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -122,9 +122,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="DimensionConstraintDimensionListType">
+	<xs:complexType name="DimensionConstraintDimensionsType">
 		<xs:annotation>
-			<xs:documentation>DimensionConstraintDimensionListType defines dimensions usable in the context of the constrained data flow.</xs:documentation>
+			<xs:documentation>DimensionConstraintDimensionsType defines dimensions usable in the context of the constrained data flow.</xs:documentation>
 		</xs:annotation>
 		<xs:choice>
 			<xs:sequence>
@@ -169,7 +169,7 @@
 
 	<xs:complexType name="AvailabilityConstraintType">
 		<xs:annotation>
-			<xs:documentation>AvailabilityConstraintType defines the structure of an availability constraint. This type of constraint contains the actual data currently present for the referenced object and is used to express data availability either by listing the available sets of keys (DataKeySet) or a set of component values (CubeRegion), e.g., in a data source.</xs:documentation>
+			<xs:documentation>AvailabilityConstraintType defines the structure of an availability constraint. This type of constraint contains the actual data currently present for the referenced object and is used to express data availability either by listing the available sets of keys (DataKeySet) or a set of component values (CubeRegion), e.g., in a data source. Availability constraints should not be (semantically) versioned.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="AvailabilityConstraintBaseType">

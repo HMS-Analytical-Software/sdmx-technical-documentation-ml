@@ -8,7 +8,7 @@
 		<mes:Receiver id="not_supplied"/>
 	</mes:Header>
 	<mes:Structures>
-		<str:Constraints>
+		<str:AvailabilityConstraints>
 			<str:AvailabilityConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.AvailabilityConstraint=ECB:EXR_AVAIL_CONSTRAINTS(1.0)" isExternalReference="false" agencyID="ECB" id="EXR_AVAIL_CONSTRAINTS" version="1.0" validFrom="2024-07-30T16:53:05Z" validTo="2024-07-30T16:53:05Z">
 				<com:Annotations>
 					<com:Annotation id="obs_count">
@@ -172,6 +172,6 @@
 					</str:KeyValue>
 				</str:CubeRegion>
 			</str:AvailabilityConstraint>
-		</str:Constraints>
+		</str:AvailabilityConstraints>
 	</mes:Structures>
 </mes:Structure>

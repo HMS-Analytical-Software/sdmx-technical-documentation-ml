@@ -8,17 +8,18 @@
 		<mes:Receiver id="not_supplied"/>
 	</mes:Header>
 	<mes:Structures>
-		<str:Constraints>
+		<str:DimensionConstraints>
 			<str:DimensionConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DimensionConstraint=ECB:EXR_DIM_CONSTRAINTS(1.0)" isExternalReference="false" agencyID="ECB" id="EXR_DIM_CONSTRAINTS" version="1.0">
-				<com:Name xml:lang="en">Dimension constraints for the EXR dataflow.</com:Name>
-                <str:DimensionList>
+				<com:Name xml:lang="en">Dimension constraint for the EXR dataflow.</com:Name>
+                <str:Dimensions>
                     <str:Dimension>urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).FREQ</str:Dimension>
                     <str:Dimension>urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).CURRENCY</str:Dimension>
                     <str:Dimension>urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).CURRENCY_DENOM</str:Dimension>
                     <str:Dimension>urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).EXR_TYPE</str:Dimension>
                     <str:Dimension>urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR(1.0).EXR_SUFFIX</str:Dimension>
-                </str:DimensionList>
+                    <str:TimeDimension>urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_EXR(1.0).TIME_PERIOD</str:TimeDimension>
+                </str:Dimensions>
 			</str:DimensionConstraint>
-		</str:Constraints>
+		</str:DimensionConstraints>
 	</mes:Structures>
 </mes:Structure>

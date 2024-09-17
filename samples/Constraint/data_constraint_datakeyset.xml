@@ -8,7 +8,7 @@
 		<mes:Receiver id="not_supplied"/>
 	</mes:Header>
 	<mes:Structures>
-		<str:Constraints>
+		<str:DataConstraints>
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=IAEG-SDGs:CN_SERIES_SDG_GLC(1.18)" isExternalReference="false" agencyID="IAEG-SDGs" id="CN_SERIES_SDG_GLC" version="1.18">
 				<com:Name xml:lang="en">SDG Series Level content constraints sub example</com:Name>
 				<com:Description xml:lang="en">Sub-example of SDG Series Level content constraints for the Country Global Dataflow. They define which dimensions/codes are enabled for a set of series.</com:Description>
@@ -73,6 +73,6 @@
 					</str:Key>
 				</str:DataKeySet>
 			</str:DataConstraint>
-		</str:Constraints>
+		</str:DataConstraints>
 	</mes:Structures>
 </mes:Structure>
