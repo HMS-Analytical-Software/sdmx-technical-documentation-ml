@@ -36,7 +36,11 @@
 		<xs:complexContent>
 			<xs:extension base="MetadataStructureBaseType">
 				<xs:sequence>
-					<xs:element name="MetadataConstraints" type="common:MetadataConstraintAttachmentType" minOccurs="0"/>
+					<xs:element name="MetadataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>MetadataConstraints provides a list of references to the data constraints that are used to restrict allowable content using include and/or exclude rules on reported values.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
