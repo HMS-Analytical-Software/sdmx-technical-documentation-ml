@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic" schemaLocation="SDMXMetadataGeneric.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/data/structurespecific" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/metadata/generic" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/data/structurespecific">
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" schemaLocation="SDMXCommon.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/metadata/generic" schemaLocation="SDMXMetadataGeneric.xsd"/>
 
 	<xs:annotation>
 		<xs:appinfo>SDMX Core Structure Specific Data Namespace Module</xs:appinfo>

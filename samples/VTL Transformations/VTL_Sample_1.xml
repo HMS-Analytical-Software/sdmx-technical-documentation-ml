@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2020 - www.sdmx.org -->
-<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" 
-  xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message"
-  xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure"
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" 
+  xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message"
+  xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message ../../schemas/SDMXMessage.xsd">
+  xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message ../../schemas/SDMXMessage.xsd">
   <mes:Header>
     <mes:ID>VTL_SAMPLE1</mes:ID>
     <mes:Test>false</mes:Test>
