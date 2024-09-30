@@ -323,7 +323,7 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
-				<xs:choice>
+				<xs:choice minOccurs="0">
 					<xs:element name="Value" type="CubeKeyValueType" maxOccurs="unbounded"/>
 					<xs:element name="TimeRange" type="TimeRangeValueType"/>
 				</xs:choice>
