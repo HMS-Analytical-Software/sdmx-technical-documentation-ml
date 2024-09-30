@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message ../../schemas/SDMXMessage.xsd">
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message ../../schemas/SDMXMessage.xsd">
 	<mes:Header>
 		<mes:ID>IREF583870</mes:ID>
 		<mes:Test>false</mes:Test>
@@ -9,19 +9,18 @@
 	</mes:Header>
 	<mes:Structures>
 		<str:AvailabilityConstraints>
-			<str:AvailabilityConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.AvailabilityConstraint=ECB:EXR_AVAIL_CONSTRAINTS(1.0)" isExternalReference="false" agencyID="ECB" id="EXR_AVAIL_CONSTRAINTS" version="1.0" validFrom="2024-07-30T16:53:05Z" validTo="2024-07-30T16:53:05Z">
+			<str:AvailabilityConstraint>
 				<com:Annotations>
 					<com:Annotation id="obs_count">
 						<com:AnnotationTitle>3299680</com:AnnotationTitle>
 						<com:AnnotationType>sdmx_metrics</com:AnnotationType>
 					</com:Annotation>
                 </com:Annotations>
-				<com:Name xml:lang="en">Availability for the EXR dataflow.</com:Name>
 				<str:ConstraintAttachment>
 					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
 				</str:ConstraintAttachment>
 				<str:CubeRegion>
-					<str:KeyValue id="CURRENCY_DENOM">
+					<str:Component id="CURRENCY_DENOM">
 						<str:Value>ATS</str:Value>
 						<str:Value>CHF</str:Value>
 						<str:Value>HRK</str:Value>
@@ -84,8 +83,8 @@
 						<str:Value>NZD</str:Value>
 						<str:Value>FRF</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:KeyValue>
-					<str:KeyValue id="EXR_TYPE">
+					</str:Component>
+					<str:Component id="EXR_TYPE">
 						<str:Value>NRP0</str:Value>
 						<str:Value>NN00</str:Value>
 						<str:Value>NRD0</str:Value>
@@ -98,23 +97,23 @@
 						<str:Value>ERC0</str:Value>
 						<str:Value>SP00</str:Value>
 						<str:Value>ERP0</str:Value>
-					</str:KeyValue>
-					<str:KeyValue id="EXR_SUFFIX">
+					</str:Component>
+					<str:Component id="EXR_SUFFIX">
 						<str:Value>P</str:Value>
 						<str:Value>A</str:Value>
 						<str:Value>R</str:Value>
 						<str:Value>S</str:Value>
 						<str:Value>T</str:Value>
 						<str:Value>E</str:Value>
-					</str:KeyValue>
-					<str:KeyValue id="FREQ">
+					</str:Component>
+					<str:Component id="FREQ">
 						<str:Value>A</str:Value>
 						<str:Value>Q</str:Value>
 						<str:Value>D</str:Value>
 						<str:Value>H</str:Value>
 						<str:Value>M</str:Value>
-					</str:KeyValue>
-					<str:KeyValue id="CURRENCY">
+					</str:Component>
+					<str:Component id="CURRENCY">
 						<str:Value>CHF</str:Value>
 						<str:Value>HRK</str:Value>
 						<str:Value>MXN</str:Value>
@@ -169,7 +168,7 @@
 						<str:Value>SKK</str:Value>
 						<str:Value>NZD</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:KeyValue>
+					</str:Component>
 				</str:CubeRegion>
 			</str:AvailabilityConstraint>
 		</str:AvailabilityConstraints>
