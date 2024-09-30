@@ -103,15 +103,13 @@
 		<xs:annotation>
 			<xs:documentation>DimensionConstraintDimensionsType defines dimensions usable in the context of the constrained data flow.</xs:documentation>
 		</xs:annotation>
-		<xs:choice>
-			<xs:sequence>
-				<xs:element name="Dimension" type="common:SingleNCNameIDType" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>This is used to reference dimensions in the data structure definition.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:sequence>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element name="Dimension" type="common:SingleNCNameIDType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This is used to reference dimensions in the data structure definition.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 
 
