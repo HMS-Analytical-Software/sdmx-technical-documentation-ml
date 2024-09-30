@@ -43,6 +43,7 @@
 							<xs:documentation>DataProvider provides a reference to a pre-existing data provider in the registry. The reference is provided via a URN and/or a full set of reference fields.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -87,6 +88,7 @@
 							<xs:documentation>References identifiable structures to which the refernece metadata described by the metadata structure used by the metadaflow should be restricted to. These references may include wildcards for parts of the reference.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="MetadataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common">
+	<mes:Header>
+		<mes:ID>IREF576479</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2024-07-30T16:40:44Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:DataConstraints>
+			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=IAEG-SDGs:CN_SERIES_SDG_GLC(1.18)" isExternalReference="false" agencyID="IAEG-SDGs" id="CN_SERIES_SDG_GLC" version="1.18">
+				<com:Name xml:lang="en">SDG Series Level content constraints sub example</com:Name>
+				<com:Description xml:lang="en">Sub-example of SDG Series Level content constraints for the Country Global Dataflow. They define which dimensions/codes are enabled for a set of series.</com:Description>
+				<str:DataKeySet isIncluded="true">
+					<str:Key>
+						<str:KeyValue id="SERIES">
+							<str:Value>SI_POV_DAY1</str:Value>
+							<str:Value>SI_POV_EMP1</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="UNIT_MEASURE">
+							<str:Value>PT</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="UNIT_MULT">
+							<str:Value>0</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="COMPOSITE_BREAKDOWN">
+							<str:Value>_T</str:Value>
+							<str:Value>MS_MIGRANT</str:Value>
+							<str:Value>MS_NOMIGRANT</str:Value>
+							<str:Value>MS_EUMIGRANT</str:Value>
+							<str:Value>MS_NONEUMIGRANT</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="INCOME_WEALTH_QUANTILE">
+							<str:Value>_T</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="PRODUCT">
+							<str:Value>_T</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="ACTIVITY">
+							<str:Value>_T</str:Value>
+						</str:KeyValue>
+					</str:Key>
+					<str:Key>
+						<str:KeyValue id="SERIES">
+							<str:Value>FB_BNK_ACCSS_ILF</str:Value>
+							<str:Value>FB_BNK_ACCSS_OLF</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="UNIT_MEASURE">
+							<str:Value>PT</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="UNIT_MULT">
+							<str:Value>0</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="AGE">
+							<str:Value>Y15T24</str:Value>
+							<str:Value>Y_GE15</str:Value>
+							<str:Value>Y_GE25</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="COMPOSITE_BREAKDOWN">
+							<str:Value>_T</str:Value>
+							<str:Value>MS_MIGRANT</str:Value>
+							<str:Value>MS_NOMIGRANT</str:Value>
+							<str:Value>MS_EUMIGRANT</str:Value>
+							<str:Value>MS_NONEUMIGRANT</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="PRODUCT">
+							<str:Value>_T</str:Value>
+						</str:KeyValue>
+						<str:KeyValue id="ACTIVITY">
+							<str:Value>_T</str:Value>
+						</str:KeyValue>
+					</str:Key>
+				</str:DataKeySet>
+			</str:DataConstraint>
+		</str:DataConstraints>
+	</mes:Structures>
+</mes:Structure>
