@@ -9,13 +9,7 @@
 	</mes:Header>
 	<mes:Structures>
 		<str:AvailabilityConstraints>
-			<str:AvailabilityConstraint>
-				<com:Annotations>
-					<com:Annotation id="obs_count">
-						<com:AnnotationTitle>3299680</com:AnnotationTitle>
-						<com:AnnotationType>sdmx_metrics</com:AnnotationType>
-					</com:Annotation>
-                </com:Annotations>
+			<str:AvailabilityConstraint seriesCount="164" obsCount="3299680">
 				<str:ConstraintAttachment>
 					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
 				</str:ConstraintAttachment>
