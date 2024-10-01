@@ -22,6 +22,7 @@
 					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:CategorisationUrnType" use="optional"/>
+				<xs:attribute name="version" type="common:VersionType" use="prohibited"/>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
