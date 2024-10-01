@@ -46,6 +46,17 @@
 					<xs:field xpath="@version"/>
 				</xs:unique>
 			</xs:element>
+			<xs:element name="AvailabilityConstraints" type="AvailabilityConstraintsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>AvailabilityConstraints contains a collection of availability constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="UniqueAvailabilityConstraint">
+					<xs:selector xpath="structure:AvailabilityConstraint"/>
+					<xs:field xpath="@id"/>
+					<xs:field xpath="@agencyID"/>
+					<xs:field xpath="@version"/>
+				</xs:unique>
+			</xs:element>
 			<xs:element name="Categorisations" type="CategorisationsType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Categorisations contains a collection of structural object categorisations. This container may contain categorisations for many types of objects. The categorisations may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
@@ -123,34 +134,12 @@
 					<xs:field xpath="@version"/>
 				</xs:unique>
 			</xs:element>
-			<xs:element name="DimensionConstraints" type="DimensionConstraintsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Constraints contains a collection of dimension constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="UniqueDimensionConstraint">
-					<xs:selector xpath="structure:DimensionConstraint"/>
-					<xs:field xpath="@id"/>
-					<xs:field xpath="@agencyID"/>
-					<xs:field xpath="@version"/>
-				</xs:unique>
-			</xs:element>
 			<xs:element name="DataConstraints" type="DataConstraintsType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>DataConstraints contains a collection of data constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="UniqueDataConstraint">
 					<xs:selector xpath="structure:DataConstraint"/>
-					<xs:field xpath="@id"/>
-					<xs:field xpath="@agencyID"/>
-					<xs:field xpath="@version"/>
-				</xs:unique>
-			</xs:element>
-			<xs:element name="AvailabilityConstraints" type="AvailabilityConstraintsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>AvailabilityConstraints contains a collection of availability constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="UniqueAvailabilityConstraint">
-					<xs:selector xpath="structure:AvailabilityConstraint"/>
 					<xs:field xpath="@id"/>
 					<xs:field xpath="@agencyID"/>
 					<xs:field xpath="@version"/>
@@ -200,6 +189,17 @@
 					<xs:field xpath="@version"/>
 				</xs:unique>
 			</xs:element>
+			<xs:element name="DimensionConstraints" type="DimensionConstraintsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Constraints contains a collection of dimension constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="UniqueDimensionConstraint">
+					<xs:selector xpath="structure:DimensionConstraint"/>
+					<xs:field xpath="@id"/>
+					<xs:field xpath="@agencyID"/>
+					<xs:field xpath="@version"/>
+				</xs:unique>
+			</xs:element>
 			<xs:element name="GeographicCodelists" type="GeographicCodelistsType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>GeographicCodelists contains a collection of geographi codelist descriptions. The codelists may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
@@ -239,17 +239,6 @@
 				</xs:annotation>
 				<xs:unique name="UniqueHierarchyAssociation">
 					<xs:selector xpath="structure:HierarchyAssociation"/>
-					<xs:field xpath="@id"/>
-					<xs:field xpath="@agencyID"/>
-					<xs:field xpath="@version"/>
-				</xs:unique>
-			</xs:element>
-			<xs:element name="MetadataConstraints" type="MetadataConstraintsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>MetadataConstraints contains a collection of metadata constraint descriptions. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="UniqueMetadataConstraint">
-					<xs:selector xpath="structure:MetadataConstraint"/>
 					<xs:field xpath="@id"/>
 					<xs:field xpath="@agencyID"/>
 					<xs:field xpath="@version"/>
@@ -759,22 +748,6 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="MetadataConstraintsType">
-		<xs:annotation>
-			<xs:documentation>MetadataConstraintsType describes the structure of the metadata constraints container. It contains one or more metadata constraint, which can be explicitly detailed or referenced from an external structure document or registry service. This container may contain both attachment and content constraints.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="MetadataConstraint" type="MetadataConstraintType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>MetadataConstraint specifies a sub set of the definition of the allowable content of a metadata set.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="MetadataConstraint_MetadataTargetRegionInclusion">
-					<xs:selector xpath="structure:MetadataTargetRegion"/>
-					<xs:field xpath="@include"/>
-				</xs:unique>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 
 	<xs:complexType name="MetadataflowsType">
 		<xs:annotation>

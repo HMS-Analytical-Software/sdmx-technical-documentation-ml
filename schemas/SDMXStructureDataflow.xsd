@@ -9,7 +9,7 @@
 		<xs:documentation>The data flow structure module defines the structure of data flow constructs.</xs:documentation>
 	</xs:annotation>
 
-	<xs:complexType name="DataflowType">
+	<xs:complexType name="DataflowBaseType">
 		<xs:annotation>
 			<xs:documentation>DataflowType describes the structure of a data flow. A data flow is defined as the structure of data that will provided for different reference periods. If this type is not defined externally, then a reference to a data structure must be provided.</xs:documentation>
 		</xs:annotation>
@@ -25,19 +25,31 @@
 							<xs:documentation>Structure provides a reference to the data structure definition that defines the structure of all data for this flow.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="DimensionConstraint" type="common:DimensionConstraintReferenceType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>DimensionConstraint provides a reference to the dimension constraint that defines the dimensions being used by this flow.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="urn" type="common:DataflowUrnType" use="optional"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DataflowType">
+		<xs:annotation>
+			<xs:documentation>DataflowType describes the structure of a data flow. A data flow is defined as the structure of data that will provided for different reference periods. If this type is not defined externally, then a reference to a data structure must be provided.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="DataflowBaseType">
+				<xs:sequence>
 					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>DataConstraints provides a list of references to the data constraints that define the allowed data content for this flow.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="DimensionConstraint" type="common:DimensionConstraintReferenceType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>DimensionConstraint provides a reference to the dimension constraint that defines the dimensions being used by this flow.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
-				<xs:attribute name="urn" type="common:DataflowUrnType" use="optional"/>
-			</xs:restriction>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
