@@ -260,9 +260,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 	
-	<xs:complexType name="DataProviderBaseType">
+	<xs:complexType name="DataProviderType">
 		<xs:annotation>
-			<xs:documentation>DataProviderBaseType describes base refinement of the OrganisationType for a data provider.</xs:documentation>
+			<xs:documentation>DataProviderType defines the structure of a data provider description. The contacts defined for the organisation are specific to the data provider role the organisation is serving.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="OrganisationType">
@@ -278,22 +278,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="DataProviderType">
+	<xs:complexType name="MetadataProviderType">
 		<xs:annotation>
-			<xs:documentation>DataProviderType defines the structure of a data provider description. The contacts defined for the organisation are specific to the data provider role the organisation is serving.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="DataProviderBaseType">
-				<xs:sequence>
-					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="MetadataProviderBaseType">
-		<xs:annotation>
-			<xs:documentation>MetadataProviderBaseType describes base refinement of the OrganisationType for a metadata provider.</xs:documentation>
+			<xs:documentation>MetadataProviderType defines the structure of a metadata provider description. The contacts defined for the organisation are specific to the metadata provider role the organisation is serving.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="OrganisationType">
@@ -306,19 +293,6 @@
 				</xs:sequence>
 				<xs:attribute name="urn" type="common:MetadataProviderUrnType" use="optional"/>
 			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="MetadataProviderType">
-		<xs:annotation>
-			<xs:documentation>MetadataProviderType defines the structure of a metadata provider description. The contacts defined for the organisation are specific to the metadata provider role the organisation is serving.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="MetadataProviderBaseType">
-				<xs:sequence>
-					<xs:element name="MetadataConstraints" type="common:MetadataConstraintAttachmentType" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
