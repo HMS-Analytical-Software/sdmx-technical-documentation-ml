@@ -38,11 +38,6 @@
 		<xs:complexContent>
 			<xs:extension base="DataflowBaseType">
 				<xs:sequence>
-					<xs:element name="DataConstraints" type="common:DataConstraintAttachmentType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>DataConstraints provides a list of references to the data constraints that define the allowed data content for this flow.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="DimensionConstraint" type="common:DimensionConstraintReferenceType" minOccurs="0" maxOccurs="1">
 						<xs:annotation>
 							<xs:documentation>DimensionConstraint provides a reference to the dimension constraint that defines the dimensions being used by this flow.</xs:documentation>
