@@ -125,6 +125,11 @@
 						<xs:documentation>CubeRegion is used to provide sets of include or excluded values for dimensions when querying for data.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+				<xs:element name="MetadataTargetRegion" type="structure:MetadataTargetRegionType">
+					<xs:annotation>
+						<xs:documentation>MetadataTargetRegion is used to provide sets of included or excluded values for identifier components when querying for metadata.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:choice>
 		</xs:sequence>
 		<xs:attribute name="returnConstraints" type="xs:boolean" default="false">
