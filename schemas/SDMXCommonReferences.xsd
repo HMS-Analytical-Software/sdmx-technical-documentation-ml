@@ -67,6 +67,7 @@
 			<xs:pattern value=".+\.process\.Transition=.+"/>
 			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
+			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataProvisionAgreement=.+"/>
 			<xs:pattern value=".+\.registry\.ProvisionAgreement=.+"/>
 			<xs:pattern value=".+\.structuremapping\.CategorySchemeMap=.+"/>
@@ -623,6 +624,15 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="MetadataConstraintUrnType">
+		<xs:annotation>
+			<xs:documentation>Urn type for a metadata constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="MaintainableUrnType">
+			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:simpleType name="MetadataProvisionAgreementUrnType">
 		<xs:annotation>
 			<xs:documentation>Urn type for a metadata provision agreement.</xs:documentation>
@@ -908,6 +918,7 @@
 		<xs:restriction base="MaintainableUrnReferenceType">
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
+			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -1298,6 +1309,15 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="MetadataConstraintReferenceType">
+		<xs:annotation>
+			<xs:documentation>A reference type for a metadata constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="ConstraintReferenceType">
+			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:simpleType name="MetadataProvisionAgreementReferenceType">
 		<xs:annotation>
 			<xs:documentation>A reference type for a metadata provision agreement.</xs:documentation>
@@ -1517,6 +1537,19 @@
 			<xs:element name="DataConstraint" type="DataConstraintReferenceType" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>DataConstraint is a reference to one data constraint. The reference is provided as a URN. A constraint which is attached to more than one constrainable artefact must only express key sets and/or cube regions where the identifiers of the dimensions are common across all constrainable artefacts to which the constraint is attached.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MetadataConstraintAttachmentType">
+		<xs:annotation>
+			<xs:documentation>MetadataConstraintAttachmentType allows referencing one or more metadata constraints restricting the allowed content of the metadata flow.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MetadataConstraint" type="MetadataConstraintReferenceType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>MetadataConstraint is a reference to one metadata constraint. The reference is provided as a URN. A constraint which is attached to more than one constrainable artefact must only express metadata target regions where the identifiers of the dimensions are common across all constrainable artefacts to which the constraint is attached.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
