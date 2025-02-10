@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message ../../schemas/SDMXMessage.xsd">
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message ../../schemas/SDMXMessage.xsd">
 	<mes:Header>
 		<mes:ID>IREF953220</mes:ID>
 		<mes:Test>false</mes:Test>
@@ -32,17 +32,11 @@
 				<com:Name xml:lang="en">Labour with ISIC4 activity coding</com:Name>
 				<com:Description xml:lang="en">Labour with ISIC4 activity coding</com:Description>
 				<str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=EXAMPLE:LABOUR(1.0.0)</str:Structure>
-				<str:DataConstraints>
-				   <com:DataConstraint>urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=EXAMPLE:ISIC_CONSTRAINT(1.0)</com:DataConstraint>
-				</str:DataConstraints>
 			</str:Dataflow>
 			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=EXAMPLE:LABOUR_NACE(1.0)" isExternalReference="false" agencyID="EXAMPLE" id="LABOUR_NACE" version="1.0">
 				<com:Name xml:lang="en">Labour with NACE2 activity coding</com:Name>
 				<com:Description xml:lang="en">Labour with NACE2 activity coding</com:Description>
 				<str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=EXAMPLE:LABOUR(1.0.0)</str:Structure>
-				<str:DataConstraints>
-				    <com:DataConstraint>urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=EXAMPLE:NACE_CONSTRAINT(1.0)</com:DataConstraint>
-				</str:DataConstraints>
 			</str:Dataflow>
 		</str:Dataflows>
 		<str:Codelists>
@@ -110,6 +104,9 @@
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=EXAMPLE:ISIC_CONSTRAINT(1.0)" isExternalReference="false" agencyID="EXAMPLE" id="ISIC_CONSTRAINT" version="1.0">
 				<com:Name xml:lang="en">ISIC Constraint</com:Name>
 				<com:Description xml:lang="en">ISIC Constraint</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=EXAMPLE:LABOUR_ISIC(1.0)</str:Dataflow>				
+				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
 					<str:Component id="ACTIVITY">
 						<str:Value>ISIC4_%</str:Value>
@@ -119,6 +116,9 @@
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=EXAMPLE:NACE_CONSTRAINT(1.0)" isExternalReference="false" agencyID="EXAMPLE" id="NACE_CONSTRAINT" version="1.0">
 				<com:Name xml:lang="en">NACE Constraint</com:Name>
 				<com:Description xml:lang="en">NACE Constraint</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=EXAMPLE:LABOUR_NACE(1.0)</str:Dataflow>				
+				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
 					<str:Component id="ACTIVITY">
 						<str:Value>NACE2_%</str:Value>
