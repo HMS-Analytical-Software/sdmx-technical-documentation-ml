@@ -189,17 +189,6 @@
 					<xs:field xpath="@version"/>
 				</xs:unique>
 			</xs:element>
-			<xs:element name="DimensionConstraints" type="DimensionConstraintsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Constraints contains a collection of dimension constraints. The constraints may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="UniqueDimensionConstraint">
-					<xs:selector xpath="structure:DimensionConstraint"/>
-					<xs:field xpath="@id"/>
-					<xs:field xpath="@agencyID"/>
-					<xs:field xpath="@version"/>
-				</xs:unique>
-			</xs:element>
 			<xs:element name="GeographicCodelists" type="GeographicCodelistsType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>GeographicCodelists contains a collection of geographi codelist descriptions. The codelists may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
@@ -575,23 +564,6 @@
 				<xs:unique name="CustomTypeScheme_UniqueCustomType">
 					<xs:selector xpath="structure:CustomtType"/>
 					<xs:field xpath="@id"/>
-				</xs:unique>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="DimensionConstraintsType">
-		<xs:annotation>
-			<xs:documentation>DimensionConstraintsType describes the structure of the container for dimension constraints.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>DimensionConstraint specifies the fixed list of dimensions, to which a dataflow may be constrained.</xs:documentation>
-				</xs:annotation>
-				<xs:unique name="DimensionConstraint_DimensionListInclusion">
-					<xs:selector xpath="structure:DimensionList"/>
-					<xs:field xpath="@include"/>
 				</xs:unique>
 			</xs:element>
 		</xs:sequence>
