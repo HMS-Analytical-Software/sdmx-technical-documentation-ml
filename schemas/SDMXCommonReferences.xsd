@@ -65,7 +65,6 @@
 			<xs:pattern value=".+\.process\.Process=.+"/>
 			<xs:pattern value=".+\.process\.ProcessStep=.+"/>
 			<xs:pattern value=".+\.process\.Transition=.+"/>
-			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataProvisionAgreement=.+"/>
@@ -615,15 +614,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-	<xs:simpleType name="DimensionConstraintUrnType">
-		<xs:annotation>
-			<xs:documentation>Urn type for a dimension constraint.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="MaintainableUrnType">
-			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
-		</xs:restriction>
-	</xs:simpleType>
-
 	<xs:simpleType name="MetadataConstraintUrnType">
 		<xs:annotation>
 			<xs:documentation>Urn type for a metadata constraint.</xs:documentation>
@@ -913,11 +903,10 @@
 
 	<xs:simpleType name="ConstraintReferenceType">
 		<xs:annotation>
-			<xs:documentation>A reference for a any constraint.</xs:documentation>
+			<xs:documentation>A reference for any type of constraint.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnReferenceType">
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
-			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
 			<xs:pattern value=".+\.registry\.MetadataConstraint=.+"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -1297,15 +1286,6 @@
 		</xs:annotation>
 		<xs:restriction base="ConstraintReferenceType">
 			<xs:pattern value=".+\.registry\.DataConstraint=.+"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="DimensionConstraintReferenceType">
-		<xs:annotation>
-			<xs:documentation>A reference type for a dimension constraint.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="ConstraintReferenceType">
-			<xs:pattern value=".+\.registry\.DimensionConstraint=.+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
