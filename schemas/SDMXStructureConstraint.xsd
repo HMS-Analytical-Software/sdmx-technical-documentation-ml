@@ -82,10 +82,10 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	
+
 	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata, and the only possible role is "Allowed".</xs:documentation>
+			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -380,7 +380,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-    <!-- v3.1 removes distinction between a Dimension value and Attribute value (KeyValue) -->
 	<xs:complexType name="CubeRegionType">
 		<xs:annotation>
 			<xs:documentation>CubeRegionType defines the structure of a data cube region. This is based on the abstract RegionType and simply refines the key and attribute values to conform with what is applicable for dimensions and attributes, respectively. See the documentation of the base type for more details on how a region is defined.</xs:documentation>
@@ -389,6 +388,7 @@
 			<xs:restriction base="RegionType">
 				<xs:sequence>
 					<xs:element ref="common:Annotations" minOccurs="0"/>
+					<xs:element name="KeyValue" type="CubeRegionKeyType" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="Component" type="ComponentValueSetType" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				<xs:attribute name="validFrom" type="common:StandardTimePeriodType" use="prohibited"/>
@@ -396,7 +396,7 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	
+
 	<xs:complexType name="MetadataTargetRegionType">
 		<xs:annotation>
 			<xs:documentation>MetadataTargetRegionType defines the structure of a metadata target region. A metadata target region must define the report structure and the metadata target from that structure on which the region is based. This type is based on the abstract RegionType and simply refines the key and attribute values to conform with what is applicable for target objects and metadata attributes, respectively. See the documentation of the base type for more details on how a region is defined.</xs:documentation>
@@ -410,18 +410,32 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="ComponentValueSetType">
+	<xs:complexType name="CubeRegionKeyType">
 		<xs:annotation>
-			<xs:documentation>ComponentValueSetType is a type for providing a set of values for any Components (Dimension, Attribute, Measure) of a DSD or MSD for the purpose of defining a data cube region. 
-			                  A set of distinct value can be provided, or if this dimension is represented as time, and time range can be specified.</xs:documentation>
+			<xs:documentation>CubeRegionKeyType is a type for providing a set of values for a dimension for the purpose of defining a data cube region. A set of distinct value can be provided, or if this dimension is represented as time, and time range can be specified.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
-				<xs:choice minOccurs="0">
+				<xs:choice>
 					<xs:element name="Value" type="CubeKeyValueType" maxOccurs="unbounded"/>
 					<xs:element name="TimeRange" type="TimeRangeValueType"/>
 				</xs:choice>
 				<xs:attribute name="id" type="common:SingleNCNameIDType" use="required"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ComponentValueSetType">
+		<xs:annotation>
+			<xs:documentation>ComponentValueSetType defines the structure for providing values for a data attributes, measures, or metadata attributes. If no values are provided, the component is implied to include/excluded from the region in which it is defined, with no regard to the value of the component. Note that for metadata attributes which occur within other metadata attributes, a nested identifier can be provided. For example, a value of CONTACT.ADDRESS.STREET refers to the metadata attribute with the identifier STREET which exists in the ADDRESS metadata attribute in the CONTACT metadata attribute, which is defined at the root of the report structure.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="MemberSelectionType">
+				<xs:choice minOccurs="0">
+					<xs:element name="Value" type="SimpleComponentValueType" maxOccurs="unbounded"/>
+					<xs:element name="TimeRange" type="TimeRangeValueType"/>
+				</xs:choice>
+				<xs:attribute name="id" type="common:NestedNCNameIDType" use="required"/>
 				<xs:attribute name="validFrom" type="common:StandardTimePeriodType" use="prohibited"/>
 				<xs:attribute name="validTo" type="common:StandardTimePeriodType" use="prohibited"/>
 			</xs:restriction>
