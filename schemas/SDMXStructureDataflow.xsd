@@ -44,7 +44,7 @@
 					</xs:element>
 					<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
-							<xs:documentation>Required when the referenced Data Structure can change Dimensionality under a minor version change</xs:documentation>
+							<xs:documentation>Required when the referenced Data Structure has evolovingStructure property set to true, indicating that it can change Dimensionality under a minor version change</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
