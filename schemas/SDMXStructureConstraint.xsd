@@ -118,7 +118,23 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-
+<xs:complexType name="DataKeySetType">
+		<xs:annotation>
+			<xs:documentation>DataKeySetType defines a collection of full or partial data keys (dimension values).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Key" type="DataKeyType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Key contains a set of dimension values which identify a full set of data.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="isIncluded" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>The isIncluded attribute indicates whether the keys defined in this key set are inclusive or exclusive to the constraint.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
 
 	<xs:complexType name="ConstraintAttachmentType" abstract="true">
 		<xs:annotation>
@@ -199,52 +215,18 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="DimensionConstraintBaseType" abstract="true">
+	<xs:complexType name="AvailabilityConstraintAttachmentType">
 		<xs:annotation>
-			<xs:documentation>DimensionConstraintBaseType is an abstract base refinement of ConstraintType.</xs:documentation>
+				<xs:documentation>AvailabilityConstraintAttachmentType describes a collection of references to data-related artefacts, for which availability is provided.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:restriction base="ConstraintType">
-				<xs:sequence>
-					<xs:element ref="common:Annotations" minOccurs="0"/>
-					<xs:element ref="common:Link" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element ref="common:Name" maxOccurs="unbounded"/>
-					<xs:element ref="common:Description" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:attribute name="urn" type="common:DimensionConstraintUrnType" use="optional"/>
-				<xs:attribute name="version" type="common:VersionType" use="prohibited"/>
+			<xs:restriction base="ConstraintAttachmentType">
+				<xs:choice>
+					<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="1"/>
+					<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="1"/>
+					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>				</xs:choice>
 			</xs:restriction>
 		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="DimensionConstraintType">
-		<xs:annotation>
-			<xs:documentation>DimensionConstraintType defines the structure of a dimension constraint. A dimension constraint specifies the fixed list of dimensions to which a dataflow may be constrained. It can be used when the dataflow references a data structure definition using wildcards (for the minor version number). New minor DSD versions can so still be used by this dataflow even if that DSD version defines new additional dimensions.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="DimensionConstraintBaseType">
-				<xs:sequence>
-					<xs:element name="Dimensions" type="DimensionConstraintDimensionsType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Dimensions defines dimensions usable in the context of the constrained data flow.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="DimensionConstraintDimensionsType">
-		<xs:annotation>
-			<xs:documentation>DimensionConstraintDimensionsType defines dimensions usable in the context of the constrained data flow.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Dimension" type="common:SingleNCNameIDType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>This is used to reference dimensions in the data structure definition.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
 	</xs:complexType>
 
 
@@ -274,37 +256,8 @@
 	</xs:complexType>
 
 
-	<xs:complexType name="DataKeySetType">
-		<xs:annotation>
-			<xs:documentation>DataKeySetType defines a collection of full or partial data keys (dimension values).</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="Key" type="DataKeyType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Key contains a set of dimension values which identify a full set of data.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="isIncluded" type="xs:boolean" use="required">
-			<xs:annotation>
-				<xs:documentation>The isIncluded attribute indicates whether the keys defined in this key set are inclusive or exclusive to the constraint.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
 
-	<xs:complexType name="AvailabilityConstraintAttachmentType">
-		<xs:annotation>
-				<xs:documentation>AvailabilityConstraintAttachmentType describes a collection of references to data-related artefacts, for which availability is provided.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:restriction base="ConstraintAttachmentType">
-				<xs:choice>
-					<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="1"/>
-					<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="1"/>
-					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>				</xs:choice>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
+
 
 	<xs:complexType name="RegionType" abstract="true">
 		<xs:annotation>
