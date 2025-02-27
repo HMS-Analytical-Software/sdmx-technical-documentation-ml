@@ -14,7 +14,7 @@
 					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
 				</str:ConstraintAttachment>
 				<str:CubeRegion>
-					<str:Component id="CURRENCY_DENOM">
+					<str:KeyValue id="CURRENCY_DENOM">
 						<str:Value>ATS</str:Value>
 						<str:Value>CHF</str:Value>
 						<str:Value>HRK</str:Value>
@@ -77,8 +77,8 @@
 						<str:Value>NZD</str:Value>
 						<str:Value>FRF</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:Component>
-					<str:Component id="EXR_TYPE">
+					</str:KeyValue>
+					<str:KeyValue id="EXR_TYPE">
 						<str:Value>NRP0</str:Value>
 						<str:Value>NN00</str:Value>
 						<str:Value>NRD0</str:Value>
@@ -91,23 +91,23 @@
 						<str:Value>ERC0</str:Value>
 						<str:Value>SP00</str:Value>
 						<str:Value>ERP0</str:Value>
-					</str:Component>
-					<str:Component id="EXR_SUFFIX">
+					</str:KeyValue>
+					<str:KeyValue id="EXR_SUFFIX">
 						<str:Value>P</str:Value>
 						<str:Value>A</str:Value>
 						<str:Value>R</str:Value>
 						<str:Value>S</str:Value>
 						<str:Value>T</str:Value>
 						<str:Value>E</str:Value>
-					</str:Component>
-					<str:Component id="FREQ">
+					</str:KeyValue>
+					<str:KeyValue id="FREQ">
 						<str:Value>A</str:Value>
 						<str:Value>Q</str:Value>
 						<str:Value>D</str:Value>
 						<str:Value>H</str:Value>
 						<str:Value>M</str:Value>
-					</str:Component>
-					<str:Component id="CURRENCY">
+					</str:KeyValue>
+					<str:KeyValue id="CURRENCY">
 						<str:Value>CHF</str:Value>
 						<str:Value>HRK</str:Value>
 						<str:Value>MXN</str:Value>
@@ -162,7 +162,7 @@
 						<str:Value>SKK</str:Value>
 						<str:Value>NZD</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:Component>
+					</str:KeyValue>
 				</str:CubeRegion>
 			</str:AvailabilityConstraint>
 		</str:AvailabilityConstraints>
