@@ -42,9 +42,9 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-				<xs:attribute name="evolvingStructure" type="xs:boolean" use="optional">
+				<xs:attribute name="evolvingStructure" type="xs:boolean" use="optional" default="false">
 					<xs:annotation>
-						<xs:documentation>An evolving data structure indicates that new Dimensions may be added under a minor version update e.g. 1.0.0 to 1.1.0.  Evolving Data Structures can only be used by Dataflows if they include a DimensionConstraint to fix the Dimensions to the subset required by the Dataflow</xs:documentation>
+						<xs:documentation>An evolving data structure indicates that new Dimensions may be added under a minor version update e.g. 1.0.0 to 1.1.0. Evolving Data Structures can only be used by Dataflows if they include a DimensionConstraint to fix the Dimensions to the subset required by the Dataflow.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
