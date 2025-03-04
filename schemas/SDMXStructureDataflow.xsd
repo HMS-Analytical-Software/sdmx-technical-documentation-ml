@@ -9,16 +9,16 @@
 		<xs:documentation>The data flow structure module defines the structure of data flow constructs.</xs:documentation>
 	</xs:annotation>
 
-	<xs:complexType name="DataflowBaseType">
+	<xs:complexType abstract="true" name="DataflowBaseType">
 		<xs:annotation>
 			<xs:documentation>Extends StructureUsageType by adding a DimensionConstraint</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="StructureUsageType">
 				<xs:sequence>
-						<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="1">
 						<xs:annotation>
-							<xs:documentation>Required when the referenced Data Structure can change Dimensionality under a minor version change</xs:documentation>
+							<xs:documentation>Required when the referenced Data Structure can change Dimensionality under a minor version change.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -42,9 +42,9 @@
 							<xs:documentation>Structure provides a reference to the data structure definition that defines the structure of all data for this flow.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="DimensionConstraint" type="DimensionConstraintType" minOccurs="0" maxOccurs="1">
 						<xs:annotation>
-							<xs:documentation>Required when the referenced Data Structure has evolovingStructure property set to true, indicating that it can change Dimensionality under a minor version change</xs:documentation>
+							<xs:documentation>Required when the referenced Data Structure has evolovingStructure property set to true, indicating that it can change Dimensionality under a minor version change.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -55,7 +55,7 @@
 	
 	<xs:complexType name="DimensionConstraintType">
 		<xs:annotation>
-			<xs:documentation>Describes which Dimenisons of the referenced Data Structrure are used by the Dataflow.  Dimensions not included in this list should not be included in Datasets for this Dataflow</xs:documentation>
+			<xs:documentation>Lists the Dimensions of the referenced Data Structure that are used by the Dataflow.  Dimensions not included in this list should not be included in Datasets for this Dataflow.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Dimension" type="common:IDType" minOccurs="1" maxOccurs="unbounded" />
