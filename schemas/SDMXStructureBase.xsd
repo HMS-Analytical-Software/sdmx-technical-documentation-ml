@@ -316,7 +316,7 @@
 				<xs:documentation>The pattern attribute holds any regular expression permitted in the similar facet in W3C XML Schema.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="isMultiLingual" type="xs:boolean" use="optional" default="true">
+		<xs:attribute name="isMultiLingual" type="xs:boolean" use="optional" default="false">
 			<xs:annotation>
 				<xs:documentation>The isMultiLingual attribute indicates for a text format of type "string", whether the value should allow for multiple values in different languages.</xs:documentation>
 			</xs:annotation>
