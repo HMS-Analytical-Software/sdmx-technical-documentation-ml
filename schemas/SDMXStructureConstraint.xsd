@@ -229,7 +229,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-
 	<xs:complexType name="AvailabilityConstraintType">
 		<xs:annotation>
 			<xs:documentation>AvailabilityConstraintType defines the structure of an availability constraint. This type of constraint contains the actual data currently present for the referenced object and is used to express data availability either by listing the available sets of keys (DataKeySet) or a set of component values (CubeRegion), e.g., in a data source. Availability constraints should not be (semantically) versioned.</xs:documentation>
@@ -252,12 +251,7 @@
 				<xs:attribute name="obsCount" type="xs:int" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
-
 	</xs:complexType>
-
-
-
-
 
 	<xs:complexType name="RegionType" abstract="true">
 		<xs:annotation>
@@ -343,9 +337,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-    <!-- v3.1  allows for unbounded Values to support use case with keys that define multiple values for a Dimension
-         i.e. FREQ=A or M or Q  and REF_AREA=DE and CURR=EUR
-    -->
 	<xs:complexType name="DataKeyValueType">
 		<xs:annotation>
 			<xs:documentation>DataKeyValueType is a type for providing one or more dimension values for the purpose of defining a distinct data key.</xs:documentation>
@@ -353,6 +344,9 @@
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
 				<xs:sequence>
+				    <xs:annotation>
+						<xs:documentation>v3.1  allows for unbounded Values to support use case with keys that define multiple values for a Dimension i.e. FREQ=A or M or Q  and REF_AREA=DE and CURR=EUR</xs:documentation>
+					</xs:annotation>
 					<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
 				</xs:sequence>
 				<xs:attribute name="id" type="common:SingleNCNameIDType" use="required"/>
