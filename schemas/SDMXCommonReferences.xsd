@@ -331,7 +331,7 @@
 			<xs:documentation>Urn type for a categorisation.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnType">
-			<xs:pattern value=".+\.categoryscheme\.Categorisation=.+"/>
+			<xs:pattern value=".+\.categoryscheme\.Categorisation=.+\(1\.0\)"/>
 		</xs:restriction>
 	</xs:simpleType>
 
