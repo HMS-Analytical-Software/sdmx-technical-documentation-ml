@@ -45,7 +45,7 @@
 
 	<xs:complexType name="DataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed data content. It excludes the constraint attachment.</xs:documentation>
+			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed data content. The constraint attachment is restricted to constrainable artefacts related to data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -85,7 +85,7 @@
 
 	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata.</xs:documentation>
+			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed metadata content. The constraint attachment is restricted to constrainable artefacts related to metadata.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -344,7 +344,7 @@
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
 				<xs:sequence>
-				    <xs:annotation>
+					<xs:annotation>
 						<xs:documentation>v3.1  allows for unbounded Values to support use case with keys that define multiple values for a Dimension i.e. FREQ=A or M or Q  and REF_AREA=DE and CURR=EUR</xs:documentation>
 					</xs:annotation>
 					<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
