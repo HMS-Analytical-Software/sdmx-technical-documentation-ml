@@ -224,7 +224,8 @@
 				<xs:choice>
 					<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="1"/>
 					<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="1"/>
-					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>				</xs:choice>
+					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>
+				</xs:choice>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
