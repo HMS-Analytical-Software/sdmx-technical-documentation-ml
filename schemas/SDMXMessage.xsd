@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2025 - http://www.sdmx.org -->
-<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:registry="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific" xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified">
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:registry="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific" 
+			xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
+			xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+			elementFormDefault="qualified"
+			version="3.1.0">
+			
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" schemaLocation="SDMXMessageFooter.xsd"/>
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" schemaLocation="SDMXStructure.xsd"/>
