@@ -1,11 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message ../../schemas/SDMXMessage.xsd">
-    <mes:Header>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+				mlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xmlschema.sdmx.org/3.1/SDMXMessage.xsd">
+	<mes:Header>
         <mes:ID>IREF257793</mes:ID>
         <mes:Test>false</mes:Test>
         <mes:Prepared>2021-03-08T17:49:35Z</mes:Prepared>
         <mes:Sender id="Unknown" />
-        <mes:Receiver id="not_supplied" /></mes:Header>
+        <mes:Receiver id="not_supplied" />
+    </mes:Header>
     <mes:Structures>
         <str:GeoGridCodelists>
             <str:GeoGridCodelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_GRID_LOCATION(1.0)" agencyID="EXAMPLE" id="CL_GRID_LOCATION" version="1.0" geoType="GeoGridCodelist">
