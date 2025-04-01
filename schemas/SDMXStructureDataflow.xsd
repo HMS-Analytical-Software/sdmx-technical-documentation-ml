@@ -6,12 +6,12 @@
 
 	<xs:annotation>
 		<xs:appinfo>SDMX Dataflow Structure Module</xs:appinfo>
-		<xs:documentation>The data flow structure module defines the structure of data flow constructs.</xs:documentation>
+		<xs:documentation>The dataflow structure module defines the structure of dataflow constructs.</xs:documentation>
 	</xs:annotation>
 
 	<xs:complexType abstract="true" name="DataflowBaseType">
 		<xs:annotation>
-			<xs:documentation>Extends StructureUsageType by adding a DimensionConstraint</xs:documentation>
+			<xs:documentation>Extends StructureUsageType by adding a DimensionConstraint.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="StructureUsageType">

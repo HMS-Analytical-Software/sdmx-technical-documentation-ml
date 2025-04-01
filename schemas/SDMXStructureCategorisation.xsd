@@ -11,7 +11,7 @@
 
 	<xs:complexType name="CategorisationBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>CategorisationBaseType defines the base refinement of the CategorisationType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>CategorisationBaseType defines the base refinement of the CategorisationType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:MaintainableType">

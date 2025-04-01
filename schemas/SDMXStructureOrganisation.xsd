@@ -129,7 +129,7 @@
 	
 	<xs:complexType name="DataProviderSchemeType">
 		<xs:annotation>
-			<xs:documentation>DataProviderSchemeType defines a type of organisation scheme which contains only data providers. The data provider scheme maintained by a particular maintenance agency is always provided a fixed identifier and is never versioned. Therefore, providers can be added or removed without have to version the scheme. This scheme has no hierarchy, meaning that no organisation may define a relationship with another organisation in the scheme</xs:documentation>
+			<xs:documentation>DataProviderSchemeType defines a type of organisation scheme which contains only data providers. The data provider scheme maintained by a particular maintenance agency is always provided a fixed identifier and is never versioned. Therefore, providers can be added or removed without have to version the scheme. This scheme has no hierarchy, meaning that no organisation may define a relationship with another organisation in the scheme.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="OrganisationSchemeType">
@@ -150,7 +150,7 @@
 
 	<xs:complexType name="MetadataProviderSchemeType">
 		<xs:annotation>
-			<xs:documentation>MetadataProviderSchemeType defines a type of organisation scheme which contains only metadata providers. The metadata provider scheme maintained by a particular maintenance agency is always provided a fixed identifier and is never versioned. Therefore, providers can be added or removed without have to version the scheme. This scheme has no hierarchy, meaning that no organisation may define a relationship with another organisation in the scheme</xs:documentation>
+			<xs:documentation>MetadataProviderSchemeType defines a type of organisation scheme which contains only metadata providers. The metadata provider scheme maintained by a particular maintenance agency is always provided a fixed identifier and is never versioned. Therefore, providers can be added or removed without have to version the scheme. This scheme has no hierarchy, meaning that no organisation may define a relationship with another organisation in the scheme.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="OrganisationSchemeType">
@@ -171,7 +171,7 @@
 	
 	<xs:complexType name="OrganisationUnitSchemeType">
 		<xs:annotation>
-			<xs:documentation>OrganisationUnitSchemeType defines a type of organisation scheme which simply defines organisations and there parent child relationships. Organisations in this scheme are assigned no particular role, and may in fact exist within the other type of organisation schemes as well.</xs:documentation>
+			<xs:documentation>OrganisationUnitSchemeType defines a type of organisation scheme which simply defines organisations and their parent child relationships. Organisations in this scheme are assigned no particular role, and may in fact exist within the other type of organisation schemes as well.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="OrganisationSchemeType">
@@ -209,7 +209,7 @@
 
 	<xs:element name="MetadataProvider" type="MetadataProviderType" substitutionGroup="Organisation">
 		<xs:annotation>
-			<xs:documentation>MetadataProvider describes an organisation that produces metadata .</xs:documentation>
+			<xs:documentation>MetadataProvider describes an organisation that produces metadata.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 
