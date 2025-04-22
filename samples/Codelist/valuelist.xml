@@ -4,7 +4,7 @@
 				xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
 				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
 				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
-				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xmlschema.sdmx.org/3.1/schemas/SDMXMessage.xsd">
+				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/schemas/SDMXMessage.xsd">
 	<mes:Header>
 		<mes:ID>IREF772628</mes:ID>
 		<mes:Test>false</mes:Test>
