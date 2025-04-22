@@ -4,8 +4,7 @@
 			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
 			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
-			elementFormDefault="qualified" 
-			version="3.1.0">
+			elementFormDefault="qualified">
 			
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 	<xs:include schemaLocation="SDMXStructureCategorisation.xsd"/>

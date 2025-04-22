@@ -5,8 +5,7 @@
 			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
 			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
-			elementFormDefault="qualified" 
-			version="3.1.0">
+			elementFormDefault="qualified">
 			
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 

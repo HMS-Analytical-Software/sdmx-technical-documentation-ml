@@ -4,8 +4,7 @@
 			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
 			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
 			targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
-			elementFormDefault="qualified"
-			version="3.1.0">
+			elementFormDefault="qualified">
 				
    <xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 
