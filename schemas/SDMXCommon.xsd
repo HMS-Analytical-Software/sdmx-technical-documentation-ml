@@ -91,7 +91,7 @@
 
 	<xs:complexType name="TextValueType">
 		<xs:annotation>
-			<xs:documentation>TextValueType is a restriction of ValueType that allows mutliple Text elements to expressed a text value in multiple languages. The content of this should be restricted in its use to only allow a langue code (xml:lang) to be used once within an element of this type.</xs:documentation>
+			<xs:documentation>TextValueType is a restriction of ValueType that allows multiple Text elements to express a text value in multiple languages. The content of this should be restricted in its use to only allow a language code (xml:lang) to be used once within an element of this type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ValueType">
@@ -104,7 +104,7 @@
 
 	<xs:complexType name="StructuredTextValueType">
 		<xs:annotation>
-			<xs:documentation>StructuredTextValueType is a restriction of ValueType that allows mutliple StructuredText (XHTML mixed content) elements to expressed a text value in multiple languages. The content of this should be restricted in its use to only allow a langue code (xml:lang) to be used once within an element of this type.</xs:documentation>
+			<xs:documentation>StructuredTextValueType is a restriction of ValueType that allows multiple StructuredText (XHTML mixed content) elements to express a text value in multiple languages. The content of this should be restricted in its use to only allow a language code (xml:lang) to be used once within an element of this type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ValueType">
@@ -233,7 +233,7 @@
 			</xs:element>
 			<xs:element name="AnnotationURL" type="AnnotationURLType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>AnnotationURL is a URI - typically a URL - which points to an external resource which may contain or supplement the annotation. These can be localised by indicating a language for the resource. If a language is not specified, the resource is assumed to not be localised. If a specific behavior is desired, an annotation type should be defined which specifies the use of this field more exactly.</xs:documentation>
+					<xs:documentation>AnnotationURL is a URI - typically a URL - which points to an external resource which may contain or supplement the annotation. These can be localised by indicating a language for the resource. If a language is not specified, the resource is assumed to not be localised. If a specific behaviour is desired, an annotation type should be defined which specifies the use of this field more exactly.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="AnnotationText" type="TextType" minOccurs="0" maxOccurs="unbounded"> 
@@ -328,7 +328,7 @@
 	
 	<xs:complexType name="NameableType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>NameableType is an abstract base type for  all nameable objects.</xs:documentation>
+			<xs:documentation>NameableType is an abstract base type for all nameable objects.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="IdentifiableType">
@@ -399,7 +399,7 @@
 			<xs:extension base="MaintainableBaseType">
 				<xs:attribute name="agencyID" type="NestedNCNameIDType" use="required">
 					<xs:annotation>
-						<xs:documentation>The agencyID must be provided, and identifies the maintenance agency of the object.</xs:documentation>
+						<xs:documentation>The agencyID must be provided and identifies the maintenance agency of the object.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="isExternalReference" type="xs:boolean" use="optional" default="false">
@@ -499,7 +499,7 @@
 
 	<xs:simpleType name="BasicTimePeriodType">
 		<xs:annotation>
-			<xs:documentation>BasicTimePeriodType contains the basic dates and calendar periods. It is a combination of the Gregorian time periods and the date time type..</xs:documentation>
+			<xs:documentation>BasicTimePeriodType contains the basic dates and calendar periods. It is a combination of the Gregorian time periods and the date time type.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="GregorianTimePeriodType xs:dateTime"/>
 	</xs:simpleType>	
@@ -513,7 +513,7 @@
 	
 	<xs:simpleType name="ReportingTimePeriodType">
 		<xs:annotation>
-			<xs:documentation>ReportingTimePeriodType defines standard reporting periods in SDMX, which are all in relation to the start day (day-month) of a reporting year which is specified in the specialized reporting year start day attribute. If the reporting year start day is not defined, a day of January 1 is assumed. The reporting year must be epxressed as the year at the beginning of the period. Therfore, if the reproting year runs from April to March, any given reporting year is expressed as the year for April. The general format of a report period can be described as  [year]-[period][time zone]?, where the type of period is designated with a single character followed by a number representing the period. Note that all periods allow for an optional time zone offset. See the details of each member type for the specifics of its format.</xs:documentation>
+			<xs:documentation>ReportingTimePeriodType defines standard reporting periods in SDMX, which are all in relation to the start day (day-month) of a reporting year which is specified in the specialized reporting year start day attribute. If the reporting year start day is not defined, a day of January 1 is assumed. The reporting year must be expressed as the year at the beginning of the period. Therefore, if the reporting year runs from April to March, any given reporting year is expressed as the year for April. The general format of a report period can be described as [year]-[period][time zone]?, where the type of period is designated with a single character followed by a number representing the period. Note that all periods allow for an optional time zone offset. See the details of each member type for the specifics of its format.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="ReportingYearType ReportingSemesterType ReportingTrimesterType ReportingQuarterType ReportingMonthType ReportingWeekType ReportingDayType"/>
 	</xs:simpleType>	
@@ -576,7 +576,7 @@
 	
 	<xs:simpleType name="ReportingMonthType">
 		<xs:annotation>
-			<xs:documentation>ReportingMonthType defines a time period of 1 month (P1M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. In this case a reporting month will coincide with a calendar month. The format of a reporting month is YYYY-Mmm (e.g. 2000-M01), where mm is a two digit month (i.e. 01-12).</xs:documentation>
+			<xs:documentation>ReportingMonthType defines a time period of 1 month (P1M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. In this case a reporting month will coincide with a calendar month. The format of a reporting month is YYYY-Mmm (e.g. 2000-M01), where mm is a two-digit month (i.e. 01-12).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}M(0[1-9]|1[0-2]).*"/>
@@ -585,7 +585,7 @@
 	
 	<xs:simpleType name="ReportingWeekType">
 		<xs:annotation>
-			<xs:documentation>ReportingWeekType defines a time period of 7 days (P7D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. A standard reporting week is based on the ISO 8601 defintion of a week date, in relation to the reporting period start day. The first week is defined as the week with the first Thursday on or after the reporting year start day. An equivalent definition is the week starting with the Monday nearest in time to the reporting year start day. There are other equivalent defintions, all of which should be adjusted based on the reporting year start day. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting week is YYYY-Www (e.g. 2000-W01), where mm is a two digit week (i.e. 01-53).</xs:documentation>
+			<xs:documentation>ReportingWeekType defines a time period of 7 days (P7D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. A standard reporting week is based on the ISO 8601 definition of a week date, in relation to the reporting period start day. The first week is defined as the week with the first Thursday on or after the reporting year start day. An equivalent definition is the week starting with the Monday nearest in time to the reporting year start day. There are other equivalent definitions, all of which should be adjusted based on the reporting year start day. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting week is YYYY-Www (e.g. 2000-W01), where mm is a two-digit week (i.e. 01-53).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}W(0[1-9]|[1-4][0-9]|5[0-3]).*"/>
@@ -594,7 +594,7 @@
 	
 	<xs:simpleType name="ReportingDayType">
 		<xs:annotation>
-			<xs:documentation>ReportingDayType defines a time period of 1 day (P1D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001), where ddd is a three digit day (i.e. 001-366).</xs:documentation>
+			<xs:documentation>ReportingDayType defines a time period of 1 day (P1D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001), where ddd is a three-digit day (i.e. 001-366).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]).*"/>
@@ -757,7 +757,7 @@
 
 	<xs:simpleType name="WildCardValueType">
 		<xs:annotation>
-			<xs:documentation>WildCardValueType is a single value code list, used to include the '%' character - indicating that an entire field is wild carded.</xs:documentation>
+			<xs:documentation>WildCardValueType is a single value code list, used to include the '%' character - indicating that an entire field is wildcarded.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="%">
@@ -770,7 +770,7 @@
 
 	<xs:complexType name="QueryableDataSourceType">
 		<xs:annotation>
-			<xs:documentation>QueryableDataSourceType describes a data source which is accepts an standard SDMX Query message and responds appropriately.</xs:documentation>
+			<xs:documentation>QueryableDataSourceType describes a data source which is accepts a standard SDMX Query message and responds appropriately.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="DataURL" type="xs:anyURI">
@@ -1012,7 +1012,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="Alpha">
 				<xs:annotation>
-					<xs:documentation>A string datatype which only allows for the simple aplhabetic charcter set of A-Z, a-z.</xs:documentation>
+					<xs:documentation>A string datatype which only allows for the simple alphabetic character set of A-Z, a-z.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AlphaNumeric">

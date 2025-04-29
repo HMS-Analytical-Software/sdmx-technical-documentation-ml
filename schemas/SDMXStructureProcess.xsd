@@ -17,7 +17,7 @@
 
 	<xs:complexType name="ProcessBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>ProcessBaseType defines the base refinement of the ProcessType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>ProcessBaseType defines the base refinement of the ProcessType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:MaintainableType">
@@ -114,7 +114,7 @@
 
 	<xs:complexType name="TransitionBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>TransitionBaseType defines the base refinement of the TransitionType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>TransitionBaseType defines the base refinement of the TransitionType. Its purpose is to restrict  the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:IdentifiableType">
@@ -163,7 +163,7 @@
 				<xs:sequence>
 					<xs:element ref="common:Description" maxOccurs="unbounded">
 						<xs:annotation>
-							<xs:documentation>Description describe the computation in any form desired by the user (these are informational rather than machine-actionable), and so may be supplied in multiple, parallel-language versions,</xs:documentation>
+							<xs:documentation>Description describes the computation in any form desired by the user (these are informational rather than machine-actionable), and so may be supplied in multiple, parallel-language versions,</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>

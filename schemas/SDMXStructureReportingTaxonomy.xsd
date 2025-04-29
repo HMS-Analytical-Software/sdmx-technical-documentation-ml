@@ -69,7 +69,7 @@
 
 	<xs:complexType name="ReportingCategoryType">
 		<xs:annotation>
-			<xs:documentation>ReportingCategoryType describes the structure of a reporting category, which groups structure usages into useful sub-packages. Sub ordinate reporting categories can be nested within the category definition.</xs:documentation>
+			<xs:documentation>ReportingCategoryType describes the structure of a reporting category, which groups structure usages into useful sub-packages. Subordinate reporting categories can be nested within the category definition.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="ReportingCategoryBaseType">

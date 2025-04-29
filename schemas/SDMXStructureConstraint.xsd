@@ -52,7 +52,7 @@
 
 	<xs:complexType name="DataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed data content. It excludes the constraint attachment.</xs:documentation>
+			<xs:documentation>DataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed data content. The constraint attachment is restricted to constrainable artefacts related to data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -92,7 +92,7 @@
 
 	<xs:complexType name="MetadataConstraintBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType. The constraint attachment is restricted to constrainable artefacts related to metadata.</xs:documentation>
+			<xs:documentation>MetadataConstraintBaseType is an abstract base refinement of ConstraintType to define allowed metadata content. The constraint attachment is restricted to constrainable artefacts related to metadata.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ConstraintType">
@@ -180,12 +180,12 @@
 			</xs:element>
 			<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision aggreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
+					<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision agreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="MetadataProvisionAgreement" type="common:MetadataProvisionAgreementReferenceType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision aggreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
+					<xs:documentation>ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision agreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
@@ -231,7 +231,8 @@
 				<xs:choice>
 					<xs:element name="DataStructure" type="common:DataStructureReferenceType" maxOccurs="1"/>
 					<xs:element name="Dataflow" type="common:DataflowReferenceType" maxOccurs="1"/>
-					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>				</xs:choice>
+					<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType" maxOccurs="1"/>
+				</xs:choice>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
@@ -262,7 +263,7 @@
 
 	<xs:complexType name="RegionType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>RegionType is an abstract type which defines a generic constraint region. This type can be refined to define regions for data or metadata sets. A region is defined by a collection of key values - each of which a collection of values for a component which disambiguates data (i.e. dimensions of a dataset). For each region, a collection of attribute values can be provided. Taken together, the key values and attributes serve to identify or describe a subset of a data or metadata set. Finally, the region can flagged as being included or excluded, although this flag only makes sense when the region is used in a particular context.</xs:documentation>
+			<xs:documentation>RegionType is an abstract type which defines a generic constraint region. This type can be refined to define regions for data or metadata sets. A region is defined by a collection of key values - each of which a collection of values for a component which disambiguates data (i.e. dimensions of a dataset). For each region, a collection of attribute values can be provided. Taken together, the key values and attributes serve to identify or describe a subset of a data or metadata set. Finally, the region can be flagged as being included or excluded, although this flag only makes sense when the region is used in a particular context.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="common:AnnotableType">
@@ -351,7 +352,7 @@
 		<xs:complexContent>
 			<xs:restriction base="MemberSelectionType">
 				<xs:sequence>
-				    <xs:annotation>
+					<xs:annotation>
 						<xs:documentation>v3.1  allows for unbounded Values to support use case with keys that define multiple values for a Dimension i.e. FREQ=A or M or Q  and REF_AREA=DE and CURR=EUR</xs:documentation>
 					</xs:annotation>
 					<xs:element name="Value" type="SimpleKeyValueType" maxOccurs="unbounded"/>
