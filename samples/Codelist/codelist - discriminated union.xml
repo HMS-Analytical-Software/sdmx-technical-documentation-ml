@@ -108,9 +108,9 @@
 					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=EXAMPLE:LABOUR_ISIC(1.0)</str:Dataflow>				
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
-					<str:Component id="ACTIVITY">
+					<str:KeyValue id="ACTIVITY">
 						<str:Value>ISIC4_%</str:Value>
-					</str:Component>
+					</str:KeyValue>
 				</str:CubeRegion>
 			</str:DataConstraint>
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=EXAMPLE:NACE_CONSTRAINT(1.0)" isExternalReference="false" agencyID="EXAMPLE" id="NACE_CONSTRAINT" version="1.0">
@@ -120,9 +120,9 @@
 					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=EXAMPLE:LABOUR_NACE(1.0)</str:Dataflow>				
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
-					<str:Component id="ACTIVITY">
+					<str:KeyValue id="ACTIVITY">
 						<str:Value>NACE2_%</str:Value>
-					</str:Component>
+					</str:KeyValue>
 				</str:CubeRegion>
 			</str:DataConstraint>
 		</str:DataConstraints>

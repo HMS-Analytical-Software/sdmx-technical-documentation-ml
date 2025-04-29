@@ -241,7 +241,7 @@
 	
 	<xs:complexType name="BaseHeaderType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>BaseHeaderType in an abstract base type that defines the basis for all message headers. Specific message formats will refine this</xs:documentation>
+			<xs:documentation>BaseHeaderType in an abstract base type that defines the basis for all message headers. Specific message formats will refine this.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="ID" type="common:IDType">
