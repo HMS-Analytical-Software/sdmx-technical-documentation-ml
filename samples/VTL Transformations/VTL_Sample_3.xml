@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2020 - www.sdmx.org -->
-<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
-  xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message"
-  xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message ../../schemas/SDMXMessage.xsd">
+<!-- Copyright SDMX 2025 - www.sdmx.org -->
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+				mlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/SDMXMessage.xsd">
   <mes:Header>
     <mes:ID>VTL_SAMPLE3</mes:ID>
     <mes:Test>false</mes:Test>

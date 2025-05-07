@@ -11,3 +11,5 @@ This includes:
 To test the samples, copy the ‘samples’ and ‘schemas’ folders into the same local directory.
 
 The current release version is SDMX-ML 3.1
+
+The schemas are published to https://xml.sdmx.org
