@@ -253,7 +253,7 @@
 				<xs:sequence>
 					<xs:element ref="common:Annotations" minOccurs="0"/>
 					<xs:element name="KeyValue" type="DataKeyValueType" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="Component" type="DataComponentValueSetType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Attribute" type="DataComponentValueSetType" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				<xs:attribute name="include" type="xs:boolean" use="optional" fixed="true">
 					<xs:annotation>
