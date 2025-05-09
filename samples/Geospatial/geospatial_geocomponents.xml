@@ -1,6 +1,6 @@
 <mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 				xmlns:xml="http://www.w3.org/XML/1998/namespace" 
-				mlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+				xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
 				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
 				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
 				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/SDMXMessage.xsd">	
