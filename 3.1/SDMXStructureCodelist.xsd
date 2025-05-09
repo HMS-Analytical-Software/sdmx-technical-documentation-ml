@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 
 	<xs:annotation>
@@ -74,7 +79,7 @@
 						</xs:annotation>
 					</xs:element>
 					<xs:choice minOccurs="0">
-						<xs:element name="Parent" type="common:SingleNCNameIDType">
+						<xs:element name="Parent" type="common:IDType">
 							<xs:annotation>
 								<xs:documentation>Parent provides the ability to describe simple hierarchies within a single codelist, by referencing the id value of another code in the same codelist.</xs:documentation>
 							</xs:annotation>
@@ -202,7 +207,7 @@
 
 	<xs:complexType name="GeographicCodelistType">
 		<xs:annotation>
-			<xs:documentation>GeographicCodelistType defines the sturcture of a geographic codelist. It comprises a set of GeoFeatureSetCodes, by adding a value in the Code that follows a pattern to represent a geo feature set.</xs:documentation>
+			<xs:documentation>GeographicCodelistType defines the structure of a geographic codelist. It comprises a set of GeoFeatureSetCodes, by adding a value in the Code that follows a pattern to represent a geo feature set.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="GeoCodelistType">
@@ -229,7 +234,7 @@
 	
 	<xs:complexType name="GeoFeatureSetCodeType">
 		<xs:annotation>
-			<xs:documentation>GeoFeatureSetCodeType defines the structure of a geogrphic code.</xs:documentation>
+			<xs:documentation>GeoFeatureSetCodeType defines the structure of a geographic code.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="GeoRefCodeType">
@@ -305,7 +310,7 @@
 
 	<xs:simpleType name="GeoCodelistTypeType">
 		<xs:annotation>
-			<xs:documentation>GeoCodelistTypeType defines an enumeration of the speicfic types of geographic codelists.</xs:documentation>
+			<xs:documentation>GeoCodelistTypeType defines an enumeration of the specific types of geographic codelists.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="GeographicCodelist"/>
@@ -315,7 +320,7 @@
 
 	<xs:complexType name="ValueListBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>ValueListBaseType defines the base refinement of the ValueListType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>ValueListBaseType defines the base refinement of the ValueListType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:MaintainableType">
@@ -349,7 +354,7 @@
 
 	<xs:complexType name="ValueItemType">
 		<xs:annotation>
-			<xs:documentation>ValueItemType defines the structure of a value item. A value must be provided, and a longer name and description can be provided to provide additiona meaning to the value (similar to a code in a code list).</xs:documentation>
+			<xs:documentation>ValueItemType defines the structure of a value item. A value must be provided, and a longer name and description can be provided to provide additional meaning to the value (similar to a code in a code list).</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="common:AnnotableType">

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2025 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common">
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+			
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 	
@@ -131,7 +137,7 @@
 
 	<xs:complexType name="StructureMapBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>StructureMapBaseType defines the base refinement of the StructureMapType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>StructureMapBaseType defines the base refinement of the StructureMapType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:MaintainableType">
@@ -155,12 +161,12 @@
 				<xs:sequence>
 					<xs:element name="Source" type="common:StructureOrUsageReferenceType">
 						<xs:annotation>
-							<xs:documentation>Source provides a reference to a structure (data or metadata) or a structure usage (dataflow or metadataflow) from which components defined by the actual structure are to mapped.</xs:documentation>
+							<xs:documentation>Source provides a reference to a structure (data or metadata) or a structure usage (dataflow or metadataflow) from which components defined by the actual structure are to be mapped.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="Target" type="common:StructureOrUsageReferenceType">
 						<xs:annotation>
-							<xs:documentation>Target provides a reference to a structure (data or metadata) or a structure usage (dataflow or metadataflow) to which components from the source are to mapped.</xs:documentation>
+							<xs:documentation>Target provides a reference to a structure (data or metadata) or a structure usage (dataflow or metadataflow) to which components from the source are to be mapped.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="EpochMap" type="EpochMapType" minOccurs="0" maxOccurs="unbounded">
@@ -231,7 +237,7 @@
 
 	<xs:complexType name="FrequencyFormatMappingBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>FrequencyFormatMappingBaseType defines the base refinement of the FrequencyFormatMappingType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>FrequencyFormatMappingBaseType defines the base refinement of the FrequencyFormatMappingType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:IdentifiableType">
@@ -273,7 +279,7 @@
 				</xs:sequence>
 				<xs:attribute name="resolvePeriod" type="ResolvePeriodType" use="optional">
 					<xs:annotation>
-						<xs:documentation>Indicates the point in time to resolve to when mapping from low fequency periods to higher frequency periods.</xs:documentation>
+						<xs:documentation>Indicates the point in time to resolve to when mapping from low frequency periods to higher frequency periods.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -282,7 +288,7 @@
 
 	<xs:complexType name="EpochMapBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>EpochMapBaseType defines the base refinement of the EpochMapType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>EpochMapBaseType defines the base refinement of the EpochMapType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="DateMapType">
@@ -402,7 +408,7 @@
 				<xs:sequence>
 					<xs:element name="SourceValue" type="MappedValueType">
 						<xs:annotation>
-							<xs:documentation>There should be a source value for each source represention (e.g. codelist, data type). Source values can be pattern matched by using regular expression or substrings using start/end indexes.</xs:documentation>
+							<xs:documentation>There should be a source value for each source representation (e.g. codelist, data type). Source values can be pattern matched by using regular expression or substrings using start/end indexes.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="TargetValue" type="xs:string" minOccurs="0">
@@ -426,7 +432,7 @@
 				<xs:sequence>
 					<xs:element name="SourceValue" type="MappedValueType" maxOccurs="unbounded">
 						<xs:annotation>
-							<xs:documentation>There should be a source value for each source represention (e.g. codelist, data type). Source values can be pattern matched by using regular expression or substrings using start/end indexes.</xs:documentation>
+							<xs:documentation>There should be a source value for each source representation (e.g. codelist, data type). Source values can be pattern matched by using regular expression or substrings using start/end indexes.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="TargetValue" type="xs:string" minOccurs="0" maxOccurs="unbounded">

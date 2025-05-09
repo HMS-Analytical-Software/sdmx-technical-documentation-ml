@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2025 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure">
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
+			elementFormDefault="qualified">
+			
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 	<xs:include schemaLocation="SDMXStructureCategorisation.xsd"/>
 	<xs:include schemaLocation="SDMXStructureCategory.xsd"/>
@@ -191,7 +196,7 @@
 			</xs:element>
 			<xs:element name="GeographicCodelists" type="GeographicCodelistsType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>GeographicCodelists contains a collection of geographi codelist descriptions. The codelists may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
+					<xs:documentation>GeographicCodelists contains a collection of geographic codelist descriptions. The codelists may be detailed in full, or referenced from an external structure document or registry service.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="UniqueGeographicCodelist">
 					<xs:selector xpath="structure:GeographicCodelist"/>
@@ -482,7 +487,7 @@
 		<xs:sequence>
 			<xs:element name="CategorySchemeMap" type="CategorySchemeMapType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>CategorySchemeMap provides the details of a category scheme map, which descibes mappings between categories in different schemes.</xs:documentation>
+					<xs:documentation>CategorySchemeMap provides the details of a category scheme map, which describes mappings between categories in different schemes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -512,7 +517,7 @@
 		<xs:sequence>
 			<xs:element name="ConceptSchemeMap" type="ConceptSchemeMapType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>ConceptSchemeMap provides the details of a concept scheme map, which descibes mappings between concepts in different schemes.</xs:documentation>
+					<xs:documentation>ConceptSchemeMap provides the details of a concept scheme map, which describes mappings between concepts in different schemes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -640,7 +645,7 @@
 		<xs:sequence>
 			<xs:element name="DataProviderScheme" type="DataProviderSchemeType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>DataProviderScheme provides the details of an data provider scheme, in which data providers are described.</xs:documentation>
+					<xs:documentation>DataProviderScheme provides the details of a data provider scheme, in which data providers are described.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="DataProviderScheme_UniqueDataProvider">
 					<xs:selector xpath="structure:DataProvider"/>
@@ -720,12 +725,12 @@
 	
 	<xs:complexType name="HierarchyAssociationsType">
 		<xs:annotation>
-			<xs:documentation>HiearchyAssociationsType describes the structure of the hierarchy assoications container. It contains one or more hiearchy associations, which can be explicitly detailed or referenced from an external structure document or registry service.</xs:documentation>
+			<xs:documentation>HiearchyAssociationsType describes the structure of the hierarchy associations container. It contains one or more hiearchy associations, which can be explicitly detailed or referenced from an external structure document or registry service.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="HierarchyAssociation" type="HierarchyAssociationType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>HierarchyAssociation provides the details of a hiearchy assoication, which associates a hiearchy with an identifiable object in the context of another object.</xs:documentation>
+					<xs:documentation>HierarchyAssociation provides the details of a hierarchy association, which associates a hierarchy with an identifiable object in the context of another object.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -738,7 +743,7 @@
 		<xs:sequence>
 			<xs:element name="MetadataConstraint" type="MetadataConstraintType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>MetadataConstraint specifies a sub set of the definition of the allowable content of a metadata set.</xs:documentation>
+					<xs:documentation>MetadataConstraint specifies a subset of the definition of the allowable content of a metadata set.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="MetadataConstraint_MetadataTargetRegionInclusion">
 					<xs:selector xpath="structure:MetadataTargetRegion"/>
@@ -755,7 +760,7 @@
 		<xs:sequence>
 			<xs:element name="Metadataflow" type="MetadataflowType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Metadataflow provides the details of a metadata flow, which is defined as the structure of reference metadata that will be provided for different reference periods</xs:documentation>
+					<xs:documentation>Metadataflow provides the details of a metadata flow, which is defined as the structure of reference metadata that will be provided for different reference periods.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -768,7 +773,7 @@
 		<xs:sequence>
 			<xs:element name="MetadataProviderScheme" type="MetadataProviderSchemeType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>MetadataProviderScheme provides the details of an metadata provider scheme, in which metadata providers are described.</xs:documentation>
+					<xs:documentation>MetadataProviderScheme provides the details of a metadata provider scheme, in which metadata providers are described.</xs:documentation>
 				</xs:annotation>
 				<xs:unique name="MetadataProviderScheme_UniqueDataProvider">
 					<xs:selector xpath="structure:MetadataProvider"/>
@@ -828,7 +833,7 @@
 		<xs:sequence>
 			<xs:element name="OrganisationSchemeMap" type="OrganisationSchemeMapType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>OrganisationSchemeMap provides the details of a organisation scheme map, which descibes mappings between organisations in different schemes.</xs:documentation>
+					<xs:documentation>OrganisationSchemeMap provides the details of an organisation scheme map, which describes mappings between organisations in different schemes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -909,7 +914,7 @@
 		<xs:sequence>
 			<xs:element name="ReportingTaxonomyMap" type="ReportingTaxonomyMapType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>ReportingTaxonomyMap provides the details of a reporting taxonomy map, which descibes mappings between reporting taxonomies.</xs:documentation>
+					<xs:documentation>ReportingTaxonomyMap provides the details of a reporting taxonomy map, which describes mappings between reporting taxonomies.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -922,7 +927,7 @@
 		<xs:sequence>
 			<xs:element name="RepresentationMap" type="RepresentationMapType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>RepresentationMap provides the details of a represenation map, which describes mappings between various component represenations. </xs:documentation>
+					<xs:documentation>RepresentationMap provides the details of a representation map, which describes mappings between various component representations. </xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>

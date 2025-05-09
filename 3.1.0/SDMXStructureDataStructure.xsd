@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2025 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common">
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+			
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
+	
 	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 
 	<xs:annotation>
@@ -38,7 +45,7 @@
 				<xs:sequence>	
 					<xs:element name="Metadata" type="common:MetadataStructureReferenceType" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>A data structure definition may be related to a metadata structure definition in order to use its metadata attributes as part of the data. Note that the referenced metadata set cannot contain nested metadata attributes, as these are not supported in the data. By default all metadata attributes can be associated at any level of the data. However, a metadata attribute usage can be used to provide a specific attribute relationshp for a given metadata attribute.</xs:documentation>
+							<xs:documentation>A data structure definition may be related to a metadata structure definition in order to use its metadata attributes as part of the data. Note that the referenced metadata set cannot contain nested metadata attributes, as these are not supported in the data. By default all metadata attributes can be associated at any level of the data. However, a metadata attribute usage can be used to provide a specific attribute relationship for a given metadata attribute.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -53,7 +60,7 @@
 
 	<xs:element name="DataStructureComponents" type="DataStructureComponentsType" substitutionGroup="Grouping">
 		<xs:annotation>
-			<xs:documentation>DataStructureComponents defines the grouping of the sets of metadata concepts that have a defined structural role in the data structure definition. Note that for any component or group defined in a data structure definition, its id must be unique. This applies to the identifiers explicitly defined by the components as well as those inherited from the concept identity of a component. For example, if two dimensions take their identity from concepts with same identity (regardless of whether the concepts exist in different schemes) one of the dimensions must be provided a different explicit identifier. Although there are XML schema constraints to help enforce this, these only apply to explicitly assigned identifiers. Identifiers inherited from a concept from which a component takes its identity cannot be validated against this constraint. Therefore, systems processing data structure definitions will have to perform this check outside of the XML validation. There are also two reserved identifiers in a data structure definition; TIME_PERIOD, and REPORTING_YEAR_START_DAY. These identifiers may not be used outside of their respective defintions (TimeDimension and ReportingYearStartDay). This applies to both the explicit identifiers that can be assigned to the components or groups as well as an identifier inherited by a component from its concept identity. For example, if an ordinary dimension (i.e. not the time dimension) takes its concept identity from a concept with the identifier TIME_PERIOD, that dimension must provide a different explicit identifier.</xs:documentation>
+			<xs:documentation>DataStructureComponents defines the grouping of the sets of metadata concepts that have a defined structural role in the data structure definition. Note that for any component or group defined in a data structure definition, its id must be unique. This applies to the identifiers explicitly defined by the components as well as those inherited from the concept identity of a component. For example, if two dimensions take their identity from concepts with same identity (regardless of whether the concepts exist in different schemes) one of the dimensions must be provided a different explicit identifier. Although there are XML schema constraints to help enforce this, these only apply to explicitly assigned identifiers. Identifiers inherited from a concept from which a component takes its identity cannot be validated against this constraint. Therefore, systems processing data structure definitions will have to perform this check outside of the XML validation. There is also one reserved identifier in a data structure definition, TIME_PERIOD. This identifier may not be used outside of its definition, TimeDimension. This applies to both the explicit identifiers that can be assigned to the components or groups as well as an identifier inherited by a component from its concept identity. For example, if an ordinary dimension (i.e. not the time dimension) takes its concept identity from a concept with the identifier TIME_PERIOD, that dimension must provide a different explicit identifier.</xs:documentation>
 		</xs:annotation>
 		<xs:unique name="DataStructureUniqueComponent">
 			<xs:selector xpath="structure:Group | structure:DimensionList/structure:Dimension | structure:DimensionList/structure:TimeDimension | structure:AttributeList/structure:Attribute | structure:AttributeList/structure:ReportingYearStartDay | structure:MeasureList/structure:Measure"/>
@@ -135,7 +142,7 @@
 
 	<xs:complexType name="AttributeBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>AttributeBaseType is an abstract base type that serves as the basis for the AttributeType. It restricts the text format base to a text format valid  for data components (that does not allow for XHTML representation). The local representation is restricted to the values defined in codelist. The concept role is restricted to the values valid for a data attribute.</xs:documentation>
+			<xs:documentation>AttributeBaseType is an abstract base type that serves as the basis for the AttributeType. It restricts the text format base to a text format valid for data components (that does not allow for XHTML representation). The local representation is restricted to the values defined in codelist. The concept role is restricted to the values valid for a data attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ComponentType">
@@ -201,7 +208,7 @@
 			</xs:sequence>
 			<xs:element name="Group" type="common:IDType">
 				<xs:annotation>
-					<xs:documentation>This is used as a convenience to referencing all of the dimension defined by the referenced group. The attribute will also be attached to this group.</xs:documentation>
+					<xs:documentation>This is used as a convenience to reference all of the dimension defined by the referenced group. The attribute will also be attached to this group.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Observation" type="common:EmptyType">
@@ -222,7 +229,7 @@
 	
 	<xs:complexType name="MeasureRelationshipType">
 		<xs:annotation>
-			<xs:documentation>MeasureRelationshipType allows for the description of an attributes relationship to one or more measures</xs:documentation>
+			<xs:documentation>MeasureRelationshipType allows for the description of an attribute's relationship to one or more measures.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Measure" type="common:NCNameIDType" maxOccurs="unbounded">
@@ -235,13 +242,13 @@
 
 	<xs:element name="MetadataAttributeUsage" type="MetadataAttributeUsageType" substitutionGroup="Component">
 		<xs:annotation>
-			<xs:documentation>MetadataAttributeUsage refines the details of how a metadata attribute from the metadata structure referenced from the data structure is used. By default, metadata attributes can be expressed at any level of the data. This allows an attribute relationship to be defined in order restrict the reporing of a metadata attribute to a specific part of the data.</xs:documentation>
+			<xs:documentation>MetadataAttributeUsage refines the details of how a metadata attribute from the metadata structure referenced from the data structure is used. By default, metadata attributes can be expressed at any level of the data. This allows an attribute relationship to be defined in order restrict the reporting of a metadata attribute to a specific part of the data.</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 
 	<xs:complexType name="MetadataAttributeUsageBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MetadataAttributeUsageBaseType is the abstract base refinement of a metadata attribute usage. Since this is a usage of metadata attribute already defined in metadata structure, the typical id, concept identity, and representation are excluded in place of a local refernce to the metadata attribute being used.</xs:documentation>
+			<xs:documentation>MetadataAttributeUsageBaseType is the abstract base refinement of a metadata attribute usage. Since this is a usage of metadata attribute already defined in metadata structure, the typical id, concept identity, and representation are excluded in place of a local reference to the metadata attribute being used.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ComponentType">
@@ -320,7 +327,7 @@
 
 	<xs:complexType name="BaseDimensionBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>BaseDimensionBaseType is an abstract base type that serves as the basis for any dimension. It restricts the text format base to a text format valid  for data components (that does not allow for XHTML representation).</xs:documentation>
+			<xs:documentation>BaseDimensionBaseType is an abstract base type that serves as the basis for any dimension. It restricts the text format base to a text format valid for data components (that does not allow for XHTML representation).</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ComponentType">
@@ -508,7 +515,7 @@
 
 	<xs:complexType name="MeasureBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>MeasureBaseType is an abstract base type that refines ComponentType to rerstrict the represenations to those which are applicable for a measure.</xs:documentation>
+			<xs:documentation>MeasureBaseType is an abstract base type that refines ComponentType to restrict the representations to those which are applicable for a measure.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ComponentType">

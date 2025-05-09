@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright SDMX 2025 - http://www.sdmx.org -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
+			elementFormDefault="qualified">
+				
    <xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 
 	<xs:annotation>
@@ -27,7 +32,7 @@
 
 	<xs:complexType name="MetadataSetType">
 			<xs:annotation>
-				<xs:documentation>MetadataSetType describes the structure for a metadata set, which contains a collection of reported metadata against a set of targets. The targets should conform to the restrictions described by the metadata provision or the metadataflow. Note that this is maintainble, and as such must specify in agency. In this case, the agency is the metadata provider. If a metadata provision agreement is referenced, it is assumed that the metadata provider described in the provision will be the same as the agency for this set.</xs:documentation>
+				<xs:documentation>MetadataSetType describes the structure for a metadata set, which contains a collection of reported metadata against a set of targets. The targets should conform to the restrictions described by the metadata provision or the metadataflow. Note that this is maintainable, and as such must specify in agency. In this case, the agency is the metadata provider. If a metadata provision agreement is referenced, it is assumed that the metadata provider described in the provision will be the same as the agency for this set.</xs:documentation>
 			</xs:annotation>
 			<xs:complexContent>
 				<xs:extension base="MetadataSetBaseType">
@@ -51,7 +56,7 @@
 					</xs:element>
 					<xs:element ref="Attribute" maxOccurs="unbounded">
 						<xs:annotation>
-							<xs:documentation>Att elements hold the reported metadata attribute values being reported in the metadata set. These conform to the metadata structure defintion</xs:documentation>
+							<xs:documentation>Att elements hold the reported metadata attribute values being reported in the metadata set. These conform to the metadata structure definition.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -72,7 +77,7 @@
 
 	<xs:complexType name="AttributeType">
 		<xs:annotation>
-			<xs:documentation>AttributeType defines the structure for a reported metadata attribute. A value for the attribute can be supplied as either a single value (enumerated or non-enumerated single value), or multi-lingual text values (either structured or unstructured). Optional child attributes ar also available if the metadata attribute definition defines nested metadata attributes.</xs:documentation>
+			<xs:documentation>AttributeType defines the structure for a reported metadata attribute. A value for the attribute can be supplied as either a single value (enumerated or non-enumerated single value), or multi-lingual text values (either structured or unstructured). Optional child attributes are also available if the metadata attribute definition defines nested metadata attributes.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="common:AnnotableType">
