@@ -464,11 +464,10 @@
 	<!-- Define a common not applicable value -->
 	<xs:simpleType name="NotApplicableType">
 		<xs:annotation>
-			<xs:documentation>NotApplicableType is a reusable simple type that allows for not applicable values to be reported. This is required for datasets against a DSD which includes data from Dataflows
-				which only use a subset of Dimensions as defined by a Dimension Constraint.</xs:documentation>
+			<xs:documentation>NotApplicableType is a reusable simple type that allows for not applicable dimension values to be reported. This is required for datasets against a DSD which includes data from Dataflows, which only use a subset of Dimensions as defined by a Dimension Constraint, or for data-related reference metadata attributes that are not attached to all dimensions.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="#N/A"/>
+			<xs:enumeration value="~"/>
 		</xs:restriction>
 	</xs:simpleType>
 		
