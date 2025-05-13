@@ -60,6 +60,12 @@
 			
 			<Obs TIME_PERIOD="2019" OBS_VALUE="1.485477254901961">
 				<Comp id="OBS_STATUS" xsi:type="ns1:OBS_STATUS_ATTRIBUTE">
+					<Value>A</Value>
+				</Comp>		
+			</Obs>
+			
+			<Obs TIME_PERIOD="2020" OBS_VALUE="1.585477254901961">
+				<Comp id="OBS_STATUS" xsi:type="ns1:OBS_STATUS_ATTRIBUTE">
 					<Value>#N/A</Value>
 				</Comp>		
 			</Obs>
