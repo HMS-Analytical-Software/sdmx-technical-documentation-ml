@@ -402,6 +402,11 @@
 						<xs:documentation>The agencyID must be provided and identifies the maintenance agency of the object.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
+				<xs:attribute name="isPartialLanguage" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>The isPartialLanguage, if true, indicates that that the object doesn't contain the complete set of all available languages, e.g., when obtained as a response to a GET query that requested specific languages through the HTTP header 'Accept-Language'.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 				<xs:attribute name="isExternalReference" type="xs:boolean" use="optional" default="false">
 					<xs:annotation>
 						<xs:documentation>The isExternalReference attribute, if true, indicates that the actual object is not defined the corresponding element, rather its full details are defined elsewhere - indicated by either the registryURL, the repositoryURL, or the structureURL. The purpose of this is so that each structure message does not have to redefine object that are already defined elsewhere. If the isExternalReference attribute is not set, then it is assumed to be false, and the object should contain the full definition of its contents. If more than one of the registryURL, the repositoryURL, and the structureURL are supplied, then the application processing the object can choose the method it finds best suited to retrieve the details of the object.</xs:documentation>
@@ -456,14 +461,133 @@
 		</xs:attribute>	
 	</xs:attributeGroup>
 	
-	<!-- Define a common tilde value -->
-	<xs:simpleType name="MissingType">
+	<!-- Define a common not applicable value -->
+	<xs:simpleType name="NotApplicableType">
 		<xs:annotation>
-			<xs:documentation>MissingType is a reusable simple type that allows for missing Dimension values to be reported, required for datasets exported against a DSD which includes data from Dataflows
-				which use a Dimension Constraint.</xs:documentation>
+			<xs:documentation>NotApplicableType is a reusable simple type that allows for not applicable values to be reported. This is required for datasets against a DSD which includes data from Dataflows
+				which only use a subset of Dimensions as defined by a Dimension Constraint.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="~"/>
+			<xs:enumeration value="#N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="DecimalOrNotApplicableType">
+		<xs:union memberTypes="xs:decimal NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DoubleOrNotApplicableType">
+		<xs:union memberTypes="xs:double NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BooleanOrNotApplicableType">
+		<xs:union memberTypes="xs:boolean NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntOrNotApplicableType">
+		<xs:union memberTypes="xs:int NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntegerOrNotApplicableType">
+		<xs:union memberTypes="xs:integer NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LongOrNotApplicableType">
+		<xs:union memberTypes="xs:long NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ShortOrNotApplicableType">
+		<xs:union memberTypes="xs:short NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FloatOrNotApplicableType">
+		<xs:union memberTypes="xs:float NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaOrNotApplicableType">
+		<xs:union memberTypes="AlphaType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaNumericOrNotApplicableType">
+		<xs:union memberTypes="AlphaNumericType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NumericOrNotApplicableType">
+		<xs:union memberTypes="NumericType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="StandardTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="StandardTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BasicTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="BasicTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ObservationalTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="ObservationalTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="GregorianTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="GregorianTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="ReportingTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingYearOrNotApplicableType">
+		<xs:union memberTypes="ReportingYearType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingSemesterOrNotApplicableType">
+		<xs:union memberTypes="ReportingSemesterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTrimesterOrNotApplicableType">
+		<xs:union memberTypes="ReportingTrimesterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingQuarterOrNotApplicableType">
+		<xs:union memberTypes="ReportingQuarterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingDayOrNotApplicableType">
+		<xs:union memberTypes="ReportingDayType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingMonthOrNotApplicableType">
+		<xs:union memberTypes="ReportingMonthType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingWeekOrNotApplicableType">
+		<xs:union memberTypes="ReportingWeekType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidMonthDayOrNotApplicableType">
+		<xs:union memberTypes="RangeValidMonthDayType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeOrNotApplicableType">
+		<xs:union memberTypes="RangeValidTimeType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeZoneOrNotApplicableType">
+		<xs:union memberTypes="RangeValidTimeZoneType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TimeRangeOrNotApplicableType">
+		<xs:union memberTypes="TimeRangeType NotApplicableType"/>
+	</xs:simpleType>
+
+	
+	<!-- Define a common missing value -->
+	<xs:simpleType name="MissingType">
+		<xs:annotation>
+			<xs:documentation>MissingType is a reusable simple type that allows for missing values to be reported. This is required for attributes and measures to report an intentionally missing value.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="#N/A"/>
 		</xs:restriction>
 	</xs:simpleType>
 	
@@ -499,6 +623,83 @@
 		<xs:union memberTypes="xs:float MissingType"/>
 	</xs:simpleType>
 	
+	<xs:simpleType name="AlphaOrMissingType">
+		<xs:union memberTypes="AlphaType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaNumericOrMissingType">
+		<xs:union memberTypes="AlphaNumericType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NumericOrMissingType">
+		<xs:union memberTypes="NumericType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="StandardTimePeriodOrMissingType">
+		<xs:union memberTypes="StandardTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BasicTimePeriodOrMissingType">
+		<xs:union memberTypes="BasicTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ObservationalTimePeriodOrMissingType">
+		<xs:union memberTypes="ObservationalTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="GregorianTimePeriodOrMissingType">
+		<xs:union memberTypes="GregorianTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTimePeriodOrMissingType">
+		<xs:union memberTypes="ReportingTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingYearOrMissingType">
+		<xs:union memberTypes="ReportingYearType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingSemesterOrMissingType">
+		<xs:union memberTypes="ReportingSemesterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTrimesterOrMissingType">
+		<xs:union memberTypes="ReportingTrimesterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingQuarterOrMissingType">
+		<xs:union memberTypes="ReportingQuarterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingDayOrMissingType">
+		<xs:union memberTypes="ReportingDayType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingMonthOrMissingType">
+		<xs:union memberTypes="ReportingMonthType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingWeekOrMissingType">
+		<xs:union memberTypes="ReportingWeekType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidMonthDayOrMissingType">
+		<xs:union memberTypes="RangeValidMonthDayType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeOrMissingType">
+		<xs:union memberTypes="RangeValidTimeType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeZoneOrMissingType">
+		<xs:union memberTypes="RangeValidTimeZoneType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TimeRangeOrMissingType">
+		<xs:union memberTypes="TimeRangeType MissingType"/>
+	</xs:simpleType>
+
+	
 	<xs:simpleType name="AlphaNumericType">
 		<xs:annotation>
 			<xs:documentation>AlphaNumericType is a reusable simple type that allows for only mixed-case alphabetical and numeric characters.</xs:documentation>
@@ -508,10 +709,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="AlphaNumericOrMissingType">
-		<xs:union memberTypes="AlphaNumericType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="AlphaType">
 		<xs:annotation>
 			<xs:documentation>AlphaType is a reusable simple type that allows for only mixed-case alphabetical characters. This is derived from the AlphaNumericType.</xs:documentation>
@@ -519,10 +716,6 @@
 		<xs:restriction base="AlphaNumericType">
 			<xs:pattern value="[A-Za-z]+"/>
 		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="AlphaOrMissingType">
-		<xs:union memberTypes="AlphaType MissingType"/>
 	</xs:simpleType>
 	
 	<xs:simpleType name="NumericType">
@@ -534,19 +727,11 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="NumericOrMissingType">
-		<xs:union memberTypes="NumericType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ObservationalTimePeriodType">
 		<xs:annotation>
 			<xs:documentation>ObservationalTimePeriodType specifies a distinct time period or point in time in SDMX. The time period can either be a Gregorian calendar period, a standard reporting period, a distinct point in time, or a time range with a specific date and duration.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="StandardTimePeriodType TimeRangeType"/>
-	</xs:simpleType>
-	
-	<xs:simpleType name="ObservationalTimePeriodOrMissingType">
-		<xs:union memberTypes="ObservationalTimePeriodType MissingType"/>
 	</xs:simpleType>
 		
 	<xs:simpleType name="StandardTimePeriodType">
@@ -555,10 +740,6 @@
 		</xs:annotation>
 		<xs:union memberTypes="BasicTimePeriodType ReportingTimePeriodType"/>
 	</xs:simpleType>	
-
-	<xs:simpleType name="StandardTimePeriodOrMissingType">
-		<xs:union memberTypes="StandardTimePeriodType MissingType"/>
-	</xs:simpleType>
 	
 	<xs:simpleType name="BasicTimePeriodType">
 		<xs:annotation>
@@ -567,10 +748,6 @@
 		<xs:union memberTypes="GregorianTimePeriodType xs:dateTime"/>
 	</xs:simpleType>	
 	
-	<xs:simpleType name="BasicTimePeriodOrMissingType">
-		<xs:union memberTypes="BasicTimePeriodType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="GregorianTimePeriodType">
 		<xs:annotation>
 			<xs:documentation>GregorianTimePeriodType defines the set of standard calendar periods in SDMX.</xs:documentation>
@@ -578,20 +755,12 @@
 		<xs:union memberTypes="xs:gYear xs:gYearMonth xs:date"/>
 	</xs:simpleType>	
 	
-	<xs:simpleType name="GregorianTimePeriodOrMissingType">
-		<xs:union memberTypes="GregorianTimePeriodType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ReportingTimePeriodType">
 		<xs:annotation>
 			<xs:documentation>ReportingTimePeriodType defines standard reporting periods in SDMX, which are all in relation to the start day (day-month) of a reporting year which is specified in the specialized reporting year start day attribute. If the reporting year start day is not defined, a day of January 1 is assumed. The reporting year must be expressed as the year at the beginning of the period. Therefore, if the reporting year runs from April to March, any given reporting year is expressed as the year for April. The general format of a report period can be described as [year]-[period][time zone]?, where the type of period is designated with a single character followed by a number representing the period. Note that all periods allow for an optional time zone offset. See the details of each member type for the specifics of its format.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="ReportingYearType ReportingSemesterType ReportingTrimesterType ReportingQuarterType ReportingMonthType ReportingWeekType ReportingDayType"/>
 	</xs:simpleType>	
-	
-	<xs:simpleType name="ReportingTimePeriodOrMissingType">
-		<xs:union memberTypes="ReportingTimePeriodType MissingType"/>
-	</xs:simpleType>
 
 	<xs:simpleType name="BaseReportPeriodType">
 		<xs:annotation>
@@ -622,10 +791,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="ReportingYearOrMissingType">
-		<xs:union memberTypes="ReportingYearType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ReportingSemesterType">
 		<xs:annotation>
 			<xs:documentation>ReportingSemesterType defines a time period of 6 months (P6M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting semester is YYYY-Ss (e.g. 2000-S1), where s is either 1 or 2.</xs:documentation>
@@ -633,10 +798,6 @@
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}S[1-2].*"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="ReportingSemesterOrMissingType">
-		<xs:union memberTypes="ReportingSemesterType MissingType"/>
 	</xs:simpleType>
 	
 	<xs:simpleType name="ReportingTrimesterType">
@@ -648,10 +809,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="ReportingTrimesterOrMissingType">
-		<xs:union memberTypes="ReportingTrimesterType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ReportingQuarterType">
 		<xs:annotation>
 			<xs:documentation>ReportingQuarterType defines a time period of 3 months (P3M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting quarter is YYYY-Qq (e.g. 2000-Q1), where q is a value between 1 and 4.</xs:documentation>
@@ -659,10 +816,6 @@
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}Q[1-4].*"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="ReportingQuarterOrMissingType">
-		<xs:union memberTypes="ReportingQuarterType MissingType"/>
 	</xs:simpleType>
 	
 	<xs:simpleType name="ReportingMonthType">
@@ -674,10 +827,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="ReportingMonthOrMissingType">
-		<xs:union memberTypes="ReportingMonthType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ReportingWeekType">
 		<xs:annotation>
 			<xs:documentation>ReportingWeekType defines a time period of 7 days (P7D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. A standard reporting week is based on the ISO 8601 definition of a week date, in relation to the reporting period start day. The first week is defined as the week with the first Thursday on or after the reporting year start day. An equivalent definition is the week starting with the Monday nearest in time to the reporting year start day. There are other equivalent definitions, all of which should be adjusted based on the reporting year start day. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting week is YYYY-Www (e.g. 2000-W01), where mm is a two-digit week (i.e. 01-53).</xs:documentation>
@@ -687,10 +836,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 	
-	<xs:simpleType name="ReportingWeekOrMissingType">
-		<xs:union memberTypes="ReportingWeekType MissingType"/>
-	</xs:simpleType>
-	
 	<xs:simpleType name="ReportingDayType">
 		<xs:annotation>
 			<xs:documentation>ReportingDayType defines a time period of 1 day (P1D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001), where ddd is a three-digit day (i.e. 001-366).</xs:documentation>
@@ -698,10 +843,6 @@
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]).*"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="ReportingDayOrMissingType">
-		<xs:union memberTypes="ReportingDayType MissingType"/>
 	</xs:simpleType>
 	
 	<xs:simpleType name="BaseTimeRangeType">
@@ -722,10 +863,6 @@
 			<xs:pattern value=".{5}(04|06|09|11)\-(0[1-9]|[1-2][0-9]|30).+"/>
 			<xs:pattern value=".{5}(01|03|05|07|08|10|12)\-(0[1-9]|[1-2][0-9]|3[0-1]).+"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="RangeValidMonthDayOrMissingType">
-		<xs:union memberTypes="RangeValidMonthDayType MissingType"/>
 	</xs:simpleType>
 	
 	
@@ -749,10 +886,6 @@
 			<xs:pattern value="[^T]+/.+"/>
 		</xs:restriction>
 	</xs:simpleType>
-	
-	<xs:simpleType name="RangeValidTimeOrMissingType">
-		<xs:union memberTypes="RangeValidTimeType MissingType"/>
-	</xs:simpleType>
 
 	<xs:simpleType name="RangeValidTimeZoneType">
 		<xs:annotation>
@@ -763,10 +896,6 @@
 			<xs:pattern value=".{10}.*(\+|\-)(14:00|((0[0-9]|1[0-3]):[0-5][0-9]))/.+"/>
 			<xs:pattern value=".{10}[^\+\-Z]+"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="RangeValidTimeZoneOrMissingType">
-		<xs:union memberTypes="RangeValidTimeZoneType MissingType"/>
 	</xs:simpleType>
 	
 	<xs:simpleType name="TimeRangeValidDateDurationType">
@@ -786,10 +915,6 @@
 			<xs:pattern value=".+/P.*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?"/>
 			<xs:pattern value=".+/P[^T]+"/>
 		</xs:restriction>
-	</xs:simpleType>
-	
-	<xs:simpleType name="TimeRangeOrMissingType">
-		<xs:union memberTypes="TimeRangeType MissingType"/>
 	</xs:simpleType>
 
 	<xs:simpleType name="TimezoneType">
