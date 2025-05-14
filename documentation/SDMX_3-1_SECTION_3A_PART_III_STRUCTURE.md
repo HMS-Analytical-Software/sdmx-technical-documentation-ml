@@ -4,7 +4,7 @@
 
 **SDMX-ML: Schema and Documentation - Structure Namespace**
 
-**(Version 3.1), May 2025**
+**Version 3.1, May 2025**
 ____________________
 
 **Contents**
