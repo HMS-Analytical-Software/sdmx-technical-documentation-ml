@@ -19,7 +19,7 @@ ____________________
   - [4.1 Scope and Requirements](#41-Scope-and-Requirements)
   - [4.2 Design Approach](#42-Design-Approach)
   - [4.3 SDMX-ML Packaging: Namespace Modules](#43-SDMX-ML-Packaging-Namespace-Modules)
-- [5 RELTATED DOCUMENTS](#5-RELTATED-DOCUMENTS)
+- [5 RELATED DOCUMENTS](#5-RELATED-DOCUMENTS)
 
 # 1 BACKGROUND
 
@@ -118,7 +118,7 @@ The result is a set of namespace packages which agree with the design approach d
 
 The following sections describe in detail the proposed XML formats, which should be examined alongside the documentation provided. These proposed schemas are divided into the generic schemas, for which a complete set of schema definitions can be provided, and data structure-specific schemas, for which a core structure is provided (with schema code), plus a guide to how a specific data structure or metadata structure definition can be mapped onto the core structure.
 
-# 5 RELTATED DOCUMENTS
+# 5 RELATED DOCUMENTS
 
 To all for more managable doucments, the remainder of this document has been divided into seven different parts, each a separate document. These parts are as follows:
 
@@ -128,3 +128,8 @@ To all for more managable doucments, the remainder of this document has been div
 4. SDMX_3_1_SECTION_03A_PART_IV_DATA: This details the data and metadata namespaces, as well as detailing the rules for creating strucutre specific schemas
 5. SDMX_3_1_SECTION_03A_PART_V_REGISTRY: This details the registry namespace schemas
 6. SDMX_3_1_SECTION_03A_PART_VI_SAMPLES: This provides a brief explanation of the currently available sample files.
+
+
+_____________________________________
+© SDMX 2025  
+http://www.sdmx.org/

@@ -1,6 +1,6 @@
 **STATISTICAL DATA AND METADATA EXCHANGE INITIATIVE**
 
-**SDMX Standards: Section 3a Part III**
+**SDMX Standards: Section 3A Part III**
 
 **SDMX-ML: Schema and Documentation - Structure Namespace**
 
