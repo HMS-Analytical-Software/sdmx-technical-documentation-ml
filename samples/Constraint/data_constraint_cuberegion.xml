@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message ../../schemas/SDMXMessage.xsd">
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+				xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/SDMXMessage.xsd">
 	<mes:Header>
 		<mes:ID>IREF583870</mes:ID>
 		<mes:Test>false</mes:Test>
@@ -11,10 +16,13 @@
 		<str:DataConstraints>
 			<str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR_CONSTRAINTS(1.0)" isExternalReference="false" agencyID="ECB" id="EXR_CONSTRAINTS" version="1.0">
 				<com:Name xml:lang="en">Allowed data constraints for the EXR dataflow.</com:Name>
+				<str:ConstraintAttachment>
+					<str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
+				</str:ConstraintAttachment>
 				<str:CubeRegion>
-					<str:Component id="CURRENCY_DENOM">
-						<str:Value>ATS</str:Value>
-						<str:Value>CHF</str:Value>
+					<str:KeyValue id="CURRENCY_DENOM">
+						<str:Value validFrom="2008">ATS</str:Value>
+						<str:Value validFrom="2008" validTo="2009">CHF</str:Value>
 						<str:Value>HRK</str:Value>
 						<str:Value>ITL</str:Value>
 						<str:Value>MXN</str:Value>
@@ -75,8 +83,8 @@
 						<str:Value>NZD</str:Value>
 						<str:Value>FRF</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:Component>
-					<str:Component id="EXR_TYPE">
+					</str:KeyValue>
+					<str:KeyValue id="EXR_TYPE">
 						<str:Value>NRP0</str:Value>
 						<str:Value>NN00</str:Value>
 						<str:Value>NRD0</str:Value>
@@ -89,23 +97,23 @@
 						<str:Value>ERC0</str:Value>
 						<str:Value>SP00</str:Value>
 						<str:Value>ERP0</str:Value>
-					</str:Component>
-					<str:Component id="EXR_SUFFIX">
+					</str:KeyValue>
+					<str:KeyValue id="EXR_SUFFIX">
 						<str:Value>P</str:Value>
 						<str:Value>A</str:Value>
 						<str:Value>R</str:Value>
 						<str:Value>S</str:Value>
 						<str:Value>T</str:Value>
 						<str:Value>E</str:Value>
-					</str:Component>
-					<str:Component id="FREQ">
+					</str:KeyValue>
+					<str:KeyValue id="FREQ">
 						<str:Value>A</str:Value>
 						<str:Value>Q</str:Value>
 						<str:Value>D</str:Value>
 						<str:Value>H</str:Value>
 						<str:Value>M</str:Value>
-					</str:Component>
-					<str:Component id="CURRENCY">
+					</str:KeyValue>
+					<str:KeyValue id="CURRENCY">
 						<str:Value>CHF</str:Value>
 						<str:Value>HRK</str:Value>
 						<str:Value>MXN</str:Value>
@@ -160,7 +168,7 @@
 						<str:Value>SKK</str:Value>
 						<str:Value>NZD</str:Value>
 						<str:Value>BRL</str:Value>
-					</str:Component>
+					</str:KeyValue>
 				</str:CubeRegion>
 			</str:DataConstraint>
 		</str:DataConstraints>

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<message:StructureSpecificData xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/data/structurespecific" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message/footer" xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/message ../../schemas/SDMXMessage.xsd urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD ECB_EXR_CA_Dataflow.xsd">
+<message:StructureSpecificData xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific" 
+								xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" 
+								xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" 
+								xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+								xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+								xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+								xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/SDMXMessage.xsd urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD ECB_EXR_CA_Dataflow.xsd">
 	<message:Header>
 		<message:ID>IREF411123</message:ID>
 		<message:Test>false</message:Test>
@@ -54,6 +61,12 @@
 			<Obs TIME_PERIOD="2019" OBS_VALUE="1.485477254901961">
 				<Comp id="OBS_STATUS" xsi:type="ns1:OBS_STATUS_ATTRIBUTE">
 					<Value>A</Value>
+				</Comp>		
+			</Obs>
+			
+			<Obs TIME_PERIOD="2020" OBS_VALUE="1.585477254901961">
+				<Comp id="OBS_STATUS" xsi:type="ns1:OBS_STATUS_ATTRIBUTE">
+					<Value>#N/A</Value>
 				</Comp>		
 			</Obs>
 		</Series>

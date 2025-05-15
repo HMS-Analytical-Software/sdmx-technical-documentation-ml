@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" schemaLocation="SDMXCommon.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+			
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
+	
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 
 	<xs:annotation>
@@ -100,18 +107,18 @@
 					</xs:element>
 					<xs:element name="Level" type="common:IDType" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Level references a formal level defined within the hierarchy which defines this hierarchical code. This is only necessary if the nesting depth of the hierarchical code does not correspond to the nesting depth of the level to which it belongs (i.e. the hieararchical code is to skip down a level). Otherwise, the code is assumed to exist at the level in which the nesting depth of the level matches the nesting depth of the code.</xs:documentation>
+							<xs:documentation>Level references a formal level defined within the hierarchy which defines this hierarchical code. This is only necessary if the nesting depth of the hierarchical code does not correspond to the nesting depth of the level to which it belongs (i.e. the hierarchical code is to skip down a level). Otherwise, the code is assumed to exist at the level in which the nesting depth of the level matches the nesting depth of the code.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
 				<xs:attribute name="validFrom" type="xs:dateTime" use="optional">
 					<xs:annotation>
-						<xs:documentation>The validFrom attriubte indicates the point in time in which the hiearchical code became effective. This can be used to track the historicity of codes changing over time.</xs:documentation>
+						<xs:documentation>The validFrom attribute indicates the point in time in which the hierarchical code became effective. This can be used to track the historicity of codes changing over time.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="validTo" type="xs:dateTime" use="optional">
 					<xs:annotation>
-						<xs:documentation>The validTo attriubte indicates the point in time in which the hiearchical code became no longer effective. This can be used to track the historicity of codes changing over time.</xs:documentation>
+						<xs:documentation>The validTo attribute indicates the point in time in which the hierarchical code became no longer effective. This can be used to track the historicity of codes changing over time.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -181,7 +188,7 @@
 
 	<xs:complexType name="HierarchyAssociationBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>HierarchyAssociationBaseType defines the base refinement of the HierarchyAssociationType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>HierarchyAssociationBaseType defines the base refinement of the HierarchyAssociationType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="common:MaintainableType">
@@ -198,7 +205,7 @@
 
 	<xs:complexType name="HierarchyAssociationType">
 		<xs:annotation>
-			<xs:documentation>HierarchyAssociationType defines the structure of a hiearchy association, which links a hierarchy with and identifiable object in the context of another object (e.g. a dimension within the context of a dataflow).</xs:documentation>
+			<xs:documentation>HierarchyAssociationType defines the structure of a hierarchy association, which links a hierarchy with and identifiable object in the context of another object (e.g. a dimension within the context of a dataflow).</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="common:MaintainableType">

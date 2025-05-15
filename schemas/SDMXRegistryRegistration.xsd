@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/registry" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/registry" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure">
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
+			elementFormDefault="qualified">
+			
 	<xs:include schemaLocation="SDMXRegistryBase.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" schemaLocation="SDMXCommon.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" schemaLocation="SDMXStructure.xsd"/>
+	
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" schemaLocation="SDMXStructure.xsd"/>
 
 	<xs:annotation>
 		<xs:appinfo>SDMX Registration Registry Module</xs:appinfo>
@@ -12,7 +19,7 @@
 
 	<xs:complexType name="SubmitRegistrationsRequestType">
 		<xs:annotation>
-			<xs:documentation>SubmitRegistrationsRequestType defines the payload of a request message used to submit addtions, updates, or deletions of data/metadata set registrations.</xs:documentation>
+			<xs:documentation>SubmitRegistrationsRequestType defines the payload of a request message used to submit additions, updates, or deletions of data/metadata set registrations.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="RegistrationRequest" type="RegistrationRequestType" maxOccurs="unbounded">
@@ -105,7 +112,7 @@
 				</xs:element>
 				<xs:element name="Metadataflow" type="common:MetadataflowReferenceType">
 					<xs:annotation>
-						<xs:documentation>Metadataflow provides a reference to a metadata flow in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields</xs:documentation>
+						<xs:documentation>Metadataflow provides a reference to a metadata flow in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
@@ -123,6 +130,11 @@
 				<xs:element name="CubeRegion" type="structure:CubeRegionType">
 					<xs:annotation>
 						<xs:documentation>CubeRegion is used to provide sets of include or excluded values for dimensions when querying for data.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MetadataTargetRegion" type="structure:MetadataTargetRegionType">
+					<xs:annotation>
+						<xs:documentation>MetadataTargetRegion is used to provide sets of included or excluded values for identifier components when querying for metadata.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>

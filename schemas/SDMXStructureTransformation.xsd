@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1_0/common" schemaLocation="SDMXCommon.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+			
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 	<xs:include schemaLocation="SDMXStructureBase.xsd"/>
 
 	<xs:annotation>
@@ -89,7 +95,7 @@
 
 	<xs:complexType name="TransformationBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>TransformationBaseType defines the base refinement of the TransformationType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>TransformationBaseType defines the base refinement of the TransformationType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
@@ -113,7 +119,7 @@
 				<xs:sequence>
 					<xs:element name="Expression" type="xs:string">
 						<xs:annotation>
-							<xs:documentation>The right-hand side of the VTL statement. This is expression that is executed for this transformation. It include references to operands and other artefacts. The expression may contain references to SDMX artefacts using the reduced URN format; see Section 6 SDMX Standards ("SDMX Technical Notes"), 10.2.3 ("Abbreviation of the URN").</xs:documentation>
+							<xs:documentation>The right-hand side of the VTL statement. This is expression that is executed for this transformation. It includes references to operands and other artefacts. The expression may contain references to SDMX artefacts using the reduced URN format; see Section 6 SDMX Standards ("SDMX Technical Notes"), 10.2.3 ("Abbreviation of the URN").</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="Result" type="xs:string">
@@ -124,7 +130,7 @@
 				</xs:sequence>
 				<xs:attribute name="isPersistent" type="xs:boolean" use="required">
 					<xs:annotation>
-						<xs:documentation>Indicates if the the result is permanently stored. A persistent result (value of true) can be used by transformation defined in other transformation schemes, but a non-persistent result (value of false) can only be used by transformations within the same transformation scheme.</xs:documentation>
+						<xs:documentation>Indicates if the result is permanently stored. A persistent result (value of true) can be used by transformation defined in other transformation schemes, but a non-persistent result (value of false) can only be used by transformations within the same transformation scheme.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -159,7 +165,7 @@
 
 	<xs:complexType name="VtlMappingBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>VtlMappingBaseType defines the base refinement of the VtlMappingType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>VtlMappingBaseType defines the base refinement of the VtlMappingType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
@@ -176,7 +182,7 @@
 
 	<xs:complexType name="VtlMappingType">
 		<xs:annotation>
-			<xs:documentation>VtlMappingType defines the structure of a single mapping between the reference to a SDMX artefact made from VTL transformations, rulesets, user defined operators and the corresponding SDMX structure identifier. These are used to assign an alternative names to SDMX Dataflows, Codelists, Concept Schemes, or Concepts. Although are distinct sub-classes in the Information Model, this structure serves to express them all. The references SDMX artefact serves to distinguish which type of sub-class (VtlDatflowMapping or VtlCodelistMapping, or VtlConceptMapping) is being described. When this is used to assign an alias for a SDMX Dataflow, this can also be used to indicate the methods used to convert the data structure from SDMX to VTL and vice-versa. Finally, this can be used to override the deault Basic mapping methods used for Dataflows by utilizing the GenericDataflow element in place of a reference to a specific Dataflow.</xs:documentation>
+			<xs:documentation>VtlMappingType defines the structure of a single mapping between the reference to a SDMX artefact made from VTL transformations, rulesets, user defined operators and the corresponding SDMX structure identifier. These are used to assign an alternative names to SDMX Dataflows, Codelists, Concept Schemes, or Concepts. Although are distinct sub-classes in the Information Model, this structure serves to express them all. The references SDMX artefact serves to distinguish which type of sub-class (VtlDatflowMapping or VtlCodelistMapping, or VtlConceptMapping) is being described. When this is used to assign an alias for a SDMX Dataflow, this can also be used to indicate the methods used to convert the data structure from SDMX to VTL and vice-versa. Finally, this can be used to override the default Basic mapping methods used for Dataflows by utilizing the GenericDataflow element in place of a reference to a specific Dataflow.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="VtlMappingBaseType">
@@ -234,7 +240,7 @@
 		<xs:sequence>
 			<xs:element name="ToVtlSubSpace" type="SpaceKeyType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Identfies a sub space of the mapped dataflow that the mapping applies to. This is a collection of references to the dimensions that make up the space.</xs:documentation>
+					<xs:documentation>Identifies a sub space of the mapped dataflow that the mapping applies to. This is a collection of references to the dimensions that make up the space.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -287,7 +293,7 @@
 		<xs:sequence>
 			<xs:element name="FromVtlSuperSpace" type="SpaceKeyType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Identfies a super space of the mapped dataflow that the mapping applies to. This is a collection of references to the dimensions that make up the space.</xs:documentation>
+					<xs:documentation>Identifies a super space of the mapped dataflow that the mapping applies to. This is a collection of references to the dimensions that make up the space.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -369,7 +375,7 @@
 
 	<xs:complexType name="NamePersonalisationBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>NamePersonalisationBaseType defines the base refinement of the NamePersonalisationType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>NamePersonalisationBaseType defines the base refinement of the NamePersonalisationType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
@@ -456,7 +462,7 @@
 
 	<xs:complexType name="RulesetBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>RulesetBaseType defines the base refinement of the RulesetType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>RulesetBaseType defines the base refinement of the RulesetType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
@@ -486,7 +492,7 @@
 				</xs:sequence>
 				<xs:attribute name="rulesetType" type="xs:string" use="required">
 					<xs:annotation>
-						<xs:documentation>The VTL type of the ruleset. In VTL 2.0, this is datapoint or hierarchical</xs:documentation>
+						<xs:documentation>The VTL type of the ruleset. In VTL 2.0, this is datapoint or hierarchical.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="rulesetScope" type="xs:string" use="required">
@@ -548,7 +554,7 @@
 
 	<xs:complexType name="UserDefinedOperatorBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>UserDefinedOperatorBaseType defines the base refinement of the UserDefinedOperatorType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>UserDefinedOperatorBaseType defines the base refinement of the UserDefinedOperatorType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
@@ -608,7 +614,7 @@
 
 	<xs:complexType name="CustomTypeBaseType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>CustomTypeBaseType defines the base refinement of the CustomTypeType. Its purpose is to retrict the urn attribute.</xs:documentation>
+			<xs:documentation>CustomTypeBaseType defines the base refinement of the CustomTypeType. Its purpose is to restrict the urn attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="UnnestedItemType">
