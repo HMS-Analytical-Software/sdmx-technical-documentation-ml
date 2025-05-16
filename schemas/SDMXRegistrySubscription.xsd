@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure">
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
+			elementFormDefault="qualified">
+			
 	<xs:include schemaLocation="SDMXRegistryBase.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" schemaLocation="SDMXStructure.xsd"/>
+	
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" schemaLocation="SDMXStructure.xsd"/>
 
 	<xs:annotation>
 		<xs:appinfo>SDMX Subscription Registry Module</xs:appinfo>
@@ -12,7 +19,7 @@
 
 	<xs:complexType name="SubmitSubscriptionsRequestType">
 		<xs:annotation>
-			<xs:documentation>SubmitSubscriptionsRequestType defines the payload of a request message used to submit addtions, updates, or deletions of subscriptions. Subscriptions are submitted to the registry to subscribe to registration and change events for specific registry resources.</xs:documentation>
+			<xs:documentation>SubmitSubscriptionsRequestType defines the payload of a request message used to submit additions, updates, or deletions of subscriptions. Subscriptions are submitted to the registry to subscribe to registration and change events for specific registry resources.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="SubscriptionRequest" type="SubscriptionRequestType" maxOccurs="unbounded"/>
@@ -21,7 +28,7 @@
 
 	<xs:complexType name="SubscriptionType">
 		<xs:annotation>
-			<xs:documentation>SubscriptionType describes the details of a subscription to a registration or change event for registry resources. When it occurs as the content of a response message, the registry URN must be provide, unless the response is a failure notification for the creation of a new subscription.</xs:documentation>
+			<xs:documentation>SubscriptionType describes the details of a subscription to a registration or change event for registry resources. When it occurs as the content of a response message, the registry URN must be provided, unless the response is a failure notification for the creation of a new subscription.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Organisation" type="common:OrganisationReferenceType">
@@ -568,7 +575,7 @@
 			</xs:element>
 			<xs:element name="Ref" type="MaintainableQueryType">
 				<xs:annotation>
-					<xs:documentation>Ref provides a reference to potentially many object through the use of possible wild-carded reference fields.</xs:documentation>
+					<xs:documentation>Ref provides a reference to potentially many objects through the use of possible wild-carded reference fields.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
@@ -581,7 +588,7 @@
 		<xs:choice>
 			<xs:element ref="structure:Structures">
 				<xs:annotation>
-					<xs:documentation>Structures contains the details of the structural object that has triggered the event. Although this container allows for multiple structural object, it should only contain the one changed object.</xs:documentation>
+					<xs:documentation>Structures contains the details of the structural object that has triggered the event. Although this container allows for multiple structural objects, it should only contain the one changed object.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>

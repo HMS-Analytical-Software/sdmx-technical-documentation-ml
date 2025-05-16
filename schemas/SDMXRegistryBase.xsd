@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure"
+			elementFormDefault="qualified">
+			
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 
 	<xs:annotation>
 		<xs:appinfo>SDMX Base Registry Module</xs:appinfo>
@@ -10,7 +16,7 @@
 
 	<xs:complexType name="RegistrationType">
 		<xs:annotation>
-			<xs:documentation>Registration provides the information needed for data and reference metadata set registration. A data source must be supplied here if not already provided in the provision agreement. The data set or metadata set must be associated with a provision agreement,  a metadata flow, or a dataflow definition. If possible, the provision agreement should be specified. Only in cases where this is not possible should the dataflow or metadata flow be used.</xs:documentation>
+			<xs:documentation>Registration provides the information needed for data and reference metadata set registration. A data source must be supplied here if not already provided in the provision agreement. The data set or metadata set must be associated with a provision agreement, a metadata flow, or a dataflow definition. If possible, the provision agreement should be specified. Only in cases where this is not possible should the dataflow or metadata flow be used.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="ProvisionAgreement" type="common:ProvisionAgreementReferenceType">
@@ -145,7 +151,7 @@
 		</xs:annotation>
 		<xs:attribute name="id" type="IDQueryType" default="%">
 			<xs:annotation>
-				<xs:documentation>The id attribute is used to query for an object based on its identifier. This is either an explicit value, or completely wild cared with the "%" value.</xs:documentation>
+				<xs:documentation>The id attribute is used to query for an object based on its identifier. This is either an explicit value, or completely wildcarded with the "%" value.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>		
 	</xs:complexType>
@@ -173,7 +179,7 @@
 			<xs:extension base="VersionableQueryType">
 				<xs:attribute name="agencyID" type="NestedIDQueryType" default="%">
 					<xs:annotation>
-						<xs:documentation>The agencyID attribute is used to query for an object based on its maintenance agency's identifier. This is either an explicit value, or completely wild cared with the "%" value.</xs:documentation>
+						<xs:documentation>The agencyID attribute is used to query for an object based on its maintenance agency's identifier. This is either an explicit value, or completely wildcarded with the "%" value.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>

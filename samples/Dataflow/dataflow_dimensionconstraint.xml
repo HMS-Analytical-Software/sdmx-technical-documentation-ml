@@ -17,6 +17,13 @@
                 <com:Name xml:lang="en">ECB Exchange Rates</com:Name>
                 <com:Description xml:lang="en">ECB Exchange Rates - example of a 'non-country-specific' data source</com:Description>
                 <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:EXR(1.0)</str:Structure>
+                <str:DimensionConstraint>
+                    <str:Dimension>FREQ</str:Dimension>
+                    <str:Dimension>CURRENCY</str:Dimension>
+                    <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                    <str:Dimension>EXR_TYPE</str:Dimension>
+                    <str:Dimension>EXR_SUFFIX</str:Dimension>
+                </str:DimensionConstraint>
             </str:Dataflow>
         </str:Dataflows>
     </mes:Structures>
