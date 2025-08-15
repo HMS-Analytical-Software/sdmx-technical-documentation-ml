@@ -1,4 +1,6 @@
-# Introduction
+# SDMX-ML Message
+
+## Introduction
 
 At the core of the SDMX XML messages are the message namespaces. These
 namespaces define the general structure of all messages and define the
@@ -15,9 +17,7 @@ which might require non-standard payload information to be transmitted.
 In general, every message in SDMX follows common format of:
 
 - Header
-
 - Payload (0..n)
-
 - Footer (0..1)
 
 The header and payload elements exist in the message namespace, but the
@@ -26,13 +26,13 @@ the functionality of the messages. Note that the header follows a common
 construct, which is then restricted according to the requirements of the
 message which is using it.
 
-# Schema Documentation
+## Schema Documentation
 
-## Message Namespace
+### Message Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -48,11 +48,11 @@ Referenced Namespaces:
 
 Contents:
 
-7 Global Elements  
-16 Complex Types  
-1 Simple Type
+- 7 Global Elements  
+- 16 Complex Types  
+- 1 Simple Type
 
-### Global Elements
+#### Global Elements
 
 **Structure (StructureType):** Structure is a message that contains
 structural metadata. It may contain any of the following;
@@ -93,7 +93,7 @@ relevant.
 occurred when responding to a request in an non-registry environment.
 The content will be a collection of error messages.
 
-### Complex Types
+#### Complex Types
 
 ***MessageType*:** MessageType is an abstract type which is used by all
 of the messages, to allow inheritance of common features. Every message
@@ -103,8 +103,8 @@ conveying error, warning, and informational messages.
 
 Content:
 
-Header, {any element with namespace of
-http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message}\*, Footer?
+`Header, {any element with namespace of
+http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message}\*, Footer?`
 
 Element Documentation:
 
@@ -119,12 +119,14 @@ a web service with only information in the footer.
 
 Derivation:
 
+``` xml
 *MessageType* (restriction)  
    StructureType
+```
 
 Content:
 
-Header, Structures?, Footer?
+`Header, Structures?, Footer?`
 
 Element Documentation:
 
@@ -144,12 +146,14 @@ details of the data structure specific format are not known.
 
 Derivation:
 
-*MessageType* (restriction)  
+``` xml
+MessageType (restriction)  
    StructureSpecificDataType
+```
 
 Content:
 
-Header, DataSet\*, Footer?
+`Header, DataSet\*, Footer?`
 
 Element Documentation:
 
@@ -164,12 +168,14 @@ generic metadata message.
 
 Derivation:
 
-*MessageType* (restriction)  
+``` xml
+MessageType (restriction)  
    GenericMetadataType
+```
 
 Content:
 
-Header, MetadataSet\*, Footer?
+`Header, MetadataSet\*, Footer?`
 
 Element Documentation:
 
@@ -185,17 +191,21 @@ types.
 
 Derivation:
 
-*MessageType* (restriction)  
+``` xml
+MessageType (restriction)  
    RegistryInterfaceType
+```
 
 Content:
 
+``` xml
 Header, (SubmitRegistrationsRequest \| SubmitRegistrationsResponse \|
 QueryRegistrationRequest \| QueryRegistrationResponse \|
 SubmitStructureRequest \| SubmitStructureResponse \|
 SubmitSubscriptionsRequest \| SubmitSubscriptionsResponse \|
 QuerySubscriptionRequest \| QuerySubscriptionResponse \|
 NotifyRegistryEvent)?, Footer?
+```
 
 Element Documentation:
 
@@ -220,33 +230,37 @@ structure of a registry submit structure request document.
 
 Derivation:
 
-*MessageType* (restriction)  
+``` xml
+MessageType (restriction)  
    RegistryInterfaceType (restriction)  
          SubmitStructureRequestType
+```
 
 Content:
 
-Header, SubmitStructureRequest
+`Header, SubmitStructureRequest`
 
 Element Documentation:
 
 | **Name**                | **Type**                    | **Documentation**                                                                                                                                                                                                                                                                                                                                                                              |
 |-------------------------|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Header                  | BasicHeaderType             |                                                                                                                                                                                                                                                                                                                                                                                                |
-| SubmitStructureReque st | SubmitStructureReque stType | SubmitStructureRequest is used to submit structure definitions to the repository. The structure resources (key families, agencies, concepts and concept schemes, code lists, etc.) to be submitted may be communicated in-line or be supplied in a referenced SDMX-ML Structure messages external to the registry. A response will indicate status and contain any relevant error information. |
+| SubmitStructureRequest | SubmitStructureRequestType | SubmitStructureRequest is used to submit structure definitions to the repository. The structure resources (key families, agencies, concepts and concept schemes, code lists, etc.) to be submitted may be communicated in-line or be supplied in a referenced SDMX-ML Structure messages external to the registry. A response will indicate status and contain any relevant error information. |
 
 **SubmitStructureResponseType:** SubmitStructureResponseType defines the
 structure of a registry submit registration response document.
 
 Derivation:
 
-*MessageType* (restriction)  
+``` xml
+MessageType (restriction)  
    RegistryInterfaceType (restriction)  
          SubmitStructureResponseType
+```
 
 Content:
 
-Header, SubmitStructureResponse, Footer?
+`Header, SubmitStructureResponse, Footer?`
 
 Element Documentation:
 
@@ -266,7 +280,7 @@ Element Documentation:
 
 | **Name**     | **Type**                | **Documentation**                                                                                                                                                                                                                                                                                                                                           |
 |--------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ErrorMessage | CodedStatusMessageTy pe | ErrorMessage contains the error message. It can occur multiple times to communicate message for multiple errors, or to communicate the error message in parallel languages. If both messages for multiple errors and parallel language messages are used, then each error message should be given a code in order to distinguish message for unique errors. |
+| ErrorMessage | CodedStatusMessageType | ErrorMessage contains the error message. It can occur multiple times to communicate message for multiple errors, or to communicate the error message in parallel languages. If both messages for multiple errors and parallel language messages are used, then each error message should be given a code in order to distinguish message for unique errors. |
 
 ***BaseHeaderType*:** BaseHeaderType in an abstract base type that
 defines the basis for all message headers. Specific message formats will
@@ -274,9 +288,9 @@ refine this
 
 Content:
 
-ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure\*,
+`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure\*,
 DataProvider?, MetadataProvider?, DataSetAction?, DataSetID\*,
-Extracted?, ReportingBegin?, ReportingEnd?, EmbargoDate?, Source\*
+Extracted?, ReportingBegin?, ReportingEnd?, EmbargoDate?, Source\*`
 
 Element Documentation:
 
@@ -304,12 +318,14 @@ structural metadata messages.
 
 Derivation:
 
+``` xml
 *BaseHeaderType* (restriction)  
    StructureHeaderType
+```
 
 Content:
 
-ID, Test, Prepared, Sender, Receiver\*, Name\*, Source\*
+`ID, Test, Prepared, Sender, Receiver\*, Name\*, Source\*`
 
 Element Documentation:
 
@@ -328,14 +344,16 @@ defines the header structure for a structure specific data message.
 
 Derivation:
 
+``` xml
 *BaseHeaderType* (restriction)  
    StructureSpecificDataHeaderType
+```
 
 Content:
 
-ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
+`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
 DataProvider?, DataSetAction?, DataSetID\*, Extracted?, ReportingBegin?,
-ReportingEnd?, EmbargoDate?, Source\*
+ReportingEnd?, EmbargoDate?, Source\*`
 
 Element Documentation:
 
@@ -362,13 +380,15 @@ header format for generic reference metadata.
 
 Derivation:
 
-*BaseHeaderType* (restriction)  
+``` xml
+BaseHeaderType (restriction)  
    GenericMetadataHeaderType
+```
 
 Content:
 
-ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
-MetadataProvider?, DataSetAction?, DataSetID\*, Extracted?, Source\*
+`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
+MetadataProvider?, DataSetAction?, DataSetID\*, Extracted?, Source\*`
 
 Element Documentation:
 
@@ -392,12 +412,14 @@ information used in simple message exchanges.
 
 Derivation:
 
-*BaseHeaderType* (restriction)  
+``` xml
+BaseHeaderType (restriction)  
    BasicHeaderType
+```
 
 Content:
 
-ID, Test, Prepared, Sender, Receiver
+`ID, Test, Prepared, Sender, Receiver`
 
 Element Documentation:
 
@@ -414,11 +436,11 @@ various parties such as senders and receivers of messages.
 
 Attributes:
 
-id
+`id`
 
 Content:
 
-Name\*, Contact\*
+`Name\*, Contact\*`
 
 Attribute Documentation:
 
@@ -438,16 +460,18 @@ optional time zone declaration.
 
 Derivation:
 
+``` xml
 PartyType (extension)  
    SenderType
+```
 
 Attributes:
 
-id
+`id`
 
 Content:
 
-Name\*, Contact\*, Timezone?
+`Name\*, Contact\*, Timezone?`
 
 Attribute Documentation:
 
@@ -468,8 +492,8 @@ about a party.
 
 Content:
 
-Name\*, Department\*, Role\*, (Telephone \| Fax \| X400 \| URI \|
-Email)\*
+`Name\*, Department\*, Role\*, (Telephone \| Fax \| X400 \| URI \|
+Email)\*`
 
 Element Documentation:
 
@@ -484,20 +508,20 @@ Element Documentation:
 | URI        | xs:anyURI | URI holds an information URL for the contact person.                                                                         |
 | Email      | xs:string | Email holds the email address for the contact person.                                                                        |
 
-### Simple Types
+#### Simple Types
 
 **HeaderTimeType:** Provides a union type of xs:date and xs:dateTime for
 the header fields in the message.
 
 Union of:
 
-xs:dateTime, xs:date.
+`xs:dateTime, xs:date.`
 
-##  Message Footer Namespace
+###  Message Footer Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message/footer**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -508,16 +532,16 @@ Referenced Namespaces:
 
 Contents:
 
-1 Global Element  
-2 Complex Types  
-1 Simple Type
+- 1 Global Element  
+- 2 Complex Types  
+- 1 Simple Type
 
-### Global Elements
+#### Global Elements
 
 **Footer (FooterType):** Footer is used to communicate information such
 as error and warnings after the payload of a message.
 
-### Complex Types
+#### Complex Types
 
 **FooterType:** FooterType describes the structure of a message footer.
 The footer is used to convey any error, information, or warning
@@ -527,7 +551,7 @@ payload is generated, an Error message should be returned.
 
 Content:
 
-Message+
+`Message+`
 
 Element Documentation:
 
@@ -542,17 +566,19 @@ added to it.
 
 Derivation:
 
+``` xml
 StatusMessageType (restriction)  
    CodedStatusMessageType (extension)  
          FooterMessageType
+```
 
 Attributes:
 
-code, severity?
+`code, severity?`
 
 Content:
 
-Text+
+`Text+`
 
 Attribute Documentation:
 
@@ -567,11 +593,11 @@ Element Documentation:
 |----------|----------|---------------------------------------------------------------------|
 | Text     | TextType | Text contains the text of the message, in parallel language values. |
 
-###  Simple Types
+####  Simple Types
 
 **SeverityCodeType:**
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string` .
 
 Enumerations:
 

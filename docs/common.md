@@ -60,9 +60,9 @@ Referenced Namespaces:
 
 Contents:
 
-6 Global Elements  
-30 Complex Types  
-206 Simple Types
+- 6 Global Elements  
+- 30 Complex Types  
+- 206 Simple Types
 
 ### Global Elements
 
@@ -100,7 +100,7 @@ for details.
 
 Content:
 
-{text} x (Text\* \| StructuredText\*)?
+`{text} x (Text\* \| StructuredText\*)?`
 
 Element Documentation:
 
@@ -114,8 +114,10 @@ SimpleValueType limiting the content to be a boolean.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    BooleanValueType
+```
 
 Content:
 
@@ -125,8 +127,10 @@ facets, patterns, etc.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    StringValueType
+```
 
 Content:
 
@@ -136,8 +140,10 @@ ranges, etc.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    IntValueType
+```
 
 Content:
 
@@ -147,8 +153,10 @@ etc.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    DoubleValueType
+```
 
 Content:
 
@@ -158,8 +166,10 @@ observational time period.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    ObservationalTimePeriodValueType
+```
 
 Content:
 
@@ -171,12 +181,14 @@ type.
 
 Derivation:
 
+``` xml
 *ValueType* (restriction)  
    TextValueType
+```
 
 Content:
 
-Text\*
+`Text\*`
 
 Element Documentation:
 
@@ -185,19 +197,21 @@ Element Documentation:
 | Text     | TextType | Text is a reusable element, used for providing a language specific text value for general purposes (i.e. not for a name or description). |
 
 **StructuredTextValueType:** StructuredTextValueType is a restriction of
-ValueType that allows mutliple StructuredText (XHTML mixed content)
+ValueType that allows multiple StructuredText (XHTML mixed content)
 elements to expressed a text value in multiple languages. The content of
 this should be restricted in its use to only allow a langue code
 (xml:lang) to be used once within an element of this type.
 
 Derivation:
 
-*ValueType* (restriction)  
+``` xml
+ValueType (restriction)  
    StructuredTextValueType
+```
 
 Content:
 
-StructuredText\*
+`StructuredText\*`
 
 Element Documentation:
 
@@ -211,13 +225,15 @@ instance.
 
 Derivation:
 
+``` xml
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          TextType
+```
 
 Attributes:
 
-xml:lang?
+`xml:lang?`
 
 Content:
 
@@ -233,11 +249,11 @@ well as an optional language indicator and an optional code.
 
 Attributes:
 
-code?
+`code?`
 
 Content:
 
-Text+
+`Text+`
 
 Attribute Documentation:
 
@@ -256,23 +272,25 @@ presence of the tag indicates all that is necessary.
 
 Content:
 
-{Empty}
+`{Empty}`
 
 **CodedStatusMessageType:** CodedStatusMessageType describes the
 structure of an error or warning message which required a code.
 
 Derivation:
 
+``` xml
 StatusMessageType (restriction)  
    CodedStatusMessageType
+``` 
 
 Attributes:
 
-code
+`code`
 
 Content:
 
-Text+
+`Text+`
 
 Attribute Documentation:
 
@@ -292,7 +310,7 @@ extend this type.
 
 Content:
 
-Annotations?
+`Annotations?`
 
 Element Documentation:
 
@@ -305,7 +323,7 @@ to be attached to data and structure messages.
 
 Content:
 
-Annotation+
+`Annotation+`
 
 Element Documentation:
 
@@ -320,12 +338,12 @@ URI, and the text of the annotation.
 
 Attributes:
 
-id?
+`id?`
 
 Content:
 
-AnnotationTitle?, AnnotationType?, AnnotationURL\*, AnnotationText\*,
-AnnotationValue?
+`AnnotationTitle?, AnnotationType?, AnnotationURL\*, AnnotationText\*,
+AnnotationValue?`
 
 Attribute Documentation:
 
@@ -349,13 +367,15 @@ resource.
 
 Derivation:
 
+``` xml
 xs:anySimpleType (restriction)  
    xs:anyURI (extension)  
          AnnotationURLType
+```
 
 Attributes:
 
-xml:lang?
+`xml:lang?`
 
 Content:
 
@@ -369,11 +389,11 @@ Attribute Documentation:
 
 Attributes:
 
-rel, url, urn?, type?
+`rel, url, urn?, type?`
 
 Content:
 
-{Empty}
+`{Empty}`
 
 Attribute Documentation:
 
@@ -389,16 +409,18 @@ all identifiable objects.
 
 Derivation:
 
+``` xml
 *AnnotableType* (extension)  
    *IdentifiableType*
+```
 
 Attributes:
 
-id?, urn?, uri?
+`id?, urn?, uri?`
 
 Content:
 
-Annotations?, Link\*
+`Annotations?, Link\*`
 
 Attribute Documentation:
 
@@ -420,17 +442,19 @@ nameable objects.
 
 Derivation:
 
+``` xml
 *AnnotableType* (extension)  
    *IdentifiableType* (extension)  
          *NameableType*
+```
 
 Attributes:
 
-id?, urn?, uri?
+`id?, urn?, uri?`
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+`Annotations?, Link\*, Name+, Description\*`
 
 Attribute Documentation:
 
@@ -454,18 +478,20 @@ versionable objects.
 
 Derivation:
 
+``` xml
 *AnnotableType* (extension)  
    *IdentifiableType* (extension)  
          *NameableType* (extension)  
                *VersionableType*
+```
 
 Attributes:
 
-id?, urn?, uri?, version?, validFrom?, validTo?
+`id?, urn?, uri?, version?, validFrom?, validTo?`
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+`Annotations?, Link\*, Name+, Description\*`
 
 Attribute Documentation:
 
@@ -494,19 +520,21 @@ VersionableType to require the id attribute.
 
 Derivation:
 
+``` xml
 *AnnotableType* (extension)  
    *IdentifiableType* (extension)  
          *NameableType* (extension)  
                *VersionableType* (restriction)  
                      *MaintainableBaseType*
+```
 
 Attributes:
 
-id, urn?, uri?, version?, validFrom?, validTo?
+`id, urn?, uri?, version?, validFrom?, validTo?`
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+`Annotations?, Link\*, Name+, Description\*`
 
 Attribute Documentation:
 
@@ -533,21 +561,23 @@ all maintainable objects.
 
 Derivation:
 
+``` xml
 *AnnotableType* (extension)  
    *IdentifiableType* (extension)  
          *NameableType* (extension)  
                *VersionableType* (restriction)  
                      *MaintainableBaseType* (extension)  
                            *MaintainableType*
+```
 
 Attributes:
 
-id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
-isExternalReference?, serviceURL?, structureURL?
+`id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
+isExternalReference?, serviceURL?, structureURL?`
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+`Annotations?, Link\*, Name+, Description\*`
 
 Attribute Documentation:
 
@@ -577,11 +607,11 @@ Element Documentation:
 
 Attributes:
 
-startTime, endTime
+`startTime, endTime`
 
 Content:
 
-{Empty}
+`{Empty}`
 
 Attribute Documentation:
 
@@ -596,11 +626,11 @@ appropriately.
 
 Attributes:
 
-isRESTDatasource, isWebServiceDatasource
+`isRESTDatasource, isWebServiceDatasource`
 
 Content:
 
-DataURL, WSDLURL?, WADLURL?
+`DataURL, WSDLURL?, WADLURL?`
 
 Attribute Documentation:
 
@@ -625,11 +655,11 @@ provided.
 
 Attributes:
 
-xml:lang?
+`xml:lang?`
 
 Content:
 
-{text} x {any element with namespace of http://www.w3.org/1999/xhtml}\*
+`{text} x {any element with namespace of http://www.w3.org/1999/xhtml}\*`
 
 Attribute Documentation:
 
@@ -644,12 +674,12 @@ through a reference to a structure usage).
 
 Attributes:
 
-structureID, schemaURL?, namespace?, dimensionAtObservation?,
-explicitMeasures?, serviceURL?, structureURL?
+`structureID, schemaURL?, namespace?, dimensionAtObservation?,
+explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-(ProvisionAgreement \| StructureUsage \| Structure)
+`(ProvisionAgreement \| StructureUsage \| Structure)`
 
 Attribute Documentation:
 
@@ -676,17 +706,19 @@ forms the basis for the structural information for a data set.
 
 Derivation:
 
+``` xml
 *PayloadStructureType* (restriction)  
    *DataStructureType*
+```
 
 Attributes:
 
-structureID, schemaURL?, namespace?, dimensionAtObservation?,
-explicitMeasures?, serviceURL?, structureURL?
+`structureID, schemaURL?, namespace?, dimensionAtObservation?,
+explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-(ProvisionAgreement \| StructureUsage \| Structure)
+`(ProvisionAgreement \| StructureUsage \| Structure)`
 
 Attribute Documentation:
 
@@ -720,18 +752,20 @@ dimension or the flat data format is used.
 
 Derivation:
 
-*PayloadStructureType* (restriction)  
-   *DataStructureType* (restriction)  
+``` xml
+PayloadStructureType (restriction)  
+   DataStructureType (restriction)  
          StructureSpecificDataStructureType
+```
 
 Attributes:
 
-structureID, schemaURL?, namespace, dimensionAtObservation,
-explicitMeasures?, serviceURL?, structureURL?
+`structureID, schemaURL?, namespace, dimensionAtObservation,
+explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-(ProvisionAgreement \| StructureUsage \| Structure)
+`(ProvisionAgreement \| StructureUsage \| Structure)`
 
 Attribute Documentation:
 
@@ -761,16 +795,18 @@ structure of the message.
 
 Derivation:
 
-*PayloadStructureType* (restriction)  
-   *MetadataStructureType*
+``` xml
+PayloadStructureType (restriction)  
+   MetadataStructureType
+```
 
 Attributes:
 
-structureID, schemaURL?, namespace?, serviceURL?, structureURL?
+`structureID, schemaURL?, namespace?, serviceURL?, structureURL?`
 
 Content:
 
-(ProvisionAgreement \| StructureUsage \| Structure)
+`(ProvisionAgreement \| StructureUsage \| Structure)`
 
 Attribute Documentation:
 
@@ -795,17 +831,19 @@ the structural information for a generic metadata message.
 
 Derivation:
 
-*PayloadStructureType* (restriction)  
-   *MetadataStructureType* (restriction)  
+``` xml
+PayloadStructureType (restriction)  
+   MetadataStructureType (restriction)  
          GenericMetadataStructureType
+```
 
 Attributes:
 
-structureID, schemaURL?, serviceURL?, structureURL?
+`structureID, schemaURL?, serviceURL?, structureURL?`
 
 Content:
 
-(ProvisionAgreement \| StructureUsage \| Structure)
+`(ProvisionAgreement \| StructureUsage \| Structure)`
 
 Attribute Documentation:
 
@@ -829,15 +867,15 @@ Element Documentation:
 **AlphaNumericType:** AlphaNumericType is a reusable simple type that
 allows for only mixed-case alphabetical and numeric characters.
 
-Derived by restriction of xs:string .  
-Regular Expression Pattern: \[A-Za-z0-9\]+
+Derived by restriction of `xs:string`.  
+Regular Expression Pattern: `\[A-Za-z0-9\]+`
 
 **AlphaType:** AlphaType is a reusable simple type that allows for only
 mixed-case alphabetical characters. This is derived from the
 AlphaNumericType.
 
-Derived by restriction of AlphaNumericType .  
-Regular Expression Pattern: \[A-Za-z\]+
+Derived by restriction of `AlphaNumericType` .  
+Regular Expression Pattern: `\[A-Za-z\]+`
 
 **NumericType:** NumericType is a reusable simple type that allows for
 only numeric characters. This is not to be confused with an integer, as
@@ -845,8 +883,8 @@ this may be used to numeric strings which have leading zeros. These
 leading zeros are not ignored. This is derived from the
 AlphaNumericType.
 
-Derived by restriction of AlphaNumericType .  
-Regular Expression Pattern: \[0-9\]+
+Derived by restriction of `AlphaNumericType`.  
+Regular Expression Pattern: `\[0-9\]+`
 
 **ObservationalTimePeriodType:** ObservationalTimePeriodType specifies a
 distinct time period or point in time in SDMX. The time period can
@@ -856,9 +894,9 @@ duration.
 
 Union of:
 
-xs:gYear, xs:gYearMonth, xs:date, xs:dateTime, ReportingYearType,
+`xs:gYear, xs:gYearMonth, xs:date, xs:dateTime, ReportingYearType,
 ReportingSemesterType, ReportingTrimesterType, ReportingQuarterType,
-ReportingMonthType, ReportingWeekType, ReportingDayType, TimeRangeType.
+ReportingMonthType, ReportingWeekType, ReportingDayType, TimeRangeType.`
 
 **StandardTimePeriodType:** StandardTimePeriodType defines the set of
 standard time periods in SDMX. This includes the reporting time periods
@@ -867,9 +905,9 @@ format).
 
 Union of:
 
-xs:gYear, xs:gYearMonth, xs:date, xs:dateTime, ReportingYearType,
+`xs:gYear, xs:gYearMonth, xs:date, xs:dateTime, ReportingYearType,
 ReportingSemesterType, ReportingTrimesterType, ReportingQuarterType,
-ReportingMonthType, ReportingWeekType, ReportingDayType.
+ReportingMonthType, ReportingWeekType, ReportingDayType.`
 
 **BasicTimePeriodType:** BasicTimePeriodType contains the basic dates
 and calendar periods. It is a combination of the Gregorian time periods
@@ -877,22 +915,22 @@ and the date time type..
 
 Union of:
 
-xs:gYear, xs:gYearMonth, xs:date, xs:dateTime.
+`xs:gYear, xs:gYearMonth, xs:date, xs:dateTime.`
 
 **GregorianTimePeriodType:** GregorianTimePeriodType defines the set of
 standard calendar periods in SDMX.
 
 Union of:
 
-xs:gYear, xs:gYearMonth, xs:date.
+`xs:gYear, xs:gYearMonth, xs:date.`
 
 **ReportingTimePeriodType:** ReportingTimePeriodType defines standard
 reporting periods in SDMX, which are all in relation to the start day
 (day-month) of a reporting year which is specified in the specialized
 reporting year start day attribute. If the reporting year start day is
 not defined, a day of January 1 is assumed. The reporting year must be
-epxressed as the year at the beginning of the period. Therfore, if the
-reproting year runs from April to March, any given reporting year is
+expressed as the year at the beginning of the period. Therefore, if the
+reporting year runs from April to March, any given reporting year is
 expressed as the year for April. The general format of a report period
 can be described as \[year\]-\[period\]\[time zone\]?, where the type of
 period is designated with a single character followed by a number
@@ -902,9 +940,9 @@ of its format.
 
 Union of:
 
-ReportingYearType, ReportingSemesterType, ReportingTrimesterType,
+`ReportingYearType, ReportingSemesterType, ReportingTrimesterType,
 ReportingQuarterType, ReportingMonthType, ReportingWeekType,
-ReportingDayType.
+ReportingDayType.`
 
 **BaseReportPeriodType:** BaseReportPeriodType is a simple type which
 frames the general pattern of a reporting period for validation
@@ -912,9 +950,9 @@ purposes. This regular expression is only a general validation which is
 meant to validate the following structure \[year\]-\[period\]\[time
 zone\]?. This type is meant to be derived from for further validation.
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-\d{4}\\(\[ASTQ\]\d{1}\|\[MW\]\d{2}\|\[D\]\d{3})(Z\|((\\\|\\)\d{2}:\d{2}))?
+`\d{4}\\(\[ASTQ\]\d{1}\|\[MW\]\d{2}\|\[D\]\d{3})(Z\|((\\\|\\)\d{2}:\d{2}))?`
 
 **ReportPeriodValidTimeZoneType:** ReportPeriodValidTimeZoneType is a
 derivation of the BaseReportPeriodType which validates that the time
@@ -924,9 +962,9 @@ time zone is "Z" or that it is between -14:00 and +14:00, or that there
 is no time zone provided. This type is meant to be derived from for
 further validation.
 
-Derived by restriction of BaseReportPeriodType .  
+Derived by restriction of `BaseReportPeriodType`.  
 Regular Expression Pattern:
-.+Z.{5}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\])).{5}\[^\\\\Z\]+
+`.+Z.{5}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\])).{5}\[^\\\\Z\]+`
 
 **ReportingYearType:** ReportingYearType defines a time period of 1 year
 (P1Y) in relation to a reporting year which has a start day (day-month)
@@ -936,8 +974,8 @@ assumed. In this case a reporting year will coincide with a calendar
 year. The format of a reporting year is YYYY-A1 (e.g. 2000-A1). Note
 that the period value of 1 is fixed.
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}A1.\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}A1.\*`
 
 **ReportingSemesterType:** ReportingSemesterType defines a time period
 of 6 months (P6M) in relation to a reporting year which has a start day
@@ -946,8 +984,8 @@ attribute. In the absence of a start day for the reporting year, a day
 of January 1 is assumed. The format of a reporting semester is YYYY-Ss
 (e.g. 2000-S1), where s is either 1 or 2.
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}S\[1-2\].\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}S\[1-2\].\*`
 
 **ReportingTrimesterType:** ReportingTrimesterType defines a time period
 of 4 months (P4M) in relation to a reporting year which has a start day
@@ -956,8 +994,8 @@ attribute. In the absence of a start day for the reporting year, a day
 of January 1 is assumed. The format of a reporting trimester is YYYY-Tt
 (e.g. 2000-T1), where s is either 1, 2, or 3.
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}T\[1-3\].\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}T\[1-3\].\*`
 
 **ReportingQuarterType:** ReportingQuarterType defines a time period of
 3 months (P3M) in relation to a reporting year which has a start day
@@ -966,8 +1004,8 @@ attribute. In the absence of a start day for the reporting year, a day
 of January 1 is assumed. The format of a reporting quarter is YYYY-Qq
 (e.g. 2000-Q1), where q is a value between 1 and 4.
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}Q\[1-4\].\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}Q\[1-4\].\*`
 
 **ReportingMonthType:** ReportingMonthType defines a time period of 1
 month (P1M) in relation to a reporting year which has a start day
@@ -977,8 +1015,8 @@ of January 1 is assumed. In this case a reporting month will coincide
 with a calendar month. The format of a reporting month is YYYY-Mmm (e.g.
 2000-M01), where mm is a two digit month (i.e. 01-12).
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}M(0\[1-9\]\|1\[0-2\]).\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}M(0\[1-9\]\|1\[0-2\]).\*`
 
 **ReportingWeekType:** ReportingWeekType defines a time period of 7 days
 (P7D) in relation to a reporting year which has a start day (day-month)
@@ -994,8 +1032,8 @@ reporting year, a day of January 1 is assumed. The format of a reporting
 week is YYYY-Www (e.g. 2000-W01), where mm is a two digit week (i.e.
 01-53).
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
-Regular Expression Pattern: .{5}W(0\[1-9\]\|\[1-4\]\[0-9\]\|5\[0-3\]).\*
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
+Regular Expression Pattern: `.{5}W(0\[1-9\]\|\[1-4\]\[0-9\]\|5\[0-3\]).\*`
 
 **ReportingDayType:** ReportingDayType defines a time period of 1 day
 (P1D) in relation to a reporting year which has a start day (day-month)
@@ -1004,9 +1042,9 @@ absence of a start day for the reporting year, a day of January 1 is
 assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001),
 where ddd is a three digit day (i.e. 001-366).
 
-Derived by restriction of ReportPeriodValidTimeZoneType .  
+Derived by restriction of `ReportPeriodValidTimeZoneType`.  
 Regular Expression Pattern:
-.{5}D(0\[0-9\]\[1-9\]\|\[1-2\]\[0-9\]\[0-9\]\|3\[0-5\]\[0-9\]\|36\[0-6\]).\*
+`.{5}D(0\[0-9\]\[1-9\]\|\[1-2\]\[0-9\]\[0-9\]\|3\[0-5\]\[0-9\]\|36\[0-6\]).\*`
 
 **BaseTimeRangeType:** BaseTimeRangeType is a simple type which frames
 the general pattern for a time range in SDMX. A time range pattern is
@@ -1014,9 +1052,9 @@ generally described as \[xs:date or xs:dateTime\]\\xs:duration\], where
 the referenced types are defined by XML Schema. This type is meant to be
 derived from for further validation.
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-\d{4}\\\d{2}\\\d{2}(T\d{2}:\d{2}:\d{2}(\\\d+)?)?(Z\|((\\\|\\)\d{2}:\d{2}))?/P.+
+`\d{4}\\\d{2}\\\d{2}(T\d{2}:\d{2}:\d{2}(\\\d+)?)?(Z\|((\\\|\\)\d{2}:\d{2}))?/P.+`
 
 **RangeValidMonthDayType:** RangeValidMonthDayType is a derivation of
 the BaseTimeRangeType which validates that the day provided is valid for
@@ -1027,9 +1065,9 @@ September, and November and up to 31 days in January, March, May, July,
 August, October, and December. This type is meant to be derived from for
 further validation.
 
-Derived by restriction of BaseTimeRangeType .  
+Derived by restriction of `BaseTimeRangeType`.  
 Regular Expression Pattern:
-.{5}02\\(0\[1-9\]\|\[1-2\]\[0-9\]).+.{5}(04\|06\|09\|11)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|30).+.{5}(01\|03\|05\|07\|08\|10\|12)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|3\[0-1\]).+
+`.{5}02\\(0\[1-9\]\|\[1-2\]\[0-9\]).+.{5}(04\|06\|09\|11)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|30).+.{5}(01\|03\|05\|07\|08\|10\|12)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|3\[0-1\]).+`
 
 **RangeValidLeapYearType:** RangeValidLeapYearType is a derivation of
 the RangeValidMonthDayType which validates that a date of February 29
@@ -1037,9 +1075,9 @@ occurs in a valid leap year (i.e. if the year is divisible 4 and not by
 100, unless it is also divisible by 400). This type is meant to be
 derived from for further validation.
 
-Derived by restriction of RangeValidMonthDayType .  
+Derived by restriction of `RangeValidMonthDayType`.  
 Regular Expression Pattern:
-((\d{2}(04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96))\|((00\|04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96)00))\\02\\29.+.{5}02\\((\[0-1\]\[0-9\])\|(2\[^9\])).+.{5}((0\[1,3-9\])\|1\[0-2\]).+
+`((\d{2}(04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96))\|((00\|04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96)00))\\02\\29.+.{5}02\\((\[0-1\]\[0-9\])\|(2\[^9\])).+.{5}((0\[1,3-9\])\|1\[0-2\]).+`
 
 **RangeValidTimeType:** RangeValidTimeType is a derivation of the
 RangeValidLeapYearType which validates that the time (if provided) is
@@ -1050,9 +1088,9 @@ are required. It is also permissible to have fractions of seconds, but
 only within the boundaries of the range specified. This type is meant to
 be derived from for further validation.
 
-Derived by restriction of RangeValidLeapYearType .  
+Derived by restriction of `RangeValidLeapYearType`.  
 Regular Expression Pattern:
-.{10}T(24:00:00(\\\[0\]+)?\|(((\[0-1\]\[0-9\])\|(2\[0-3\])):\[0-5\]\[0-9\]:\[0-5\]\[0-9\](\\\d+)?))(/\|Z\|\\\|\\).+\[^T\]+/.+
+`.{10}T(24:00:00(\\\[0\]+)?\|(((\[0-1\]\[0-9\])\|(2\[0-3\])):\[0-5\]\[0-9\]:\[0-5\]\[0-9\](\\\d+)?))(/\|Z\|\\\|\\).+\[^T\]+/.+`
 
 **RangeValidTimeZoneType:** RangeValidMonthDayType is a derivation of
 the RangeValidTimeType which validates that the time zone provided in
@@ -1062,16 +1100,16 @@ validation already. The patterns below validate that the time zone is
 zone provided. This type is meant to be derived from for further
 validation.
 
-Derived by restriction of RangeValidTimeType .  
+Derived by restriction of `RangeValidTimeType`.  
 Regular Expression Pattern:
-.+Z/.+.{10}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))/.+.{10}\[^\\\\Z\]+
+`.+Z/.+.{10}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))/.+.{10}\[^\\\\Z\]+`
 
 **TimeRangeValidDateDurationType:** TimeRangeValidDateDurationType is an
 abstract derivation of the RangeValidTimeType which validates that
 duration provided is generally valid, up to the time component.
 
-Derived by restriction of RangeValidTimeZoneType .  
-Regular Expression Pattern: .+/P(\d+Y)?(\d+M)?(\d+D)?(T.+)?
+Derived by restriction of `RangeValidTimeZoneType`.  
+Regular Expression Pattern: `.+/P(\d+Y)?(\d+M)?(\d+D)?(T.+)?`
 
 **TimeRangeType:** TimeRangeType defines the structure of a time range
 in SDMX. The pattern of a time range can be generally described as
@@ -1080,16 +1118,16 @@ as defined in XML Schema and duration is a time duration as defined in
 XML Schema. Note that it is permissible for a time zone offset to be
 provided on the date or date time.
 
-Derived by restriction of TimeRangeValidDateDurationType .  
+Derived by restriction of `TimeRangeValidDateDurationType`.  
 Regular Expression Pattern:
-.+/P.\*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?.+/P\[^T\]+
+`.+/P.\*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?.+/P\[^T\]+`
 
 **TimezoneType:** TimezoneType defines the pattern for a time zone. An
 offset of -14:00 to +14:00 or Z can be specified.
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-Z(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))
+`Z(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))`
 
 **OccurenceType:** OccurenceType is used to express the maximum
 occurrence of an object. It combines an integer, equal or greater than
@@ -1098,20 +1136,20 @@ limit on its occurrence.
 
 Union of:
 
-MaxOccursNumberType, UnboundedCodeType.
+`MaxOccursNumberType, UnboundedCodeType.`
 
 **MaxOccursNumberType:** MaxOccursNumberType is a base type used to
 restrict an integer to be greater than 1, for the purpose of expressing
 the maximum number of occurrences of an object.
 
-Derived by restriction of xs:nonNegativeInteger .  
-Minimum (inclusive): 1  
-Fraction Digits: 0
+Derived by restriction of `xs:nonNegativeInteger`.  
+Minimum (inclusive): `1`  
+Fraction Digits: `0`
 
 **UnboundedCodeType:** UnboundedCodeType provides single textual value
 of "unbounded", for use in OccurentType.
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string`.
 
 Enumerations:
 
@@ -1129,7 +1167,7 @@ indicated with this data type for all registry interactions. The
 response to a query, rather than being used to invoke a maintenance
 activity.
 
-Derived by restriction of xs:NMTOKEN .
+Derived by restriction of `xs:NMTOKEN`.
 
 Enumerations:
 
@@ -1144,7 +1182,7 @@ Enumerations:
 used to include the '%' character - indicating that an entire field is
 wild carded.
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string`.
 
 Enumerations:
 
@@ -1156,13 +1194,13 @@ Enumerations:
 
 Union of:
 
-xs:boolean, ExcludeRootType.
+`xs:boolean, ExcludeRootType.`
 
 **ExcludeRootType:** ExcludeRootType is a single enumerated value that
 indciates that child values should be included, but that the actual root
 should not.
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string`.
 
 Enumerations:
 
@@ -1176,12 +1214,12 @@ the dimension identifier or using the explicit value "AllDimensions".
 
 Union of:
 
-NCNameIDType, ObsDimensionsCodeType.
+`NCNameIDType, ObsDimensionsCodeType`.
 
 **ObsDimensionsCodeType:** ObsDimensionsCodeType is an enumeration
 containing the values "TimeDimension" and "AllDimensions"
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string`.
 
 Enumerations:
 
@@ -1193,7 +1231,7 @@ Enumerations:
 **DataType:** DataTypeType provides an enumerated list of the types of
 data formats allowed as the for the representation of an object.
 
-Derived by restriction of xs:NMTOKEN .
+Derived by restriction of `xs:NMTOKEN`.
 
 Enumerations:
 
@@ -1248,7 +1286,7 @@ Enumerations:
 enumerated list of the types of characters allowed in the textType
 attribute for all non-target object components.
 
-Derived by restriction of DataType .
+Derived by restriction of `DataType`.
 
 Enumerations:
 
@@ -1300,7 +1338,7 @@ Enumerations:
 specify the allowable data types for a data structure definition
 component. The XHTML representation is removed as a possible type.
 
-Derived by restriction of BasicComponentDataType .
+Derived by restriction of `BasicComponentDataType`.
 
 Enumerations:
 
@@ -1350,7 +1388,7 @@ Enumerations:
 **TimeDataType:** TimeDataType restricts SimpleDataType to specify the
 allowable data types for representing a time value.
 
-Derived by restriction of SimpleDataType .
+Derived by restriction of `SimpleDataType`.
 
 Enumerations:
 
@@ -1378,41 +1416,41 @@ Enumerations:
 (urn:sdmx.org.infomodel.\<package\>.\<class=). It is intended to be
 further restricted.
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-urn:sdmx:org\\sdmx\\infomodel\\\[a-z\]+\\\[A-Za-z\]+=\[^=\]+
+`urn:sdmx:org\\sdmx\\infomodel\\\[a-z\]+\\\[A-Za-z\]+=\[^=\]+`
 
 **UrnClassesPart:** This refines the prefix to make specific
 restrictions of package and class values. Note that only one of the
 patterns must match. It is intended to be further restricted.
 
-Derived by restriction of UrnPrefixPart .  
+Derived by restriction of `UrnPrefixPart`.  
 Regular Expression Pattern:
-.+\\base\\Agency=.+.+\\base\\AgencyScheme=.+.+\\base\\Any=.+.+\\base\\DataConsumer=.+.+\\base\\DataConsumerScheme=.+.+\\base\\DataProvider=.+.+\\base\\DataProviderScheme=.+.+\\base\\MetadataProvider=.+.+\\base\\MetadataProviderScheme=.+.+\\base\\OrganisationUnit=.+.+\\base\\OrganisationUnitScheme=.+.+\\categoryscheme\\Categorisation=.+.+\\categoryscheme\\Category=.+.+\\categoryscheme\\CategoryScheme=.+.+\\categoryscheme\\ReportingCategory=.+.+\\categoryscheme\\ReportingTaxonomy=.+.+\\codelist\\Code=.+.+\\codelist\\Codelist=.+.+\\codelist\\HierarchicalCode=.+.+\\codelist\\Hierarchy=.+.+\\codelist\\HierarchyAssociation=.+.+\\codelist\\Level=.+.+\\codelist\\ValueList=.+.+\\conceptscheme\\Concept=.+.+\\conceptscheme\\ConceptScheme=.+.+\\datastructure\\AttributeDescriptor=.+.+\\datastructure\\DataAttribute=.+.+\\datastructure\\Dataflow=.+.+\\datastructure\\DataStructure=.+.+\\datastructure\\Dimension=.+.+\\datastructure\\DimensionDescriptor=.+.+\\datastructure\\GroupDimensionDescriptor=.+.+\\datastructure\\Measure=.+.+\\datastructure\\MeasureDescriptor=.+.+\\datastructure\\TimeDimension=.+.+\\metadatastructure\\MetadataAttribute=.+.+\\metadatastructure\\Metadataflow=.+.+\\metadatastructure\\MetadataSet=.+.+\\metadatastructure\\MetadataStructure=.+.+\\process\\Process=.+.+\\process\\ProcessStep=.+.+\\process\\Transition=.+.+\\registry\\DataConstraint=.+.+\\registry\\MetadataConstraint=.+.+\\registry\\MetadataProvisionAgreement=.+.+\\registry\\ProvisionAgreement=.+.+\\structuremapping\\CategorySchemeMap=.+.+\\structuremapping\\ConceptSchemeMap=.+.+\\structuremapping\\DatePatternMap=.+.+\\structuremapping\\EpochMap=.+.+\\structuremapping\\FrequencyFormatMapping=.+.+\\structuremapping\\OrganisationSchemeMap=.+.+\\structuremapping\\ReportingTaxonomyMap=.+.+\\structuremapping\\RepresentationMap=.+.+\\structuremapping\\StructureMap=.+.+\\transformation\\CustomType=.+.+\\transformation\\CustomTypeScheme=.+.+\\transformation\\NamePersonalisation=.+.+\\transformation\\NamePersonalisationScheme=.+.+\\transformation\\Ruleset=.+.+\\transformation\\RulesetScheme=.+.+\\transformation\\Transformation=.+.+\\transformation\\TransformationScheme=.+.+\\transformation\\UserDefinedOperator=.+.+\\transformation\\UserDefinedOperatorScheme=.+.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+.+\\transformation\\VtlMappingScheme=.+
+`.+\\base\\Agency=.+.+\\base\\AgencyScheme=.+.+\\base\\Any=.+.+\\base\\DataConsumer=.+.+\\base\\DataConsumerScheme=.+.+\\base\\DataProvider=.+.+\\base\\DataProviderScheme=.+.+\\base\\MetadataProvider=.+.+\\base\\MetadataProviderScheme=.+.+\\base\\OrganisationUnit=.+.+\\base\\OrganisationUnitScheme=.+.+\\categoryscheme\\Categorisation=.+.+\\categoryscheme\\Category=.+.+\\categoryscheme\\CategoryScheme=.+.+\\categoryscheme\\ReportingCategory=.+.+\\categoryscheme\\ReportingTaxonomy=.+.+\\codelist\\Code=.+.+\\codelist\\Codelist=.+.+\\codelist\\HierarchicalCode=.+.+\\codelist\\Hierarchy=.+.+\\codelist\\HierarchyAssociation=.+.+\\codelist\\Level=.+.+\\codelist\\ValueList=.+.+\\conceptscheme\\Concept=.+.+\\conceptscheme\\ConceptScheme=.+.+\\datastructure\\AttributeDescriptor=.+.+\\datastructure\\DataAttribute=.+.+\\datastructure\\Dataflow=.+.+\\datastructure\\DataStructure=.+.+\\datastructure\\Dimension=.+.+\\datastructure\\DimensionDescriptor=.+.+\\datastructure\\GroupDimensionDescriptor=.+.+\\datastructure\\Measure=.+.+\\datastructure\\MeasureDescriptor=.+.+\\datastructure\\TimeDimension=.+.+\\metadatastructure\\MetadataAttribute=.+.+\\metadatastructure\\Metadataflow=.+.+\\metadatastructure\\MetadataSet=.+.+\\metadatastructure\\MetadataStructure=.+.+\\process\\Process=.+.+\\process\\ProcessStep=.+.+\\process\\Transition=.+.+\\registry\\DataConstraint=.+.+\\registry\\MetadataConstraint=.+.+\\registry\\MetadataProvisionAgreement=.+.+\\registry\\ProvisionAgreement=.+.+\\structuremapping\\CategorySchemeMap=.+.+\\structuremapping\\ConceptSchemeMap=.+.+\\structuremapping\\DatePatternMap=.+.+\\structuremapping\\EpochMap=.+.+\\structuremapping\\FrequencyFormatMapping=.+.+\\structuremapping\\OrganisationSchemeMap=.+.+\\structuremapping\\ReportingTaxonomyMap=.+.+\\structuremapping\\RepresentationMap=.+.+\\structuremapping\\StructureMap=.+.+\\transformation\\CustomType=.+.+\\transformation\\CustomTypeScheme=.+.+\\transformation\\NamePersonalisation=.+.+\\transformation\\NamePersonalisationScheme=.+.+\\transformation\\Ruleset=.+.+\\transformation\\RulesetScheme=.+.+\\transformation\\Transformation=.+.+\\transformation\\TransformationScheme=.+.+\\transformation\\UserDefinedOperator=.+.+\\transformation\\UserDefinedOperatorScheme=.+.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+.+\\transformation\\VtlMappingScheme=.+`
 
 **UrnAgencyPart:** This restricts the prefix and classes patterns to
 validate the agency part of the URN (=\<agency_id\>:).
 
-Derived by restriction of UrnClassesPart .  
+Derived by restriction of `UrnClassesPart`.  
 Regular Expression Pattern:
-.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+
+`.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+`
 
 **WildcardUrnAgencyPart:** This restricts the prefix and classes
 patterns to validate the agency part of a wildcarded URN reference
 (=\<agency_id\>:).
 
-Derived by restriction of UrnClassesPart .  
+Derived by restriction of `UrnClassesPart`.  
 Regular Expression Pattern:
-.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+.+=\\:\[^:\]+
+`.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+.+=\\:\[^:\]+`
 
 **UrnMaintainableIdPart:** This refines the prefix, classes, and agnecy
 patterns to validate the maintainable ID part of the URN
 (:\<maintainable_id(\<version_number\>)). Note that it does not restrict
 the version part as it is intended to be further restricted.
 
-Derived by restriction of UrnAgencyPart .  
+Derived by restriction of `UrnAgencyPart`.  
 Regular Expression Pattern:
-.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\]+\\\[^(\\\\)\]\*
+`.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\]+\\\[^(\\\\)\]\*`
 
 **WildcardUrnMaintainableIdPart:** This refines the prefix, classes, and
 agnecy patterns to validate the maintainable ID part of a wildcarded URN
@@ -1420,9 +1458,9 @@ reference (:\<maintainable_id(\<version_number\>)). Note that it does
 not restrict the version part as it is intended to be further
 restricted.
 
-Derived by restriction of WildcardUrnAgencyPart .  
+Derived by restriction of `WildcardUrnAgencyPart`.  
 Regular Expression Pattern:
-.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*.+:\\\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*
+`.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*.+:\\\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*`
 
 **UrnVersionPart:** This refines the prefix, classes, agency, and
 maintainable id patterns to validate the version number part of the URN
@@ -1430,9 +1468,9 @@ maintainable id patterns to validate the version number part of the URN
 versioning, but not wildarding (for referencing). It is meant to be
 further refined, although all parts after this are optional.
 
-Derived by restriction of UrnMaintainableIdPart .  
+Derived by restriction of `UrnMaintainableIdPart`.  
 Regular Expression Pattern:
-.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*
+`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*`
 
 **UrnReferenceVersionPart:** This refines the prefix, classes, agency,
 and maintainable id patterns to validate the version number part of a
@@ -1440,9 +1478,9 @@ URN reference ((\<version_number)). It accounts for both legacy and
 semantic versioning (including late binding). It is meant to be further
 refined, although all parts after this are optional.
 
-Derived by restriction of UrnMaintainableIdPart .  
+Derived by restriction of `UrnMaintainableIdPart`.  
 Regular Expression Pattern:
-.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*
+`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*`
 
 **WildcardUrnVersionPart:** This refines the prefix, classes, agency,
 and maintainable id patterns to validate the version number part of a
@@ -1450,9 +1488,9 @@ wildcarded URN reference ((\<version_number)). It accounts for both
 legacy and semantic versioning (including late binding). It is meant to
 be further refined, although all parts after this are optional.
 
-Derived by restriction of WildcardUrnMaintainableIdPart .  
+Derived by restriction of `WildcardUrnMaintainableIdPart`.  
 Regular Expression Pattern:
-.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*.+\\\\\\.\*
+`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*.+\\\\\\.\*`
 
 **UrnType:** The completes the refinement of the prefix, classes,
 agency, maintainable id, and version number patterns to validate the
@@ -1460,9 +1498,9 @@ last, and optional, nested component part of the URN (e.g.
 (\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
 patterns provide a complete validation of the URN pattern.
 
-Derived by restriction of UrnVersionPart .  
+Derived by restriction of `UrnVersionPart`.  
 Regular Expression Pattern:
-.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?
+`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?`
 
 **UrnReferenceType:** The completes the refinement of the prefix,
 classes, agency, maintainable id, and version number patterns to
@@ -1471,9 +1509,9 @@ reference (e.g.
 (\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
 patterns provide a complete validation of the URN pattern.
 
-Derived by restriction of UrnReferenceVersionPart .  
+Derived by restriction of `UrnReferenceVersionPart`.  
 Regular Expression Pattern:
-.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?
+`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?`
 
 **WildcardUrnType:** The completes the refinement of the prefix,
 classes, agency, maintainable id, and version number patterns to
@@ -1482,806 +1520,806 @@ URN reference (e.g.
 (\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
 patterns provide a complete validation of the URN pattern.
 
-Derived by restriction of WildcardUrnVersionPart .  
+Derived by restriction of `WildcardUrnVersionPart`.  
 Regular Expression Pattern:
-.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?.+\\(\\\\(\\\\)\*)?
+`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?.+\\(\\\\(\\\\)\*)?`
 
 **MaintainableUrnType:** Restricts the URN so that the pattern ends
 after the version part.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\`
 
 **MaintainableUrnReferenceType:** Restricts the URN reference so that
 the pattern ends after the version part.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\`
 
 **ComponentUrnType:** Restricts the URN so that the pattern ends after
 the first component part.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\\\\[A-Za-z0-9\_@\$\\\]+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\\\\[A-Za-z0-9\_@\$\\\]+`
 
 **ComponentUrnReferenceType:** Restricts the URN reference so that the
 pattern ends after the first component part.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\\\\[A-Za-z0-9\_@\$\\\]+
+Derived by restriction of `UrnReferenceType` .  
+Regular Expression Pattern: `.+\\\\\[A-Za-z0-9\_@\$\\\]+`
 
 **AgencyUrnType:** Urn type for an agency.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\base\\Agency=.+:AGENCIES\\1\\0\\.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\base\\Agency=.+:AGENCIES\\1\\0\\.+`
 
 **AgencySchemeUrnType:** Urn type for an agency scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\base\\AgencyScheme=.+:AGENCIES\\1\\0\\
+Derived by restriction of `MaintainableUrnType` .  
+Regular Expression Pattern: `.+\\base\\AgencyScheme=.+:AGENCIES\\1\\0\\`
 
 **DataConsumerUrnType:** Urn type for a data consumer.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\1\\0\\.+
+`.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\1\\0\\.+`
 
 **DataConsumerSchemeUrnType:** Urn type for a data consumer scheme.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\1\\0\\
+`.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\1\\0\\`
 
 **DataProviderUrnType:** Urn type for a data provider.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\base\\DataProvider=.+:DATA_PROVIDERS\\1\\0\\.+
+`.+\\base\\DataProvider=.+:DATA_PROVIDERS\\1\\0\\.+`
 
 **DataProviderSchemeUrnType:** Urn type for a data provider scheme.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\1\\0\\
+`.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\1\\0\\`
 
 **MetadataProviderUrnType:** Urn type for a metadata provider.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\1\\0\\.+
+`.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\1\\0\\.+`
 
 **MetadataProviderSchemeUrnType:** Urn type for a metadata provider
 scheme.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\1\\0\\
+`.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\1\\0\\`
 
 **OrganisationUnitUrnType:** Urn type for an organisation unit.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\base\\OrganisationUnit=.+\\1\\0\\.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\base\\OrganisationUnit=.+\\1\\0\\.+`
 
 **OrganisationUnitSchemeUrnType:** Urn type for an organisation unit
 scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\base\\OrganisationUnitScheme=.+\\1\\0\\
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\base\\OrganisationUnitScheme=.+\\1\\0\\`
 
 **CategorisationUrnType:** Urn type for a categorisation.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\categoryscheme\\Categorisation=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\Categorisation=.+`
 
 **CategoryUrnType:** Urn type for a category.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\categoryscheme\\Category=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\Category=.+`
 
 **CategorySchemeUrnType:** Urn type for a category scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\categoryscheme\\CategoryScheme=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\CategoryScheme=.+`
 
 **ReportingCategoryUrnType:** Urn type for a reporting category.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\categoryscheme\\ReportingCategory=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\ReportingCategory=.+`
 
 **ReportingTaxonomyUrnType:** Urn type for a reporting taxonomy.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\categoryscheme\\ReportingTaxonomy=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\ReportingTaxonomy=.+`
 
 **CodeUrnType:** Urn type for a code.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\codelist\\Code=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\Code=.+`
 
 **CodelistUrnType:** Urn type for a codelist.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\codelist\\Codelist=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\Codelist=.+`
 
 **HierarchicalCodeUrnType:** Urn type for a hierarchical code.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\codelist\\HierarchicalCode=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\codelist\\HierarchicalCode=.+`
 
 **HierarchyUrnType:** Urn type for a hierarchy.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\codelist\\Hierarchy=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\Hierarchy=.+`
 
 **HierarchyAssociationUrnType:** Urn type for a hierarchy association.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\codelist\\HierarchyAssociation=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\HierarchyAssociation=.+`
 
 **LevelUrnType:** Urn type for a level.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\codelist\\Level=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\Level=.+`
 
 **ValueListUrnType:** Urn type for a value list.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\codelist\\ValueList=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\codelist\\ValueList=.+`
 
 **ConceptUrnType:** Urn type for a concept.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\conceptscheme\\Concept=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\conceptscheme\\Concept=.+`
 
 **ConceptSchemeUrnType:** Urn type for a concept scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\conceptscheme\\ConceptScheme=.+
+Derived by restriction of `MaintainableUrnType` .  
+Regular Expression Pattern: `.+\\conceptscheme\\ConceptScheme=.+`
 
 **AttributeDescriptorUrnType:** Urn type for an attribute descriptor.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\AttributeDescriptor=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\AttributeDescriptor=.+`
 
 **DataAttributeUrnType:** Urn type for a data attribute.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\DataAttribute=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\DataAttribute=.+`
 
 **DataflowUrnType:** Urn type for a dataflow.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\datastructure\\Dataflow=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\Dataflow=.+`
 
 **DataStructureUrnType:** Urn type for a data structure.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\datastructure\\DataStructure=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\DataStructure=.+`
 
 **DimensionUrnType:** Urn type for a dimension.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\Dimension=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\Dimension=.+`
 
 **DimensionDescriptorUrnType:** Urn type for a dimension descriptor.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\DimensionDescriptor=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\DimensionDescriptor=.+`
 
 **GroupDimensionDescriptorUrnType:** Urn type for a group dimension
 descriptor.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\datastructure\\GroupDimensionDescriptor=.+
+`.+\\datastructure\\GroupDimensionDescriptor=.+`
 
 **MeasureUrnType:** Urn type for a measure.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\Measure=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\Measure=.+`
 
 **MeasureDescriptorUrnType:** Urn type for a measure descriptor.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\MeasureDescriptor=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\MeasureDescriptor=.+`
 
 **TimeDimensionUrnType:** Urn type for a time dimension.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\datastructure\\TimeDimension=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\datastructure\\TimeDimension=.+`
 
 **MetadataAttributeUrnType:** Urn type for a metadata attibute.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataAttribute=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataAttribute=.+`
 
 **MetadataflowUrnType:** Urn type for a metadataflow.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\metadatastructure\\Metadataflow=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\Metadataflow=.+`
 
 **MetadataSetUrnType:** Urn type for a metadata set.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataSet=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataSet=.+`
 
 **MetadataStructureUrnType:** Urn type for a metadata structure.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataStructure=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataStructure=.+`
 
 **ProcessUrnType:** Urn type for a process.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\process\\Process=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\process\\Process=.+`
 
 **ProcessStepUrnType:** Urn type for a process step.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\process\\ProcessStep=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\process\\ProcessStep=.+`
 
 **TransitionUrnType:** Urn type for a transition.
 
-Derived by restriction of UrnType .  
-Regular Expression Pattern: .+\\process\\Transition=.+
+Derived by restriction of `UrnType`.  
+Regular Expression Pattern: `.+\\process\\Transition=.+`
 
 **DataConstraintUrnType:** Urn type for a data constraint.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\registry\\DataConstraint=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\registry\\DataConstraint=.+`
 
 **MetadataConstraintUrnType:** Urn type for a metadata constraint.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\registry\\MetadataConstraint=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\registry\\MetadataConstraint=.+`
 
 **MetadataProvisionAgreementUrnType:** Urn type for a metadata provision
 agreement.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\registry\\MetadataProvisionAgreement=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\registry\\MetadataProvisionAgreement=.+`
 
 **ProvisionAgreementUrnType:** Urn type for a provision agreement.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\registry\\ProvisionAgreement=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\registry\\ProvisionAgreement=.+`
 
 **CategorySchemeMapUrnType:** Urn type for a category scheme map.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\CategorySchemeMap=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\CategorySchemeMap=.+`
 
 **ConceptSchemeMapUrnType:** Urn type for a concept scheme map.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\ConceptSchemeMap=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\ConceptSchemeMap=.+`
 
 **DatePatternMapUrnType:** Urn type for a date pattern map.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\DatePatternMap=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\DatePatternMap=.+`
 
 **EpochMapUrnType:** Urn type for a epoch map.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\EpochMap=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\EpochMap=.+`
 
 **FrequencyFormatMappingUrnType:** Urn type for a frequency format
 mapping.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\FrequencyFormatMapping=.+
+`.+\\structuremapping\\FrequencyFormatMapping=.+`
 
 **OrganisationSchemeMapUrnType:** Urn type for a organisation scheme
 map.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\OrganisationSchemeMap=.+
+`.+\\structuremapping\\OrganisationSchemeMap=.+`
 
 **ReportingTaxonomyMapUrnType:** Urn type for a reporting taxonomy map.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\ReportingTaxonomyMap=.+
+`.+\\structuremapping\\ReportingTaxonomyMap=.+`
 
 **RepresentationMapUrnType:** Urn type for a representation map.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\RepresentationMap=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\RepresentationMap=.+`
 
 **StructureMapUrnType:** Urn type for a structure map.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\structuremapping\\StructureMap=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\structuremapping\\StructureMap=.+`
 
 **CustomTypeUrnType:** Urn type for a custom type.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\transformation\\CustomType=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\CustomType=.+`
 
 **CustomTypeSchemeUrnType:** Urn type for a custom type scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\transformation\\CustomTypeScheme=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\CustomTypeScheme=.+`
 
 **NamePersonalisationUrnType:** Urn type for a name personalisation.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\transformation\\NamePersonalisation=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\NamePersonalisation=.+`
 
 **NamePersonalisationSchemeUrnType:** Urn type for a name
 personalisation scheme.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\transformation\\NamePersonalisationScheme=.+
+`.+\\transformation\\NamePersonalisationScheme=.+`
 
 **RulesetUrnType:** Urn type for a ruleset.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\transformation\\Ruleset=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\Ruleset=.+`
 
 **RulesetSchemeUrnType:** Urn type for a ruleste scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\transformation\\RulesetScheme=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\RulesetScheme=.+`
 
 **TransformationUrnType:** Urn type for a transformation.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\transformation\\Transformation=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\Transformation=.+`
 
 **TransformationSchemeUrnType:** Urn type for a transformation scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\transformation\\TransformationScheme=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\TransformationScheme=.+`
 
 **UserDefinedOperatorUrnType:** Urn type for a user defined operator.
 
-Derived by restriction of ComponentUrnType .  
-Regular Expression Pattern: .+\\transformation\\UserDefinedOperator=.+
+Derived by restriction of `ComponentUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\UserDefinedOperator=.+`
 
 **UserDefinedOperatorSchemeUrnType:** Urn type for a user defined
 operator scheme.
 
-Derived by restriction of MaintainableUrnType .  
+Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern:
-.+\\transformation\\UserDefinedOperatorScheme=.+
+`.+\\transformation\\UserDefinedOperatorScheme=.+`
 
 **VtlMappingUrnType:** Urn type for a VTL mapping.
 
-Derived by restriction of ComponentUrnType .  
+Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern:
-.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+
+`.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+`
 
 **VtlMappingSchemeUrnType:** Urn type for a VTL mapping scheme.
 
-Derived by restriction of MaintainableUrnType .  
-Regular Expression Pattern: .+\\transformation\\VtlMappingScheme=.+
+Derived by restriction of `MaintainableUrnType`.  
+Regular Expression Pattern: `.+\\transformation\\VtlMappingScheme=.+`
 
 **StructureOrUsageReferenceType:** A reference type for a structure or
 structure usage.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\datastructure\\DataStructure=.+.+\\datastructure\\Dataflow=.+.+\\metadatastructure\\MetadataStructure=.+.+\\metadatastructure\\Metadataflow=.+
+`.+\\datastructure\\DataStructure=.+.+\\datastructure\\Dataflow=.+.+\\metadatastructure\\MetadataStructure=.+.+\\metadatastructure\\Metadataflow=.+`
 
 **StructureUsageReferenceType:** A reference type for structure usage.
 
-Derived by restriction of StructureOrUsageReferenceType .  
+Derived by restriction of `StructureOrUsageReferenceType`.  
 Regular Expression Pattern:
-.+\\datastructure\\Dataflow=.+.+\\metadatastructure\\Metadataflow=.+
+`.+\\datastructure\\Dataflow=.+.+\\metadatastructure\\Metadataflow=.+`
 
 **StructureReferenceType:** A reference type for a structure.
 
-Derived by restriction of StructureOrUsageReferenceType .  
+Derived by restriction of `StructureOrUsageReferenceType`.  
 Regular Expression Pattern:
-.+\\datastructure\\DataStructure=.+.+\\metadatastructure\\MetadataStructure=.+
+`.+\\datastructure\\DataStructure=.+.+\\metadatastructure\\MetadataStructure=.+`
 
 **AnyCodelistReferenceType:** A reference type for a codelist or value
 list.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\codelist\\Codelist=.+.+\\codelist\\ValueList=.+
+`.+\\codelist\\Codelist=.+.+\\codelist\\ValueList=.+`
 
 **OrganisationSchemeReferenceType:** A reference type for any type of
 organisation scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\AgencyScheme=.+:AGENCIES\\.+\\.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\.+\\.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\.+\\.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\.+\\.+\\base\\OrganisationUnitScheme=.+
+`.+\\base\\AgencyScheme=.+:AGENCIES\\.+\\.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\.+\\.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\.+\\.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\.+\\.+\\base\\OrganisationUnitScheme=.+`
 
 **OrganisationReferenceType:** A reference type for any type of
 organisation.
 
-Derived by restriction of ComponentUrnReferenceType .  
+Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\Agency=.+:AGENCIES\\.+\\.+.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\.+\\.+.+\\base\\DataProvider=.+:DATA_PROVIDERS\\.+\\.+.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\.+\\.+.+\\base\\OrganisationUnit=.+
+`.+\\base\\Agency=.+:AGENCIES\\.+\\.+.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\.+\\.+.+\\base\\DataProvider=.+:DATA_PROVIDERS\\.+\\.+.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\.+\\.+.+\\base\\OrganisationUnit=.+`
 
 **ConstraintReferenceType:** A reference for any type of constraint.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\registry\\DataConstraint=.+.+\\registry\\MetadataConstraint=.+
+`.+\\registry\\DataConstraint=.+.+\\registry\\MetadataConstraint=.+`
 
 **AgencyReferenceType:** A reference type for an agency.
 
-Derived by restriction of OrganisationReferenceType .  
-Regular Expression Pattern: .+\\base\\Agency=.+:AGENCIES\\.+\\.+
+Derived by restriction of `OrganisationReferenceType`.  
+`Regular Expression Pattern: .+\\base\\Agency=.+:AGENCIES\\.+\\.+`
 
 **AgencySchemeReferenceType:** A reference type for an agency scheme.
 
-Derived by restriction of OrganisationSchemeReferenceType .  
-Regular Expression Pattern: .+\\base\\AgencyScheme=.+:AGENCIES\\.+\\
+Derived by restriction of `OrganisationSchemeReferenceType`.  
+Regular Expression Pattern: `.+\\base\\AgencyScheme=.+:AGENCIES\\.+\\`
 
 **DataConsumerReferenceType:** A reference type for a data consumer.
 
-Derived by restriction of OrganisationReferenceType .  
+Derived by restriction of `OrganisationReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\.+\\.+
+`.+\\base\\DataConsumer=.+:DATA_CONSUMERS\\.+\\.+`
 
 **DataConsumerSchemeReferenceType:** A reference type for a data
 consumer scheme.
 
-Derived by restriction of OrganisationSchemeReferenceType .  
+Derived by restriction of `OrganisationSchemeReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\.+\\
+`.+\\base\\DataConsumerScheme=.+:DATA_CONSUMERS\\.+\\`
 
 **DataProviderReferenceType:** A reference type for a data provider.
 
-Derived by restriction of OrganisationReferenceType .  
+Derived by restriction of `OrganisationReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\DataProvider=.+:DATA_PROVIDERS\\.+\\.+
+`.+\\base\\DataProvider=.+:DATA_PROVIDERS\\.+\\.+`
 
 **DataProviderSchemeReferenceType:** A reference type for a data
 provider scheme.
 
-Derived by restriction of OrganisationSchemeReferenceType .  
+Derived by restriction of `OrganisationSchemeReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\.+\\
+`.+\\base\\DataProviderScheme=.+:DATA_PROVIDERS\\.+\\`
 
 **MetadataProviderReferenceType:** A reference type for a metadata
 provider.
 
-Derived by restriction of OrganisationReferenceType .  
+Derived by restriction of `OrganisationReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\.+\\.+
+`.+\\base\\MetadataProvider=.+:METADATA_PROVIDERS\\.+\\.+`
 
 **MetadataProviderSchemeReferenceType:** A reference type for a metadata
 provider scheme.
 
-Derived by restriction of OrganisationSchemeReferenceType .  
+Derived by restriction of `OrganisationSchemeReferenceType`.  
 Regular Expression Pattern:
-.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\.+\\
+`.+\\base\\MetadataProviderScheme=.+:METADATA_PROVIDERS\\.+\\`
 
 **OrganisationUnitReferenceType:** A reference type for an organisation
 unit.
 
-Derived by restriction of OrganisationReferenceType .  
-Regular Expression Pattern: .+\\base\\OrganisationUnit=.+
+Derived by restriction of `OrganisationReferenceType`.  
+Regular Expression Pattern: `.+\\base\\OrganisationUnit=.+`
 
 **OrganisationUnitSchemeReferenceType:** A reference type for an
 organisation unit scheme.
 
-Derived by restriction of OrganisationSchemeReferenceType .  
-Regular Expression Pattern: .+\\base\\OrganisationUnitScheme=.+
+Derived by restriction of `OrganisationSchemeReferenceType`.  
+Regular Expression Pattern: `.+\\base\\OrganisationUnitScheme=.+`
 
 **CategorisationReferenceType:** A reference type for a categorisation.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\categoryscheme\\Categorisation=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\Categorisation=.+`
 
 **CategoryReferenceType:** A reference type for a category.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\categoryscheme\\Category=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\Category=.+`
 
 **CategorySchemeReferenceType:** A reference type for a cateogry scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\categoryscheme\\CategoryScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\CategoryScheme=.+`
 
 **ReportingCategoryReferenceType:** A reference type for a reporting
 category.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\categoryscheme\\ReportingCategory=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\ReportingCategory=.+`
 
 **ReportingTaxonomyReferenceType:** A reference type for a reporting
 taxonomy.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\categoryscheme\\ReportingTaxonomy=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\categoryscheme\\ReportingTaxonomy=.+`
 
 **CodeReferenceType:** A reference type for a code.
 
-Derived by restriction of ComponentUrnReferenceType .  
+Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern: .+\\codelist\\Code=.+
 
 **CodelistReferenceType:** A reference type for a codelist.
 
-Derived by restriction of AnyCodelistReferenceType .  
-Regular Expression Pattern: .+\\codelist\\Codelist=.+
+Derived by restriction of `AnyCodelistReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\Codelist=.+`
 
 **HierarchicalCodeReferenceType:** A reference type for a hierarchical
 code.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\codelist\\HierarchicalCode=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\HierarchicalCode=.+`
 
 **HierarchyReferenceType:** A reference type for a hierarchy.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\codelist\\Hierarchy=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\Hierarchy=.+`
 
 **HierarchyAssociationReferenceType:** A reference type for a hierarchy
 association.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\codelist\\HierarchyAssociation=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\HierarchyAssociation=.+`
 
 **LevelReferenceType:** A reference type for a level.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\codelist\\Level=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\Level=.+`
 
 **ValueListReferenceType:** A reference type for a value list.
 
-Derived by restriction of AnyCodelistReferenceType .  
-Regular Expression Pattern: .+\\codelist\\ValueList=.+
+Derived by restriction of `AnyCodelistReferenceType`.  
+Regular Expression Pattern: `.+\\codelist\\ValueList=.+`
 
 **ConceptReferenceType:** A reference type for a concept.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\conceptscheme\\Concept=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\conceptscheme\\Concept=.+`
 
 **ConceptSchemeReferenceType:** A reference type for a concept scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\conceptscheme\\ConceptScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\conceptscheme\\ConceptScheme=.+`
 
 **AttributeDescriptorReferenceType:** A reference type for an attribute
 descriptor.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\AttributeDescriptor=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\AttributeDescriptor=.+`
 
 **DataAttributeReferenceType:** A reference type for a data attribute.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\DataAttribute=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\DataAttribute=.+`
 
 **DataflowReferenceType:** A reference type for a dataflow.
 
-Derived by restriction of StructureUsageReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\Dataflow=.+
+Derived by restriction of `StructureUsageReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\Dataflow=.+`
 
 **DataStructureReferenceType:** A reference type for a data structure.
 
-Derived by restriction of StructureReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\DataStructure=.+
+Derived by restriction of `StructureReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\DataStructure=.+`
 
 **DimensionReferenceType:** A reference type for a dimension.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\Dimension=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\Dimension=.+`
 
 **DimensionDescriptorReferenceType:** A reference type for a dimension
 descriptor.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\DimensionDescriptor=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\DimensionDescriptor=.+`
 
 **GroupDimensionDescriptorReferenceType:** A reference type for a group
 dimension descriptor.
 
-Derived by restriction of ComponentUrnReferenceType .  
+Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\datastructure\\GroupDimensionDescriptor=.+
+`.+\\datastructure\\GroupDimensionDescriptor=.+`
 
 **MeasureReferenceType:** A reference type for a measure.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\Measure=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\Measure=.+`
 
 **MeasureDescriptorReferenceType:** A reference type for a measure
 descriptor.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\MeasureDescriptor=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\MeasureDescriptor=.+`
 
 **TimeDimensionReferenceType:** A reference type for a time dimension.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\datastructure\\TimeDimension=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\datastructure\\TimeDimension=.+`
 
 **MetadataAttributeReferenceType:** A reference type for a metadata
 attribute.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataAttribute=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataAttribute=.+`
 
 **MetadataflowReferenceType:** A reference type for a metadataflow.
 
-Derived by restriction of StructureUsageReferenceType .  
-Regular Expression Pattern: .+\\metadatastructure\\Metadataflow=.+
+Derived by restriction of `StructureUsageReferenceType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\Metadataflow=.+`
 
 **MetadataSetReferenceType:** A reference type for a metadata set.
 
-Derived by restriction of StructureReferenceType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataSet=.+
+Derived by restriction of `StructureReferenceType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataSet=.+`
 
 **MetadataStructureReferenceType:** A reference type for a metadata
 structure.
 
-Derived by restriction of StructureReferenceType .  
-Regular Expression Pattern: .+\\metadatastructure\\MetadataStructure=.+
+Derived by restriction of `StructureReferenceType`.  
+Regular Expression Pattern: `.+\\metadatastructure\\MetadataStructure=.+`
 
 **ProcessReferenceType:** A reference type for a process.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\process\\Process=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\process\\Process=.+`
 
 **ProcessStepReferenceType:** A reference type for a process step.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\process\\ProcessStep=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\process\\ProcessStep=.+`
 
 **TransitionReferenceType:** A reference type for a transition.
 
-Derived by restriction of UrnReferenceType .  
-Regular Expression Pattern: .+\\process\\Transition=.+
+Derived by restriction of `UrnReferenceType`.  
+Regular Expression Pattern: `.+\\process\\Transition=.+`
 
 **DataConstraintReferenceType:** A reference type for a data constraint.
 
-Derived by restriction of ConstraintReferenceType .  
-Regular Expression Pattern: .+\\registry\\DataConstraint=.+
+Derived by restriction of `ConstraintReferenceType`.  
+Regular Expression Pattern: `.+\\registry\\DataConstraint=.+`
 
 **MetadataConstraintReferenceType:** A reference type for a metadata
 constraint.
 
-Derived by restriction of ConstraintReferenceType .  
-Regular Expression Pattern: .+\\registry\\MetadataConstraint=.+
+Derived by restriction of `ConstraintReferenceType`.  
+Regular Expression Pattern: `.+\\registry\\MetadataConstraint=.+`
 
 **MetadataProvisionAgreementReferenceType:** A reference type for a
 metadata provision agreement.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\registry\\MetadataProvisionAgreement=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\registry\\MetadataProvisionAgreement=.+`
 
 **ProvisionAgreementReferenceType:** A reference type for a provision
 agreement.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\registry\\ProvisionAgreement=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\registry\\ProvisionAgreement=.+`
 
 **CategorySchemeMapReferenceType:** A reference type for a category
 scheme map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\CategorySchemeMap=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\CategorySchemeMap=.+`
 
 **ConceptSchemeMapReferenceType:** A reference type for a concept scheme
 map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\ConceptSchemeMap=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\ConceptSchemeMap=.+`
 
 **DatePatternMapReferenceType:** A reference type for a date pattern
 map.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\DatePatternMap=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\DatePatternMap=.+`
 
 **EpochMapReferenceType:** A reference type for an epoch map.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\EpochMap=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\EpochMap=.+`
 
 **FrequencyFormatMappingReferenceType:** A reference type for a
 frequnecy format mapping.
 
-Derived by restriction of ComponentUrnReferenceType .  
+Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\FrequencyFormatMapping=.+
+`.+\\structuremapping\\FrequencyFormatMapping=.+`
 
 **OrganisationSchemeMapReferenceType:** A reference type for a
 organisation scheme map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\OrganisationSchemeMap=.+
+`.+\\structuremapping\\OrganisationSchemeMap=.+`
 
 **ReportingTaxonomyMapReferenceType:** A reference type for a reporting
 taxonomy map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\structuremapping\\ReportingTaxonomyMap=.+
+`.+\\structuremapping\\ReportingTaxonomyMap=.+`
 
 **RepresentationMapReferenceType:** A reference type for a
 representation map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\RepresentationMap=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\RepresentationMap=.+`
 
 **StructureMapReferenceType:** A reference type for a structure map.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\structuremapping\\StructureMap=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\structuremapping\\StructureMap=.+`
 
 **CustomTypeReferenceType:** A reference type for a custom type.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\CustomType=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\CustomType=.+`
 
 **CustomTypeSchemeReferenceType:** A reference type for a custom type
 scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\CustomTypeScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\CustomTypeScheme=.+`
 
 **NamePersonalisationReferenceType:** A reference type for a name
 personalisation.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\NamePersonalisation=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\NamePersonalisation=.+`
 
 **NamePersonalisationSchemeReferenceType:** A reference type for a name
 personalisation scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\transformation\\NamePersonalisationScheme=.+
+`.+\\transformation\\NamePersonalisationScheme=.+`
 
 **RulesetReferenceType:** A reference type for a ruleset.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\Ruleset=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\Ruleset=.+`
 
 **RulesetSchemeReferenceType:** A reference type for a ruleset scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\RulesetScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\RulesetScheme=.+`
 
 **TransformationReferenceType:** A reference type for a transformation.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\Transformation=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\Transformation=.+`
 
 **TransformationSchemeReferenceType:** A reference type for a
 transformation scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\TransformationScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\TransformationScheme=.+`
 
 **UserDefinedOperatorReferenceType:** A reference type for a user
 defined operator.
 
-Derived by restriction of ComponentUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\UserDefinedOperator=.+
+Derived by restriction of `ComponentUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\UserDefinedOperator=.+`
 
 **UserDefinedOperatorSchemeReferenceType:** A reference type for a user
 defined operator scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
+Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\transformation\\UserDefinedOperatorScheme=.+
+`.+\\transformation\\UserDefinedOperatorScheme=.+`
 
 **VtlMappingReferenceType:** A reference type for a VTL mapping.
 
-Derived by restriction of ComponentUrnReferenceType .  
+Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern:
-.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+
+`.+\\transformation\\VtlCodelistMapping=.+.+\\transformation\\VtlConceptMapping=.+.+\\transformation\\VtlDataflowMapping=.+`
 
 **VtlMappingSchemeReferenceType:** A reference type for a VTL mapping
 scheme.
 
-Derived by restriction of MaintainableUrnReferenceType .  
-Regular Expression Pattern: .+\\transformation\\VtlMappingScheme=.+
+Derived by restriction of `MaintainableUrnReferenceType`.  
+Regular Expression Pattern: `.+\\transformation\\VtlMappingScheme=.+`
 
 **VersionReferenceType:** VersionReferenceType defines the structure of
 version number in a reference. When semantic versioning is used, the
@@ -2303,9 +2341,9 @@ simple type for referencing semantic version numbers. It allows for the
 wildcarding of only one the major, minor, or patch version parts using
 "+".
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string` .  
 Regular Expression Pattern:
-((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))
+`((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))`
 
 **WildcardVersionType:** WildcardVersionType combines the VersionType
 and WildcardType to allow a reference to either a specific version of an
@@ -2321,7 +2359,7 @@ SemanticVersionReferenceType, WildcardType.
 include the '\*' character - indicating that the identification
 component is wildcarded.
 
-Derived by restriction of xs:string .
+Derived by restriction of `xs:string`.
 
 Enumerations:
 
@@ -2335,39 +2373,39 @@ hierarchical identifier, with each portion separated by the '.'
 character. For the identifier portions, valid characters include A-Z,
 a-z, @, 0-9, \_, -, \$.
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*
+`\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*`
 
 **TwoLevelIDType:** TwoLevelIDType defines an identifier with exactly
 two levels.
 
-Derived by restriction of NestedIDType .  
-Regular Expression Pattern: \[A-Za-z0-9\_@\$\\\]+\\\[A-Za-z0-9\_@\$\\\]+
+Derived by restriction of `NestedIDType`.  
+Regular Expression Pattern: `\[A-Za-z0-9\_@\$\\\]+\\\[A-Za-z0-9\_@\$\\\]+`
 
 **IDType:** IDType provides a type which is used for restricting the
 characters in codes and IDs throughout all SDMX-ML messages. Valid
 characters include A-Z, a-z, @, 0-9, \_, -, \$.
 
-Derived by restriction of NestedIDType .  
-Regular Expression Pattern: \[A-Za-z0-9\_@\$\\\]+
+Derived by restriction of `NestedIDType`.  
+Regular Expression Pattern: `\[A-Za-z0-9\_@\$\\\]+`
 
 **NCNameIDType:** NCNameIDType restricts the IDType, so that the id may
 be used to generate valid XML components. IDs created from this type
 conform to the W3C XML Schema NCNAME type, and therefore can be used as
 element or attribute names.
 
-Derived by restriction of IDType .  
-Regular Expression Pattern: \[A-Za-z\]\[A-Za-z0-9\_\\\]\*
+Derived by restriction of `IDType`.  
+Regular Expression Pattern: `\[A-Za-z\]\[A-Za-z0-9\_\\\]\*`
 
 **NestedNCNameIDType:** NestedNCNameIDType restricts the NestedIDType,
 so that the id may be used to generate valid XML components. IDs created
 from this type conform to the W3C XML Schema NCNAME type, and therefore
 can be used as element or attribute names.
 
-Derived by restriction of NestedIDType .  
+Derived by restriction of `NestedIDType`.  
 Regular Expression Pattern:
-\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*
+`\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*`
 
 **SingleNCNameIDType:** SingleNCNameIDType restricts the
 NestedNCNameIDType to allow only one level. Note that this is the same
@@ -2375,8 +2413,8 @@ pattern as the NCNameIDType, but can be used when the base type to be
 restricted is a nested NCNameIDType (where as the NCNameIDType could
 only restrict the IDType).
 
-Derived by restriction of NestedNCNameIDType .  
-Regular Expression Pattern: \[A-Za-z\]\[A-Za-z0-9\_\\\]\*
+Derived by restriction of `NestedNCNameIDType`.  
+Regular Expression Pattern: `\[A-Za-z\]\[A-Za-z0-9\_\\\]\*`
 
 **VersionType:** VersionType is used to communicate version information.
 Semantic versioning, based on 3 or 4 version parts
@@ -2385,15 +2423,15 @@ format is also support.
 
 Union of:
 
-LegacyVersionNumberType, SemanticVersionNumberType.
+`LegacyVersionNumberType, SemanticVersionNumberType.`
 
 **SemanticVersionNumberType:** SemanticVersionNumberType is a simple
 type for validating semantic version in the format
 (major.minor.patch\[-extension\]).
 
-Derived by restriction of xs:string .  
+Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?
+`(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?`
 
 **LegacyVersionNumberType:** LegacyVersionNumberType describes the
 version number format previously supported in SDMX. The format is
@@ -2405,5 +2443,5 @@ be parsed as an integer. Thus, a version of 1.3 and 1.03 would be
 equivalent, as both the '3' component and the '03' component would parse
 to an integer value of 3.
 
-Derived by restriction of xs:string .  
-Regular Expression Pattern: (0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?
+Derived by restriction of `xs:string`.  
+Regular Expression Pattern: `(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?`
