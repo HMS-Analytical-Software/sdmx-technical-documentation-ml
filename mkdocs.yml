@@ -1,11 +1,10 @@
 site_name: SDMX-ML
 
 nav:
-- SDMX-ML:
-  - index.md
-  - Message: message.md
-  - Common: common.md
-  - Structure: structure.md
-  - Data: data.md
-  - Registry: registry.md
-  - Samples: samples.md
+- index.md
+- Message: message.md
+- Common: common.md
+- Structure: structure.md
+- Data: data.md
+- Registry: registry.md
+- Samples: samples.md
