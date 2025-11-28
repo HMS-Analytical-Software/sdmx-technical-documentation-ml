@@ -1,36 +1,6 @@
-SDMX Standards: Section 3a PaRT III
+# Structure Namespace
 
-SDMX-ML:
-
-Schema and Documentation
-
-Structure Namespace
-
-(<span class="smallcaps">Version 3.0</span>)
-
-September 2021
-
-# Contents
-
-[1 Introduction [1](#introduction)](#introduction)
-
-[2 Schema Documentation
-[1](#schema-documentation)](#schema-documentation)
-
-[2.1 Structure Namespace
-[1](#structure-namespace)](#structure-namespace)
-
-[2.1.1 Summary [1](#summary)](#summary)
-
-[2.1.2 Global Elements [1](#global-elements)](#global-elements)
-
-[2.1.3 Complex Types [6](#complex-types)](#complex-types)
-
-[2.1.4 Simple Types [370](#simple-types)](#simple-types)
-
-# 
-
-# Introduction
+## Introduction
 
 The structure namespace contains the definition of all structural
 metadata constructs. These constructs are intended to be very tightly
@@ -47,13 +17,13 @@ intermediate types are all abstract, so they are not explicitly used in
 a message. They do however serve the purpose of creating a strong
 relation of the schemas to the information model.
 
-# Schema Documentation
+## Schema Documentation
 
-## Structure Namespace
+### Structure Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -68,12 +38,12 @@ Contents:
 235 Complex Types  
 19 Simple Types
 
-### Global Elements
+#### Global Elements
 
 **Structures (StructuresType):** Structures contains constructs for all
 structural metadata components.
 
-***Item* (*ItemType*):** Item is an abstract element that serves as a
+**Item (ItemType):** Item is an abstract element that serves as a
 substitution head for all items in an item scheme, including those items
 nested within other items. Concrete instances of this must use a
 concrete instance of ItemType.
@@ -84,14 +54,14 @@ DataProvider, MetadataProvider, OrganisationUnit, ReportingCategory,
 Transformation, VtlMapping, NamePersonalisation, Ruleset,
 UserDefinedOperator, CustomType
 
-***Grouping* (*GroupingType*):** Grouping is an abstract element that
+**Grouping (GroupingType):** Grouping is an abstract element that
 serves as a substitution head for all structure groupings. Groupings
 contain a collection of component lists for a structure. Concrete
 instances of this must use a concrete instance of GroupingType.
 
 Substitutions: DataStructureComponents, MetadataStructureComponents
 
-***ComponentList* (*ComponentListType*):** ComponentList is an abstract
+**ComponentList (ComponentListType):** ComponentList is an abstract
 element that serves as a substitution head for all component lists.
 Concrete instances of this must use a concrete instance of
 ComponentListType.
@@ -99,7 +69,7 @@ ComponentListType.
 Substitutions: AttributeList, DimensionList, Group, MeasureList,
 MetadataAttributeList
 
-***Component* (*ComponentType*):** Component is an abstract element that
+**Component (ComponentType):** Component is an abstract element that
 serves as a substitution head for all components. Concrete instances of
 this must use a concrete instance of ComponentType.
 
@@ -120,7 +90,7 @@ Substitution For: *Item*
 
 Substitutions: *GeoRefCode*, GeoFeatureSetCode, GeoGridCode
 
-***GeoRefCode* (*GeoRefCodeType*):** GeoRefCode is the abstract base
+**GeoRefCode (GeoRefCodeType):** GeoRefCode is the abstract base
 from which specific types of geographic codes will be derived.
 
 Substitution For: Code
@@ -270,7 +240,7 @@ definition.
 
 Substitution For: *Component*
 
-***Organisation* (*OrganisationType*):** Organisation is an abstract
+**Organisation (OrganisationType):** Organisation is an abstract
 substitution head for a generic organisation.
 
 Substitution For: *Item*
@@ -340,7 +310,7 @@ a custom type scheme.
 
 Substitution For: *Item*
 
-### Complex Types
+#### Complex Types
 
 **StructuresType:** StructuresType describes the structure of the
 container for all structural metadata components. The structural
@@ -351,7 +321,9 @@ structural component be included by reference.
 
 Content:
 
+```text
 ALL(AgencySchemesCategorisationsCategorySchemeMapsCategorySchemesCodelistsConceptSchemeMapsConceptSchemesCustomTypeSchemesDataConstraintsDataConsumerSchemesDataflowsDataProviderSchemesDataStructuresGeographicCodelistsGeoGridCodelistsHierarchiesHierarchyAssociationsMetadataConstraintsMetadataflowsMetadataProviderSchemesMetadataProvisionAgreementsMetadataStructuresNamePersonalisationSchemesOrganisationSchemeMapsOrganisationUnitSchemesProcessesProvisionAgreementsReportingTaxonomiesReportingTaxonomyMapsRepresentationMapsRulesetSchemesStructureMapsTransformationSchemesUserDefinedOperatorSchemesValueListsVtlMappingSchemes)
+```
 
 Element Documentation:
 
@@ -401,7 +373,9 @@ document or registry service.
 
 Content:
 
+```text
 AgencyScheme+
+```
 
 Element Documentation:
 
@@ -417,7 +391,9 @@ may contain categorisations for multiple types of structural objects.
 
 Content:
 
+```text
 Categorisation+
+```
 
 Element Documentation:
 
@@ -432,7 +408,9 @@ an external structure document or registry service.
 
 Content:
 
+```text
 CategorySchemeMap+
+```
 
 Element Documentation:
 
@@ -447,7 +425,9 @@ structure document or registry service.
 
 Content:
 
+```text
 CategoryScheme+
+```
 
 Element Documentation:
 
@@ -462,7 +442,9 @@ external structure document or registry service.
 
 Content:
 
+```text
 ConceptSchemeMap+
+```
 
 Element Documentation:
 
@@ -477,7 +459,9 @@ structure document or registry service.
 
 Content:
 
-ConceptScheme\*
+```text
+ConceptScheme*
+```
 
 Element Documentation:
 
@@ -492,7 +476,9 @@ registry service.
 
 Content:
 
+```text
 Codelist+
+```
 
 Element Documentation:
 
@@ -507,7 +493,9 @@ external structure document or registry service.
 
 Content:
 
+```text
 CustomTypeScheme+
+```
 
 Element Documentation:
 
@@ -523,7 +511,9 @@ attachment and content constraints.
 
 Content:
 
+```text
 DataConstraint+
+```
 
 Element Documentation:
 
@@ -538,7 +528,9 @@ referenced from an external structure document or registry service.
 
 Content:
 
+```text
 DataConsumerScheme+
+```
 
 Element Documentation:
 
@@ -553,7 +545,9 @@ registry service.
 
 Content:
 
+```text
 Dataflow+
+```
 
 Element Documentation:
 
@@ -568,7 +562,9 @@ referenced from an external structure document or registry service.
 
 Content:
 
+```text
 DataProviderScheme+
+```
 
 Element Documentation:
 
@@ -583,7 +579,9 @@ from an external structure document or registry service.
 
 Content:
 
+```text
 DataStructure+
+```
 
 Element Documentation:
 
@@ -598,7 +596,9 @@ from an external structure document or registry service.
 
 Content:
 
+```text
 GeographicCodelist+
+```
 
 Element Documentation:
 
@@ -613,7 +613,9 @@ external structure document or registry service.
 
 Content:
 
+```text
 GeoGridCodelist+
+```
 
 Element Documentation:
 
@@ -628,7 +630,9 @@ registry service.
 
 Content:
 
+```text
 Hierarchy+
+```
 
 Element Documentation:
 
@@ -643,7 +647,9 @@ referenced from an external structure document or registry service.
 
 Content:
 
+```text
 HierarchyAssociation+
+```
 
 Element Documentation:
 
@@ -659,7 +665,9 @@ contain both attachment and content constraints.
 
 Content:
 
+```text
 MetadataConstraint+
+```
 
 Element Documentation:
 
@@ -674,7 +682,9 @@ document or registry service.
 
 Content:
 
+```text
 Metadataflow+
+```
 
 Element Documentation:
 
@@ -689,7 +699,9 @@ or referenced from an external structure document or registry service.
 
 Content:
 
+```text
 MetadataProviderScheme+
+```
 
 Element Documentation:
 
@@ -705,7 +717,9 @@ registry service.
 
 Content:
 
+```text
 MetadataProvisionAgreement+
+```
 
 Element Documentation:
 
@@ -721,7 +735,9 @@ service.
 
 Content:
 
+```text
 MetadataStructure+
+```
 
 Element Documentation:
 
@@ -737,7 +753,9 @@ registry service.
 
 Content:
 
+```text
 NamePersonalisationScheme+
+```
 
 Element Documentation:
 
@@ -752,7 +770,9 @@ referenced from an external structure document or registry service.
 
 Content:
 
+```text
 OrganisationSchemeMap+
+```
 
 Element Documentation:
 
@@ -767,7 +787,9 @@ or referenced from an external structure document or registry service.
 
 Content:
 
+```text
 OrganisationUnitScheme+
+```
 
 Element Documentation:
 
@@ -782,7 +804,9 @@ registry service.
 
 Content:
 
+```text
 Process+
+```
 
 Element Documentation:
 
@@ -797,7 +821,9 @@ an external structure document or registry service.
 
 Content:
 
+```text
 ProvisionAgreement+
+```
 
 Element Documentation:
 
@@ -812,7 +838,9 @@ an external structure document or registry service.
 
 Content:
 
+```text
 ReportingTaxonomy+
+```
 
 Element Documentation:
 
@@ -827,7 +855,9 @@ from an external structure document or registry service.
 
 Content:
 
+```text
 ReportingTaxonomyMap+
+```
 
 Element Documentation:
 
@@ -842,7 +872,9 @@ an external structure document or registry service.
 
 Content:
 
+```text
 RepresentationMap+
+```
 
 Element Documentation:
 
@@ -857,7 +889,9 @@ structure document or registry service.
 
 Content:
 
+```text
 RulesetScheme+
+```
 
 Element Documentation:
 
@@ -872,7 +906,9 @@ document or registry service.
 
 Content:
 
+```text
 StructureMap+
+```
 
 Element Documentation:
 
@@ -887,7 +923,9 @@ from an external structure document or registry service.
 
 Content:
 
+```text
 TransformationScheme+
+```
 
 Element Documentation:
 
@@ -903,7 +941,9 @@ registry service.
 
 Content:
 
+```text
 UserDefinedOperatorScheme+
+```
 
 Element Documentation:
 
@@ -918,7 +958,9 @@ registry service.
 
 Content:
 
+```text
 ValueList+
+```
 
 Element Documentation:
 
@@ -933,7 +975,9 @@ external structure document or registry service.
 
 Content:
 
+```text
 VtlMappingScheme+
+```
 
 Element Documentation:
 
@@ -941,29 +985,35 @@ Element Documentation:
 |------------------|----------------------|-----------------------------------------------------------------------------------------------------|
 | VtlMappingScheme | VtlMappingSchemeType | VtlMappingScheme provides the details of a VTL mapping scheme, in which VTL mappings are described. |
 
-***ItemSchemeType*:** ItemSchemeType is an abstract base type for all
+**ItemSchemeType:** ItemSchemeType is an abstract base type for all
 item scheme objects. It contains a collection of items. Concrete
 instances of this type should restrict the actual types of items allowed
 within the scheme.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *Item\**
+```text
+Annotations?, Link*, Name+, Description*, Item*
+```
 
 Attribute Documentation:
 
@@ -991,24 +1041,30 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | *Item*      | *ItemType*      | Item is an abstract element that serves as a substitution head for all items in an item scheme, including those items nested within other items. Concrete instances of this must use a concrete instance of ItemType.             |
 
-***ItemBaseType*:** ItemBaseType is an abstract base type that forms the
+**ItemBaseType:** ItemBaseType is an abstract base type that forms the
 basis for the ItemType. It requires that at least an id be supplied for
 an item.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -1027,26 +1083,32 @@ Element Documentation:
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***ItemType*:** ItemType is an abstract base type for all items with in
+**ItemType:** ItemType is an abstract base type for all items with in
 an item scheme. Concrete instances of this type may or may not utilize
 the nested item, but if so should restrict the actual types of item
 allowed.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (Parent \| *Item+*)?
+```text
+Annotations?, Link*, Name+, Description*, (Parent | *Item+*)?
+```
 
 Attribute Documentation:
 
@@ -1067,25 +1129,31 @@ Element Documentation:
 | Parent      | NestedIDType    |                                                                                                                                                                                                                                   |
 | *Item*      | *ItemType*      | Item is an abstract element that serves as a substitution head for all items in an item scheme, including those items nested within other items. Concrete instances of this must use a concrete instance of ItemType.             |
 
-***UnnestedItemType*:** UnnestedItemType is an abstract base type for
+**UnnestedItemType:** UnnestedItemType is an abstract base type for
 all items with in an item scheme that do not contain nested items.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -1104,28 +1172,34 @@ Element Documentation:
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***StructureType*:** StructureType is an abstract base type for all
+**StructureType:** StructureType is an abstract base type for all
 structure objects. Concrete instances of this should restrict to a
 concrete grouping.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *Grouping?*
+```text
+Annotations?, Link*, Name+, Description*, *Grouping?*
+```
 
 Attribute Documentation:
 
@@ -1152,14 +1226,16 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                           |
 | *Grouping*  | *GroupingType*  | Grouping is an abstract element that serves as a substitution head for all structure groupings. Groupings contain a collection of component lists for a structure. Concrete instances of this must use a concrete instance of GroupingType. |
 
-***GroupingType*:** GroupType is an abstract base type for specific
+**GroupingType:** GroupType is an abstract base type for specific
 structure groupings. It contains a collection of component lists.
 Concrete instances of this should restrict to specific concrete
 component lists.
 
 Content:
 
-*ComponentList\**
+```text
+ComponentList*
+```
 
 Element Documentation:
 
@@ -1167,23 +1243,29 @@ Element Documentation:
 |-----------------|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | *ComponentList* | *ComponentListType* | ComponentList is an abstract element that serves as a substitution head for all component lists. Concrete instances of this must use a concrete instance of ComponentListType. |
 
-***ComponentListType*:** ComponentListType is an abstract base type for
+**ComponentListType:** ComponentListType is an abstract base type for
 all component lists. It contains a collection of components. Concrete
 types should restrict this to specific concrete components.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, *Component\**
+```text
+Annotations?, Link*, *Component**
+```
 
 Attribute Documentation:
 
@@ -1201,23 +1283,29 @@ Element Documentation:
 | Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
 | *Component* | *ComponentType* | Component is an abstract element that serves as a substitution head for all components. Concrete instances of this must use a concrete instance of ComponentType.                                                                 |
 
-***ComponentBaseType*:** ComponentBaseType is an abstract type that only
+**ComponentBaseType:** ComponentBaseType is an abstract type that only
 serves the purpose of forming the base for the actual ComponentType. It
 only restricts the format of the id attribute to the NCNameIDType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -1234,7 +1322,7 @@ Element Documentation:
 | Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
 | Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
 
-***ComponentType*:** ComponentType is an abstract base type for all
+**ComponentType:** ComponentType is an abstract base type for all
 components. It contains information pertaining to a component, including
 an optional reference to a concept, an optional role played by the
 concept, an optional text format description, and an optional local
@@ -1242,18 +1330,24 @@ representation.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity?, LocalRepresentation?
+```text
+Annotations?, Link*, ConceptIdentity?, LocalRepresentation?
+```
 
 Attribute Documentation:
 
@@ -1272,29 +1366,35 @@ Element Documentation:
 | ConceptIdentity     | ConceptReferenceType | ConceptIdentity allows for the referencing of a concept in a concept scheme. The component takes its semantic from this concept, and if an id is not specified, it takes its identification as well. If a representation (LocalRepresentation) is not supplied, then the representation of the component is also inherited from the concept. Note that in the case of the component representation being inherited from the concept, the allowable representations for the component still apply. Therefore, if a component references a concept with a core representation that is not allowed for the concept, that representation must be locally overridden. For components which can specify a concept role, it is implied that the concept which is referenced also identifies a role for the component. |
 | LocalRepresentation | *RepresentationType* | LocalRepresentation references item schemes that may be used to create the representation of a component. The type of this must be refined such that a concrete item scheme reference is used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-***StructureUsageType*:** StructureUsageType is an abstract base type
+**StructureUsageType:** StructureUsageType is an abstract base type
 for all structure usages. It contains a reference to a structure.
 Concrete instances of this type should restrict the type of structure
 referenced.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureUsageType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureUsageType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Structure?
+```text
+Annotations?, Link*, Name+, Description*, Structure?
+```
 
 Attribute Documentation:
 
@@ -1321,7 +1421,7 @@ Element Documentation:
 | Description | TextType                | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                                                           |
 | Structure   | StructureReferenceTy pe | Structure references the structure (data structure or metadata structure definition) which the structure usage is based upon. Implementations will have to refine the type to use a concrete structure reference (i.e. either a data structure or metadata structure definition reference). |
 
-***RepresentationType*:** RepresentationType is an abstract type that
+**RepresentationType:** RepresentationType is an abstract type that
 defines a representation. Because the type of item schemes that are
 allowed as the an enumeration vary based on the object in which this is
 defined, this type is abstract to force that the enumeration reference
@@ -1329,11 +1429,15 @@ be restricted to the proper type of item scheme reference.
 
 Attributes:
 
+```text
 minOccurs?, maxOccurs?
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Attribute Documentation:
 
@@ -1356,13 +1460,17 @@ the values of the other attributes, referred to as "facets".
 
 Attributes:
 
+```text
 textType?, isSequence?, interval?, startValue?, endValue?,
 timeInterval?, startTime?, endTime?, minLength?, maxLength?, minValue?,
 maxValue?, decimals?, pattern?, isMultiLingual?
+```
 
 Content:
 
-SentinelValue\*
+```text
+SentinelValue*
+```
 
 Attribute Documentation:
 
@@ -1397,11 +1505,15 @@ with a multi-lingual name and description.
 
 Attributes:
 
+```text
 value
+```
 
 Content:
 
-Name+, Description\*
+```text
+Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -1423,18 +1535,24 @@ objects.
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType
+```
 
 Attributes:
 
+```text
 textType?, isSequence?, interval?, startValue?, endValue?,
 timeInterval?, startTime?, endTime?, minLength?, maxLength?, minValue?,
 maxValue?, decimals?, pattern?, isMultiLingual?
+```
 
 Content:
 
-SentinelValue\*
+```text
+SentinelValue*
+```
 
 Attribute Documentation:
 
@@ -1468,19 +1586,25 @@ allow for multi-lingual values.
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType (restriction)  
          SimpleComponentTextFormatType
+```
 
 Attributes:
 
+```text
 textType?, isSequence?, interval?, startValue?, endValue?,
 timeInterval?, startTime?, endTime?, minLength?, maxLength?, minValue?,
 maxValue?, decimals?, pattern?
+```
 
 Content:
 
-SentinelValue\*
+```text
+SentinelValue*
+```
 
 Attribute Documentation:
 
@@ -1515,20 +1639,26 @@ time. Therefore these facets should not contain time in their values.
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType (restriction)  
          SimpleComponentTextFormatType (restriction)  
                CodedTextFormatType
+```
 
 Attributes:
 
+```text
 textType?, isSequence?, interval?, startValue?, endValue?,
 timeInterval?, startTime?, endTime?, minLength?, maxLength?, minValue?,
 maxValue?, pattern?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
@@ -1554,18 +1684,24 @@ facets.
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType (restriction)  
          SimpleComponentTextFormatType (restriction)  
                NonFacetedTextFormatType
+```
 
 Attributes:
 
+```text
 textType?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
@@ -1580,18 +1716,24 @@ a start and end time.
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType (restriction)  
          SimpleComponentTextFormatType (restriction)  
                TimeTextFormatType
+```
 
 Attributes:
 
+```text
 textType?, startTime?, endTime?
+```
 
 Content:
 
-SentinelValue\*
+```text
+SentinelValue*
+```
 
 Attribute Documentation:
 
@@ -1607,28 +1749,34 @@ Element Documentation:
 |---------------|-------------------|----------------------------------------------------------------------------------------------------------------|
 | SentinelValue | SentinelValueType | SentinelValue defines a value that has a special meaning within the text format representation of a component. |
 
-***CategorisationBaseType*:** CategorisationBaseType defines the base
+**CategorisationBaseType:** CategorisationBaseType defines the base
 refinement of the CategorisationType. Its purpose is to retrict the urn
 attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *CategorisationBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 CategorisationBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -1660,23 +1808,29 @@ and the target category is referenced via the target category.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *CategorisationBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 CategorisationBaseType (extension)  
                                        CategorisationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (Source, Target)?
+```text
+Annotations?, Link*, Name+, Description*, (Source, Target)?
+```
 
 Attribute Documentation:
 
@@ -1712,23 +1866,29 @@ simple, leveled hierarchy or categories.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
                                        CategorySchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Category\*
+```text
+Annotations?, Link*, Name+, Description*, Category*
+```
 
 Attribute Documentation:
 
@@ -1763,20 +1923,26 @@ categories.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
                            CategoryType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Category\*
+```text
+Annotations?, Link*, Name+, Description*, Category*
+```
 
 Attribute Documentation:
 
@@ -1796,30 +1962,36 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | Category    | CategoryType    | Category represents a set of nested categories which describe a simple classification hierarchy.                                                                                                                                  |
 
-***CodelistBaseType*:** CodelistType defines the structure of a
+**CodelistBaseType:** CodelistType defines the structure of a
 codelist. A codelist is defined as a list from which some statistical
 concepts (coded concepts) take their values.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (Code \| GeoFeatureSetCode
-\| GeoGridCode)\*
+```text
+Annotations?, Link*, Name+, Description*, (Code | GeoFeatureSetCode
+| GeoGridCode)*
+```
 
 Attribute Documentation:
 
@@ -1851,25 +2023,31 @@ Element Documentation:
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (Code \| GeoFeatureSetCode
-\| GeoGridCode)\*, CodelistExtension\*
+```text
+Annotations?, Link*, Name+, Description*, (Code | GeoFeatureSetCode
+| GeoGridCode)*, CodelistExtension*
+```
 
 Attribute Documentation:
 
@@ -1963,20 +2141,24 @@ the use of annotations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
                            CodeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?
+Annotations?, Link*, Name+, Description*, Parent?
 
 Attribute Documentation:
 
@@ -2003,11 +2185,13 @@ indicate the codes to be included in the extending codelist.
 
 Attributes:
 
+```text
 prefix?
+```
 
 Content:
 
-Codelist, (InclusiveCodeSelection \| ExclusiveCodeSelection)?
+Codelist, (InclusiveCodeSelection | ExclusiveCodeSelection)?
 
 Attribute Documentation:
 
@@ -2041,14 +2225,18 @@ expression for selecting codes from a codelist.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (restriction)  
          WildcardedMemberValueType (extension)  
                MemberValueType
+```
 
 Attributes:
 
+```text
 cascadeValues?
+```
 
 Content:
 
@@ -2058,33 +2246,39 @@ Attribute Documentation:
 |---------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | cascadeValues | CascadeSelectionType | Indicates whether child codes should be selected when the codelist is hierarchical. Possible values are true (include the selected and child codes), false (only include the selected code(s)), and excluderoot (include the children but not the selected code(s)). |
 
-***GeoCodelistBaseType*:** GeoCodelistBaseType is an abstract base
+**GeoCodelistBaseType:** GeoCodelistBaseType is an abstract base
 refinement of a codelist that restricts the cods to be derived from the
 abstract GeoRefCode.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
 (restriction)  
-                                                   *GeoCodelistBaseType*
+                                                   GeoCodelistBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *GeoRefCode\**,
-CodelistExtension\*
+```text
+Annotations?, Link*, Name+, Description*, *GeoRefCode**,
+CodelistExtension*
+```
 
 Attribute Documentation:
 
@@ -2113,35 +2307,41 @@ Element Documentation:
 | *GeoRefCode*      | *GeoRefCodeType*       | GeoRefCode is the abstract base from which specific types of geographic codes will be derived.                                                                                                                                                                                                                                                                                                                                                                                |
 | CodelistExtension | CodelistExtensionTyp e | CodelistExtension allows for the extension of codelists by referencing the codelists to be extended and providing inclusion/exclusion rules for selecting the codes to extend. The order of these is important as it is indicates the order of precedence of the extended codelists for conflict resolution of codes. However, the prefix property can be used to ensure uniqueness of inherited codes in the extending codelist, in case conflicting codes must be included. |
 
-***GeoCodelistType*:** GeoCodelistType is an abstract refinement of a
+**GeoCodelistType:** GeoCodelistType is an abstract refinement of a
 codelist from which specific types of geographic codelists will be
 derived.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
 (restriction)  
-                                                   *GeoCodelistBaseType*
+                                                   GeoCodelistBaseType
 (extension)  
-                                                         *GeoCodelistType*
+                                                         GeoCodelistType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, geoType
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *GeoRefCode\**,
-CodelistExtension\*
+```text
+Annotations?, Link*, Name+, Description*, *GeoRefCode**,
+CodelistExtension*
+```
 
 Attribute Documentation:
 
@@ -2171,26 +2371,32 @@ Element Documentation:
 | *GeoRefCode*      | *GeoRefCodeType*       | GeoRefCode is the abstract base from which specific types of geographic codes will be derived.                                                                                                                                                                                                                                                                                                                                                                                |
 | CodelistExtension | CodelistExtensionTyp e | CodelistExtension allows for the extension of codelists by referencing the codelists to be extended and providing inclusion/exclusion rules for selecting the codes to extend. The order of these is important as it is indicates the order of precedence of the extended codelists for conflict resolution of codes. However, the prefix property can be used to ensure uniqueness of inherited codes in the extending codelist, in case conflicting codes must be included. |
 
-***GeoRefCodeType*:** GeoRefCodeType is the abstract base type defining
+**GeoRefCodeType:** GeoRefCodeType is the abstract base type defining
 the structure of geographic codes.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
                            CodeType (extension)  
-                                 *GeoRefCodeType*
+                                 GeoRefCodeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?
+```text
+Annotations?, Link*, Name+, Description*, Parent?
+```
 
 Attribute Documentation:
 
@@ -2217,31 +2423,37 @@ feature set.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
 (restriction)  
-                                                   *GeoCodelistBaseType*
+                                                   GeoCodelistBaseType
 (extension)  
-                                                         *GeoCodelistType*
+                                                         GeoCodelistType
 (restriction)  
                                                                GeographicCodelistType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, geoType
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, GeoFeatureSetCode\*,
-CodelistExtension\*
+```text
+Annotations?, Link*, Name+, Description*, GeoFeatureSetCode*,
+CodelistExtension*
+```
 
 Attribute Documentation:
 
@@ -2276,22 +2488,28 @@ of a geogrphic code.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
                            CodeType (extension)  
-                                 *GeoRefCodeType* (extension)  
+                                 GeoRefCodeType (extension)  
                                        GeoFeatureSetCodeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, value
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?
+```text
+Annotations?, Link*, Name+, Description*, Parent?
+```
 
 Attribute Documentation:
 
@@ -2312,36 +2530,42 @@ Element Documentation:
 | Description | TextType           | Description provides a plain text, human-readable description of the code. This may be provided in multiple, parallel language-equivalent forms.                                                                                  |
 | Parent      | SingleNCNameIDType | Parent provides the ability to describe simple hierarchies within a single codelist, by referencing the id value of another code in the same codelist.                                                                            |
 
-***GeoGridCodelistBaseType*:** GeoGridCodelistBaseType is the abstract
+**GeoGridCodelistBaseType:** GeoGridCodelistBaseType is the abstract
 base refinement for a geographic grid codelist.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
 (restriction)  
-                                                   *GeoCodelistBaseType*
+                                                   GeoCodelistBaseType
 (extension)  
-                                                         *GeoCodelistType*
+                                                         GeoCodelistType
 (restriction)  
-                                                               *GeoGridCodelistBaseType*
+                                                               GeoGridCodelistBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, geoType
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, GeoGridCode\*,
-CodelistExtension\*
+```text
+Annotations?, Link*, Name+, Description*, GeoGridCode*,
+CodelistExtension*
+```
 
 Attribute Documentation:
 
@@ -2377,33 +2601,39 @@ cells representing regular squared portions of the Earth.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *CodelistBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       CodelistBaseType (extension)  
                                              CodelistType
 (restriction)  
-                                                   *GeoCodelistBaseType*
+                                                   GeoCodelistBaseType
 (extension)  
-                                                         *GeoCodelistType*
+                                                         GeoCodelistType
 (restriction)  
-                                                               *GeoGridCodelistBaseType*
+                                                               GeoGridCodelistBaseType
 (extension)  
                                                                      GeoGridCodelistType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, geoType
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, GeoGridCode\*,
-CodelistExtension\*, GridDefinition
+```text
+Annotations?, Link*, Name+, Description*, GeoGridCode*,
+CodelistExtension*, GridDefinition
+```
 
 Attribute Documentation:
 
@@ -2439,22 +2669,28 @@ geographic grid cell.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
                            CodeType (extension)  
-                                 *GeoRefCodeType* (extension)  
+                                 GeoRefCodeType (extension)  
                                        GeoGridCodeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?, GeoCell
+```text
+Annotations?, Link*, Name+, Description*, Parent?, GeoCell
+```
 
 Attribute Documentation:
 
@@ -2475,27 +2711,33 @@ Element Documentation:
 | Parent      | SingleNCNameIDType | Parent provides the ability to describe simple hierarchies within a single codelist, by referencing the id value of another code in the same codelist.                                                                            |
 | GeoCell     | xs:string          | The value used to assign the Code to one cell in the grid.                                                                                                                                                                        |
 
-***ValueListBaseType*:** ValueListBaseType defines the base refinement
+**ValueListBaseType:** ValueListBaseType defines the base refinement
 of the ValueListType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ValueListBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ValueListBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -2528,23 +2770,29 @@ descriptions (similar to a codelist).
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ValueListBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ValueListBaseType (extension)  
                                        ValueListType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ValueItem\*
+```text
+Annotations?, Link*, Name+, Description*, ValueItem*
+```
 
 Attribute Documentation:
 
@@ -2578,16 +2826,22 @@ a code list).
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    ValueItemType
+```
 
 Attributes:
 
+```text
 id
+```
 
 Content:
 
-Annotations?, Name\*, Description\*
+```text
+Annotations?, Name*, Description*
+```
 
 Attribute Documentation:
 
@@ -2612,23 +2866,29 @@ hierarchies.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
                                        ConceptSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Concept\*
+```text
+Annotations?, Link*, Name+, Description*, Concept*
+```
 
 Attribute Documentation:
 
@@ -2656,26 +2916,32 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | Concept     | ConceptType     | Concept describes the details of a concept within a concept scheme.                                                                                                                                                               |
 
-***ConceptBaseType*:** ConceptBaseType is an abstract base type the
+**ConceptBaseType:** ConceptBaseType is an abstract base type the
 forms the basis of the ConceptType by requiring a name and id, and
 restricting the content of the id.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *ConceptBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           ConceptBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?
+```text
+Annotations?, Link*, Name+, Description*, Parent?
+```
 
 Attribute Documentation:
 
@@ -2704,22 +2970,28 @@ concept is assumed to be represented by any set of valid characters
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *ConceptBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           ConceptBaseType (extension)  
                                  ConceptType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?,
+```text
+Annotations?, Link*, Name+, Description*, Parent?,
 CoreRepresentation?, ISOConceptReference?
+```
 
 Attribute Documentation:
 
@@ -2748,16 +3020,22 @@ component.
 
 Derivation:
 
-*RepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
    ConceptRepresentation
+```
 
 Attributes:
 
+```text
 minOccurs?, maxOccurs?
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Attribute Documentation:
 
@@ -2779,7 +3057,9 @@ reference to and ISO 11179 concept.
 
 Content:
 
+```text
 ConceptAgency, ConceptSchemeID, ConceptID
+```
 
 Element Documentation:
 
@@ -2789,28 +3069,34 @@ Element Documentation:
 | ConceptSchemeID | xs:string |                   |
 | ConceptID       | xs:string |                   |
 
-***ConstraintBaseType*:** ConstraintBaseType is an abstract base type
+**ConstraintBaseType:** ConstraintBaseType is an abstract base type
 that forms the basis of the main abstract ConstraintType. It requires
 that a name be provided.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -2836,31 +3122,37 @@ Element Documentation:
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***ConstraintType*:** ConstraintType is an abstract base type that
+**ConstraintType:** ConstraintType is an abstract base type that
 specific types of constraints (data and metadata) restrict and extend to
 describe their details. These constraint types both define a constraint
 attachment and a release calendar.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType* (extension)  
-                                       *ConstraintType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType (extension)  
+                                       ConstraintType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, role
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ConstraintAttachment?,
+```text
+Annotations?, Link*, Name+, Description*, ConstraintAttachment?,
 ReleaseCalendar?
+```
 
 Attribute Documentation:
 
@@ -2889,31 +3181,37 @@ Element Documentation:
 | ConstraintAttachment | *ConstraintAttachment Type* | ConstraintAttachment describes the collection of constrainable artefacts that the constraint is attached to.                                                                                                                      |
 | ReleaseCalendar      | ReleaseCalendarType         | ReleaseCalendar defines dates on which the constrained data is to be made available.                                                                                                                                              |
 
-***DataConstraintBaseType*:** DataConstraintBaseType is an abstract base
+**DataConstraintBaseType:** DataConstraintBaseType is an abstract base
 refinement of ConstraintType. The constraint attachment is restricted to
 constrainable artefacts related to data.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType* (extension)  
-                                       *ConstraintType* (restriction)  
-                                             *DataConstraintBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType (extension)  
+                                       ConstraintType (restriction)  
+                                             DataConstraintBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, role
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ConstraintAttachment?,
+```text
+Annotations?, Link*, Name+, Description*, ConstraintAttachment?,
 ReleaseCalendar?
+```
 
 Attribute Documentation:
 
@@ -2955,27 +3253,33 @@ source (role is "Actual").
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType* (extension)  
-                                       *ConstraintType* (restriction)  
-                                             *DataConstraintBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType (extension)  
+                                       ConstraintType (restriction)  
+                                             DataConstraintBaseType
 (extension)  
                                                    DataConstraintType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, role
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ConstraintAttachment?,
-ReleaseCalendar?, DataKeySet\*, CubeRegion\[0..2\]
+```text
+Annotations?, Link*, Name+, Description*, ConstraintAttachment?,
+ReleaseCalendar?, DataKeySet*, CubeRegion[0..2]
+```
 
 Attribute Documentation:
 
@@ -3006,32 +3310,38 @@ Element Documentation:
 | DataKeySet           | DataKeySetType                | DataKeySet defines a full, distinct set of dimension values and the attribute values associated with the key.                                                                                                                     |
 | CubeRegion           | CubeRegionType                | CubeRegion defines a slice of the data set (dimensions and attribute values) for the constrained artefact. A set of included or excluded regions can be described.                                                                |
 
-***MetadataConstraintBaseType*:** MetadataConstraintBaseType is an
+**MetadataConstraintBaseType:** MetadataConstraintBaseType is an
 abstract base refinement of ConstraintType. The constraint attachment is
 restricted to constrainable artefacts related to metadata, and the only
 possible role is "Allowed".
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType* (extension)  
-                                       *ConstraintType* (restriction)  
-                                             *MetadataConstraintBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType (extension)  
+                                       ConstraintType (restriction)  
+                                             MetadataConstraintBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, role
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ConstraintAttachment?,
+```text
+Annotations?, Link*, Name+, Description*, ConstraintAttachment?,
 ReleaseCalendar?
+```
 
 Attribute Documentation:
 
@@ -3066,27 +3376,33 @@ attribute values for metadata described by the constrained artefact.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ConstraintBaseType* (extension)  
-                                       *ConstraintType* (restriction)  
-                                             *MetadataConstraintBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ConstraintBaseType (extension)  
+                                       ConstraintType (restriction)  
+                                             MetadataConstraintBaseType
 (extension)  
                                                    MetadataConstraintType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, role
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ConstraintAttachment?,
-ReleaseCalendar?, MetadataTargetRegion\[0..2\]
+```text
+Annotations?, Link*, Name+, Description*, ConstraintAttachment?,
+ReleaseCalendar?, MetadataTargetRegion[0..2]
+```
 
 Attribute Documentation:
 
@@ -3122,7 +3438,9 @@ the standard "P7D" - style format.
 
 Content:
 
+```text
 Periodicity, Offset, Tolerance
+```
 
 Element Documentation:
 
@@ -3137,11 +3455,15 @@ partial data keys (dimension values).
 
 Attributes:
 
+```text
 isIncluded
+```
 
 Content:
 
+```text
 Key+
+```
 
 Attribute Documentation:
 
@@ -3155,17 +3477,19 @@ Element Documentation:
 |----------|-------------|---------------------------------------------------------------------------|
 | Key      | DataKeyType | Key contains a set of dimension values which identify a full set of data. |
 
-***ConstraintAttachmentType*:** ConstraintAttachmentType describes a
+**ConstraintAttachmentType:** ConstraintAttachmentType describes a
 collection of references to constrainable artefacts.
 
 Content:
 
-(DataProvider \| MetadataProvider \| MetadataSet+ \| SimpleDataSource+
-\| (DataStructure+, QueryableDataSource\*) \| (MetadataStructure+,
-QueryableDataSource\*) \| (Dataflow+, QueryableDataSource\*) \|
-(Metadataflow+, QueryableDataSource\*) \| (ProvisionAgreement+,
-QueryableDataSource\*) \| (MetadataProvisionAgreement+,
-QueryableDataSource\*))
+```text
+(DataProvider | MetadataProvider | MetadataSet+ | SimpleDataSource+
+| (DataStructure+, QueryableDataSource*) | (MetadataStructure+,
+QueryableDataSource*) | (Dataflow+, QueryableDataSource*) |
+(Metadataflow+, QueryableDataSource*) | (ProvisionAgreement+,
+QueryableDataSource*) | (MetadataProvisionAgreement+,
+QueryableDataSource*))
+```
 
 Element Documentation:
 
@@ -3194,14 +3518,18 @@ data.
 
 Derivation:
 
-*ConstraintAttachmentType* (restriction)  
+```text
+ConstraintAttachmentType (restriction)  
    DataConstraintAttachmentType
+```
 
 Content:
 
-(DataProvider \| SimpleDataSource+ \| (DataStructure+,
-QueryableDataSource\*) \| (Dataflow+, QueryableDataSource\*) \|
-(ProvisionAgreement+, QueryableDataSource\*))
+```text
+(DataProvider | SimpleDataSource+ | (DataStructure+,
+QueryableDataSource*) | (Dataflow+, QueryableDataSource*) |
+(ProvisionAgreement+, QueryableDataSource*))
+```
 
 Element Documentation:
 
@@ -3222,15 +3550,19 @@ related to metadata.
 
 Derivation:
 
-*ConstraintAttachmentType* (restriction)  
+```text
+ConstraintAttachmentType (restriction)  
    MetadataConstraintAttachmentType
+```
 
 Content:
 
-(MetadataProvider \| MetadataSet+ \| SimpleDataSource+ \|
-(MetadataStructure+, QueryableDataSource\*) \| (Metadataflow+,
-QueryableDataSource\*) \| (MetadataProvisionAgreement+,
-QueryableDataSource\*))
+```text
+(MetadataProvider | MetadataSet+ | SimpleDataSource+ |
+(MetadataStructure+, QueryableDataSource*) | (Metadataflow+,
+QueryableDataSource*) | (MetadataProvisionAgreement+,
+QueryableDataSource*))
+```
 
 Element Documentation:
 
@@ -3246,7 +3578,7 @@ Element Documentation:
 | MetadataProvisionAgr eement | MetadataProvisionAgr eementReferenceType | ProvisionAgreementReference is reference to a provision agreement to which the constraint is attached. The referenced is provided as a URN and/or a full set of reference fields. A constraint can be attached to more than one provision aggreement, and the provision agreements do not necessarily have to be references structure usages based on the same structure. However, a constraint which is attached to more than one provision agreement must only express key sets and/or cube/target regions where the identifier of the components are common across all structures to which the constraint is attached. |
 | QueryableDataSource         | QueryableDataSourceT ype                 | QueryableDataSource describes a queryable data source to which the constraint is attached.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
-***RegionType*:** RegionType is an abstract type which defines a generic
+**RegionType:** RegionType is an abstract type which defines a generic
 constraint region. This type can be refined to define regions for data
 or metadata sets. A region is defined by a collection of key values -
 each of which a collection of values for a component which disambiguates
@@ -3259,16 +3591,22 @@ particular context.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *RegionType*
+```text
+AnnotableType (extension)  
+   RegionType
+```
 
 Attributes:
 
+```text
 include?, validFrom?, validTo?
+```
 
 Content:
 
-Annotations?, KeyValue\*, Component\*
+```text
+Annotations?, KeyValue*, Component*
+```
 
 Attribute Documentation:
 
@@ -3286,7 +3624,7 @@ Element Documentation:
 | KeyValue    | *MemberSelectionType* | KeyValue contains a reference to a component which disambiguates the data (i.e. a dimension) and provides a collection of values for the component. The collection of values can be flagged as being inclusive or exclusive to the region being defined. Any key component that is not included is assumed to be wild carded, which is to say that the cube includes all possible values for the un-referenced key components. Further, this assumption applies to the values of the components as well. The values for any given component can only be sub-setted in the region by explicit inclusion or exclusion. For example, a dimension X which has the possible values of 1, 2, 3 is assumed to have all of these values if a key value is not defined. If a key value is defined with an inclusion attribute of true and the values of 1 and 2, the only the values of 1 and 2 for dimension X are included in the definition of the region. If the key value is defined with an inclusion attribute of false and the value of 1, then the values of 2 and 3 for dimension X are included in the definition of the region. Note that any given key component must only be referenced once in the region. |
 | Component   | *MemberSelectionType* | Component contains a reference to a component (data attribute, metadata attribute, or measure) and provides a collection of values for the referenced component. This serves to state that for the key which defines the region, the components that are specified here have or do not have (depending on the include attribute of the value set) the values provided. It is possible to provide a component reference without specifying values, for the purpose of stating the component is absent (include = false) or present with an unbounded set of values. As opposed to key components, which are assumed to be wild carded if absent, no assumptions are made about the absence of a component. Only components which are explicitly stated to be present or absent from the region will be know. All unstated components for the set cannot be assumed to absent or present.                                                                                                                                                                                                                                                                                                                          |
 
-***MemberSelectionType*:** MemberSelectionType is an abstract base type
+**MemberSelectionType:** MemberSelectionType is an abstract base type
 which is used to provide a set of values for a referenced component.
 Implementations of this type will be based on a particular component
 type and refine the allowed values to reflect the types of values that
@@ -3294,11 +3632,15 @@ are possible for that type of component.
 
 Attributes:
 
+```text
 id, include?, removePrefix?, validFrom?, validTo?
+```
 
 Content:
 
-(Value+ \| TimeRange)?
+```text
+(Value+ | TimeRange)?
+```
 
 Attribute Documentation:
 
@@ -3328,17 +3670,23 @@ partial data keys.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *RegionType* (restriction)  
+```text
+AnnotableType (extension)  
+   RegionType (restriction)  
          DataKeyType
+```
 
 Attributes:
 
+```text
 include?, validFrom?, validTo?
+```
 
 Content:
 
-Annotations?, KeyValue\*, Component\*
+```text
+Annotations?, KeyValue*, Component*
+```
 
 Attribute Documentation:
 
@@ -3362,16 +3710,22 @@ single value can be provided for the dimension.
 
 Derivation:
 
-*MemberSelectionType* (restriction)  
+```text
+MemberSelectionType (restriction)  
    DataKeyValueType
+```
 
 Attributes:
 
+```text
 id, include?, removePrefix?
+```
 
 Content:
 
+```text
 Value
+```
 
 Attribute Documentation:
 
@@ -3400,16 +3754,22 @@ defined at the root of the report structure.
 
 Derivation:
 
-*MemberSelectionType* (restriction)  
+```text
+MemberSelectionType (restriction)  
    DataComponentValueSetType
+```
 
 Attributes:
 
+```text
 id, include?, removePrefix?
+```
 
 Content:
 
-(Value+ \| TimeRange)?
+```text
+(Value+ | TimeRange)?
+```
 
 Attribute Documentation:
 
@@ -3434,17 +3794,23 @@ base type for more details on how a region is defined.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *RegionType* (restriction)  
+```text
+AnnotableType (extension)  
+   RegionType (restriction)  
          CubeRegionType
+```
 
 Attributes:
 
+```text
 include?
+```
 
 Content:
 
-Annotations?, KeyValue\*, Component\*
+```text
+Annotations?, KeyValue*, Component*
+```
 
 Attribute Documentation:
 
@@ -3471,17 +3837,23 @@ how a region is defined.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *RegionType* (restriction)  
+```text
+AnnotableType (extension)  
+   RegionType (restriction)  
          MetadataTargetRegionType
+```
 
 Attributes:
 
+```text
 include?, validFrom?, validTo?
+```
 
 Content:
 
-Component\*
+```text
+Component*
+```
 
 Attribute Documentation:
 
@@ -3504,16 +3876,22 @@ represented as time, and time range can be specified.
 
 Derivation:
 
-*MemberSelectionType* (restriction)  
+```text
+MemberSelectionType (restriction)  
    CubeRegionKeyType
+```
 
 Attributes:
 
+```text
 id, include?, removePrefix?, validFrom?, validTo?
+```
 
 Content:
 
-(Value+ \| TimeRange)
+```text
+(Value+ | TimeRange)
+```
 
 Attribute Documentation:
 
@@ -3545,16 +3923,22 @@ defined at the root of the report structure.
 
 Derivation:
 
-*MemberSelectionType* (restriction)  
+```text
+MemberSelectionType (restriction)  
    ComponentValueSetType
+```
 
 Attributes:
 
+```text
 id, include?, removePrefix?
+```
 
 Content:
 
-(Value+ \| TimeRange)?
+```text
+(Value+ | TimeRange)?
+```
 
 Attribute Documentation:
 
@@ -3579,16 +3963,22 @@ metadata attribute.
 
 Derivation:
 
-*MemberSelectionType* (restriction)  
+```text
+MemberSelectionType (restriction)  
    MetadataAttributeValueSetType
+```
 
 Attributes:
 
+```text
 id, include?, removePrefix?
+```
 
 Content:
 
-(Value+ \| TimeRange)?
+```text
+(Value+ | TimeRange)?
+```
 
 Attribute Documentation:
 
@@ -3612,13 +4002,17 @@ set of the component for the region.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          SimpleComponentValueType
+```
 
 Attributes:
 
+```text
 cascadeValues?, xml:lang?, validFrom?, validTo?
+```
 
 Content:
 
@@ -3636,14 +4030,18 @@ but does not allow for a locale (xml:lang).
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          SimpleComponentValueType (restriction)  
                CubeKeyValueType
+```
 
 Attributes:
 
+```text
 cascadeValues?, validFrom?, validTo?
+```
 
 Content:
 
@@ -3660,14 +4058,18 @@ SimpleValueType, but does not allow for validity dates.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          SimpleComponentValueType (restriction)  
                DataComponentValueType
+```
 
 Attributes:
 
+```text
 cascadeValues?, xml:lang?
+```
 
 Content:
 
@@ -3684,10 +4086,12 @@ hierarchy, as keys are meant to describe a distinct full or partial key.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          SimpleComponentValueType (restriction)  
                SimpleKeyValueType
+```
 
 Content:
 
@@ -3698,11 +4102,15 @@ can specify their inclusion in regards to the range.
 
 Attributes:
 
+```text
 validFrom?, validTo?
+```
 
 Content:
 
-(BeforePeriod \| AfterPeriod \| (StartPeriod, EndPeriod))
+```text
+(BeforePeriod | AfterPeriod | (StartPeriod, EndPeriod))
+```
 
 Attribute Documentation:
 
@@ -3725,13 +4133,17 @@ indicates whether it is inclusive in a range.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    ObservationalTimePeriodType (extension)  
          TimePeriodRangeType
+```
 
 Attributes:
 
+```text
 isInclusive?
+```
 
 Content:
 
@@ -3741,30 +4153,36 @@ Attribute Documentation:
 |-----------------------------|------------|----------------------------------------------------------------------------------------------------------|
 | isInclusive (default: true) | xs:boolean | The isInclusive attribute, when true, indicates that the time period specified is included in the range. |
 
-***DataStructureBaseType*:** DataStructureBaseType describes base
+**DataStructureBaseType:** DataStructureBaseType describes base
 refinement of the StructureType for a data structure definition. A data
 structure definition is defined as a collection of metadata concepts,
 their structure and usage when used to collect or disseminate data.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureType* (restriction)  
-                                       *DataStructureBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureType (restriction)  
+                                       DataStructureBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, DataStructureComponents?
+```text
+Annotations?, Link*, Name+, Description*, DataStructureComponents?
+```
 
 Attribute Documentation:
 
@@ -3798,26 +4216,32 @@ collect or disseminate data.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureType* (restriction)  
-                                       *DataStructureBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureType (restriction)  
+                                       DataStructureBaseType
 (extension)  
                                              DataStructureType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, DataStructureComponents?,
+```text
+Annotations?, Link*, Name+, Description*, DataStructureComponents?,
 Metadata?
+```
 
 Attribute Documentation:
 
@@ -3845,19 +4269,23 @@ Element Documentation:
 | DataStructureCompone nts | DataStructureCompone ntsType    | DataStructureComponents defines the grouping of the sets of metadata concepts that have a defined structural role in the data structure definition. Note that for any component or group defined in a data structure definition, its id must be unique. This applies to the identifiers explicitly defined by the components as well as those inherited from the concept identity of a component. For example, if two dimensions take their identity from concepts with same identity (regardless of whether the concepts exist in different schemes) one of the dimensions must be provided a different explicit identifier. Although there are XML schema constraints to help enforce this, these only apply to explicitly assigned identifiers. Identifiers inherited from a concept from which a component takes its identity cannot be validated against this constraint. Therefore, systems processing data structure definitions will have to perform this check outside of the XML validation. There are also two reserved identifiers in a data structure definition; TIME_PERIOD, and REPORTING_YEAR_START_DAY. These identifiers may not be used outside of their respective defintions (TimeDimension and ReportingYearStartDay). This applies to both the explicit identifiers that can be assigned to the components or groups as well as an identifier inherited by a component from its concept identity. For example, if an ordinary dimension (i.e. not the time dimension) takes its concept identity from a concept with the identifier TIME_PERIOD, that dimension must provide a different explicit identifier. |
 | Metadata                 | MetadataStructureRef erenceType | A data structure definition may be related to a metadata structure definition in order to use its metadata attributes as part of the data. Note that the referenced metadata set cannot contain nested metadata attributes, as these are not supported in the data. By default all metadata attributes can be associated at any level of the data. However, a metadata attribute usage can be used to provide a specific attribute relationshp for a given metadata attribute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-***DataStructureComponentsBaseType*:** DataStructureComponentsBaseType
+**DataStructureComponentsBaseType:** DataStructureComponentsBaseType
 is an abstract base type the serves as the basis for the
 DataStructureComponentsType. This type is necessary to allow for valid
 substitutions of component lists.
 
 Derivation:
 
-*GroupingType* (restriction)  
-   *DataStructureComponentsBaseType*
+```text
+GroupingType (restriction)  
+   DataStructureComponentsBaseType
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 **DataStructureComponentsType:** DataStructureComponentsType describes
 the structure of the grouping to the sets of metadata concepts that have
@@ -3866,13 +4294,17 @@ at least one dimension must be defined.
 
 Derivation:
 
-*GroupingType* (restriction)  
-   *DataStructureComponentsBaseType* (extension)  
+```text
+GroupingType (restriction)  
+   DataStructureComponentsBaseType (extension)  
          DataStructureComponentsType
+```
 
 Content:
 
-DimensionList, Group\*, AttributeList?, MeasureList?
+```text
+DimensionList, Group*, AttributeList?, MeasureList?
+```
 
 Element Documentation:
 
@@ -3883,23 +4315,29 @@ Element Documentation:
 | AttributeList | AttributeListType | AttributeList describes the attribute descriptor for the data structure definition. It is a collection of metadata concepts that define the attributes of the data structure definition.                                                                                                                        |
 | MeasureList   | MeasureListType   | MeasureList describes the measure descriptor for a data structure.                                                                                                                                                                                                                                              |
 
-***AttributeListBaseType*:** AttributeListBaseType is an abstract base
+**AttributeListBaseType:** AttributeListBaseType is an abstract base
 type used as the basis for the AttributeListType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *AttributeListBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               AttributeListBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -3921,19 +4359,25 @@ descriptor for the data structure definition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *AttributeListBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               AttributeListBaseType (extension)  
                      AttributeListType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, (Attribute \| MetadataAttributeUsage)+
+```text
+Annotations?, Link*, (Attribute | MetadataAttributeUsage)+
+```
 
 Attribute Documentation:
 
@@ -3952,7 +4396,7 @@ Element Documentation:
 | Attribute               | AttributeType               | Attribute describes the definition of a data attribute, which is defined as a characteristic of an object or entity.                                                                                                                                                                                                                                                 |
 | MetadataAttributeUsa ge | MetadataAttributeUsa geType | MetadataAttributeUsage refines the details of how a metadata attribute from the metadata structure referenced from the data structure is used. By default, metadata attributes can be expressed at any level of the data. This allows an attribute relationship to be defined in order restrict the reporing of a metadata attribute to a specific part of the data. |
 
-***AttributeBaseType*:** AttributeBaseType is an abstract base type that
+**AttributeBaseType:** AttributeBaseType is an abstract base type that
 serves as the basis for the AttributeType. It restricts the text format
 base to a text format valid for data components (that does not allow for
 XHTML representation). The local representation is restricted to the
@@ -3961,19 +4405,25 @@ valid for a data attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *AttributeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     AttributeBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?
+```
 
 Attribute Documentation:
 
@@ -4009,21 +4459,27 @@ attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *AttributeBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     AttributeBaseType (extension)  
                            AttributeType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, usage?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?,
-ConceptRole\*, AttributeRelationship, MeasureRelationship?
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?,
+ConceptRole*, AttributeRelationship, MeasureRelationship?
+```
 
 Attribute Documentation:
 
@@ -4052,7 +4508,9 @@ data structure definition components.
 
 Content:
 
-(Dataflow \| Dimension+ \| Group \| Observation)
+```text
+(Dataflow | Dimension+ | Group | Observation)
+```
 
 Element Documentation:
 
@@ -4067,20 +4525,26 @@ Element Documentation:
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (restriction)  
          NestedIDType (restriction)  
                IDType (restriction)  
                      NCNameIDType (extension)  
                            OptionalLocalDimensionReferenceType
+```
 
 Attributes:
 
+```text
 optional?
+```
 
 Content:
 
+```text
 Attribute Documentation:
+```
 
 | **Name**                  | **Type**   | **Documentation** |
 |---------------------------|------------|-------------------|
@@ -4091,7 +4555,9 @@ description of an attributes relationship to one or more measures
 
 Content:
 
+```text
 Measure+
+```
 
 Element Documentation:
 
@@ -4099,7 +4565,7 @@ Element Documentation:
 |----------|--------------|-----------------------------------------------------------------------------|
 | Measure  | NCNameIDType | This is a reference to a measure defined in this data structure definition. |
 
-***MetadataAttributeUsageBaseType*:** MetadataAttributeUsageBaseType is
+**MetadataAttributeUsageBaseType:** MetadataAttributeUsageBaseType is
 the abstract base refinement of a metadata attribute usage. Since this
 is a usage of metadata attribute already defined in metadata structure,
 the typical id, concept identity, and representation are excluded in
@@ -4107,19 +4573,25 @@ place of a local refernce to the metadata attribute being used.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MetadataAttributeUsageBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MetadataAttributeUsageBaseType
+```
 
 Attributes:
 
+```text
 urn?, uri?
+```
 
 Content:
 
+```text
 Annotations?, Link?
+```
 
 Attribute Documentation:
 
@@ -4144,20 +4616,26 @@ to the data structure components.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MetadataAttributeUsageBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MetadataAttributeUsageBaseType (extension)  
                            MetadataAttributeUsageType
+```
 
 Attributes:
 
+```text
 urn?, uri?
+```
 
 Content:
 
+```text
 Annotations?, Link?, MetadataAttributeReference, AttributeRelationship
+```
 
 Attribute Documentation:
 
@@ -4175,23 +4653,29 @@ Element Documentation:
 | MetadataAttributeRef erence | NCNameIDType               | MetadataAttributeReference is a local reference to a metadata attribute defined in the metadata structure referenced by this data structure.                                                                                      |
 | AttributeRelationshi p      | AttributeRelationshi pType | AttributeRelationship defines the relationship between the referenced metadata attribute and the components of the data structure.                                                                                                |
 
-***DimensionListBaseType*:** DimensionListBaseType is an abstract base
+**DimensionListBaseType:** DimensionListBaseType is an abstract base
 type used as the basis for the DimensionListType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *DimensionListBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               DimensionListBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -4221,19 +4705,25 @@ dimension, as data can be organised in any fashion required.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *DimensionListBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               DimensionListBaseType (extension)  
                      DimensionListType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Dimension+, TimeDimension?
+```text
+Annotations?, Link*, Dimension+, TimeDimension?
+```
 
 Attribute Documentation:
 
@@ -4252,26 +4742,32 @@ Element Documentation:
 | Dimension     | DimensionType     | Dimension describes the structure of a dimension, which is defined as a statistical concept used (most probably together with other statistical concepts) to identify a statistical series, such as a time series, e.g. a statistical concept indicating certain economic activity or a geographical reference area. |
 | TimeDimension | TimeDimensionType | TimeDimension is a special dimension which designates the period in time in which the data identified by the full series key applies.                                                                                                                                                                                |
 
-***BaseDimensionBaseType*:** BaseDimensionBaseType is an abstract base
+**BaseDimensionBaseType:** BaseDimensionBaseType is an abstract base
 type that serves as the basis for any dimension. It restricts the text
 format base to a text format valid for data components (that does not
 allow for XHTML representation).
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *BaseDimensionBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     BaseDimensionBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?
+```
 
 Attribute Documentation:
 
@@ -4290,26 +4786,32 @@ Element Documentation:
 | ConceptIdentity     | ConceptReferenceType               | ConceptIdentity allows for the referencing of a concept in a concept scheme. The component takes its semantic from this concept, and if an id is not specified, it takes its identification as well. If a representation (LocalRepresentation) is not supplied, then the representation of the component is also inherited from the concept. Note that in the case of the component representation being inherited from the concept, the allowable representations for the component still apply. Therefore, if a component references a concept with a core representation that is not allowed for the concept, that representation must be locally overridden. For components which can specify a concept role, it is implied that the concept which is referenced also identifies a role for the component. |
 | LocalRepresentation | *DataStructureReprese ntationType* | LocalRepresentation references item schemes that may be used to create the representation of a component. The type of this must be refined such that a concrete item scheme reference is used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-***BaseDimensionType*:** BaseDimensionType is an abstract base type
+**BaseDimensionType:** BaseDimensionType is an abstract base type
 which defines the basic structure of all dimensions.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *BaseDimensionBaseType* (extension)  
-                           *BaseDimensionType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     BaseDimensionBaseType (extension)  
+                           BaseDimensionType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, position?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?,
-ConceptRole\*
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?,
+ConceptRole*
+```
 
 Attribute Documentation:
 
@@ -4345,22 +4847,28 @@ the referenced concept.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *BaseDimensionBaseType* (extension)  
-                           *BaseDimensionType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     BaseDimensionBaseType (extension)  
+                           BaseDimensionType (restriction)  
                                  DimensionType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, position?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?,
-ConceptRole\*
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?,
+ConceptRole*
+```
 
 Attribute Documentation:
 
@@ -4407,21 +4915,27 @@ a reporting year which begins January 1.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *BaseDimensionBaseType* (extension)  
-                           *BaseDimensionType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     BaseDimensionBaseType (extension)  
+                           BaseDimensionType (restriction)  
                                  TimeDimensionType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation
+```
 
 Attribute Documentation:
 
@@ -4440,23 +4954,29 @@ Element Documentation:
 | ConceptIdentity     | ConceptReferenceType             | ConceptIdentity allows for the referencing of a concept in a concept scheme. The component takes its semantic from this concept, and if an id is not specified, it takes its identification as well. If a representation (LocalRepresentation) is not supplied, then the representation of the component is also inherited from the concept. Note that in the case of the component representation being inherited from the concept, the allowable representations for the component still apply. Therefore, if a component references a concept with a core representation that is not allowed for the concept, that representation must be locally overridden. For components which can specify a concept role, it is implied that the concept which is referenced also identifies a role for the component. |
 | LocalRepresentation | TimeDimensionReprese ntationType | LocalRepresentation references item schemes that may be used to create the representation of a component. The type of this must be refined such that a concrete item scheme reference is used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-***GroupBaseType*:** GroupBaseType is an abstract base type that forms
+**GroupBaseType:** GroupBaseType is an abstract base type that forms
 the basis for the GroupType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *GroupBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               GroupBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
+```text
 Annotations?
+```
 
 Attribute Documentation:
 
@@ -4483,19 +5003,25 @@ identifiers.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
-               *GroupBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
+               GroupBaseType (extension)  
                      GroupType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
+```text
 Annotations?, GroupDimension+
+```
 
 Attribute Documentation:
 
@@ -4512,21 +5038,25 @@ Element Documentation:
 | Annotations    | AnnotationsType    | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                                                                                                                                                                                                                                                                                                                           |
 | GroupDimension | GroupDimensionType | GroupDimension is a component which contains only a reference to a dimension in the key descriptor (DimensionList). Although it is conventional to declare dimensions in the same order as they are declared in the ordered key, there is no requirement to do so - the ordering of the values of the key are taken from the order in which the dimensions are declared. Note that the id of a dimension may be inherited from its underlying concept - therefore this reference value may actually be the id of the concept. |
 
-***GroupDimensionBaseType*:** GroupDimensionBaseType is an abstract base
+**GroupDimensionBaseType:** GroupDimensionBaseType is an abstract base
 type which refines the base ComponentType in order to form the basis for
 the GroupDimensionType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *GroupDimensionBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     GroupDimensionBaseType
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 **GroupDimensionType:** GroupDimensionType defines a dimension component
 with a group key descriptor component list. Although technically a
@@ -4538,16 +5068,20 @@ inherited from the referenced dimension.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *GroupDimensionBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     GroupDimensionBaseType (extension)  
                            GroupDimensionType
+```
 
 Content:
 
+```text
 DimensionReference
+```
 
 Element Documentation:
 
@@ -4560,18 +5094,24 @@ measure descriptor for a data structure definition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
                MeasureListType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Measure+
+```text
+Annotations?, Link*, Measure+
+```
 
 Attribute Documentation:
 
@@ -4589,25 +5129,31 @@ Element Documentation:
 | Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
 | Measure     | MeasureType     | Measure defines the structure of a measure, which is the concept that is the value of the phenomenon to be measured in a data set.                                                                                                |
 
-***MeasureBaseType*:** MeasureBaseType is an abstract base type that
+**MeasureBaseType:** MeasureBaseType is an abstract base type that
 refines ComponentType to rerstrict the represenations to those which are
 applicable for a measure.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MeasureBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MeasureBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?
+```
 
 Attribute Documentation:
 
@@ -4632,21 +5178,27 @@ usage status and max occurs can be defined.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MeasureBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MeasureBaseType (extension)  
                            MeasureType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, usage?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?,
-ConceptRole\*
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?,
+ConceptRole*
+```
 
 Attribute Documentation:
 
@@ -4667,23 +5219,29 @@ Element Documentation:
 | LocalRepresentation | MeasureRepresentatio nType | LocalRepresentation references item schemes that may be used to create the representation of a component. The type of this must be refined such that a concrete item scheme reference is used.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ConceptRole         | ConceptReferenceType       | ConceptRole references concepts which define roles which this measure serves.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-***DataStructureRepresentationType*:** DataStructureRepresentationType
+**DataStructureRepresentationType:** DataStructureRepresentationType
 is an abstract base type which defines the allowable representations for
 any data structure definition component. The enumeration must be
 restricted to the proper type for item scheme for a given component.
 
 Derivation:
 
-*RepresentationType* (restriction)  
-   *DataStructureRepresentationType*
+```text
+RepresentationType (restriction)  
+   DataStructureRepresentationType
+```
 
 Attributes:
 
+```text
 maxOccurs?
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Attribute Documentation:
 
@@ -4706,16 +5264,22 @@ enumerated value.
 
 Derivation:
 
-*RepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
    AttributeRepresentationType
+```
 
 Attributes:
 
+```text
 minOccurs?, maxOccurs?
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Attribute Documentation:
 
@@ -4738,16 +5302,22 @@ multi-lingual values), a simple value, or an enumerated value.
 
 Derivation:
 
-*RepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
    MeasureRepresentationType
+```
 
 Attributes:
 
+```text
 minOccurs?, maxOccurs?
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Attribute Documentation:
 
@@ -4770,13 +5340,17 @@ non-time dimension data structure definition component.
 
 Derivation:
 
-*RepresentationType* (restriction)  
-   *DataStructureRepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
+   DataStructureRepresentationType (restriction)  
          SimpleDataStructureRepresentationType
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Element Documentation:
 
@@ -4792,14 +5366,18 @@ not allowed.
 
 Derivation:
 
-*RepresentationType* (restriction)  
-   *DataStructureRepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
+   DataStructureRepresentationType (restriction)  
          SimpleDataStructureRepresentationType (restriction)  
                TimeDimensionRepresentationType
+```
 
 Content:
 
+```text
 TextFormat
+```
 
 Element Documentation:
 
@@ -4814,23 +5392,29 @@ then a reference to a data structure must be provided.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureUsageType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureUsageType (restriction)  
                                        DataflowType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Structure?
+```text
+Annotations?, Link*, Name+, Description*, Structure?
+```
 
 Attribute Documentation:
 
@@ -4857,28 +5441,34 @@ Element Documentation:
 | Description | TextType                    | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | Structure   | DataStructureReferen ceType | Structure provides a reference to the data structure definition which defines the structure of all data for this flow.                                                                                                            |
 
-***HierarchyBaseType*:** HierarchyBaseType is an abstract base class
+**HierarchyBaseType:** HierarchyBaseType is an abstract base class
 that is the basis for the HierarchyType. It requires that a name be
 supplied.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *HierarchyBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 HierarchyBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -4911,23 +5501,29 @@ relationships with other codes in the list.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *HierarchyBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 HierarchyBaseType (extension)  
                                        HierarchyType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, hasFormalLevels
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Level?, HierarchicalCode+
+```text
+Annotations?, Link*, Name+, Description*, Level?, HierarchicalCode+
+```
 
 Attribute Documentation:
 
@@ -4956,23 +5552,29 @@ Element Documentation:
 | Level            | LevelType            | In a formally leveled hierarchy, Level describes a group of codes which are characterised by homogeneous coding, and where the parent of each code in the group is at the same higher level of the hierarchy. In a value based hierarchy Level describes information about the codes at the specified nesting level. This structure is recursive to indicate the hierarchy of the levels. |
 | HierarchicalCode | HierarchicalCodeType | HierarchicalCode is used to assemble the codes from the codelist(s) referenced into a hierarchy.                                                                                                                                                                                                                                                                                          |
 
-***HierarchicalCodeBaseType*:** HierarchicalCodeBaseType is an abstract
+**HierarchicalCodeBaseType:** HierarchicalCodeBaseType is an abstract
 base type the creates the basis for the HierarchicalCodeType. It removes
 the urn and uri.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *HierarchicalCodeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         HierarchicalCodeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -5000,18 +5602,24 @@ not be a leveled one.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *HierarchicalCodeBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         HierarchicalCodeBaseType (extension)  
                HierarchicalCodeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?
+```
 
 Content:
 
-Annotations?, Link\*, Code, HierarchicalCode\*, Level?
+```text
+Annotations?, Link*, Code, HierarchicalCode*, Level?
+```
 
 Attribute Documentation:
 
@@ -5033,23 +5641,29 @@ Element Documentation:
 | HierarchicalCode | HierarchicalCodeType | HierarchicalCode is used to nest referenced codes into a value based hierarchy.                                                                                                                                                                                                                                                                                                                                                              |
 | Level            | IDType               | Level references a formal level defined within the hierarchy which defines this hierarchical code. This is only necessary if the nesting depth of the hierarchical code does not correspond to the nesting depth of the level to which it belongs (i.e. the hieararchical code is to skip down a level). Otherwise, the code is assumed to exist at the level in which the nesting depth of the level matches the nesting depth of the code. |
 
-***LevelBaseType*:** LevelBaseType is an abstract base type that makes
+**LevelBaseType:** LevelBaseType is an abstract base type that makes
 up the basis for the LevelType. It requires a name and id.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *LevelBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               LevelBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -5075,19 +5689,25 @@ the same higher level of the hierarchy.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *LevelBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               LevelBaseType (extension)  
                      LevelType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, CodingFormat?, Level?
+```text
+Annotations?, Link*, Name+, Description*, CodingFormat?, Level?
+```
 
 Attribute Documentation:
 
@@ -5112,19 +5732,25 @@ Element Documentation:
 
 Derivation:
 
+```text
 TextFormatType (restriction)  
    BasicComponentTextFormatType (restriction)  
          SimpleComponentTextFormatType (restriction)  
                CodingTextFormatType
+```
 
 Attributes:
 
+```text
 textType?, isSequence?, interval?, startValue?, endValue?, minLength?,
 maxLength?, minValue?, maxValue?, pattern?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
@@ -5141,28 +5767,34 @@ Attribute Documentation:
 | maxValue   | xs:positiveInteger | The maxValue attribute is used for inclusive and exclusive ranges, indicating what the upper bound of the range is. If this is used with an inclusive range, a valid value will be less than or equal to the value specified here. If the inclusive and exclusive data type is not specified (e.g. this facet is used with an integer data type), the value is assumed to be inclusive.                               |
 | pattern    | xs:string          | The pattern attribute holds any regular expression permitted in the similar facet in W3C XML Schema.                                                                                                                                                                                                                                                                                                                  |
 
-***HierarchyAssociationBaseType*:** HierarchyAssociationBaseType defines
+**HierarchyAssociationBaseType:** HierarchyAssociationBaseType defines
 the base refinement of the HierarchyAssociationType. Its purpose is to
 retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *HierarchyAssociationBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 HierarchyAssociationBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -5195,23 +5827,29 @@ within the context of a dataflow).
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
                                  HierarchyAssociationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, LinkedHierarchy,
+```text
+Annotations?, Link*, Name+, Description*, LinkedHierarchy,
 LinkedObject, ContextObject?
+```
 
 Attribute Documentation:
 
@@ -5240,29 +5878,35 @@ Element Documentation:
 | LinkedObject    | UrnReferenceType        | Associates the Identifiable Artefact that needs the Hierarchy.                                                                                                                                                                    |
 | ContextObject   | UrnReferenceType        | The context within which the association is performed.                                                                                                                                                                            |
 
-***MetadataflowBaseType*:** MetadataflowBaseType is an abstract base
+**MetadataflowBaseType:** MetadataflowBaseType is an abstract base
 type that serves as the basis for the MetadataflowType. It restricts the
 structure to reference a metadata structure definition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureUsageType* (restriction)  
-                                       *MetadataflowBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureUsageType (restriction)  
+                                       MetadataflowBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Structure?
+```text
+Annotations?, Link*, Name+, Description*, Structure?
+```
 
 Attribute Documentation:
 
@@ -5297,25 +5941,31 @@ structure definition must be provided
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureUsageType* (restriction)  
-                                       *MetadataflowBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureUsageType (restriction)  
+                                       MetadataflowBaseType
 (extension)  
                                              MetadataflowType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Structure?, Target+
+```text
+Annotations?, Link*, Name+, Description*, Structure?, Target+
+```
 
 Attribute Documentation:
 
@@ -5350,23 +6000,29 @@ disseminate reference metadata.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *StructureType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 StructureType (restriction)  
                                        MetadataStructureType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, MetadataStructureComponents?
+```text
+Annotations?, Link*, Name+, Description*, MetadataStructureComponents?
+```
 
 Attribute Documentation:
 
@@ -5399,12 +6055,16 @@ the basis for the MetadataStructureComponentsType.
 
 Derivation:
 
-*GroupingType* (restriction)  
+```text
+GroupingType (restriction)  
    MetadataStructureComponentsBaseType
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 **MetadataStructureComponentsType:** MetadataStructureComponentsType
 describes the structure of the grouping of the sets of the components
@@ -5412,13 +6072,17 @@ that make up the metadata structure definition.
 
 Derivation:
 
-*GroupingType* (restriction)  
+```text
+GroupingType (restriction)  
    MetadataStructureComponentsBaseType (extension)  
          MetadataStructureComponentsType
+```
 
 Content:
 
+```text
 MetadataAttributeList
+```
 
 Element Documentation:
 
@@ -5432,18 +6096,24 @@ attributes that can be defined as a hierarchy.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *ComponentListType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         ComponentListType (restriction)  
                MetadataAttributeListType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, MetadataAttribute+
+```text
+Annotations?, Link*, MetadataAttribute+
+```
 
 Attribute Documentation:
 
@@ -5461,25 +6131,31 @@ Element Documentation:
 | Link              | LinkType               | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
 | MetadataAttribute | MetadataAttributeTyp e | MetadataAttribute defines the a metadata attribute, which is the value of an attribute, such as the instance of a coded or uncoded attribute in a metadata structure definition.                                                  |
 
-***MetadataAttributeBaseType*:** MetadataAttributeBaseType is an
+**MetadataAttributeBaseType:** MetadataAttributeBaseType is an
 abstract base type the serves as the basis for the
 MetadataAttributeType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MetadataAttributeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MetadataAttributeBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?
+```
 
 Attribute Documentation:
 
@@ -5517,21 +6193,27 @@ must be unique across the entire metadata structure definition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *ComponentBaseType* (extension)  
-               *ComponentType* (restriction)  
-                     *MetadataAttributeBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         ComponentBaseType (extension)  
+               ComponentType (restriction)  
+                     MetadataAttributeBaseType (extension)  
                            MetadataAttributeType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, minOccurs?, maxOccurs?, isPresentational?
+```
 
 Content:
 
-Annotations?, Link\*, ConceptIdentity, LocalRepresentation?,
-MetadataAttribute\*
+```text
+Annotations?, Link*, ConceptIdentity, LocalRepresentation?,
+MetadataAttribute*
+```
 
 Attribute Documentation:
 
@@ -5560,12 +6242,16 @@ representations of a metadata attribute.
 
 Derivation:
 
-*RepresentationType* (restriction)  
+```text
+RepresentationType (restriction)  
    MetadataAttributeRepresentationType
+```
 
 Content:
 
-(TextFormat \| (Enumeration, EnumerationFormat?))
+```text
+(TextFormat | (Enumeration, EnumerationFormat?))
+```
 
 Element Documentation:
 
@@ -5575,28 +6261,34 @@ Element Documentation:
 | Enumeration       | CodelistReferenceTyp e        | Enumeration references an item scheme that enumerates the allowable values for this representation.              |
 | EnumerationFormat | CodedTextFormatType           | EnumerationFormat describes the facets of the item scheme enumeration. This is for the most part, informational. |
 
-***OrganisationSchemeBaseType*:** OrganisationSchemeBaseType is an
+**OrganisationSchemeBaseType:** OrganisationSchemeBaseType is an
 abstract base type for any organisation scheme.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -5622,30 +6314,36 @@ Element Documentation:
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***OrganisationSchemeType*:** OrganisationSchemeType describes the
+**OrganisationSchemeType:** OrganisationSchemeType describes the
 structure of an organisation scheme.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *Organisation\**
+```text
+Annotations?, Link*, Name+, Description*, *Organisation**
+```
 
 Attribute Documentation:
 
@@ -5672,25 +6370,31 @@ Element Documentation:
 | Description    | TextType           | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | *Organisation* | *OrganisationType* | Organisation is an abstract substitution head for a generic organisation.                                                                                                                                                         |
 
-***BaseOrganisationType*:** BaseOrganisationType is an abstract base
+**BaseOrganisationType:** BaseOrganisationType is an abstract base
 type the forms the basis for the OrganisationType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?
+```text
+Annotations?, Link*, Name+, Description*, Parent?
+```
 
 Attribute Documentation:
 
@@ -5710,28 +6414,34 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                            |
 | Parent      | IDType          | If the particular organisation scheme allows, an organisation may reference a parent organisation defined in the same scheme. This does not affect the identification of the organisation, but rather only serves to state the relationship. |
 
-***OrganisationType*:** OrganisationType in an abstract type which
+**OrganisationType:** OrganisationType in an abstract type which
 describes the structure of the details of an organisation. In addition
 to the basic organisation identification, contact details can be
 provided.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Parent?, Contact*
+```
 
 Attribute Documentation:
 
@@ -5763,27 +6473,33 @@ agency in a scheme is the agency which defines the scheme.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
 (restriction)  
                                                    AgencySchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Agency\*
+```text
+Annotations?, Link*, Name+, Description*, Agency*
+```
 
 Attribute Documentation:
 
@@ -5820,27 +6536,33 @@ with another organisation in the scheme.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
 (restriction)  
                                                    DataConsumerSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, DataConsumer\*
+```text
+Annotations?, Link*, Name+, Description*, DataConsumer*
+```
 
 Attribute Documentation:
 
@@ -5877,27 +6599,33 @@ with another organisation in the scheme
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
 (restriction)  
                                                    DataProviderSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, DataProvider\*
+```text
+Annotations?, Link*, Name+, Description*, DataProvider*
+```
 
 Attribute Documentation:
 
@@ -5934,27 +6662,33 @@ relationship with another organisation in the scheme
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
 (restriction)  
                                                    MetadataProviderSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, MetadataProvider\*
+```text
+Annotations?, Link*, Name+, Description*, MetadataProvider*
+```
 
 Attribute Documentation:
 
@@ -5989,27 +6723,33 @@ organisation schemes as well.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
-                                       *OrganisationSchemeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
+                                       OrganisationSchemeBaseType
 (extension)  
-                                             *OrganisationSchemeType*
+                                             OrganisationSchemeType
 (restriction)  
                                                    OrganisationUnitSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, validFrom?, validTo?, agencyID, isExternalReference?,
 serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, OrganisationUnit\*
+```text
+Annotations?, Link*, Name+, Description*, OrganisationUnit*
+```
 
 Attribute Documentation:
 
@@ -6042,22 +6782,28 @@ the agency role the organisation is serving.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType (restriction)  
                                        AgencyType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Contact*
+```
 
 Attribute Documentation:
 
@@ -6083,22 +6829,28 @@ specific to the data consumer role the organisation is serving.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType (restriction)  
                                        DataConsumerType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Contact*
+```
 
 Attribute Documentation:
 
@@ -6124,22 +6876,28 @@ specific to the data provider role the organisation is serving.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType (restriction)  
                                        DataProviderType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Contact*
+```
 
 Attribute Documentation:
 
@@ -6166,22 +6924,28 @@ is serving.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType (restriction)  
                                        MetadataProviderType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Contact*
+```
 
 Attribute Documentation:
 
@@ -6209,22 +6973,28 @@ organisation.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *BaseOrganisationType* (extension)  
-                                 *OrganisationType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           BaseOrganisationType (extension)  
+                                 OrganisationType (restriction)  
                                        OrganisationUnitType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Parent?, Contact\*
+```text
+Annotations?, Link*, Name+, Description*, Parent?, Contact*
+```
 
 Attribute Documentation:
 
@@ -6250,12 +7020,16 @@ details.
 
 Attributes:
 
+```text
 id?
+```
 
 Content:
 
-Name\*, Department\*, Role\*, (Telephone \| Fax \| X400 \| URI \|
-Email)\*
+```text
+Name*, Department*, Role*, (Telephone | Fax | X400 | URI |
+Email)*
+```
 
 Attribute Documentation:
 
@@ -6276,28 +7050,34 @@ Element Documentation:
 | URI        | xs:anyURI | URI holds an information URL for the contact person.                                                                         |
 | Email      | xs:string | Email holds the email address for the contact person.                                                                        |
 
-***ProvisionAgreementBaseType*:** ProvisionAgreementBaseType defines the
+**ProvisionAgreementBaseType:** ProvisionAgreementBaseType defines the
 base refinement of the ProvisionAgreementType. Its purpose is to retrict
 the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ProvisionAgreementBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ProvisionAgreementBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -6331,24 +7111,30 @@ metadata is registered against this provision agreement are supplied.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ProvisionAgreementBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ProvisionAgreementBaseType
 (extension)  
                                        ProvisionAgreementType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Dataflow, DataProvider
+```text
+Annotations?, Link*, Name+, Description*, Dataflow, DataProvider
+```
 
 Attribute Documentation:
 
@@ -6376,29 +7162,35 @@ Element Documentation:
 | Dataflow     | DataflowReferenceTyp e     | Dataflow provides a reference to a pre-existing dataflow in the registry. The reference is provided via a URN and/or a full set of reference fields.                                                                              |
 | DataProvider | DataProviderReferenc eType | DataProvider provides a reference to a pre-existing data provider in the registry. The reference is provided via a URN and/or a full set of reference fields.                                                                     |
 
-***MetadataProvisionAgreementBaseType*:**
+**MetadataProvisionAgreementBaseType:**
 MetadataProvisionAgreementBaseType defines the base refinement of the
 MetadataProvisionAgreementType. Its purpose is to retrict the urn
 attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *MetadataProvisionAgreementBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 MetadataProvisionAgreementBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -6433,25 +7225,31 @@ supplied.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *MetadataProvisionAgreementBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 MetadataProvisionAgreementBaseType
 (extension)  
                                        MetadataProvisionAgreementType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Metadataflow,
-MetadataProvider, Target\*
+```text
+Annotations?, Link*, Name+, Description*, Metadataflow,
+MetadataProvider, Target*
+```
 
 Attribute Documentation:
 
@@ -6480,27 +7278,33 @@ Element Documentation:
 | MetadataProvider | MetadataProviderRefe renceType | MetadataProvider provides a reference to a pre-existing metadata provider in the registry. The reference is provided via a URN and/or a full set of reference fields.                                                             |
 | Target           | WildcardUrnType                | References identifiable structures to which the refernece metadata described by the metadata structure used by the metadaflow should be restricted to. These references may include wildcards for parts of the reference.         |
 
-***ProcessBaseType*:** ProcessBaseType defines the base refinement of
+**ProcessBaseType:** ProcessBaseType defines the base refinement of
 the ProcessType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ProcessBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ProcessBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -6534,23 +7338,29 @@ unless a transition dictates another step should occur.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ProcessBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ProcessBaseType (extension)  
                                        ProcessType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ProcessStep\*
+```text
+Annotations?, Link*, Name+, Description*, ProcessStep*
+```
 
 Attribute Documentation:
 
@@ -6577,23 +7387,29 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | ProcessStep | ProcessStepType | ProcessStep defines a process step, which is a specific operation, performed on data in order to validate or to derive new information according to a given set of rules.                                                         |
 
-***ProcessStepBaseType*:** ProcessStepBaseType is an abstract base type
+**ProcessStepBaseType:** ProcessStepBaseType is an abstract base type
 used as the basis for the ProcessStepType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ProcessStepBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ProcessStepBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -6619,20 +7435,26 @@ should be referenced in a transition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ProcessStepBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ProcessStepBaseType (extension)  
                      ProcessStepType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Input\*, Output\*,
-Computation?, Transition\*, ProcessStep\*
+```text
+Annotations?, Link*, Name+, Description*, Input*, Output*,
+Computation?, Transition*, ProcessStep*
+```
 
 Attribute Documentation:
 
@@ -6656,22 +7478,28 @@ Element Documentation:
 | Transition  | TransitionType  | Transition describes the next process steps. Each transition in a process step should be evaluated, allowing for multiple process step branches from a single process step.                                                       |
 | ProcessStep | ProcessStepType | ProcessStep defines a process step, which is a specific operation, performed on data in order to validate or to derive new information according to a given set of rules.                                                         |
 
-***TransitionBaseType*:** TransitionBaseType defines the base refinement
+**TransitionBaseType:** TransitionBaseType defines the base refinement
 of the TransitionType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *TransitionBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         TransitionBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -6695,18 +7523,24 @@ data.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *TransitionBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         TransitionBaseType (extension)  
                TransitionType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, localID?
+```
 
 Content:
 
-Annotations?, Link\*, TargetStep, Condition+
+```text
+Annotations?, Link*, TargetStep, Condition+
+```
 
 Attribute Documentation:
 
@@ -6731,16 +7565,22 @@ process.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    ComputationType
+```
 
 Attributes:
 
+```text
 localID?, softwarePackage?, softwareLanguage?, softwareVersion?
+```
 
 Content:
 
+```text
 Annotations?, Description+
+```
 
 Attribute Documentation:
 
@@ -6764,16 +7604,22 @@ is the input or output.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    InputOutputType
+```
 
 Attributes:
 
+```text
 localID?
+```
 
 Content:
 
+```text
 Annotations?, ObjectReference
+```
 
 Attribute Documentation:
 
@@ -6795,23 +7641,29 @@ independent structure or structure usage description.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
                                        ReportingTaxonomyType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ReportingCategory\*
+```text
+Annotations?, Link*, Name+, Description*, ReportingCategory*
+```
 
 Attribute Documentation:
 
@@ -6839,26 +7691,32 @@ Element Documentation:
 | Description       | TextType               | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | ReportingCategory | ReportingCategoryTyp e | ReportingCateogry defines a reporting category, which is used to group structure usages into useful sub-packages.                                                                                                                 |
 
-***ReportingCategoryBaseType*:** ReportingCategoryBaseType is an
+**ReportingCategoryBaseType:** ReportingCategoryBaseType is an
 abstract base type that serves as the basis for the
 ReportingCategoryType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *ReportingCategoryBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           ReportingCategoryBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ReportingCategory\*
+```text
+Annotations?, Link*, Name+, Description*, ReportingCategory*
+```
 
 Attribute Documentation:
 
@@ -6885,22 +7743,28 @@ category definition.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *ReportingCategoryBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           ReportingCategoryBaseType (extension)  
                                  ReportingCategoryType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ReportingCategory\*,
-(StructuralMetadata\* \| ProvisioningMetadata\*)
+```text
+Annotations?, Link*, Name+, Description*, ReportingCategory*,
+(StructuralMetadata* | ProvisioningMetadata*)
+```
 
 Attribute Documentation:
 
@@ -6922,27 +7786,33 @@ Element Documentation:
 | StructuralMetadata   | StructureReferenceTy pe      | StructuralMetadata provides a reference for data structure definition and metadata structure definition references which are grouped in the reporting category. It is assumed that all structural metadata objects referenced from a category will be of the same type. |
 | ProvisioningMetadata | StructureUsageRefere nceType | ProvisioningMetadata provides a reference for dataflow and metadataflow references which are grouped in the reporting category. It is assumed that all provisioning metadata objects referenced from a category will be of the same type.                               |
 
-***ItemSchemeMapBaseType*:** ItemSchemeMapBaseType is an abstract base
+**ItemSchemeMapBaseType:** ItemSchemeMapBaseType is an abstract base
 type which forms the basis for the ItemSchemeMapType.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -6968,29 +7838,35 @@ Element Documentation:
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***ItemSchemeMapType*:** ItemSchemeMapType is an abstract base type
+**ItemSchemeMapType:** ItemSchemeMapType is an abstract base type
 which forms the basis for mapping items between item schemes of the same
 type.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType* (extension)  
-                                       *ItemSchemeMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType (extension)  
+                                       ItemSchemeMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, ItemMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, ItemMap*
+```
 
 Attribute Documentation:
 
@@ -7025,25 +7901,31 @@ in different organisation schemes.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType* (extension)  
-                                       *ItemSchemeMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType (extension)  
+                                       ItemSchemeMapType
 (restriction)  
                                              OrganisationSchemeMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, ItemMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, ItemMap*
+```
 
 Attribute Documentation:
 
@@ -7078,25 +7960,31 @@ category schemes.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType* (extension)  
-                                       *ItemSchemeMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType (extension)  
+                                       ItemSchemeMapType
 (restriction)  
                                              CategorySchemeMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, ItemMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, ItemMap*
+```
 
 Attribute Documentation:
 
@@ -7131,25 +8019,31 @@ concept schemes.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType* (extension)  
-                                       *ItemSchemeMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType (extension)  
+                                       ItemSchemeMapType
 (restriction)  
                                              ConceptSchemeMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, ItemMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, ItemMap*
+```
 
 Attribute Documentation:
 
@@ -7184,25 +8078,31 @@ categories in different reporting taxonomies.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *ItemSchemeMapBaseType* (extension)  
-                                       *ItemSchemeMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 ItemSchemeMapBaseType (extension)  
+                                       ItemSchemeMapType
 (restriction)  
                                              ReportingTaxonomyMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, ItemMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, ItemMap*
+```
 
 Attribute Documentation:
 
@@ -7231,28 +8131,34 @@ Element Documentation:
 | Target      | ReportingTaxonomyRef erenceType | Target provides a reference to the item scheme which items are mapped to.                                                                                                                                                         |
 | ItemMap     | SingleValueMappingTy pe         |                                                                                                                                                                                                                                   |
 
-***StructureMapBaseType*:** StructureMapBaseType defines the base
+**StructureMapBaseType:** StructureMapBaseType defines the base
 refinement of the StructureMapType. Its purpose is to retrict the urn
 attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *StructureMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 StructureMapBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -7291,25 +8197,31 @@ data structure A to C.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *StructureMapBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 StructureMapBaseType (extension)  
                                        StructureMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Source, Target, EpochMap\*,
-DatePatternMap\*, FrequencyFormatMapping\*, ComponentMap\*,
-FixedValueMap\*
+```text
+Annotations?, Link*, Name+, Description*, Source, Target, EpochMap*,
+DatePatternMap*, FrequencyFormatMapping*, ComponentMap*,
+FixedValueMap*
+```
 
 Attribute Documentation:
 
@@ -7347,12 +8259,16 @@ providing a fixed value for a source or target component.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    FixedValueMapType
+```
 
 Content:
 
-Annotations?, (Source \| Target), Value\*
+```text
+Annotations?, (Source | Target), Value*
+```
 
 Element Documentation:
 
@@ -7369,12 +8285,16 @@ structure.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    ComponentMapType
+```
 
 Content:
 
+```text
 Annotations?, Source+, Target+, RepresentationMap?
+```
 
 Element Documentation:
 
@@ -7385,23 +8305,29 @@ Element Documentation:
 | Target            | IDType                          |                                                                                                                                                                                     |
 | RepresentationMap | RepresentationMapRef erenceType |                                                                                                                                                                                     |
 
-***FrequencyFormatMappingBaseType*:** FrequencyFormatMappingBaseType
+**FrequencyFormatMappingBaseType:** FrequencyFormatMappingBaseType
 defines the base refinement of the FrequencyFormatMappingType. Its
 purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *FrequencyFormatMappingBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         FrequencyFormatMappingBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*
+```text
+Annotations?, Link*
+```
 
 Attribute Documentation:
 
@@ -7422,18 +8348,24 @@ Element Documentation:
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (restriction)  
-         *FrequencyFormatMappingBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (restriction)  
+         FrequencyFormatMappingBaseType (extension)  
                FrequencyFormatMappingType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, FrequencyId, DatePattern
+```text
+Annotations?, Link*, FrequencyId, DatePattern
+```
 
 Attribute Documentation:
 
@@ -7452,22 +8384,28 @@ Element Documentation:
 | FrequencyId | IDType          |                                                                                                                                                                                                                                   |
 | DatePattern | xs:string       |                                                                                                                                                                                                                                   |
 
-***DateMapType*:**
+**DateMapType:**
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *DateMapType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         DateMapType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, resolvePeriod?
+```
 
 Content:
 
-Annotations?, Link\*, (Source, Target)+, ( (FrequencyDimension,
-MappedFrequencies\*) \| TargetFrequencyID)
+```text
+Annotations?, Link*, (Source, Target)+, ( (FrequencyDimension,
+MappedFrequencies*) | TargetFrequencyID)
+```
 
 Attribute Documentation:
 
@@ -7490,24 +8428,30 @@ Element Documentation:
 | MappedFrequencies  | IDType          |                                                                                                                                                                                                                                   |
 | TargetFrequencyID  | IDType          |                                                                                                                                                                                                                                   |
 
-***EpochMapBaseType*:** EpochMapBaseType defines the base refinement of
+**EpochMapBaseType:** EpochMapBaseType defines the base refinement of
 the EpochMapType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *DateMapType* (restriction)  
-               *EpochMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         DateMapType (restriction)  
+               EpochMapBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, resolvePeriod?
+```
 
 Content:
 
-Annotations?, Link\*, (Source, Target)+, ( (FrequencyDimension,
-MappedFrequencies\*) \| TargetFrequencyID)
+```text
+Annotations?, Link*, (Source, Target)+, ( (FrequencyDimension,
+MappedFrequencies*) | TargetFrequencyID)
+```
 
 Attribute Documentation:
 
@@ -7534,20 +8478,26 @@ Element Documentation:
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *DateMapType* (restriction)  
-               *EpochMapBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         DateMapType (restriction)  
+               EpochMapBaseType (extension)  
                      EpochMapType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, resolvePeriod?, basePeriod, epochPeriod
+```
 
 Content:
 
-Annotations?, Link\*, (Source, Target)+, ( (FrequencyDimension,
-MappedFrequencies\*) \| TargetFrequencyID)
+```text
+Annotations?, Link*, (Source, Target)+, ( (FrequencyDimension,
+MappedFrequencies*) | TargetFrequencyID)
+```
 
 Attribute Documentation:
 
@@ -7572,25 +8522,31 @@ Element Documentation:
 | MappedFrequencies  | IDType          |                                                                                                                                                                                                                                   |
 | TargetFrequencyID  | IDType          |                                                                                                                                                                                                                                   |
 
-***DatePatternMapBaseType*:** DatePatternMapBaseType defines the base
+**DatePatternMapBaseType:** DatePatternMapBaseType defines the base
 refinement of the DatePatternMapType. Its purpose is to retrict the urn
 attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *DateMapType* (restriction)  
-               *DatePatternMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         DateMapType (restriction)  
+               DatePatternMapBaseType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, resolvePeriod?
+```
 
 Content:
 
-Annotations?, Link\*, (Source, Target)+, ( (FrequencyDimension,
-MappedFrequencies\*) \| TargetFrequencyID)
+```text
+Annotations?, Link*, (Source, Target)+, ( (FrequencyDimension,
+MappedFrequencies*) | TargetFrequencyID)
+```
 
 Attribute Documentation:
 
@@ -7617,20 +8573,26 @@ Element Documentation:
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *DateMapType* (restriction)  
-               *DatePatternMapBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         DateMapType (restriction)  
+               DatePatternMapBaseType (extension)  
                      DatePatternMapType
+```
 
 Attributes:
 
+```text
 id?, urn?, uri?, resolvePeriod?, sourcePattern, locale
+```
 
 Content:
 
-Annotations?, Link\*, (Source, Target)+, ( (FrequencyDimension,
-MappedFrequencies\*) \| TargetFrequencyID)
+```text
+Annotations?, Link*, (Source, Target)+, ( (FrequencyDimension,
+MappedFrequencies*) | TargetFrequencyID)
+```
 
 Attribute Documentation:
 
@@ -7655,28 +8617,34 @@ Element Documentation:
 | MappedFrequencies  | IDType          |                                                                                                                                                                                                                                   |
 | TargetFrequencyID  | IDType          |                                                                                                                                                                                                                                   |
 
-***RepresentationMapBaseType*:** RepresentationMapBaseType defines the
+**RepresentationMapBaseType:** RepresentationMapBaseType defines the
 base refinement of the RepresentationMapType. Its purpose is to retrict
 the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *RepresentationMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 RepresentationMapBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -7706,26 +8674,32 @@ Element Documentation:
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *RepresentationMapBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 RepresentationMapBaseType
 (extension)  
                                        RepresentationMapType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (SourceCodelist \|
-SourceDataType)+, (TargetCodelist \| TargetDataType)+,
-RepresentationMapping\*
+```text
+Annotations?, Link*, Name+, Description*, (SourceCodelist |
+SourceDataType)+, (TargetCodelist | TargetDataType)+,
+RepresentationMapping*
+```
 
 Attribute Documentation:
 
@@ -7761,16 +8735,22 @@ with a single source and optional target.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    SingleValueMappingType
+```
 
 Attributes:
 
+```text
 validFrom?, validTo?
+```
 
 Content:
 
+```text
 Annotations?, SourceValue, TargetValue?
+```
 
 Attribute Documentation:
 
@@ -7792,16 +8772,22 @@ sources to multiple targets.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    ValueMappingType
+```
 
 Attributes:
 
+```text
 validFrom?, validTo?
+```
 
 Content:
 
-Annotations?, SourceValue+, TargetValue\*
+```text
+Annotations?, SourceValue+, TargetValue*
+```
 
 Attribute Documentation:
 
@@ -7822,13 +8808,17 @@ Element Documentation:
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:string (extension)  
          MappedValueType
+```
 
 Attributes:
 
+```text
 isRegEx?, startIndex?, endIndex?
+```
 
 Content:
 
@@ -7840,28 +8830,34 @@ Attribute Documentation:
 | startIndex | xs:int     |                   |
 | endIndex   | xs:int     |                   |
 
-***VtlDefinitionSchemeType*:** VtlDefinitionSchemeType is an abstract
+**VtlDefinitionSchemeType:** VtlDefinitionSchemeType is an abstract
 extension of the ItemSchemeType for VTL schemes.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, *Item\**
+```text
+Annotations?, Link*, Name+, Description*, *Item**
+```
 
 Attribute Documentation:
 
@@ -7890,31 +8886,37 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | *Item*      | *ItemType*      | Item is an abstract element that serves as a substitution head for all items in an item scheme, including those items nested within other items. Concrete instances of this must use a concrete instance of ItemType.             |
 
-***TransformationSchemeBaseType*:** TransformationSchemeBaseType is an
+**TransformationSchemeBaseType:** TransformationSchemeBaseType is an
 abstract base type for the TransformationSchemeType. It restricts the
 item types to be only transformations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *TransformationSchemeBaseType*
+                                             TransformationSchemeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Transformation\*
+```text
+Annotations?, Link*, Name+, Description*, Transformation*
+```
 
 Attribute Documentation:
 
@@ -7951,29 +8953,35 @@ results.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *TransformationSchemeBaseType*
+                                             TransformationSchemeBaseType
 (extension)  
                                                    TransformationSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Transformation\*,
+```text
+Annotations?, Link*, Name+, Description*, Transformation*,
 VtlMappingScheme?, NamePersonalisationScheme?, CustomTypeScheme?,
-RulesetScheme\*, UserDefinedOperatorScheme\*
+RulesetScheme*, UserDefinedOperatorScheme*
+```
 
 Attribute Documentation:
 
@@ -8007,27 +9015,33 @@ Element Documentation:
 | RulesetScheme              | RulesetSchemeReferen ceType             | References a ruleset scheme that defines one or more previously defined rulesets which can be invoked by VTL operators. If a transformation defined in a transformation scheme refers to a ruleset, the scheme in which the ruleset is defined must be referenced here.                                                                                                                |
 | UserDefinedOperatorS cheme | UserDefinedOperatorS chemeReferenceType | References a user defined operator scheme that defines one or more user defined operators used by the transformations defined in a transformation scheme. If a transformation in a transformation scheme refers to a user defined operator, the scheme in which the user defined operator is defined must be referenced here.                                                          |
 
-***TransformationBaseType*:** TransformationBaseType defines the base
+**TransformationBaseType:** TransformationBaseType defines the base
 refinement of the TransformationType. Its purpose is to retrict the urn
 attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *TransformationBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 TransformationBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8052,22 +9066,28 @@ a specific result.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *TransformationBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 TransformationBaseType (extension)  
                                        TransformationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, isPersistent
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Expression, Result
+```text
+Annotations?, Link*, Name+, Description*, Expression, Result
+```
 
 Attribute Documentation:
 
@@ -8094,23 +9114,29 @@ between SDMX and VTL.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (restriction)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (restriction)  
                                        VtlMappingSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, VtlMapping\*
+```text
+Annotations?, Link*, Name+, Description*, VtlMapping*
+```
 
 Attribute Documentation:
 
@@ -8138,26 +9164,32 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | VtlMapping  | VtlMappingType  | VtlMapping details a mapping between SDMX and VTL transformation.                                                                                                                                                                 |
 
-***VtlMappingBaseType*:** VtlMappingBaseType defines the base refinement
+**VtlMappingBaseType:** VtlMappingBaseType defines the base refinement
 of the VtlMappingType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *VtlMappingBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 VtlMappingBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8193,24 +9225,30 @@ a reference to a specific Dataflow.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *VtlMappingBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 VtlMappingBaseType (extension)  
                                        VtlMappingType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, alias
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, ( ( (Dataflow \|
-GenericDataflow), ToVtlMapping?, FromVtlMapping?) \| Codelist \|
+```text
+Annotations?, Link*, Name+, Description*, ( ( (Dataflow |
+GenericDataflow), ToVtlMapping?, FromVtlMapping?) | Codelist |
 Concept)
+```
 
 Attribute Documentation:
 
@@ -8241,11 +9279,15 @@ filter used when mapping from SDMX to VTL.
 
 Attributes:
 
+```text
 method?
+```
 
 Content:
 
+```text
 ToVtlSubSpace?
+```
 
 Attribute Documentation:
 
@@ -8264,11 +9306,15 @@ and filter used when mapping from VTL to SDMX.
 
 Attributes:
 
+```text
 method?
+```
 
 Content:
 
+```text
 FromVtlSuperSpace?
+```
 
 Attribute Documentation:
 
@@ -8288,7 +9334,9 @@ dimensions that make up the space.
 
 Content:
 
+```text
 Key+
+```
 
 Element Documentation:
 
@@ -8302,25 +9350,31 @@ of transformations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
                                              NamePersonalisationSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, NamePersonalisation\*
+```text
+Annotations?, Link*, Name+, Description*, NamePersonalisation*
+```
 
 Attribute Documentation:
 
@@ -8349,27 +9403,33 @@ Element Documentation:
 | Description         | TextType                 | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | NamePersonalisation | NamePersonalisationT ype | NamePersonalisation details a name personalisation that is used in a transformation.                                                                                                                                              |
 
-***NamePersonalisationBaseType*:** NamePersonalisationBaseType defines
+**NamePersonalisationBaseType:** NamePersonalisationBaseType defines
 the base refinement of the NamePersonalisationType. Its purpose is to
 retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *NamePersonalisationBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 NamePersonalisationBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8394,24 +9454,30 @@ in place of a standard VTL name in some VTL operations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *NamePersonalisationBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 NamePersonalisationBaseType
 (extension)  
                                        NamePersonalisationType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, vtlArtefact
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, VtlDefaultName,
+```text
+Annotations?, Link*, Name+, Description*, VtlDefaultName,
 PersonalisedName
+```
 
 Attribute Documentation:
 
@@ -8433,31 +9499,37 @@ Element Documentation:
 | VtlDefaultName   | xs:string       | Provides the VTL standard name that is being personalised.                                                                                                                                                                        |
 | PersonalisedName | xs:string       | Provides the personalised name that is used in place of the VTL standard name in the transformation expressions.                                                                                                                  |
 
-***RulesetSchemeBaseType*:** RulesetSchemeBaseType is an abstract base
+**RulesetSchemeBaseType:** RulesetSchemeBaseType is an abstract base
 type for the RulesetSchemeType. It restricts the item types to be only
 rulesets.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *RulesetSchemeBaseType*
+                                             RulesetSchemeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Ruleset\*
+```text
+Annotations?, Link*, Name+, Description*, Ruleset*
+```
 
 Attribute Documentation:
 
@@ -8491,27 +9563,33 @@ rulesets that are used in transformations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *RulesetSchemeBaseType*
+                                             RulesetSchemeBaseType
 (extension)  
                                                    RulesetSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, Ruleset\*, VtlMappingScheme?
+```text
+Annotations?, Link*, Name+, Description*, Ruleset*, VtlMappingScheme?
+```
 
 Attribute Documentation:
 
@@ -8541,26 +9619,32 @@ Element Documentation:
 | Ruleset          | RulesetType                    | Ruleset details a ruleset within a ruleset scheme.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | VtlMappingScheme | VtlMappingSchemeRefe renceType | References a VTL mapping scheme which defines aliases for given SDMX artefacts that are used in the rulesets. Rulesets defined on value domains reference Codelists or Concept Schemes (the latter in VTL are considered as the Value Domains of the variables corresponding to the SDMX Measure Dimensions). The rulesets defined on variables reference Concepts (for which a definite representation is assumed). Therefore, a ruleset should only refer to Codelists, Concept Schemes, and Concepts. |
 
-***RulesetBaseType*:** RulesetBaseType defines the base refinement of
+**RulesetBaseType:** RulesetBaseType defines the base refinement of
 the RulesetType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *RulesetBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 RulesetBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8585,22 +9669,28 @@ appropriate VTL operators.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *RulesetBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 RulesetBaseType (extension)  
                                        RulesetType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, rulesetType, rulesetScope
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, RulesetDefinition
+```text
+Annotations?, Link*, Name+, Description*, RulesetDefinition
+```
 
 Attribute Documentation:
 
@@ -8622,32 +9712,38 @@ Element Documentation:
 | Description       | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | RulesetDefinition | xs:string       | A VTL statement for the definition of a ruleset. This must conform to the syntax of the VTL definition language.                                                                                                                  |
 
-***UserDefinedOperatorSchemeBaseType*:**
+**UserDefinedOperatorSchemeBaseType:**
 UserDefinedOperatorSchemeBaseType is an abstract base type for the
 UserDefinedOperatorSchemeType. It restricts the item types to be only
 user defined operators.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *UserDefinedOperatorSchemeBaseType*
+                                             UserDefinedOperatorSchemeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, UserDefinedOperator\*
+```text
+Annotations?, Link*, Name+, Description*, UserDefinedOperator*
+```
 
 Attribute Documentation:
 
@@ -8681,28 +9777,34 @@ a collection of user defined operators that are used in transformations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
-                                             *UserDefinedOperatorSchemeBaseType*
+                                             UserDefinedOperatorSchemeBaseType
 (extension)  
                                                    UserDefinedOperatorSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, UserDefinedOperator\*,
-VtlMappingScheme?, RulesetScheme\*
+```text
+Annotations?, Link*, Name+, Description*, UserDefinedOperator*,
+VtlMappingScheme?, RulesetScheme*
+```
 
 Attribute Documentation:
 
@@ -8733,27 +9835,33 @@ Element Documentation:
 | VtlMappingScheme    | VtlMappingSchemeRefe renceType | References a VTL mapping scheme which defines aliases for given SDMX artefacts that are used in the user defined operators. Although the VTL user defined operators are conceived to be defined on generic operands, so that the specific artefacts to be manipulated are passed as parameters at the invocation, it is also possible that they reference specific SDMX artefacts like Dataflows, Codelists and ConceptSchemes. In this case, the mapping schemes referenced here define the mappings to those artefacts. |
 | RulesetScheme       | RulesetSchemeReferen ceType    | References a ruleset scheme defining rulesets utilized in the user defined operators.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-***UserDefinedOperatorBaseType*:** UserDefinedOperatorBaseType defines
+**UserDefinedOperatorBaseType:** UserDefinedOperatorBaseType defines
 the base refinement of the UserDefinedOperatorType. Its purpose is to
 retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *UserDefinedOperatorBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 UserDefinedOperatorBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8781,23 +9889,29 @@ provided.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *UserDefinedOperatorBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 UserDefinedOperatorBaseType
 (extension)  
                                        UserDefinedOperatorType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, OperatorDefinition
+```text
+Annotations?, Link*, Name+, Description*, OperatorDefinition
+```
 
 Attribute Documentation:
 
@@ -8822,25 +9936,31 @@ custom types that are used in transformations.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (extension)  
-                                 *ItemSchemeType* (extension)  
-                                       *VtlDefinitionSchemeType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (extension)  
+                                 ItemSchemeType (extension)  
+                                       VtlDefinitionSchemeType
 (restriction)  
                                              CustomTypeSchemeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, isPartial?, vtlVersion
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, CustomType\*
+```text
+Annotations?, Link*, Name+, Description*, CustomType*
+```
 
 Attribute Documentation:
 
@@ -8869,26 +9989,32 @@ Element Documentation:
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 | CustomType  | CustomTypeType  | CustomType details a custom type within a custom type scheme.                                                                                                                                                                     |
 
-***CustomTypeBaseType*:** CustomTypeBaseType defines the base refinement
+**CustomTypeBaseType:** CustomTypeBaseType defines the base refinement
 of the CustomTypeType. Its purpose is to retrict the urn attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *CustomTypeBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 CustomTypeBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -8914,23 +10040,29 @@ conversion.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (restriction)  
-               *ItemBaseType* (extension)  
-                     *ItemType* (restriction)  
-                           *UnnestedItemType* (restriction)  
-                                 *CustomTypeBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (restriction)  
+               ItemBaseType (extension)  
+                     ItemType (restriction)  
+                           UnnestedItemType (restriction)  
+                                 CustomTypeBaseType (extension)  
                                        CustomTypeType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, VtlScalarType, DataType,
+```text
+Annotations?, Link*, Name+, Description*, VtlScalarType, DataType,
 VtlLiteralFormat?, OutputFormat?, NullValue?
+```
 
 Attribute Documentation:
 
@@ -8954,7 +10086,7 @@ Element Documentation:
 | OutputFormat     | xs:string          | The format the VTL scalar type has to assume (e.g. YYYY-MM-DD; see VTL specifications), both for the literals in the VTL expressions and for the conversion to the output.                                                                             |
 | NullValue        | xs:string          | The value to be produced in the output of the conversion when a component has a null value.                                                                                                                                                            |
 
-### Simple Types
+#### Simple Types
 
 **CodeDataType:** CodeDataType is a restriction of the basic data types
 that are applicable to codes. Although some of the higher level time
@@ -9006,7 +10138,7 @@ Enumerations:
 optional wildcard characters ('%') in an identifier.
 
 Derived by restriction of xs:string .  
-Regular Expression Pattern: \[A-Za-z0-9\_@\$-%\]+
+Regular Expression Pattern: [A-Za-z0-9\_@\$-%]+
 
 **GeoCodelistTypeType:** GeoCodelistTypeType defines an enumeration of
 the speicfic types of geographic codelists.
@@ -9104,7 +10236,7 @@ Enumerations:
 | greaterThan        |                   |
 | lessThan           |                   |
 
-**UsageType:** An enumeration of optional \| mandatory to indicate the
+**UsageType:** An enumeration of optional | mandatory to indicate the
 usage of an attribute or measure.
 
 Derived by restriction of xs:string .

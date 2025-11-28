@@ -1,21 +1,23 @@
-# Introduction
+# Registry
+
+## Introduction
 
 The registry schemas have been updated to reflect the various changes in
 the standard and to introduce new constructs for managing subscriptions.
-In addtion, the constructs that had existed for querying structural
+In addition, the constructs that had existed for querying structural
 metadata have been removed as this is now handled by the query messages.
 
 As was done with the query, the registry message set now contains
 distinct messages for each operation. The messages will eventually allow
-the registry to function in more standard web service mannter.
+the registry to function in more standard web service manner.
 
-# Schema Documentation
+## Schema Documentation
 
-## Registry Namespace
+### Registry Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -30,7 +32,7 @@ Contents:
 39 Complex Types  
 5 Simple Types
 
-### Complex Types
+#### Complex Types
 
 **RegistrationType:** Registration provides the information needed for
 data and reference metadata set registration. A data source must be
@@ -42,12 +44,16 @@ should the dataflow or metadata flow be used.
 
 Attributes:
 
+```text
 id?, validFrom?, validTo?, lastUpdated?, indexTimeSeries?,
 indexDataSet?, indexAttributes?, indexReportingPeriod?
+```
 
 Content:
 
+```text
 ProvisionAgreement, Datasource
+```
 
 Attribute Documentation:
 
@@ -75,7 +81,9 @@ or both must be specified.
 
 Content:
 
-(SimpleDataSource \| QueryableDataSource)\[1..2\]
+```text
+(SimpleDataSource | QueryableDataSource)[1..2]
+```
 
 Element Documentation:
 
@@ -89,13 +97,17 @@ source. The URL of the data is contained in the content.
 
 Derivation:
 
+```text
 xs:anySimpleType (restriction)  
    xs:anyURI (extension)  
          SimpleDataSourceType
+```
 
 Attributes:
 
+```text
 TYPE?
+```
 
 Content:
 
@@ -111,16 +123,22 @@ queryable source can be provided.
 
 Derivation:
 
+```text
 QueryableDataSourceType (extension)  
    QueryableDataSourceType
+```
 
 Attributes:
 
+```text
 isRESTDatasource, isWebServiceDatasource, TYPE?
+```
 
 Content:
 
+```text
 DataURL, WSDLURL?, WADLURL?
+```
 
 Attribute Documentation:
 
@@ -143,11 +161,15 @@ of a query for an identifiable object.
 
 Attributes:
 
+```text
 id?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
@@ -160,47 +182,59 @@ of a query for a versionable object.
 
 Derivation:
 
+```text
 IdentifiableQueryType (extension)  
    VersionableQueryType
+```
 
 Attributes:
 
+```text
 id?, version?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
 | **Name**              | **Type**         | **Documentation**                                                                                                                                                                                                                                                                |
 |-----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id (default: %)       | IDQueryType      | The id attribute is used to query for an object based on its identifier. This is either an explicit value, or completely wild cared with the "%" value.                                                                                                                          |
-| version (default: \*) | VersionQueryType | The version attribute is used to query for an object based on its version. This can be and explicit value, wild-carded ("%"), or late-bound ("\*"). A wild carded version will match any version of the object where as a late-bound version will only match the latest version. |
+| version (default: *) | VersionQueryType | The version attribute is used to query for an object based on its version. This can be and explicit value, wild-carded ("%"), or late-bound ("*"). A wild carded version will match any version of the object where as a late-bound version will only match the latest version. |
 
 **MaintainableQueryType:** MaintainableQueryType describes the structure
 of a query for a maintainable object.
 
 Derivation:
 
+```text
 IdentifiableQueryType (extension)  
    VersionableQueryType (extension)  
          MaintainableQueryType
+```
 
 Attributes:
 
+```text
 id?, version?, agencyID?
+```
 
 Content:
 
+```text
 {Empty}
+```
 
 Attribute Documentation:
 
 | **Name**              | **Type**          | **Documentation**                                                                                                                                                                                                                                                                |
 |-----------------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id (default: %)       | IDQueryType       | The id attribute is used to query for an object based on its identifier. This is either an explicit value, or completely wild cared with the "%" value.                                                                                                                          |
-| version (default: \*) | VersionQueryType  | The version attribute is used to query for an object based on its version. This can be and explicit value, wild-carded ("%"), or late-bound ("\*"). A wild carded version will match any version of the object where as a late-bound version will only match the latest version. |
+| version (default: *) | VersionQueryType  | The version attribute is used to query for an object based on its version. This can be and explicit value, wild-carded ("%"), or late-bound ("*"). A wild carded version will match any version of the object where as a late-bound version will only match the latest version. |
 | agencyID (default: %) | NestedIDQueryType | The agencyID attribute is used to query for an object based on its maintenance agency's identifier. This is either an explicit value, or completely wild cared with the "%" value.                                                                                               |
 
 **StatusMessageType:** StatusMessageType carries the text of error
@@ -208,11 +242,15 @@ messages and/or warnings in response to queries or requests.
 
 Attributes:
 
+```text
 status
+```
 
 Content:
 
-MessageText\*
+```text
+MessageText*
+```
 
 Attribute Documentation:
 
@@ -227,12 +265,14 @@ Element Documentation:
 | MessageText | StatusMessageType | MessageText contains the text of the error and/or warning message. It can occur multiple times to communicate message for multiple warnings or errors. |
 
 **SubmitRegistrationsRequestType:** SubmitRegistrationsRequestType
-defines the payload of a request message used to submit addtions,
+defines the payload of a request message used to submit additions,
 updates, or deletions of data/metadata set registrations.
 
 Content:
 
+```text
 RegistrationRequest+
+```
 
 Element Documentation:
 
@@ -242,16 +282,20 @@ Element Documentation:
 
 **RegistrationRequestType:** RegistrationRequestType describes the
 structure of a single registration request. It contains the details of a
-registation and an action field to indicate the action to be taken on
+registration and an action field to indicate the action to be taken on
 the contained registration.
 
 Attributes:
 
+```text
 action
+```
 
 Content:
 
+```text
 Registration
+```
 
 Attribute Documentation:
 
@@ -274,7 +318,9 @@ accurate processing of the responses.
 
 Content:
 
+```text
 RegistrationStatus+
+```
 
 Element Documentation:
 
@@ -287,7 +333,9 @@ structure of a registration status.
 
 Content:
 
+```text
 Registration, StatusMessage
+```
 
 Element Documentation:
 
@@ -310,13 +358,17 @@ matching the excluded keys or regions.
 
 Attributes:
 
+```text
 returnConstraints?
+```
 
 Content:
 
-QueryType, (All \| ProvisionAgreement \| DataProvider \| Dataflow \|
-Metadataflow), ReferencePeriod?, (DataKeySet \| CubeRegion \|
-MetadataTargetRegion)\*
+```text
+QueryType, (All | ProvisionAgreement | DataProvider | Dataflow |
+Metadataflow), ReferencePeriod?, (DataKeySet | CubeRegion |
+MetadataTargetRegion)*
+```
 
 Attribute Documentation:
 
@@ -330,10 +382,10 @@ Element Documentation:
 |----------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | QueryType            | QueryTypeType                    | QueryType defines the type of sets (data, metadata, or both) that are being queried for.                                                                                                                                                                   |
 | All                  | EmptyType                        | All indicates that all registrations meeting the other criteria of the query should be returned.                                                                                                                                                           |
-| ProvisionAgreement   | ProvisionAgreementRe ferenceType | ProvisionAgreement provides a reference to a provision agreement in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields. |
-| DataProvider         | DataProviderReferenc eType       | DataProvider provides a reference to a data provider in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields.             |
+| ProvisionAgreement   | ProvisionAgreementReferenceType | ProvisionAgreement provides a reference to a provision agreement in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields. |
+| DataProvider         | DataProviderReferenceType       | DataProvider provides a reference to a data provider in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields.             |
 | Dataflow             | DataflowReferenceTyp e           | Dataflow provides a reference to a data flow in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields.                     |
-| Metadataflow         | MetadataflowReferenc eType       | Metadataflow provides a reference to a metadata flow in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields              |
+| Metadataflow         | MetadataflowReferenceType       | Metadataflow provides a reference to a metadata flow in the registry, for which all registered sets meeting the other criteria of this query should be returned. The reference is provided as a URN and/or a complete set of reference fields              |
 | ReferencePeriod      | ReferencePeriodType              | ReferencePeriod provides an inclusive start and end date for the data or metadata being sought.                                                                                                                                                            |
 | DataKeySet           | DataKeySetType                   | DataKeySet is used to provide a set of included or excluded keys which serves to refine the data being sought.                                                                                                                                             |
 | CubeRegion           | CubeRegionType                   | CubeRegion is used to provide sets of include or excluded values for dimensions when querying for data.                                                                                                                                                    |
@@ -346,7 +398,9 @@ metadata results.
 
 Content:
 
-StatusMessage, QueryResult\*
+```text
+StatusMessage, QueryResult*
+```
 
 Element Documentation:
 
@@ -361,11 +415,15 @@ is detailed, depending on the data source.
 
 Attributes:
 
+```text
 timeSeriesMatch
+```
 
 Content:
 
-(DataResult \| MetadataResult)
+```text
+(DataResult | MetadataResult)
+```
 
 Attribute Documentation:
 
@@ -387,7 +445,9 @@ provided, if the query requested this information.
 
 Content:
 
-Registration, Constraint\*
+```text
+Registration, Constraint*
+```
 
 Element Documentation:
 
@@ -405,11 +465,15 @@ overridden on a per component basis.
 
 Attributes:
 
+```text
 action?, externalDependencies?
+```
 
 Content:
 
-(StructureLocation \| Structures), SubmittedStructure\*
+```text
+(StructureLocation | Structures), SubmittedStructure*
+```
 
 Attribute Documentation:
 
@@ -437,11 +501,15 @@ order to echo the requested action.
 
 Attributes:
 
+```text
 action?, externalDependencies?
+```
 
 Content:
 
+```text
 MaintainableObject
+```
 
 Attribute Documentation:
 
@@ -454,7 +522,7 @@ Element Documentation:
 
 | **Name**           | **Type**                      | **Documentation** |
 |--------------------|-------------------------------|-------------------|
-| MaintainableObject | MaintainableUrnRefer enceType |                   |
+| MaintainableObject | MaintainableUrnReferenceType |                   |
 
 **SubmitStructureResponseType:** SubmitStructureResponseType describes
 the structure of a response to a structure submission. For each
@@ -462,7 +530,9 @@ submitted structure, a Result will be returned.
 
 Content:
 
+```text
 SubmissionResult+
+```
 
 Element Documentation:
 
@@ -477,7 +547,9 @@ any error messages which are relevant to the submission.
 
 Content:
 
+```text
 SubmittedStructure, StatusMessage
+```
 
 Element Documentation:
 
@@ -487,14 +559,16 @@ Element Documentation:
 | StatusMessage      | StatusMessageType       | StatusMessage provides that status for the submission of the structural object, and if necessary, any error or warning information. |
 
 **SubmitSubscriptionsRequestType:** SubmitSubscriptionsRequestType
-defines the payload of a request message used to submit addtions,
+defines the payload of a request message used to submit additions,
 updates, or deletions of subscriptions. Subscriptions are submitted to
 the registry to subscribe to registration and change events for specific
 registry resources.
 
 Content:
 
+```text
 SubscriptionRequest+
+```
 
 Element Documentation:
 
@@ -510,14 +584,16 @@ creation of a new subscription.
 
 Content:
 
-Organisation, RegistryURN?, NotificationMailTo\*, NotificationHTTP\*,
+```text
+Organisation, RegistryURN?, NotificationMailTo*, NotificationHTTP*,
 SubscriberAssignedID?, ValidityPeriod, EventSelector
+```
 
 Element Documentation:
 
 | **Name**             | **Type**                   | **Documentation**                                                                                                                                                                                                                                                                                 |
 |----------------------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Organisation         | OrganisationReferenc eType | Organisation provides a reference to the organisation that owns this subscription. The reference is provided via a URN and/or a complete set of reference fields.                                                                                                                                 |
+| Organisation         | OrganisationReferenceType | Organisation provides a reference to the organisation that owns this subscription. The reference is provided via a URN and/or a complete set of reference fields.                                                                                                                                 |
 | RegistryURN          | xs:anyURI                  | RegistryURN is used to identify the subscription in the case of deletion or modification. This should be provided in all response messages, unless the response it a notification of the failure to create a newly submitted subscription - in which case there will be no registry assigned URN. |
 | NotificationMailTo   | NotificationURLType        | NotificationMailTo holds an e-mail address (the "mailto:" protocol). Multiple email address can be notified for a single subscription.                                                                                                                                                            |
 | NotificationHTTP     | NotificationURLType        | NotificationHTTP holds an http address to which notifications can be addressed as POSTs. Multiple http address may be notified for a single subscription event.                                                                                                                                   |
@@ -533,11 +609,15 @@ then the registry supplied URN for the subscription must be included.
 
 Attributes:
 
+```text
 action
+```
 
 Content:
 
+```text
 Subscription
+```
 
 Attribute Documentation:
 
@@ -557,7 +637,9 @@ submission. A status is provided for each subscription in the request.
 
 Content:
 
+```text
 SubscriptionStatus+
+```
 
 Element Documentation:
 
@@ -570,7 +652,9 @@ structure a status for a single subscription request.
 
 Content:
 
+```text
 SubscriptionURN?, SubscriberAssignedID?, StatusMessage
+```
 
 Element Documentation:
 
@@ -586,13 +670,15 @@ organisation may be retrieved.
 
 Content:
 
+```text
 Organisation
+```
 
 Element Documentation:
 
 | **Name**     | **Type**                   | **Documentation**                                                                                             |
 |--------------|----------------------------|---------------------------------------------------------------------------------------------------------------|
-| Organisation | OrganisationReferenc eType | Organisation provides a reference to the data consumer for which the subscription details should be returned. |
+| Organisation | OrganisationReferenceType | Organisation provides a reference to the data consumer for which the subscription details should be returned. |
 
 **QuerySubscriptionResponseType:** QuerySubscriptionResponseType
 describes the structure of a subscription query response. A status will
@@ -602,7 +688,9 @@ all of the organisation's subscriptions will be provided.
 
 Content:
 
-StatusMessage, Subscription\*
+```text
+StatusMessage, Subscription*
+```
 
 Element Documentation:
 
@@ -623,8 +711,10 @@ the reference provided.
 
 Content:
 
-EventTime, (ObjectURN \| RegistrationID), SubscriptionURN, EventAction,
-(StructuralEvent \| RegistrationEvent)?
+```text
+EventTime, (ObjectURN | RegistrationID), SubscriptionURN, EventAction,
+(StructuralEvent | RegistrationEvent)?
+```
 
 Element Documentation:
 
@@ -651,7 +741,9 @@ xs:anySimpleType (restriction)
 
 Attributes:
 
+```text
 isSOAP?
+```
 
 Content:
 
@@ -666,7 +758,9 @@ end-dates for the subscription period.
 
 Content:
 
+```text
 StartDate, EndDate
+```
 
 Element Documentation:
 
@@ -681,8 +775,10 @@ repository events for which they wish to receive notifications.
 
 Content:
 
-(StructuralRepositoryEvents \| DataRegistrationEvents \|
-MetadataRegistrationEvents)\[1..3\]
+```text
+(StructuralRepositoryEvents | DataRegistrationEvents |
+MetadataRegistrationEvents)[1..3]
+```
 
 Element Documentation:
 
@@ -711,18 +807,22 @@ URNs, it is good practice to list the agencies.
 
 Attributes:
 
+```text
 TYPE?
+```
 
 Content:
 
-AgencyID+, (AllEvents \| (AgencyScheme \| DataConsmerScheme \|
-DataProviderScheme \| OrganisationUnitScheme \| Dataflow \| Metadataflow
-\| CategoryScheme \| Categorisation \| Codelist \| HierarchicalCodelist
-\| ConceptScheme \| MetadataStructureDefinition \| KeyFamily \|
-StructureSet \| ReportingTaxonomy \| Process \| AttachmentConstraint \|
-ContentConstraint \| ProvisionAgreement \| TransformationScheme \|
-NameAliasScheme \| NamePersonalisationScheme \| RulesetScheme \|
+```text
+AgencyID+, (AllEvents | (AgencyScheme | DataConsumerScheme |
+DataProviderScheme | OrganisationUnitScheme | Dataflow | Metadataflow
+| CategoryScheme | Categorisation | Codelist | HierarchicalCodelist
+| ConceptScheme | MetadataStructureDefinition | KeyFamily |
+StructureSet | ReportingTaxonomy | Process | AttachmentConstraint |
+ContentConstraint | ProvisionAgreement | TransformationScheme |
+NameAliasScheme | NamePersonalisationScheme | RulesetScheme |
 UserDefinedOperatorScheme)+)
+```
 
 Attribute Documentation:
 
@@ -737,9 +837,9 @@ Element Documentation:
 | AgencyID                     | NestedIDQueryType            | AgencyID specifies a maintenance agency for the object or objects indicated in the other fields. This can be either a specific ID, or a single wildcard character ("%"). A wild card character can be used to select all agencies, allowing a subscription to all events for particular object types. This can occur multiple times to list a of group of maintenance agencies, creating event subscriptions for all of the subsequent objects for each agency in the group. Note that if multiple agencies are supplied, then the wildcard character should not be used for any of them. |
 | AllEvents                    | EmptyType                    | AllEvents creates a subscription to structural events for all structural objects maintained by the agencies referenced.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | AgencyScheme                 | VersionableObjectEve ntType  | AgencyScheme is used to subscribe to changes of agency schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                    |
-| DataConsmerScheme            | VersionableObjectEve ntType  | DataConsmerScheme is used to subscribe to changes of data consumer schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                        |
+| DataConsumerScheme            | VersionableObjectEve ntType  | DataConsumerScheme is used to subscribe to changes of data consumer schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                        |
 | DataProviderScheme           | VersionableObjectEve ntType  | DataProviderScheme is used to subscribe to changes of data provider schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                       |
-| OrganisationUnitSche me      | VersionableObjectEve ntType  | OrganisationUnitScheme is used to subscribe to changes of organisation unit schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                               |
+| OrganisationUnitScheme      | VersionableObjectEve ntType  | OrganisationUnitScheme is used to subscribe to changes of organisation unit schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                               |
 | Dataflow                     | VersionableObjectEve ntType  | Dataflow is used to subscribe to changes of data flows. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                            |
 | Metadataflow                 | VersionableObjectEve ntType  | Metadataflow is used to subscribe to changes of metadata flows. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                    |
 | CategoryScheme               | VersionableObjectEve ntType  | CategoryScheme is used to subscribe to changes of category schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                |
@@ -747,7 +847,7 @@ Element Documentation:
 | Codelist                     | VersionableObjectEve ntType  | Codelist is used to subscribe to changes of code lists. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                            |
 | HierarchicalCodelist         | VersionableObjectEve ntType  | HierarchicalCodelist is used to subscribe to changes of hierarchical code lists. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                   |
 | ConceptScheme                | VersionableObjectEve ntType  | ConceptScheme is used to subscribe to changes of concept schemes. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                  |
-| MetadataStructureDef inition | VersionableObjectEve ntType  | MetadataStructureDefinition is used to subscribe to changes of metadata structure definitions. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                     |
+| MetadataStructureDefinition | VersionableObjectEve ntType  | MetadataStructureDefinition is used to subscribe to changes of metadata structure definitions. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                     |
 | KeyFamily                    | VersionableObjectEve ntType  | KeyFamily is used to subscribe to changes of key families. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                         |
 | StructureSet                 | VersionableObjectEve ntType  | StructureSet is used to subscribe to changes of structure sets. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                    |
 | ReportingTaxonomy            | VersionableObjectEve ntType  | ReportingTaxonomy is used to subscribe to changes of reporting taxonomies. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                         |
@@ -757,9 +857,9 @@ Element Documentation:
 | ProvisionAgreement           | VersionableObjectEve ntType  | ProvisionAgreement is used to subscribe to changes of a provision agreement. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                       |
 | TransformationScheme         | VersionableObjectEve ntType  | TransformationScheme is used to subscribe to changes of a transformation scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                   |
 | NameAliasScheme              | VersionableObjectEve ntType  | NameAliasScheme is used to subscribe to changes of a name alias scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                            |
-| NamePersonalisationS cheme   | VersionableObjectEve ntType  | NamePersonalisationScheme is used to subscribe to changes of a name peronsalisation scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                        |
+| NamePersonalisationScheme   | VersionableObjectEve ntType  | NamePersonalisationScheme is used to subscribe to changes of a name personalisation scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                        |
 | RulesetScheme                | VersionableObjectEve ntType  | RulesetScheme is used to subscribe to changes of a ruleset scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                                                 |
-| UserDefinedOperatorS cheme   | VersionableObjectEve ntType  | UserDefinedOperatorScheme is used to subscribe to changes of a user defined operator scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                       |
+| UserDefinedOperatorScheme   | VersionableObjectEve ntType  | UserDefinedOperatorScheme is used to subscribe to changes of a user defined operator scheme. The maintenance agencies of the object are those identified in the AgencyID collection, effectively making separate version of this query for each agency specified. The agency is ignored if the content of this is a URN, which references an explicit object. Otherwise, either all objects of this type or specific object according to the id and version fields can be selected.                                                                                                       |
 
 **IdentifiableObjectEventType:** IdentifiableObjectEventType describes
 the structure of a reference to an identifiable object's events. Either
@@ -768,7 +868,9 @@ instance, or specific instances of the object may be selected.
 
 Content:
 
-(All \| URN \| ID)
+```text
+(All | URN | ID)
+```
 
 Element Documentation:
 
@@ -785,7 +887,9 @@ instance, or specific instances of the object may be selected.
 
 Content:
 
-(All \| URN \| (ID, Version))
+```text
+(All | URN | (ID, Version))
+```
 
 Element Documentation:
 
@@ -794,7 +898,7 @@ Element Documentation:
 | All      | EmptyType        | All subscribes to the events all instances of the containing object meeting the other criteria specified.                                                                                                                                                                                                                                                                                              |
 | URN      | xs:anyURI        | URN subscribes to the events of the specific instance of the object type referenced by this URN. Note that when this field is used, the agency information inherited from the structural repository event container is ignored.                                                                                                                                                                        |
 | ID       | IDQueryType      | ID subscribes to the events of the specific instance of the object type where the value provided here matches the id of the object and the value provided in the version field matches the version of the object. The default value is the wildcard character("%").                                                                                                                                    |
-| Version  | VersionQueryType | Version subscribes to the events of the specific instance of the object type where the value provided in the id field matches the id of the object and the value here matches the version of the object. The default value is the wildcard character("%"). Note that in addition to being wild-carded, this can also be bound to the latest version of the object with the late-bound character("\*"). |
+| Version  | VersionQueryType | Version subscribes to the events of the specific instance of the object type where the value provided in the id field matches the id of the object and the value here matches the version of the object. The default value is the wildcard character("%"). Note that in addition to being wild-carded, this can also be bound to the latest version of the object with the late-bound character("*"). |
 
 **DataRegistrationEventsType:** DataRegistrationEventsType details the
 data registration events for the subscription. It is possible to
@@ -805,12 +909,16 @@ key families.
 
 Attributes:
 
+```text
 TYPE?
+```
 
 Content:
 
-(AllEvents \| (RegistrationID \| ProvisionAgreement \| DataProvider \|
-DataflowReference \| KeyFamilyReference \| Category)+)
+```text
+(AllEvents | (RegistrationID | ProvisionAgreement | DataProvider |
+DataflowReference | KeyFamilyReference | Category)+)
+```
 
 Attribute Documentation:
 
@@ -824,8 +932,8 @@ Element Documentation:
 |--------------------|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AllEvents          | EmptyType                        | AllEvents subscribes to all data registration events in the repository.                                                                                                                                                     |
 | RegistrationID     | IDType                           | RegistrationID subscribes to all the data registration events for the unique registration referenced.                                                                                                                       |
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreementReference subscribes to all data registration events for the explicitly referenced provision agreement.                                                                                                   |
-| DataProvider       | DataProviderReferenc eType       | DataProviderReference subscribes to all data registration events for the explicitly referenced data provider.                                                                                                               |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreementReference subscribes to all data registration events for the explicitly referenced provision agreement.                                                                                                   |
+| DataProvider       | DataProviderReferenceType       | DataProviderReference subscribes to all data registration events for the explicitly referenced data provider.                                                                                                               |
 | DataflowReference  | MaintainableEventTyp e           | DataflowReference subscribes to all data registration events for the data flows referenced by this object. This may reference one or more data flows, as the specific references fields allow for a wild-carded value.      |
 | KeyFamilyReference | MaintainableEventTyp e           | KeyFamilyReference subscribes to all data registration events for the key families referenced by this object. This may reference one or more key families, as the specific references fields allow for a wild-carded value. |
 | Category           | CategoryReferenceTyp e           | Category subscribes to all data registration events for any data flows or key families that are categorized by the referenced category.                                                                                     |
@@ -840,13 +948,17 @@ structure definitions.
 
 Attributes:
 
+```text
 TYPE?
+```
 
 Content:
 
-(AllEvents \| (RegistrationID \| ProvisionAgreement \| DataProvider \|
-MetadataflowReference \| MetadataStructureDefinitionReference \|
+```text
+(AllEvents | (RegistrationID | ProvisionAgreement | DataProvider |
+MetadataflowReference | MetadataStructureDefinitionReference |
 Category)+)
+```
 
 Attribute Documentation:
 
@@ -860,10 +972,10 @@ Element Documentation:
 |---------------------------------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AllEvents                             | EmptyType                        | AllEvents subscribes to all metadata registration events in the repository.                                                                                                                                                                                                           |
 | RegistrationID                        | IDType                           | RegistrationID subscribes to all the metadata registration events for the unique registration referenced.                                                                                                                                                                             |
-| ProvisionAgreement                    | ProvisionAgreementRe ferenceType | ProvisionAgreementReference subscribes to all metadata registration events for the explicitly referenced provision agreement.                                                                                                                                                         |
-| DataProvider                          | DataProviderReferenc eType       | DataProvider subscribes to all metadata registration events for the explicitly referenced data provider.                                                                                                                                                                              |
-| MetadataflowReferenc e                | MaintainableEventTyp e           | MetadataflowReference subscribes to all metadata registration events for the metadata flows referenced by this object. This may reference one or more metadata flows, as the specific references fields allow for a wild-carded value.                                                |
-| MetadataStructureDef initionReference | MaintainableEventTyp e           | MetadataStructureDefinitionReference subscribes to all metadata registration events for the metadata structure definitions referenced by this object. This may reference one or more metadata structure definitions, as the specific references fields allow for a wild-carded value. |
+| ProvisionAgreement                    | ProvisionAgreementReferenceType | ProvisionAgreementReference subscribes to all metadata registration events for the explicitly referenced provision agreement.                                                                                                                                                         |
+| DataProvider                          | DataProviderReferenceType       | DataProvider subscribes to all metadata registration events for the explicitly referenced data provider.                                                                                                                                                                              |
+| MetadataflowReference                | MaintainableEventTyp e           | MetadataflowReference subscribes to all metadata registration events for the metadata flows referenced by this object. This may reference one or more metadata flows, as the specific references fields allow for a wild-carded value.                                                |
+| MetadataStructureDefinitionReference | MaintainableEventTyp e           | MetadataStructureDefinitionReference subscribes to all metadata registration events for the metadata structure definitions referenced by this object. This may reference one or more metadata structure definitions, as the specific references fields allow for a wild-carded value. |
 | Category                              | CategoryReferenceTyp e           | Category subscribes to all metadata registration events for any metadata flows or metadata structure definitions that are categorized by the referenced category.                                                                                                                     |
 
 **MaintainableEventType:** MaintainableEventType provides a reference to
@@ -872,7 +984,9 @@ object, or a set of potentially wild-carded reference fields.
 
 Content:
 
-(URN \| Ref)
+```text
+(URN | Ref)
+```
 
 Element Documentation:
 
@@ -886,7 +1000,9 @@ structure event, specifically the object that changed.
 
 Content:
 
+```text
 Structures
+```
 
 Element Documentation:
 
@@ -899,7 +1015,9 @@ metadata registration event for the purposes of notification.
 
 Content:
 
+```text
 Registration
+```
 
 Element Documentation:
 
@@ -907,7 +1025,7 @@ Element Documentation:
 |--------------|------------------|---------------------------------------------------------------------------------|
 | Registration | RegistrationType | Registration provides the changed details of the data or metadata registration. |
 
-### Simple Types
+#### Simple Types
 
 **IDQueryType:** IDQueryType is a simple type that allows for an
 identifier to be substituted with a wild card character ("%").
@@ -926,7 +1044,7 @@ NestedIDType, WildCardValueType.
 
 **VersionQueryType:** VersionQueryType is a simple type that allows for
 a version number to be substituted with a wild card character ("%") or a
-late bound character ("\*").
+late bound character ("*").
 
 Union of:
 

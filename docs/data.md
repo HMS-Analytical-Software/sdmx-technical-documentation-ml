@@ -1,4 +1,6 @@
-# Introduction
+# Data
+
+## Introduction
 
 The first change in the data and metadata message is one of terminology.
 In order to foster consistency in the standard, the names and namespaces
@@ -68,13 +70,13 @@ intended. And, as with the data, the base metadata structure specific
 format now imposes a stricter structure on the generated schemas, making
 the structure specific instance simpler to process in a generic manner.
 
-# Schema Documentation
+## Schema Documentation
 
-## Structure Specific Data Namespace
+### Structure Specific Data Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -89,7 +91,7 @@ Contents:
 
 6 Complex Types
 
-### Complex Types
+#### Complex Types
 
 ***DataSetType*:** DataSetType is the abstract type which defines the
 base structure for any data structure definition specific data set. A
@@ -125,18 +127,24 @@ definition specific schema.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *DataSetType*
+```text
+AnnotableType (extension)  
+   DataSetType
+```
 
 Attributes:
 
+```text
 structureRef, setID?, action?, reportingBeginDate?, reportingEndDate?,
 validFromDate?, validToDate?, publicationYear?, publicationPeriod?
+```
 
 Content:
 
-Annotations?, DataProvider?, (Atts \| Group \| Series \| Obs)\*,
+```text
+Annotations?, DataProvider?, (Atts | Group | Series | Obs)\*,
 Metadata?
+```
 
 Attribute Documentation:
 
@@ -195,16 +203,22 @@ attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *GroupType*
+```text
+AnnotableType (extension)  
+   GroupType
+```
 
 Attributes:
 
+```text
 type?
+```
 
 Content:
 
-Annotations?, Comp\*, Metadata?
+```text
+Annotations?, Comp*, Metadata?
+```
 
 Attribute Documentation:
 
@@ -251,16 +265,22 @@ definition dimension or attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *SeriesType*
+```text
+AnnotableType (extension)  
+   SeriesType
+```
 
 Attributes:
 
+```text
 TIME_PERIOD?
+```
 
 Content:
 
-Annotations?, Comp\*, Obs\*, Metadata?
+```text
+Annotations?, Comp*, Obs*, Metadata?
+```
 
 Attribute Documentation:
 
@@ -294,16 +314,22 @@ by the component.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *CompType*
+```text
+AnnotableType (extension)  
+   CompType
+```
 
 Attributes:
 
+```text
 id
+```
 
 Content:
 
-Annotations?, Value\*
+```text
+Annotations?, Value*
+```
 
 Attribute Documentation:
 
@@ -349,16 +375,22 @@ a data structure definition dimension or attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *ObsType*
+```text
+AnnotableType (extension)  
+   ObsType
+```
 
 Attributes:
 
+```text
 type?, TIME_PERIOD?
+```
 
 Content:
 
-Annotations?, Comp\*, Metadata?
+```text
+Annotations?, Comp*, Metadata?
+```
 
 Attribute Documentation:
 
@@ -406,16 +438,22 @@ definition dimension or attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *AttsType*
+```text
+AnnotableType (extension)  
+   AttsType
+```
 
 Attributes:
 
+```text
 TIME_PERIOD?
+```
 
 Content:
 
-Annotations?, Comp\*
+```text
+Annotations?, Comp*
+```
 
 Attribute Documentation:
 
@@ -430,11 +468,11 @@ Element Documentation:
 | Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it. |
 | Comp        | *CompType*      | Comp contains the details of the data or metadata attributes that have complex representation and cannot be expressed as XML attributes.                                            |
 
-## Generic Metadata Namespace
+### Generic Metadata Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -448,13 +486,13 @@ Contents:
 1 Global Element  
 3 Complex Types
 
-### Global Elements
+#### Global Elements
 
 **Attribute (AttributeType):** Att elements hold the reported values for
 a given metadata attribute. These values conform to the definition of
 the meatadata attribute in the metadata structure definition.
 
-### Complex Types
+#### Complex Types
 
 ***MetadataSetBaseType*:** MetadataSetBaseType defines the base
 refinement of the MetadataSetType. Its purpose is to restrict the urn
@@ -462,22 +500,28 @@ attribute.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *MetadataSetBaseType*
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 MetadataSetBaseType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*
+```text
+Annotations?, Link*, Name+, Description*
+```
 
 Attribute Documentation:
 
@@ -514,26 +558,32 @@ provision will be the same as the agency for this set.
 
 Derivation:
 
-*AnnotableType* (extension)  
-   *IdentifiableType* (extension)  
-         *NameableType* (extension)  
-               *VersionableType* (restriction)  
-                     *MaintainableBaseType* (extension)  
-                           *MaintainableType* (restriction)  
-                                 *MetadataSetBaseType* (extension)  
+```text
+AnnotableType (extension)  
+   IdentifiableType (extension)  
+         NameableType (extension)  
+               VersionableType (restriction)  
+                     MaintainableBaseType (extension)  
+                           MaintainableType (restriction)  
+                                 MetadataSetBaseType (extension)  
                                        MetadataSetType
+```
 
 Attributes:
 
+```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
 isExternalReference?, serviceURL?, structureURL?, action?,
 reportingBeginDate?, reportingEndDate?, publicationYear?,
 publicationPeriod?
+```
 
 Content:
 
-Annotations?, Link\*, Name+, Description\*, (
-(MetadataProvisionAgreement \| Metadataflow), Target+, Attribute+)?
+```text
+Annotations?, Link*, Name+, Description*, (
+(MetadataProvisionAgreement | Metadataflow), Target+, Attribute+)?
+```
 
 Attribute Documentation:
 
@@ -577,16 +627,22 @@ defines nested metadata attributes.
 
 Derivation:
 
-*AnnotableType* (extension)  
+```text
+AnnotableType (extension)  
    AttributeType
+```
 
 Attributes:
 
+```text
 id
+```
 
 Content:
 
-Annotations?, (Value+ \| Text+ \| StructuredText+)?, Attribute\*
+```text
+Annotations?, (Value+ | Text+ | StructuredText+)?, Attribute*
+```
 
 Attribute Documentation:
 
@@ -604,9 +660,9 @@ Element Documentation:
 | StructuredText | XHTMLType        | StructuredText is used to supply parallel multi-lingual structured (as XHTML) textual values for the reported metadata attribute. This will be used if the text format of the metadata attribute has a type of XHTML and the multi-lingual value is set to true. |
 | Attribute      | AttributeType    | Att contains the reported metadata attribute values for the child metadata attributes.                                                                                                                                                                           |
 
-# Mapping to Structure-Specific Schemas
+## Mapping to Structure-Specific Schemas
 
-## General 
+### General 
 
 Data structure-specific schemas are each based on one single core
 construct found in the structure-specific namespace;
@@ -614,7 +670,7 @@ construct found in the structure-specific namespace;
 Data -
 http://www.SDMX.org/resources/SDMXML/schemas/v3_0/data/structurespecific
 
-### Basic Terminology
+#### Basic Terminology
 
 In the subsequent sections, the following namespace prefixes are used:
 
@@ -732,7 +788,7 @@ complex type (i.e. and xs:attribute element in a xs:complexType
 element). An attribute must define a name and type (name and type
 attributes) and may also specify a usage (use attribute).
 
-## Namespace Rules
+### Namespace Rules
 
 Each format specific schema will specify its namespace in the target
 namespace of the schema (the targetNamespace attribute of the schema).
@@ -752,12 +808,12 @@ the schema (as specified in the elementFormDefault attribute of the
 schema) is “qualified", and the default attribute form (as specified in
 the attributeFormDefault attribute of the schema) is "unqualified".
 
-## General Rules
+### General Rules
 
 The following section details the general rules which apply to all
 structure specific schema creation.
 
-### Component Name Determination
+#### Component Name Determination
 
 When required to create an XML element or attribute, the name for a
 component is always its identifier. However, the identifier may be
@@ -770,7 +826,7 @@ inherited. Therefore, the general rules is as follows:
     concept from which it takes its semantic (Note that this is
     technically the component identifer).
 
-### Representation Determination
+#### Representation Determination
 
 Every component has a representation associated with it, whether it is
 defined as a local representation in the component definition, or it is
@@ -797,7 +853,7 @@ of the component representation. An enumeration consists of a reference
 to a codelist, hierarchy, or value list, for which an enumerated list of
 possible values can be created.
 
-### Simple / Primitive Type Determination
+#### Simple / Primitive Type Determination
 
 For any given representation, there exist rules for determining the
 simple or primitive type which should be used to validate the value.
@@ -819,7 +875,7 @@ effectively the required xs:string. These rules are meant to allow such
 flexibility in how types are created. The only requirement is that the
 type meet the requirements stated here.
 
-### Representation with Codelist Enumeration
+#### Representation with Codelist Enumeration
 
 A representation which defines an enumeration from a codelist or
 hierarchy will result in a simple type that is a restriction of the
@@ -844,7 +900,7 @@ this is not required. Example:
 >
 > <span class="mark">\</xs:enumeration\></span>
 
-### Representation with Value List Enumeration
+#### Representation with Value List Enumeration
 
 A representation which defines an enumeration from a value list will
 result in a simple type that is a restriction of the xs:string data
@@ -853,7 +909,7 @@ the value list. The value for these enumerations will be identifier of
 the item. If desired, the names of the item may be placed in the
 documentation of the enumeration, but this is not required.
 
-### Representation with Simple Text Format
+#### Representation with Simple Text Format
 
 A representation which defines a simple text format will result in a
 simple type or primitive type. The representation is simple if none of
@@ -933,7 +989,7 @@ are mapped as is):
 Any other facets are informational only, and will not affect the
 determined type.
 
-### Representation with Complex Text Format
+#### Representation with Complex Text Format
 
 A representation which defines a complex text format will result in a
 complex type. The representation is complex if any of the following
@@ -980,7 +1036,7 @@ common:ValueType. The restriction should define an anonymous simple type
 based on the text format data type and facets as described in the
 previous section.
 
-### **Type Names**
+#### **Type Names**
 
 These rules will only dictate type names where absolutely necessary. In
 all other cases, it is the decision of the implementer as to how to name
@@ -1010,7 +1066,7 @@ they are unique.
     name is \[Component List ID\].\[Parent Component ID\]\*.\[Component
     ID\]
 
-### Type Reuse
+#### Type Reuse
 
 It is possible that organisations that manage a large number of
 structure specific schemas my wish to take advantage of the reuse of
@@ -1044,7 +1100,7 @@ target namespace of the structure-specific schema. So long as any other
 generated type conforms to the rules specified, it may exist in any
 namespace.
 
-## Data Structure Specific Schema
+### Data Structure Specific Schema
 
 Separate schemas will be created for the data structure depending on
 which dimension occurs at the observation level. The recommended target
@@ -1056,7 +1112,7 @@ into sections based on the level within the structure (i.e. data set,
 group, series, attributes, observation). Each section will state the
 rules for each variation of the structure specific format.
 
-### DataSetType
+#### DataSetType
 
 A complex type named DataSetType must be created. Its content model will
 be derived via restriction. The base type of the restriction is
@@ -1098,7 +1154,7 @@ dsd:DataSetType. The complex type content model will be as follows:
         element named Metadata with the type metadata:MetadataSetType a
         form of unqualified, and a minimum occurences of 0
 
-### GroupType
+#### GroupType
 
 If the data structure definition defines only one group, a complex type
 with its name taken from the identifier of the lone group must be
@@ -1207,7 +1263,7 @@ GroupType. The complex type content model will be as follows:
 4.  An attribute named type with a type of Group.ID, usage of optional,
     and a fixed value of the identifier of the group
 
-### SeriesType
+#### SeriesType
 
 If the dimension at the observation is not AllDimensions, a complex type
 name SeriesType must be created. Its content model will be derived via
@@ -1257,7 +1313,7 @@ follows:
     to the general rules defined in the previous section, and the usage
     is optional
 
-### AttsType
+#### AttsType
 
 A a complex type named AttsType must be created. Its content model will
 be derived via restriction of dsd:AttsType. The complex type content
@@ -1290,7 +1346,7 @@ model will be as follows:
     to the general rules defined in the previous section, and the usage
     is optional
 
-### ObsType
+#### ObsType
 
 A complex type name ObsType must be created. Its content model will be
 derived via restriction of the base type dsd:ObsType. The complex type
@@ -1354,7 +1410,7 @@ content model will be as follows:
     to the general rules defined in the previous section, and the usage
     is optional
 
-### CompType
+#### CompType
 
 For every measure and data attribute with complex representation defined
 by the data structure definition, a complex type must be derived from
@@ -1376,9 +1432,9 @@ be as follows:
     required, and a fixed value of the identifier of the measure or
     attribute
 
-# Special data functions
+## Special data functions
 
-## Updates
+### Updates
 
 D messages allow for incremental updating of data. This purpose is noted
 in the action for the data set, which is either inherited from the
@@ -1398,7 +1454,7 @@ partial keys (outside of those associated with defined groups). In order
 to update an attribute, a full key must always be provided even if the
 message format does not require this.
 
-## Deletes
+### Deletes
 
 Data messages allow for incremental deletion of data. This purpose is
 noted in the action for the data set, which is either inherited from the

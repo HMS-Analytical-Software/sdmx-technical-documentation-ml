@@ -1,4 +1,4 @@
-# SDMX-ML Message
+# Message
 
 ## Introduction
 
@@ -103,8 +103,10 @@ conveying error, warning, and informational messages.
 
 Content:
 
-`Header, {any element with namespace of
-http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message}\*, Footer?`
+```text
+Header, {any element with namespace of
+http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message}*, Footer?
+```
 
 Element Documentation:
 
@@ -120,13 +122,15 @@ a web service with only information in the footer.
 Derivation:
 
 ``` xml
-*MessageType* (restriction)  
+MessageType (restriction)  
    StructureType
 ```
 
 Content:
 
-`Header, Structures?, Footer?`
+```text
+Header, Structures?, Footer?
+```
 
 Element Documentation:
 
@@ -153,7 +157,9 @@ MessageType (restriction)
 
 Content:
 
-`Header, DataSet\*, Footer?`
+```text
+Header, DataSet*, Footer?
+```
 
 Element Documentation:
 
@@ -175,7 +181,9 @@ MessageType (restriction)
 
 Content:
 
-`Header, MetadataSet\*, Footer?`
+```text
+Header, MetadataSet*, Footer?
+```
 
 Element Documentation:
 
@@ -199,11 +207,11 @@ MessageType (restriction)
 Content:
 
 ``` xml
-Header, (SubmitRegistrationsRequest \| SubmitRegistrationsResponse \|
-QueryRegistrationRequest \| QueryRegistrationResponse \|
-SubmitStructureRequest \| SubmitStructureResponse \|
-SubmitSubscriptionsRequest \| SubmitSubscriptionsResponse \|
-QuerySubscriptionRequest \| QuerySubscriptionResponse \|
+Header, (SubmitRegistrationsRequest | SubmitRegistrationsResponse |
+QueryRegistrationRequest | QueryRegistrationResponse |
+SubmitStructureRequest | SubmitStructureResponse |
+SubmitSubscriptionsRequest | SubmitSubscriptionsResponse |
+QuerySubscriptionRequest | QuerySubscriptionResponse |
 NotifyRegistryEvent)?, Footer?
 ```
 
@@ -238,7 +246,9 @@ MessageType (restriction)
 
 Content:
 
-`Header, SubmitStructureRequest`
+```text
+Header, SubmitStructureRequest
+```
 
 Element Documentation:
 
@@ -260,7 +270,9 @@ MessageType (restriction)
 
 Content:
 
-`Header, SubmitStructureResponse, Footer?`
+```text
+Header, SubmitStructureResponse, Footer?
+```
 
 Element Documentation:
 
@@ -274,7 +286,9 @@ Element Documentation:
 
 Content:
 
+```text
 ErrorMessage+
+```
 
 Element Documentation:
 
@@ -288,9 +302,11 @@ refine this
 
 Content:
 
-`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure\*,
-DataProvider?, MetadataProvider?, DataSetAction?, DataSetID\*,
-Extracted?, ReportingBegin?, ReportingEnd?, EmbargoDate?, Source\*`
+```text
+ID, Test, Prepared, Sender, Receiver*, Name*, Structure*,
+DataProvider?, MetadataProvider?, DataSetAction?, DataSetID*,
+Extracted?, ReportingBegin?, ReportingEnd?, EmbargoDate?, Source*
+```
 
 Element Documentation:
 
@@ -319,13 +335,15 @@ structural metadata messages.
 Derivation:
 
 ``` xml
-*BaseHeaderType* (restriction)  
+BaseHeaderType (restriction)  
    StructureHeaderType
 ```
 
 Content:
 
-`ID, Test, Prepared, Sender, Receiver\*, Name\*, Source\*`
+```text
+ID, Test, Prepared, Sender, Receiver*, Name*, Source*
+```
 
 Element Documentation:
 
@@ -345,15 +363,17 @@ defines the header structure for a structure specific data message.
 Derivation:
 
 ``` xml
-*BaseHeaderType* (restriction)  
+BaseHeaderType (restriction)  
    StructureSpecificDataHeaderType
 ```
 
 Content:
 
-`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
-DataProvider?, DataSetAction?, DataSetID\*, Extracted?, ReportingBegin?,
-ReportingEnd?, EmbargoDate?, Source\*`
+```text
+ID, Test, Prepared, Sender, Receiver*, Name*, Structure+,
+DataProvider?, DataSetAction?, DataSetID*, Extracted?, ReportingBegin?,
+ReportingEnd?, EmbargoDate?, Source*
+```
 
 Element Documentation:
 
@@ -387,8 +407,10 @@ BaseHeaderType (restriction)
 
 Content:
 
-`ID, Test, Prepared, Sender, Receiver\*, Name\*, Structure+,
-MetadataProvider?, DataSetAction?, DataSetID\*, Extracted?, Source\*`
+```text
+ID, Test, Prepared, Sender, Receiver*, Name*, Structure+,
+MetadataProvider?, DataSetAction?, DataSetID*, Extracted?, Source*
+```
 
 Element Documentation:
 
@@ -419,7 +441,9 @@ BaseHeaderType (restriction)
 
 Content:
 
-`ID, Test, Prepared, Sender, Receiver`
+```text
+ID, Test, Prepared, Sender, Receiver
+```
 
 Element Documentation:
 
@@ -436,11 +460,15 @@ various parties such as senders and receivers of messages.
 
 Attributes:
 
-`id`
+```text
+id
+```
 
 Content:
 
-`Name\*, Contact\*`
+```text
+Name*, Contact*
+```
 
 Attribute Documentation:
 
@@ -467,11 +495,15 @@ PartyType (extension)
 
 Attributes:
 
-`id`
+```text
+id
+```
 
 Content:
 
-`Name\*, Contact\*, Timezone?`
+```text
+Name*, Contact*, Timezone?
+```
 
 Attribute Documentation:
 
@@ -492,8 +524,10 @@ about a party.
 
 Content:
 
-`Name\*, Department\*, Role\*, (Telephone \| Fax \| X400 \| URI \|
-Email)\*`
+```text
+Name*, Department*, Role*, (Telephone | Fax | X400 | URI |
+Email)*
+```
 
 Element Documentation:
 
@@ -551,7 +585,9 @@ payload is generated, an Error message should be returned.
 
 Content:
 
-`Message+`
+```text
+Message+
+```
 
 Element Documentation:
 
@@ -574,11 +610,15 @@ StatusMessageType (restriction)
 
 Attributes:
 
-`code, severity?`
+```text
+code, severity?
+```
 
 Content:
 
-`Text+`
+```text
+Text+
+```
 
 Attribute Documentation:
 

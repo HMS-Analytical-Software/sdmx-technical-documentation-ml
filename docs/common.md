@@ -1,4 +1,6 @@
-# Introduction
+# Common Namespace
+
+## Introduction
 
 The common namespace defines a collection of constructs that are reused
 across the various components of SDMX. Most important of these are the
@@ -43,13 +45,13 @@ met the all of the requirements and was not deemed to major of a shift
 since these properties normally would have been expressed as unqualified
 attributes if it weren't for the complete reference requirement.
 
-# Schema Documentation
+## Schema Documentation
 
-## Common Namespace
+### Common Namespace
 
 **http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common**
 
-### Summary
+#### Summary
 
 Referenced Namespaces:
 
@@ -64,7 +66,7 @@ Contents:
 - 30 Complex Types  
 - 206 Simple Types
 
-### Global Elements
+#### Global Elements
 
 **Name (TextType):** Name is a reusable element, used for providing a
 human-readable name for an object.
@@ -81,26 +83,26 @@ used for providing a language specific text value structured as XHTML.
 
 **Annotations (AnnotationsType):** Annotations is a reusable element the
 provides for a collection of annotations. It has been made global so
-that restrictions of types that extend AnnotatableType may reference it.
+that restrictions of types that extend AnnotableType may reference it.
 
 **Link (LinkType):** Allows for the linking of other resources to
 identifiable objects. For example, if there is reference metadata
-associated with a structure, a link to the meatadata report can be
+associated with a structure, a link to the metadata report can be
 dynamically inserted in the structure metadata.
 
-### Complex Types
+#### Complex Types
 
-***ValueType*:** ValueType is an abstract class that is the basis for
+**ValueType:** ValueType is an abstract class that is the basis for
 any component value that cannot be simply represented as a
 space-normalized value (e.g. in an XML attribute). Although its content
 is mixed, it should be restricted so that only character data or the
 Text or Structured text is used. See StringValueType, IntValueType,
-ObserverationalTimeValueType, TextValueType, and StructuredTextValueType
+ObservationalTimeValueType, TextValueType, and StructuredTextValueType
 for details.
 
 Content:
 
-`{text} x (Text\* \| StructuredText\*)?`
+`{text} x (Text* | StructuredText*)?`
 
 Element Documentation:
 
@@ -128,7 +130,7 @@ facets, patterns, etc.
 Derivation:
 
 ``` xml
-*ValueType* (restriction)  
+ValueType (restriction)  
    StringValueType
 ```
 
@@ -141,7 +143,7 @@ ranges, etc.
 Derivation:
 
 ``` xml
-*ValueType* (restriction)  
+ValueType (restriction)  
    IntValueType
 ```
 
@@ -154,7 +156,7 @@ etc.
 Derivation:
 
 ``` xml
-*ValueType* (restriction)  
+ValueType (restriction)  
    DoubleValueType
 ```
 
@@ -167,14 +169,14 @@ observational time period.
 Derivation:
 
 ``` xml
-*ValueType* (restriction)  
+ValueType (restriction)  
    ObservationalTimePeriodValueType
 ```
 
 Content:
 
 **TextValueType:** TextValueType is a restriction of ValueType that
-allows mutliple Text elements to expressed a text value in multiple
+allows multiple Text elements to expressed a text value in multiple
 languages. The content of this should be restricted in its use to only
 allow a langue code (xml:lang) to be used once within an element of this
 type.
@@ -182,13 +184,13 @@ type.
 Derivation:
 
 ``` xml
-*ValueType* (restriction)  
+ValueType (restriction)  
    TextValueType
 ```
 
 Content:
 
-`Text\*`
+`Text*`
 
 Element Documentation:
 
@@ -211,7 +213,7 @@ ValueType (restriction)
 
 Content:
 
-`StructuredText\*`
+`StructuredText*`
 
 Element Documentation:
 
@@ -304,7 +306,7 @@ Element Documentation:
 |----------|----------|---------------------------------------------------------------------|
 | Text     | TextType | Text contains the text of the message, in parallel language values. |
 
-***AnnotableType*:** AnnotableType is an abstract base type used for all
+**AnnotableType:** AnnotableType is an abstract base type used for all
 annotable artefacts. Any type that provides for annotations should
 extend this type.
 
@@ -316,7 +318,7 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                   |
 |-------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it. |
 
 **AnnotationsType:** AnnotationsType provides for a list of annotations
 to be attached to data and structure messages.
@@ -342,7 +344,7 @@ Attributes:
 
 Content:
 
-`AnnotationTitle?, AnnotationType?, AnnotationURL\*, AnnotationText\*,
+`AnnotationTitle?, AnnotationType?, AnnotationURL*, AnnotationText*,
 AnnotationValue?`
 
 Attribute Documentation:
@@ -404,7 +406,7 @@ Attribute Documentation:
 | urn      | xs:anyURI | A SDMX registry urn of the object being linked (if applicable). |
 | type     | xs:string | The type of link (e.g. PDF, text, HTML, reference metadata).    |
 
-***IdentifiableType*:** IdentifiableType is an abstract base type for
+**IdentifiableType:** IdentifiableType is an abstract base type for
 all identifiable objects.
 
 Derivation:
@@ -420,7 +422,7 @@ Attributes:
 
 Content:
 
-`Annotations?, Link\*`
+`Annotations?, Link*`
 
 Attribute Documentation:
 
@@ -434,10 +436,10 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it.                                               |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 
-***NameableType*:** NameableType is an abstract base type for all
+**NameableType:** NameableType is an abstract base type for all
 nameable objects.
 
 Derivation:
@@ -454,7 +456,7 @@ Attributes:
 
 Content:
 
-`Annotations?, Link\*, Name+, Description\*`
+`Annotations?, Link*, Name+, Description*`
 
 Attribute Documentation:
 
@@ -468,12 +470,12 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it.                                               |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***VersionableType*:** VersionableType is an abstract base type for all
+**VersionableType:** VersionableType is an abstract base type for all
 versionable objects.
 
 Derivation:
@@ -491,7 +493,7 @@ Attributes:
 
 Content:
 
-`Annotations?, Link\*, Name+, Description\*`
+`Annotations?, Link*, Name+, Description*`
 
 Attribute Documentation:
 
@@ -508,12 +510,12 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it.                                               |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***MaintainableBaseType*:** MaintainableBaseType is an abstract type
+**MaintainableBaseType:** MaintainableBaseType is an abstract type
 that only serves the purpose of forming the base for the actual
 MaintainableType. The purpose of this type is to restrict the
 VersionableType to require the id attribute.
@@ -534,7 +536,7 @@ Attributes:
 
 Content:
 
-`Annotations?, Link\*, Name+, Description\*`
+`Annotations?, Link*, Name+, Description*`
 
 Attribute Documentation:
 
@@ -551,12 +553,12 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it.                                               |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
-***MaintainableType*:** MaintainableType is an abstract base type for
+**MaintainableType:** MaintainableType is an abstract base type for
 all maintainable objects.
 
 Derivation:
@@ -577,7 +579,7 @@ isExternalReference?, serviceURL?, structureURL?`
 
 Content:
 
-`Annotations?, Link\*, Name+, Description\*`
+`Annotations?, Link*, Name+, Description*`
 
 Attribute Documentation:
 
@@ -598,8 +600,8 @@ Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotableType may reference it.                                               |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
@@ -659,7 +661,7 @@ Attributes:
 
 Content:
 
-`{text} x {any element with namespace of http://www.w3.org/1999/xhtml}\*`
+`{text} x {any element with namespace of http://www.w3.org/1999/xhtml}*`
 
 Attribute Documentation:
 
@@ -667,7 +669,7 @@ Attribute Documentation:
 |------------------------|-------------|-------------------|
 | xml:lang (default: en) | xs:language |                   |
 
-***PayloadStructureType*:** PayloadStructureType is an abstract base
+**PayloadStructureType:** PayloadStructureType is an abstract base
 type used to define the structural information for data or metadata
 sets. A reference to the structure is provided (either explicitly or
 through a reference to a structure usage).
@@ -679,7 +681,7 @@ explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-`(ProvisionAgreement \| StructureUsage \| Structure)`
+`(ProvisionAgreement | StructureUsage | Structure)`
 
 Attribute Documentation:
 
@@ -697,11 +699,11 @@ Element Documentation:
 
 | **Name**           | **Type**                         | **Documentation**                                                                                   |
 |--------------------|----------------------------------|-----------------------------------------------------------------------------------------------------|
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreement references a provision agreement which the data or metadata is reported against. |
-| StructureUsage     | StructureUsageRefere nceType     | StructureUsage references a flow which the data or metadata is reported against.                    |
-| Structure          | StructureReferenceTy pe          | Structure references the structure which defines the structure of the data or metadata set.         |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreement references a provision agreement which the data or metadata is reported against. |
+| StructureUsage     | StructureUsageReferenceType     | StructureUsage references a flow which the data or metadata is reported against.                    |
+| Structure          | StructureReferenceType          | Structure references the structure which defines the structure of the data or metadata set.         |
 
-***DataStructureType*:** DataStructureType is an abstract base type the
+**DataStructureType:** DataStructureType is an abstract base type the
 forms the basis for the structural information for a data set.
 
 Derivation:
@@ -718,7 +720,7 @@ explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-`(ProvisionAgreement \| StructureUsage \| Structure)`
+`(ProvisionAgreement | StructureUsage | Structure)`
 
 Attribute Documentation:
 
@@ -736,9 +738,9 @@ Element Documentation:
 
 | **Name**           | **Type**                         | **Documentation**                                                                           |
 |--------------------|----------------------------------|---------------------------------------------------------------------------------------------|
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreement references a provision agreement which the data is reported against.     |
-| StructureUsage     | DataflowReferenceTyp e           | StructureUsage references a dataflow which the data is reported against.                    |
-| Structure          | DataStructureReferen ceType      | Structure references the data structure definition which defines the structure of the data. |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreement references a provision agreement which the data is reported against.     |
+| StructureUsage     | DataflowReferenceType           | StructureUsage references a dataflow which the data is reported against.                    |
+| Structure          | DataStructureReferenceType      | Structure references the data structure definition which defines the structure of the data. |
 
 **StructureSpecificDataStructureType:**
 StructureSpecificDataStructureType defines the structural information
@@ -765,7 +767,7 @@ explicitMeasures?, serviceURL?, structureURL?`
 
 Content:
 
-`(ProvisionAgreement \| StructureUsage \| Structure)`
+`(ProvisionAgreement | StructureUsage | Structure)`
 
 Attribute Documentation:
 
@@ -783,11 +785,11 @@ Element Documentation:
 
 | **Name**           | **Type**                         | **Documentation**                                                                           |
 |--------------------|----------------------------------|---------------------------------------------------------------------------------------------|
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreement references a provision agreement which the data is reported against.     |
-| StructureUsage     | DataflowReferenceTyp e           | StructureUsage references a dataflow which the data is reported against.                    |
-| Structure          | DataStructureReferen ceType      | Structure references the data structure definition which defines the structure of the data. |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreement references a provision agreement which the data is reported against.     |
+| StructureUsage     | DataflowReferenceType           | StructureUsage references a dataflow which the data is reported against.                    |
+| Structure          | DataStructureReferenceType      | Structure references the data structure definition which defines the structure of the data. |
 
-***MetadataStructureType*:** MetadataStructureType is an abstract base
+**MetadataStructureType:** MetadataStructureType is an abstract base
 type the forms the basis of the structural information for any metadata
 message. A reference to the metadata structure definition or a
 metadataflow must be provided. This can be used to determine the
@@ -806,7 +808,7 @@ Attributes:
 
 Content:
 
-`(ProvisionAgreement \| StructureUsage \| Structure)`
+`(ProvisionAgreement | StructureUsage | Structure)`
 
 Attribute Documentation:
 
@@ -822,9 +824,9 @@ Element Documentation:
 
 | **Name**           | **Type**                         | **Documentation**                                                                                   |
 |--------------------|----------------------------------|-----------------------------------------------------------------------------------------------------|
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreement references a provision agreement which the metadata is reported against.         |
-| StructureUsage     | MetadataflowReferenc eType       | StructureUsage references a metadataflow which the metadata is reported against.                    |
-| Structure          | MetadataStructureRef erenceType  | Structure references the metadata structure definition which defines the structure of the metadata. |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreement references a provision agreement which the metadata is reported against.         |
+| StructureUsage     | MetadataflowReferenceType       | StructureUsage references a metadataflow which the metadata is reported against.                    |
+| Structure          | MetadataStructureReferenceType  | Structure references the metadata structure definition which defines the structure of the metadata. |
 
 **GenericMetadataStructureType:** GenericMetadataStructureType defines
 the structural information for a generic metadata message.
@@ -843,7 +845,7 @@ Attributes:
 
 Content:
 
-`(ProvisionAgreement \| StructureUsage \| Structure)`
+`(ProvisionAgreement | StructureUsage | Structure)`
 
 Attribute Documentation:
 
@@ -858,24 +860,24 @@ Element Documentation:
 
 | **Name**           | **Type**                         | **Documentation**                                                                                   |
 |--------------------|----------------------------------|-----------------------------------------------------------------------------------------------------|
-| ProvisionAgreement | ProvisionAgreementRe ferenceType | ProvisionAgreement references a provision agreement which the metadata is reported against.         |
-| StructureUsage     | MetadataflowReferenc eType       | StructureUsage references a metadataflow which the metadata is reported against.                    |
-| Structure          | MetadataStructureRef erenceType  | Structure references the metadata structure definition which defines the structure of the metadata. |
+| ProvisionAgreement | ProvisionAgreementReferenceType | ProvisionAgreement references a provision agreement which the metadata is reported against.         |
+| StructureUsage     | MetadataflowReferenceType       | StructureUsage references a metadataflow which the metadata is reported against.                    |
+| Structure          | MetadataStructureReferenceType  | Structure references the metadata structure definition which defines the structure of the metadata. |
 
-### Simple Types
+#### Simple Types
 
 **AlphaNumericType:** AlphaNumericType is a reusable simple type that
 allows for only mixed-case alphabetical and numeric characters.
 
 Derived by restriction of `xs:string`.  
-Regular Expression Pattern: `\[A-Za-z0-9\]+`
+Regular Expression Pattern: `[A-Za-z0-9]+`
 
 **AlphaType:** AlphaType is a reusable simple type that allows for only
 mixed-case alphabetical characters. This is derived from the
 AlphaNumericType.
 
 Derived by restriction of `AlphaNumericType` .  
-Regular Expression Pattern: `\[A-Za-z\]+`
+Regular Expression Pattern: `[A-Za-z]+`
 
 **NumericType:** NumericType is a reusable simple type that allows for
 only numeric characters. This is not to be confused with an integer, as
@@ -884,7 +886,7 @@ leading zeros are not ignored. This is derived from the
 AlphaNumericType.
 
 Derived by restriction of `AlphaNumericType`.  
-Regular Expression Pattern: `\[0-9\]+`
+Regular Expression Pattern: `[0-9]+`
 
 **ObservationalTimePeriodType:** ObservationalTimePeriodType specifies a
 distinct time period or point in time in SDMX. The time period can
@@ -932,7 +934,7 @@ not defined, a day of January 1 is assumed. The reporting year must be
 expressed as the year at the beginning of the period. Therefore, if the
 reporting year runs from April to March, any given reporting year is
 expressed as the year for April. The general format of a report period
-can be described as \[year\]-\[period\]\[time zone\]?, where the type of
+can be described as `[year]-[period][time zone]`?, where the type of
 period is designated with a single character followed by a number
 representing the period. Note that all periods allow for an optional
 time zone offset. See the details of each member type for the specifics
@@ -947,12 +949,12 @@ ReportingDayType.`
 **BaseReportPeriodType:** BaseReportPeriodType is a simple type which
 frames the general pattern of a reporting period for validation
 purposes. This regular expression is only a general validation which is
-meant to validate the following structure \[year\]-\[period\]\[time
-zone\]?. This type is meant to be derived from for further validation.
+meant to validate the following structure `[year]-[period][time zone]`?.
+This type is meant to be derived from for further validation.
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`\d{4}\\(\[ASTQ\]\d{1}\|\[MW\]\d{2}\|\[D\]\d{3})(Z\|((\\\|\\)\d{2}:\d{2}))?`
+`\d{4}\\([ASTQ]\d{1}|[MW]\d{2}|[D]\d{3})(Z|((\\|\\)\d{2}:\d{2}))?`
 
 **ReportPeriodValidTimeZoneType:** ReportPeriodValidTimeZoneType is a
 derivation of the BaseReportPeriodType which validates that the time
@@ -964,7 +966,7 @@ further validation.
 
 Derived by restriction of `BaseReportPeriodType`.  
 Regular Expression Pattern:
-`.+Z.{5}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\])).{5}\[^\\\\Z\]+`
+`.+Z.{5}.*(\\|\\)(14:00|((0[0-9]|1[0-3]):[0-5][0-9])).{5}[^\\\\Z]+`
 
 **ReportingYearType:** ReportingYearType defines a time period of 1 year
 (P1Y) in relation to a reporting year which has a start day (day-month)
@@ -975,7 +977,7 @@ year. The format of a reporting year is YYYY-A1 (e.g. 2000-A1). Note
 that the period value of 1 is fixed.
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}A1.\*`
+Regular Expression Pattern: `.{5}A1.*`
 
 **ReportingSemesterType:** ReportingSemesterType defines a time period
 of 6 months (P6M) in relation to a reporting year which has a start day
@@ -985,7 +987,7 @@ of January 1 is assumed. The format of a reporting semester is YYYY-Ss
 (e.g. 2000-S1), where s is either 1 or 2.
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}S\[1-2\].\*`
+Regular Expression Pattern: `.{5}S[1-2].*`
 
 **ReportingTrimesterType:** ReportingTrimesterType defines a time period
 of 4 months (P4M) in relation to a reporting year which has a start day
@@ -995,7 +997,7 @@ of January 1 is assumed. The format of a reporting trimester is YYYY-Tt
 (e.g. 2000-T1), where s is either 1, 2, or 3.
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}T\[1-3\].\*`
+Regular Expression Pattern: `.{5}T[1-3].*`
 
 **ReportingQuarterType:** ReportingQuarterType defines a time period of
 3 months (P3M) in relation to a reporting year which has a start day
@@ -1005,7 +1007,7 @@ of January 1 is assumed. The format of a reporting quarter is YYYY-Qq
 (e.g. 2000-Q1), where q is a value between 1 and 4.
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}Q\[1-4\].\*`
+Regular Expression Pattern: `.{5}Q[1-4].*`
 
 **ReportingMonthType:** ReportingMonthType defines a time period of 1
 month (P1M) in relation to a reporting year which has a start day
@@ -1016,24 +1018,24 @@ with a calendar month. The format of a reporting month is YYYY-Mmm (e.g.
 2000-M01), where mm is a two digit month (i.e. 01-12).
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}M(0\[1-9\]\|1\[0-2\]).\*`
+Regular Expression Pattern: `.{5}M(0[1-9]|1[0-2]).*`
 
 **ReportingWeekType:** ReportingWeekType defines a time period of 7 days
 (P7D) in relation to a reporting year which has a start day (day-month)
 specified in the specialized reporting year start day attribute. A
-standard reporting week is based on the ISO 8601 defintion of a week
+standard reporting week is based on the ISO 8601 definition of a week
 date, in relation to the reporting period start day. The first week is
 defined as the week with the first Thursday on or after the reporting
 year start day. An equivalent definition is the week starting with the
 Monday nearest in time to the reporting year start day. There are other
-equivalent defintions, all of which should be adjusted based on the
+equivalent definitions, all of which should be adjusted based on the
 reporting year start day. In the absence of a start day for the
 reporting year, a day of January 1 is assumed. The format of a reporting
 week is YYYY-Www (e.g. 2000-W01), where mm is a two digit week (i.e.
 01-53).
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
-Regular Expression Pattern: `.{5}W(0\[1-9\]\|\[1-4\]\[0-9\]\|5\[0-3\]).\*`
+Regular Expression Pattern: `.{5}W(0[1-9]|[1-4][0-9]|5[0-3]).*`
 
 **ReportingDayType:** ReportingDayType defines a time period of 1 day
 (P1D) in relation to a reporting year which has a start day (day-month)
@@ -1044,17 +1046,17 @@ where ddd is a three digit day (i.e. 001-366).
 
 Derived by restriction of `ReportPeriodValidTimeZoneType`.  
 Regular Expression Pattern:
-`.{5}D(0\[0-9\]\[1-9\]\|\[1-2\]\[0-9\]\[0-9\]\|3\[0-5\]\[0-9\]\|36\[0-6\]).\*`
+`.{5}D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]).*`
 
 **BaseTimeRangeType:** BaseTimeRangeType is a simple type which frames
 the general pattern for a time range in SDMX. A time range pattern is
-generally described as \[xs:date or xs:dateTime\]\\xs:duration\], where
+generally described as [xs:date or xs:dateTime]\\xs:duration], where
 the referenced types are defined by XML Schema. This type is meant to be
 derived from for further validation.
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`\d{4}\\\d{2}\\\d{2}(T\d{2}:\d{2}:\d{2}(\\\d+)?)?(Z\|((\\\|\\)\d{2}:\d{2}))?/P.+`
+`\d{4}\\\d{2}\\\d{2}(T\d{2}:\d{2}:\d{2}(\\\d+)?)?(Z|((\\|\\)\d{2}:\d{2}))?/P.+`
 
 **RangeValidMonthDayType:** RangeValidMonthDayType is a derivation of
 the BaseTimeRangeType which validates that the day provided is valid for
@@ -1067,7 +1069,7 @@ further validation.
 
 Derived by restriction of `BaseTimeRangeType`.  
 Regular Expression Pattern:
-`.{5}02\\(0\[1-9\]\|\[1-2\]\[0-9\]).+.{5}(04\|06\|09\|11)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|30).+.{5}(01\|03\|05\|07\|08\|10\|12)\\(0\[1-9\]\|\[1-2\]\[0-9\]\|3\[0-1\]).+`
+`.{5}02\\(0[1-9]|[1-2][0-9]).+.{5}(04|06|09|11)\\(0[1-9]|[1-2][0-9]|30).+.{5}(01|03|05|07|08|10|12)\\(0[1-9]|[1-2][0-9]|3[0-1]).+`
 
 **RangeValidLeapYearType:** RangeValidLeapYearType is a derivation of
 the RangeValidMonthDayType which validates that a date of February 29
@@ -1077,7 +1079,7 @@ derived from for further validation.
 
 Derived by restriction of `RangeValidMonthDayType`.  
 Regular Expression Pattern:
-`((\d{2}(04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96))\|((00\|04\|08\|12\|16\|20\|24\|28\|32\|36\|40\|44\|48\|52\|56\|60\|64\|68\|72\|76\|80\|84\|88\|92\|96)00))\\02\\29.+.{5}02\\((\[0-1\]\[0-9\])\|(2\[^9\])).+.{5}((0\[1,3-9\])\|1\[0-2\]).+`
+`((\d{2}(04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96))|((00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)00))\\02\\29.+.{5}02\\(([0-1][0-9])|(2[^9])).+.{5}((0[1,3-9])|1[0-2]).+`
 
 **RangeValidTimeType:** RangeValidTimeType is a derivation of the
 RangeValidLeapYearType which validates that the time (if provided) is
@@ -1090,7 +1092,7 @@ be derived from for further validation.
 
 Derived by restriction of `RangeValidLeapYearType`.  
 Regular Expression Pattern:
-`.{10}T(24:00:00(\\\[0\]+)?\|(((\[0-1\]\[0-9\])\|(2\[0-3\])):\[0-5\]\[0-9\]:\[0-5\]\[0-9\](\\\d+)?))(/\|Z\|\\\|\\).+\[^T\]+/.+`
+`.{10}T(24:00:00(\\[0]+)?|((([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9](\\\d+)?))(/|Z|\\|\\).+[^T]+/.+`
 
 **RangeValidTimeZoneType:** RangeValidMonthDayType is a derivation of
 the RangeValidTimeType which validates that the time zone provided in
@@ -1102,7 +1104,7 @@ validation.
 
 Derived by restriction of `RangeValidTimeType`.  
 Regular Expression Pattern:
-`.+Z/.+.{10}.\*(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))/.+.{10}\[^\\\\Z\]+`
+`.+Z/.+.{10}.*(\\|\\)(14:00|((0[0-9]|1[0-3]):[0-5][0-9]))/.+.{10}[^\\\\Z]+`
 
 **TimeRangeValidDateDurationType:** TimeRangeValidDateDurationType is an
 abstract derivation of the RangeValidTimeType which validates that
@@ -1113,23 +1115,23 @@ Regular Expression Pattern: `.+/P(\d+Y)?(\d+M)?(\d+D)?(T.+)?`
 
 **TimeRangeType:** TimeRangeType defines the structure of a time range
 in SDMX. The pattern of a time range can be generally described as
-\[start date\]\\duration\], where start date is an date or dateTime type
+`[start date]\\duration]`, where start date is an date or dateTime type
 as defined in XML Schema and duration is a time duration as defined in
 XML Schema. Note that it is permissible for a time zone offset to be
 provided on the date or date time.
 
 Derived by restriction of `TimeRangeValidDateDurationType`.  
 Regular Expression Pattern:
-`.+/P.\*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?.+/P\[^T\]+`
+`.+/P.*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?.+/P[^T]+`
 
 **TimezoneType:** TimezoneType defines the pattern for a time zone. An
 offset of -14:00 to +14:00 or Z can be specified.
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`Z(\\\|\\)(14:00\|((0\[0-9\]\|1\[0-3\]):\[0-5\]\[0-9\]))`
+`Z(\\|\\)(14:00|((0[0-9]|1[0-3]):[0-5][0-9]))`
 
-**OccurenceType:** OccurenceType is used to express the maximum
+**OccurrenceType:** OccurrenceType is used to express the maximum
 occurrence of an object. It combines an integer, equal or greater than
 1, and the literal text, "unbounded", for objects which have no upper
 limit on its occurrence.
@@ -1147,7 +1149,7 @@ Minimum (inclusive): `1`
 Fraction Digits: `0`
 
 **UnboundedCodeType:** UnboundedCodeType provides single textual value
-of "unbounded", for use in OccurentType.
+of "unbounded", for use in OccurrentType.
 
 Derived by restriction of `xs:string`.
 
@@ -1197,7 +1199,7 @@ Union of:
 `xs:boolean, ExcludeRootType.`
 
 **ExcludeRootType:** ExcludeRootType is a single enumerated value that
-indciates that child values should be included, but that the actual root
+indicates that child values should be included, but that the actual root
 should not.
 
 Derived by restriction of `xs:string`.
@@ -1238,7 +1240,7 @@ Enumerations:
 | **Value**               | **Documentation**                                                                                                                                                                                                                                                                                                                                                                                 |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | String                  | A string datatype corresponding to W3C XML Schema's xs:string datatype.                                                                                                                                                                                                                                                                                                                           |
-| Alpha                   | A string datatype which only allows for the simple aplhabetic charcter set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
+| Alpha                   | A string datatype which only allows for the simple alphabetic character set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
 | AlphaNumeric            | A string datatype which only allows for the simple alphabetic character set of A-Z, a-z plus the simple numeric character set of 0-9.                                                                                                                                                                                                                                                             |
 | Numeric                 | A string datatype which only allows for the simple numeric character set of 0-9. This format is not treated as an integer, and therefore can having leading zeros.                                                                                                                                                                                                                                |
 | BigInteger              | An integer datatype corresponding to W3C XML Schema's xs:integer datatype.                                                                                                                                                                                                                                                                                                                        |
@@ -1293,7 +1295,7 @@ Enumerations:
 | **Value**               | **Documentation**                                                                                                                                                                                                                                                                                                                                                                                 |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | String                  | A string datatype corresponding to W3C XML Schema's xs:string datatype.                                                                                                                                                                                                                                                                                                                           |
-| Alpha                   | A string datatype which only allows for the simple aplhabetic charcter set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
+| Alpha                   | A string datatype which only allows for the simple alphabetic charcter set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
 | AlphaNumeric            | A string datatype which only allows for the simple alphabetic character set of A-Z, a-z plus the simple numeric character set of 0-9.                                                                                                                                                                                                                                                             |
 | Numeric                 | A string datatype which only allows for the simple numeric character set of 0-9. This format is not treated as an integer, and therefore can having leading zeros.                                                                                                                                                                                                                                |
 | BigInteger              | An integer datatype corresponding to W3C XML Schema's xs:integer datatype.                                                                                                                                                                                                                                                                                                                        |
@@ -1345,7 +1347,7 @@ Enumerations:
 | **Value**               | **Documentation**                                                                                                                                                                                                                                                                                                                                                                                 |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | String                  | A string datatype corresponding to W3C XML Schema's xs:string datatype.                                                                                                                                                                                                                                                                                                                           |
-| Alpha                   | A string datatype which only allows for the simple aplhabetic charcter set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
+| Alpha                   | A string datatype which only allows for the simple alphabetic charcter set of A-Z, a-z.                                                                                                                                                                                                                                                                                                           |
 | AlphaNumeric            | A string datatype which only allows for the simple alphabetic character set of A-Z, a-z plus the simple numeric character set of 0-9.                                                                                                                                                                                                                                                             |
 | Numeric                 | A string datatype which only allows for the simple numeric character set of 0-9. This format is not treated as an integer, and therefore can having leading zeros.                                                                                                                                                                                                                                |
 | BigInteger              | An integer datatype corresponding to W3C XML Schema's xs:integer datatype.                                                                                                                                                                                                                                                                                                                        |
@@ -1418,7 +1420,7 @@ further restricted.
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`urn:sdmx:org\\sdmx\\infomodel\\\[a-z\]+\\\[A-Za-z\]+=\[^=\]+`
+`urn:sdmx:org\\sdmx\\infomodel\\[a-z]+\\[A-Za-z]+=[^=]+`
 
 **UrnClassesPart:** This refines the prefix to make specific
 restrictions of package and class values. Note that only one of the
@@ -1433,7 +1435,7 @@ validate the agency part of the URN (=\<agency_id\>:).
 
 Derived by restriction of `UrnClassesPart`.  
 Regular Expression Pattern:
-`.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+`
+`.+=([A-Za-z][A-Za-z0-9\_\\]*(\\[A-Za-z][A-Za-z0-9\_\\]*)*):[^:]+`
 
 **WildcardUrnAgencyPart:** This restricts the prefix and classes
 patterns to validate the agency part of a wildcarded URN reference
@@ -1441,16 +1443,16 @@ patterns to validate the agency part of a wildcarded URN reference
 
 Derived by restriction of `UrnClassesPart`.  
 Regular Expression Pattern:
-`.+=(\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*):\[^:\]+.+=\\:\[^:\]+`
+`.+=([A-Za-z][A-Za-z0-9\_\\]*(\\[A-Za-z][A-Za-z0-9\_\\]*)*):[^:]+.+=\\:[^:]+`
 
-**UrnMaintainableIdPart:** This refines the prefix, classes, and agnecy
+**UrnMaintainableIdPart:** This refines the prefix, classes, and agency
 patterns to validate the maintainable ID part of the URN
 (:\<maintainable_id(\<version_number\>)). Note that it does not restrict
 the version part as it is intended to be further restricted.
 
 Derived by restriction of `UrnAgencyPart`.  
 Regular Expression Pattern:
-`.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\]+\\\[^(\\\\)\]\*`
+`.+:([A-Za-z0-9\_@\$\\]+)\\[0-9A-Za-z\\\\\\]+\\[^(\\\\)]*`
 
 **WildcardUrnMaintainableIdPart:** This refines the prefix, classes, and
 agnecy patterns to validate the maintainable ID part of a wildcarded URN
@@ -1460,17 +1462,17 @@ restricted.
 
 Derived by restriction of `WildcardUrnAgencyPart`.  
 Regular Expression Pattern:
-`.+:(\[A-Za-z0-9\_@\$\\\]+)\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*.+:\\\\\[0-9A-Za-z\\\\\\\\\]+\\\[^(\\\\)\]\*`
+`.+:([A-Za-z0-9\_@\$\\]+)\\[0-9A-Za-z\\\\\\\\]+\\[^(\\\\)]*.+:\\\\[0-9A-Za-z\\\\\\\\]+\\[^(\\\\)]*`
 
 **UrnVersionPart:** This refines the prefix, classes, agency, and
 maintainable id patterns to validate the version number part of the URN
 ((\<version_number)). It accounts for both legacy and semantic
-versioning, but not wildarding (for referencing). It is meant to be
+versioning, but not wildcarding (for referencing). It is meant to be
 further refined, although all parts after this are optional.
 
 Derived by restriction of `UrnMaintainableIdPart`.  
 Regular Expression Pattern:
-`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*`
+`.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*))?\\.*.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*)){2}(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*))(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*)))*)?\\.*`
 
 **UrnReferenceVersionPart:** This refines the prefix, classes, agency,
 and maintainable id patterns to validate the version number part of a
@@ -1480,7 +1482,7 @@ refined, although all parts after this are optional.
 
 Derived by restriction of `UrnMaintainableIdPart`.  
 Regular Expression Pattern:
-`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*`
+`.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*))?\\.*.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*)){2}(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*))(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*)))*)?\\.*.+\\((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*))){2}\\.*.+\\((0|[1-9]\d*))(\\((0|[1-9]\d*)\\?))(\\((0|[1-9]\d*)))\\.*.+\\((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*)))(\\((0|[1-9]\d*)\\?))\\.*`
 
 **WildcardUrnVersionPart:** This refines the prefix, classes, agency,
 and maintainable id patterns to validate the version number part of a
@@ -1490,39 +1492,39 @@ be further refined, although all parts after this are optional.
 
 Derived by restriction of `WildcardUrnMaintainableIdPart`.  
 Regular Expression Pattern:
-`.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?\\.\*.+\\(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}\\.\*.+\\((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))\\.\*.+\\((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))\\.\*.+\\\\\\.\*`
+`.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*))?\\.*.+\\(0|[1-9]\d*)(\\(0|[1-9]\d*)){2}(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*))(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*)))*)?\\.*.+\\((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*))){2}\\.*.+\\((0|[1-9]\d*))(\\((0|[1-9]\d*)\\?))(\\((0|[1-9]\d*)))\\.*.+\\((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*)))(\\((0|[1-9]\d*)\\?))\\.*.+\\\\\\.*`
 
 **UrnType:** The completes the refinement of the prefix, classes,
 agency, maintainable id, and version number patterns to validate the
 last, and optional, nested component part of the URN (e.g.
-(\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
+(\<version_number\>)\<containerobject-id\>.\<object-id\>*). The nested
 patterns provide a complete validation of the URN pattern.
 
 Derived by restriction of `UrnVersionPart`.  
 Regular Expression Pattern:
-`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?`
+`.+\\(\\[A-Za-z0-9\_@\$\\]+(\\[A-Za-z0-9\_@\$\\]+)*)?`
 
 **UrnReferenceType:** The completes the refinement of the prefix,
 classes, agency, maintainable id, and version number patterns to
 validate the last, and optional, nested component part of a URN
 reference (e.g.
-(\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
+(\<version_number\>)\<containerobject-id\>.\<object-id\>*). The nested
 patterns provide a complete validation of the URN pattern.
 
 Derived by restriction of `UrnReferenceVersionPart`.  
 Regular Expression Pattern:
-`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?`
+`.+\\(\\[A-Za-z0-9\_@\$\\]+(\\[A-Za-z0-9\_@\$\\]+)*)?`
 
 **WildcardUrnType:** The completes the refinement of the prefix,
 classes, agency, maintainable id, and version number patterns to
 validate the last, and optional, nested component part of a wildcarded
 URN reference (e.g.
-(\<version_number\>)\<containerobject-id\>.\<object-id\>\*). The nested
+(\<version_number\>)\<containerobject-id\>.\<object-id\>*). The nested
 patterns provide a complete validation of the URN pattern.
 
 Derived by restriction of `WildcardUrnVersionPart`.  
 Regular Expression Pattern:
-`.+\\(\\\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*)?.+\\(\\\\(\\\\)\*)?`
+`.+\\(\\[A-Za-z0-9\_@\$\\]+(\\[A-Za-z0-9\_@\$\\]+)*)?.+\\(\\\\(\\\\)*)?`
 
 **MaintainableUrnType:** Restricts the URN so that the pattern ends
 after the version part.
@@ -1540,13 +1542,13 @@ Regular Expression Pattern: `.+\\`
 the first component part.
 
 Derived by restriction of `UrnType`.  
-Regular Expression Pattern: `.+\\\\\[A-Za-z0-9\_@\$\\\]+`
+Regular Expression Pattern: `.+\\\\[A-Za-z0-9\_@\$\\]+`
 
 **ComponentUrnReferenceType:** Restricts the URN reference so that the
 pattern ends after the first component part.
 
 Derived by restriction of `UrnReferenceType` .  
-Regular Expression Pattern: `.+\\\\\[A-Za-z0-9\_@\$\\\]+`
+Regular Expression Pattern: `.+\\\\[A-Za-z0-9\_@\$\\]+`
 
 **AgencyUrnType:** Urn type for an agency.
 
@@ -1728,7 +1730,7 @@ Regular Expression Pattern: `.+\\datastructure\\MeasureDescriptor=.+`
 Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern: `.+\\datastructure\\TimeDimension=.+`
 
-**MetadataAttributeUrnType:** Urn type for a metadata attibute.
+**MetadataAttributeUrnType:** Urn type for a metadata attribute.
 
 Derived by restriction of `UrnType`.  
 Regular Expression Pattern: `.+\\metadatastructure\\MetadataAttribute=.+`
@@ -1861,7 +1863,7 @@ Regular Expression Pattern:
 Derived by restriction of `ComponentUrnType`.  
 Regular Expression Pattern: `.+\\transformation\\Ruleset=.+`
 
-**RulesetSchemeUrnType:** Urn type for a ruleste scheme.
+**RulesetSchemeUrnType:** Urn type for a ruleset scheme.
 
 Derived by restriction of `MaintainableUrnType`.  
 Regular Expression Pattern: `.+\\transformation\\RulesetScheme=.+`
@@ -2017,7 +2019,7 @@ Regular Expression Pattern: `.+\\categoryscheme\\Categorisation=.+`
 Derived by restriction of `UrnReferenceType`.  
 Regular Expression Pattern: `.+\\categoryscheme\\Category=.+`
 
-**CategorySchemeReferenceType:** A reference type for a cateogry scheme.
+**CategorySchemeReferenceType:** A reference type for a category scheme.
 
 Derived by restriction of `MaintainableUrnReferenceType`.  
 Regular Expression Pattern: `.+\\categoryscheme\\CategoryScheme=.+`
@@ -2220,7 +2222,7 @@ Derived by restriction of `ComponentUrnReferenceType`.
 Regular Expression Pattern: `.+\\structuremapping\\EpochMap=.+`
 
 **FrequencyFormatMappingReferenceType:** A reference type for a
-frequnecy format mapping.
+frequency format mapping.
 
 Derived by restriction of `ComponentUrnReferenceType`.  
 Regular Expression Pattern:
@@ -2327,7 +2329,7 @@ major, minor, or patch version parts can be wildcarded using "+" as an
 extension. For example, 2+.3.1 means the currently latest available
 version \>= 2.3.1 (even if not backwards compatible). Note that
 wildcarded semantic version references cannot be combined with version
-extended reference (e.g. 2.3+.1-draft is not permissable).
+extended reference (e.g. 2.3+.1-draft is not permissible).
 Version-extended (e.g. 1.3.1-draft) and legacy version numbers (e.g. 1
 or 1.0) are also supported.
 
@@ -2343,12 +2345,12 @@ wildcarding of only one the major, minor, or patch version parts using
 
 Derived by restriction of `xs:string` .  
 Regular Expression Pattern:
-`((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*))){2}((0\|\[1-9\]\d\*))(\\((0\|\[1-9\]\d\*)\\?))(\\((0\|\[1-9\]\d\*)))((0\|\[1-9\]\d\*)\\?)(\\((0\|\[1-9\]\d\*)))(\\((0\|\[1-9\]\d\*)\\?))`
+`((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*))){2}((0|[1-9]\d*))(\\((0|[1-9]\d*)\\?))(\\((0|[1-9]\d*)))((0|[1-9]\d*)\\?)(\\((0|[1-9]\d*)))(\\((0|[1-9]\d*)\\?))`
 
 **WildcardVersionType:** WildcardVersionType combines the VersionType
 and WildcardType to allow a reference to either a specific version of an
 object, or to wildcard the version in the reference by specifying the
-'\*' value.
+'*' value.
 
 Union of:
 
@@ -2356,7 +2358,7 @@ LegacyVersionNumberType, SemanticVersionNumberType,
 SemanticVersionReferenceType, WildcardType.
 
 **WildcardType:** WildcardType is a single value code list, used to
-include the '\*' character - indicating that the identification
+include the '*' character - indicating that the identification
 component is wildcarded.
 
 Derived by restriction of `xs:string`.
@@ -2365,7 +2367,7 @@ Enumerations:
 
 | **Value** | **Documentation**                                                |
 |-----------|------------------------------------------------------------------|
-| \*        | Indicates that any value of the identifier component is allowed. |
+| *        | Indicates that any value of the identifier component is allowed. |
 
 **NestedIDType:** NestedIDType is the least restrictive form of an
 identifier used throughout all SDMX-ML messages. It allows for a
@@ -2375,20 +2377,20 @@ a-z, @, 0-9, \_, -, \$.
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`\[A-Za-z0-9\_@\$\\\]+(\\\[A-Za-z0-9\_@\$\\\]+)\*`
+`[A-Za-z0-9\_@\$\\]+(\\[A-Za-z0-9\_@\$\\]+)*`
 
 **TwoLevelIDType:** TwoLevelIDType defines an identifier with exactly
 two levels.
 
 Derived by restriction of `NestedIDType`.  
-Regular Expression Pattern: `\[A-Za-z0-9\_@\$\\\]+\\\[A-Za-z0-9\_@\$\\\]+`
+Regular Expression Pattern: `[A-Za-z0-9\_@\$\\]+\\[A-Za-z0-9\_@\$\\]+`
 
 **IDType:** IDType provides a type which is used for restricting the
 characters in codes and IDs throughout all SDMX-ML messages. Valid
 characters include A-Z, a-z, @, 0-9, \_, -, \$.
 
 Derived by restriction of `NestedIDType`.  
-Regular Expression Pattern: `\[A-Za-z0-9\_@\$\\\]+`
+Regular Expression Pattern: `[A-Za-z0-9\_@\$\\]+`
 
 **NCNameIDType:** NCNameIDType restricts the IDType, so that the id may
 be used to generate valid XML components. IDs created from this type
@@ -2396,7 +2398,7 @@ conform to the W3C XML Schema NCNAME type, and therefore can be used as
 element or attribute names.
 
 Derived by restriction of `IDType`.  
-Regular Expression Pattern: `\[A-Za-z\]\[A-Za-z0-9\_\\\]\*`
+Regular Expression Pattern: `[A-Za-z][A-Za-z0-9\_\\]*`
 
 **NestedNCNameIDType:** NestedNCNameIDType restricts the NestedIDType,
 so that the id may be used to generate valid XML components. IDs created
@@ -2405,7 +2407,7 @@ can be used as element or attribute names.
 
 Derived by restriction of `NestedIDType`.  
 Regular Expression Pattern:
-`\[A-Za-z\]\[A-Za-z0-9\_\\\]\*(\\\[A-Za-z\]\[A-Za-z0-9\_\\\]\*)\*`
+`[A-Za-z][A-Za-z0-9\_\\]*(\\[A-Za-z][A-Za-z0-9\_\\]*)*`
 
 **SingleNCNameIDType:** SingleNCNameIDType restricts the
 NestedNCNameIDType to allow only one level. Note that this is the same
@@ -2414,11 +2416,11 @@ restricted is a nested NCNameIDType (where as the NCNameIDType could
 only restrict the IDType).
 
 Derived by restriction of `NestedNCNameIDType`.  
-Regular Expression Pattern: `\[A-Za-z\]\[A-Za-z0-9\_\\\]\*`
+Regular Expression Pattern: `[A-Za-z][A-Za-z0-9\_\\]*`
 
 **VersionType:** VersionType is used to communicate version information.
 Semantic versioning, based on 3 or 4 version parts
-(major.minor.patch\[-extension\]) is supported. The legency SDMX version
+(major.minor.patch[-extension]) is supported. The legacy SDMX version
 format is also support.
 
 Union of:
@@ -2427,11 +2429,11 @@ Union of:
 
 **SemanticVersionNumberType:** SemanticVersionNumberType is a simple
 type for validating semantic version in the format
-(major.minor.patch\[-extension\]).
+(major.minor.patch[-extension]).
 
 Derived by restriction of `xs:string`.  
 Regular Expression Pattern:
-`(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*)){2}(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*))(\\((\[A-Za-z\\\]\|(\[A-Za-z\\\]\[A-Za-z0-9\\\]+)\|(\[A-Za-z0-9\\\]+\[A-Za-z\\\]\[A-Za-z0-9\\\]\*))\|(0\|\[1-9\]\[0-9\]\*)))\*)?`
+`(0|[1-9]\d*)(\\(0|[1-9]\d*)){2}(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*))(\\(([A-Za-z\\]|([A-Za-z\\][A-Za-z0-9\\]+)|([A-Za-z0-9\\]+[A-Za-z\\][A-Za-z0-9\\]*))|(0|[1-9][0-9]*)))*)?`
 
 **LegacyVersionNumberType:** LegacyVersionNumberType describes the
 version number format previously supported in SDMX. The format is
@@ -2444,4 +2446,4 @@ equivalent, as both the '3' component and the '03' component would parse
 to an integer value of 3.
 
 Derived by restriction of `xs:string`.  
-Regular Expression Pattern: `(0\|\[1-9\]\d\*)(\\(0\|\[1-9\]\d\*))?`
+Regular Expression Pattern: `(0|[1-9]\d*)(\\(0|[1-9]\d*))?`

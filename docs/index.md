@@ -1,4 +1,4 @@
-# SDMX-ML
+# Introduction
 
 ## Background
 
@@ -79,12 +79,14 @@ approach to meet the wide set of SDMX requirements.
 
 ## NORMATIVE REFERENCES
 
-- W3C XML Schema Definition Language, version 1.0 (URL: http://www.w3c.org/XML/Schema#dev), World Wide Web Consortium
-- W3C Extensible Markup Language, version 1.0, Third Edition (URL: http://www.w3c.org/TR/2004/REC-xml-20040204/), World Wide Web Consortium
+- [W3C XML Schema Definition Language, version 1.0](http://www.w3c.org/XML/Schema#dev),
+  World Wide Web Consortium
+- [W3C Extensible Markup Language, version 1.0, Third Edition](http://www.w3c.org/TR/2004/REC-xml-20040204/),
+  World Wide Web Consortium
 
 ## CONFORMANCE
 
-[Data](data.md) of this document is
+[Data](./data.md) of this document is
 normative, providing rules for the creation of conformant SDMX-ML XML
 instances and W3C XML Schemas.
 
