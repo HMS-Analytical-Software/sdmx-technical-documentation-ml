@@ -1,80 +1,35 @@
-# Data
+# Data and Reference Metadata Namespaces
 
 ## Introduction
 
-The first change in the data and metadata message is one of terminology.
-In order to foster consistency in the standard, the names and namespaces
-of the data and metadata message have been changed. The namespaces now
-have a uniform format of /data/format and /metadata/format, where format
-is either generic or structured (i.e. the structure specific formats).
-This also applies to the message names as well, where the names follow
-the pattern of FormatData (e.g. StructuredData and GenericMetadata).
+The first change in the data and metadata message is one of terminology. In
+order to foster consistency in the standard, the names and namespaces of the
+data and metadata message have been changed. The namespaces now have a uniform
+format of /data/format and /metadata/format. This also applies to the message
+names as well, where the names follow the pattern of FormatData (e.g.
+StructuredData and GenericMetadata).
 
-The various data messages which existed in the standard have been
-harmonised into two general formats; generic and structured data. The
-generic data is much like it has been previously, only slightly modified
-to conform with the harmonised view on data. The structured data
-combined the principles of the previous versions compact and cross
-sectional formats into one more generalised format.
+For data messages, since version 3.0 only the (data-)structure-specific format
+is maintained, the generic format being deprecated. The structure-specific data
+message combines the principles of the former compact and cross-sectional formats
+into one more generalised format. All data can be exchanged as either an
+un-grouped collection of observations, each specifying a full key, or it can be
+exchanged as data grouped into series with any single dimension placed at the
+observation level.
 
-The major shift from the previous version is now that all data can be
-exchanged as either an un-grouped collection of observations, each
-specifying a full key or it can be exchanged as data grouped into series
-with any single dimension placed at the observation level. This in
-effect, combined the abilities of the time series and cross sectional
-formats in the a single data format. This format also allows for
-multiple measure to be expressed when the observation dimension is the
-measure dimension defined in the data structured. The key differences
-from the previous versions is that this all is possible in a single data
-structure definition specific format, as well as being possible in the
-generic format as well. The goal was to make the structures as
-homogenous as possible.
+A base schema now imposes a strict format for the generated structure-specific
+schemas. This not only allows performing the required validations, but the
+messages will also be much simpler to process as the format will always use the
+same element names.
 
-Another shift from the previous version in the manner in which the base
-data structure specific format is defined. In previous versions there
-was not structure defined, so one had to understand all of the
-requirements and read the specification in order to understand what
-could be expected in any structure specific format. In this version,
-that issue has been addressed. The base structures now impose a strict
-format on the data structure specific schemas. This is achieved much
-like the referencing structure in the common namespace through the use
-of unqualified elements. By the elements not existing in a namespace,
-the structure specific schemas can place the necessary restrictions of
-them while still being forced to adhere to prescribed structure. This
-means that not only are the structures able to perform the validation
-that is required, but that the messages will be much simpler to process
-as the format will always use the same element names.
-
-Finally, in order to allow for systems which wish to not process the new
-more flexible data format, time series only variations of both the
-generic and structured data sets exist. It is important to note that
-these structures are derived via restriction from the more generalised
-format. This means that a data set in the general format with the time
-dimension at the observation level will have exactly the same content as
-a time series only data set. The result of this is that there is no
-additional burden for processing the time series specific format it a
-system can process the more generalised format. These time series only
-data sets allow for time series only data messages to exist. These
-messages make it simple for system which, in the previous version of the
-standard, only used the time series formats to continue to do so.
-
-These same principles have been applied to the reference data messages
-as well. In the previous version of the standard there were major
-differences between the generic and metadata structure-specific formats;
-some of the differences caused some metadata sets were incompatible
-between versions. In this version the structures of the generic and
-metadata structure specific formats have been harmonised to the point
-where they are nearly identical. Yet, the structured format still
-provides the strong validation against the metadata structure that is
-intended. And, as with the data, the base metadata structure specific
-format now imposes a stricter structure on the generated schemas, making
-the structure specific instance simpler to process in a generic manner.
+For metadata messages, since version 3.0, in opposite, only the generic format
+is maintained, the (metadata-)structure-specific format being deprecated.
 
 ## Schema Documentation
 
-### Structure Specific Data Namespace
+### Structure-Specific Data Namespace
 
-**http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific**
+**<http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific>**
 
 #### Summary
 
@@ -83,9 +38,9 @@ Referenced Namespaces:
 | **Namespace**                                                      | **Prefix** |
 |--------------------------------------------------------------------|------------|
 |                                                                    |            |
-| http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common           | common     |
-| http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic | metadata   |
-| http://www.w3.org/2001/XMLSchema                                   | xs         |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common>           | common     |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic> | metadata   |
+| <http://www.w3.org/2001/XMLSchema>                                   | xs         |
 
 Contents:
 
@@ -102,7 +57,7 @@ into either a collection of series (grouped observations) or a
 collection of un-grouped observations. The derived data set type will
 restrict this choice to be either grouped or un-grouped observations. If
 this dimension is "AllDimensions" then the derived data set type must
-consist of a collection of un-grouped observations; otherwise the data
+consist of a collection of un-grouped observations; otherwise, the data
 set will contain a collection of series with the observations in the
 series disambiguated by the specified dimension at the observation
 level. This data set is capable of containing data (observed values)
@@ -152,7 +107,7 @@ Attribute Documentation:
 |--------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | structureRef       | xs:IDREF                     | The structureRef contains a reference to a structural specification in the header of a data or reference metadata message. The structural specification details which structure the data or reference metadata conforms to, as well as providing additional information such as how the data is structure (e.g. which dimension occurs at the observation level for a data set). |
 | setID              | IDType                       | The setID provides an identification of the data or metadata set.                                                                                                                                                                                                                                                                                                                |
-| action             | ActionType                   | The action attribute indicates whether the file is appending, replacing, or deleting.                                                                                                                                                                                                                                                                                            |
+| action             | ActionType                   | The action attribute indicates whether the file is merging, replacing, or deleting.                                                                                                                                                                                                                                                                                            |
 | reportingBeginDate | BasicTimePeriodType          | The reportingBeginDate indicates the inclusive start time of the data reported in the data or metadata set.                                                                                                                                                                                                                                                                      |
 | reportingEndDate   | BasicTimePeriodType          | The reportingEndDate indicates the inclusive end time of the data reported in the data or metadata set.                                                                                                                                                                                                                                                                          |
 | validFromDate      | xs:dateTime                  | The validFromDate indicates the inclusive start time indicating the validity of the information in the data or metadata set.                                                                                                                                                                                                                                                     |
@@ -167,7 +122,7 @@ Element Documentation:
 | Annotations  | AnnotationsType            | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                                                                                                                                                                                                                                                                                                                                                                  |
 | DataProvider | DataProviderReferenc eType | DataProvider contains a reference to the provider for the data set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Atts         | *AttsType*                 | Atts contains a set of data or metadata attribute values with an attachment level of none (i.e. data set level) or reported against a partial set of dimension values.                                                                                                                                                                                                                                                                                                                                                                                               |
-| Group        | *GroupType*                | Group contains a references to a defined group in the data structure definition along with its key (if necessary) and values for the attributes which are associated with the group. An attribute is associated to a group by either an explicit group relationship or by a group attachment when the attribute has a relationship with a dimension which is a member of this group.                                                                                                                                                                                 |
+| Group        | *GroupType*                | Group contains a reference to a defined group in the data structure definition along with its key (if necessary) and values for the attributes which are associated with the group. An attribute is associated to a group by either an explicit group relationship or by a group attachment when the attribute has a relationship with a dimension which is a member of this group.                                                                                                                                                                                 |
 | Series       | *SeriesType*               | Series contains a collection of observations that share a common key (set of dimension values). The key of a series is every dimension defined in the data structure definition, save the dimension at the observation level. In addition to the key and observations, the series contains values for data and metadata attributes which have a relationship with any dimension that is part of the series key, so long as the attribute does not specify an attachment group or also has a relationship with the dimension declared to be at the observation level. |
 | Obs          | *ObsType*                  | Obs is an un-grouped observation. This observation has a key which is a set of values for all dimensions declared in the data structure definition. In addition to the key, the value of the observation can be provided along with values for all data and metadata attributes which have an association with the observation or any dimension (so long as it does not specify a group attachment).                                                                                                                                                                 |
 | Metadata     | MetadataSetType            | Allows for attachment of reference metadata against to the data set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -237,11 +192,13 @@ Element Documentation:
 ***SeriesType*:** SeriesType is the abstract type which defines a
 structure which is used to group a collection of observations which have
 a key in common. The key for a series is every dimension defined in the
-data structure definition, save the dimension declared to be at the
-observation level for this data set. In addition to observations, values
+data structure definition save the dimension declared to be at the
+observation level for this data set. Note, if the schema is generated
+against a dataflow with a dimension constraint, they key includes only the
+dimensions defined in the dimension constraint. In addition to observations, values
 can be provided for data and metadata attributes which are associated
 with the dimensions which make up this series key (so long as the
-attributes do not specify a group attachment or also have an
+attributes do not specify a group attachment or also have a
 relationship with the observation dimension). It is possible for the
 series to contain only observations or only attribute values, or both.
 Data structure definition schemas will derive a type based on this that
@@ -303,7 +260,7 @@ represented as an XML attribute. For example, a repeated value, a text
 value in multiple languages, or a value with structured text (XHTML)
 cannot be expressed as an XML attribute. This type is meant to be
 restricted based on the component to restrict the cardinality and type
-of its Value element to conform to the compoent definition. The type of
+of its Value element to conform to the component definition. The type of
 the value element should be restricted to common:SimpleValueType,
 common:TextValueType, or common:StructuredValueType. In addition, the id
 attribute should be restricted to be a fixed value with the component
@@ -421,7 +378,7 @@ dimensions will be expressed as XML local (non-namespace qualified)
 attributes if they are simple values (e.g. enumerated, dates, numbers)
 and are not repeatable. Metadata attributes that are repeatable, or do
 not have simple values (e.g. text) will be expressed using the Comp
-element. This dimensions and simple attributes are specified in the
+element. These dimensions and simple attributes are specified in the
 content model with the declaration of anyAttributes in the "local"
 namespace. The derived series type will refine this structure so that
 the attributes are explicit. The XML attributes will be given a name
@@ -468,9 +425,9 @@ Element Documentation:
 | Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it. |
 | Comp        | *CompType*      | Comp contains the details of the data or metadata attributes that have complex representation and cannot be expressed as XML attributes.                                            |
 
-### Generic Metadata Namespace
+### Generic Reference Metadata Namespace
 
-**http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic**
+**<http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic>**
 
 #### Summary
 
@@ -478,8 +435,8 @@ Referenced Namespaces:
 
 | **Namespace**                                            | **Prefix** |
 |----------------------------------------------------------|------------|
-| http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common | common     |
-| http://www.w3.org/2001/XMLSchema                         | xs         |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common> | common     |
+| <http://www.w3.org/2001/XMLSchema>                         | xs         |
 
 Contents:
 
@@ -490,7 +447,7 @@ Contents:
 
 **Attribute (AttributeType):** Att elements hold the reported values for
 a given metadata attribute. These values conform to the definition of
-the meatadata attribute in the metadata structure definition.
+the metadata attribute in the metadata structure definition.
 
 #### Complex Types
 
@@ -514,7 +471,7 @@ Attributes:
 
 ```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
-isExternalReference?, serviceURL?, structureURL?
+isPartialLanguage?, isExternalReference?, serviceURL?, structureURL?
 ```
 
 Content:
@@ -533,17 +490,18 @@ Attribute Documentation:
 | version                              | VersionType        | This version attribute holds a version number (see common:VersionType definition for details). If not supplied, artefact is considered to be un-versioned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | validFrom                            | xs:dateTime        | The validFrom attribute provides the inclusive start date for providing supplemental validity information about the version.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | validTo                              | xs:dateTime        | The validTo attribute provides the inclusive end date for providing supplemental validity information about the version.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| agencyID                             | NestedNCNameIDType | The agencyID must be provided, and identifies the maintenance agency of the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| agencyID                             | NestedNCNameIDType | The agencyID must be provided and identifies the maintenance agency of the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | isExternalReference (default: false) | xs:boolean         | The isExternalReference attribute, if true, indicates that the actual object is not defined the corresponding element, rather its full details are defined elsewhere - indicated by either the registryURL, the repositoryURL, or the structureURL. The purpose of this is so that each structure message does not have to redefine object that are already defined elsewhere. If the isExternalReference attribute is not set, then it is assumed to be false, and the object should contain the full definition of its contents. If more than one of the registryURL, the repositoryURL, and the structureURL are supplied, then the application processing the object can choose the method it finds best suited to retrieve the details of the object. |
 | serviceURL                           | xs:anyURI          | The serviceURL attribute indicates the URL of an SDMX SOAP web service from which the details of the object can be retrieved. Note that this can be a registry or and SDMX structural metadata repository, as they both implement that same web service interface.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | structureURL                         | xs:anyURI          | The structureURL attribute indicates the URL of a SDMX-ML structure message (in the same version as the source document) in which the externally referenced object is contained. Note that this may be a URL of an SDMX RESTful web service which will return the referenced object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| isPartialLanguage (default: false)           | xs:boolean          | The isPartialLanguage attribute, if true, indicates that the object doesn't contain the complete set of all available languages, e.g., when obtained as a response to a GET query that requested specific languages through the HTTP header ‘Accept-Language’.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 Element Documentation:
 
 | **Name**    | **Type**        | **Documentation**                                                                                                                                                                                                                 |
 |-------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Annotations | AnnotationsType | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Link        | LinkType        | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name        | TextType        | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description | TextType        | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
 
@@ -551,7 +509,7 @@ Element Documentation:
 metadata set, which contains a collection of reported metadata against a
 set of targets. The targets should conform to the restrictions described
 by the metadata provision or the metadataflow. Note that this is
-maintainble, and as such must specify in agency. In this case, the
+maintainable, and as such must specify in agency. In this case, the
 agency is the metadata provider. If a metadata provision agreement is
 referenced, it is assumed that the metadata provider described in the
 provision will be the same as the agency for this set.
@@ -573,7 +531,7 @@ Attributes:
 
 ```text
 id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
-isExternalReference?, serviceURL?, structureURL?, action?,
+isPartialLanguage?, isExternalReference?, serviceURL?, structureURL?, 
 reportingBeginDate?, reportingEndDate?, publicationYear?,
 publicationPeriod?
 ```
@@ -595,11 +553,11 @@ Attribute Documentation:
 | version                              | VersionType                  | This version attribute holds a version number (see common:VersionType definition for details). If not supplied, artefact is considered to be un-versioned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | validFrom                            | xs:dateTime                  | The validFrom attribute provides the inclusive start date for providing supplemental validity information about the version.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | validTo                              | xs:dateTime                  | The validTo attribute provides the inclusive end date for providing supplemental validity information about the version.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| agencyID                             | NestedNCNameIDType           | The agencyID must be provided, and identifies the maintenance agency of the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| agencyID                             | NestedNCNameIDType           | The agencyID must be provided and identifies the maintenance agency of the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | isExternalReference (default: false) | xs:boolean                   | The isExternalReference attribute, if true, indicates that the actual object is not defined the corresponding element, rather its full details are defined elsewhere - indicated by either the registryURL, the repositoryURL, or the structureURL. The purpose of this is so that each structure message does not have to redefine object that are already defined elsewhere. If the isExternalReference attribute is not set, then it is assumed to be false, and the object should contain the full definition of its contents. If more than one of the registryURL, the repositoryURL, and the structureURL are supplied, then the application processing the object can choose the method it finds best suited to retrieve the details of the object. |
 | serviceURL                           | xs:anyURI                    | The serviceURL attribute indicates the URL of an SDMX SOAP web service from which the details of the object can be retrieved. Note that this can be a registry or and SDMX structural metadata repository, as they both implement that same web service interface.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | structureURL                         | xs:anyURI                    | The structureURL attribute indicates the URL of a SDMX-ML structure message (in the same version as the source document) in which the externally referenced object is contained. Note that this may be a URL of an SDMX RESTful web service which will return the referenced object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| action                               | ActionType                   | The action attribute indicates whether the file is appending, replacing, or deleting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| isPartialLanguage (default: false)           | xs:boolean          | The isPartialLanguage attribute, if true, indicates that the object doesn't contain the complete set of all available languages, e.g., when obtained as a response to a GET query that requested specific languages through the HTTP header ‘Accept-Language’.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | reportingBeginDate                   | BasicTimePeriodType          | The reportingBeginDate indicates the inclusive start time of the data reported in the data or metadata set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | reportingEndDate                     | BasicTimePeriodType          | The reportingEndDate indicates the inclusive end time of the data reported in the data or metadata set.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | publicationYear                      | xs:gYear                     | The publicationYear holds the ISO 8601 four-digit year.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -610,19 +568,19 @@ Element Documentation:
 | **Name**                    | **Type**                                 | **Documentation**                                                                                                                                                                                                                 |
 |-----------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Annotations                 | AnnotationsType                          | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                               |
-| Link                        | LinkType                                 | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the meatadata report can be dynamically inserted in the structure metadata. |
+| Link                        | LinkType                                 | Allows for the linking of other resources to identifiable objects. For example, if there is reference metadata associated with a structure, a link to the metadata report can be dynamically inserted in the structure metadata. |
 | Name                        | TextType                                 | Name provides for a human-readable name for the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                                     |
 | Description                 | TextType                                 | Description provides for a longer human-readable description of the object. This may be provided in multiple, parallel language-equivalent forms.                                                                                 |
-| MetadataProvisionAgr eement | MetadataProvisionAgr eementReferenceType | Metadataflow provides a reference to the.                                                                                                                                                                                         |
+| MetadataProvisionAgreement | MetadataProvisionAgr eementReferenceType | Metadataflow provides a reference to the metadata provision agreement the metadata set is being reported against.                                                                                                                                                                                         |
 | Metadataflow                | MetadataflowReferenc eType               | Metadataflow provides a reference to the metadataflow the metadata set is being reported against.                                                                                                                                 |
 | Target                      | WildcardUrnType                          | Target references the target structures for which metadata is being reported. These must conform with the constraints defined by the metadata provision agreement and/or the metadataflow.                                        |
-| Attribute                   | AttributeType                            | Att elements hold the reported metadata attribute values being reported in the metadata set. These conform to the metadata structure defintion                                                                                    |
+| Attribute                   | AttributeType                            | Att elements hold the reported metadata attribute values being reported in the metadata set. These conform to the metadata structure definition.                                                                                    |
 
 **AttributeType:** AttributeType defines the structure for a reported
 metadata attribute. A value for the attribute can be supplied as either
 a single value (enumerated or non-enumerated single value), or
 multi-lingual text values (either structured or unstructured). Optional
-child attributes ar also available if the metadata attribute definition
+child attributes are also available if the metadata attribute definition
 defines nested metadata attributes.
 
 Derivation:
@@ -656,19 +614,19 @@ Element Documentation:
 |----------------|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Annotations    | AnnotationsType  | Annotations is a reusable element the provides for a collection of annotations. It has been made global so that restrictions of types that extend AnnotatableType may reference it.                                                                              |
 | Value          | xs:anySimpleType | Value holds any simple value (enumerated or not) for the metadata attribute. It can be repeated if this metadata attribute allows for multiple values.                                                                                                           |
-| Text           | TextType         | Text is used to supply parallel multi-lingual textual values for the reported metadata attribute. This will be used if the text format of the metadata attribute has a type of string and the multi-lingual value is set to true.                                |
-| StructuredText | XHTMLType        | StructuredText is used to supply parallel multi-lingual structured (as XHTML) textual values for the reported metadata attribute. This will be used if the text format of the metadata attribute has a type of XHTML and the multi-lingual value is set to true. |
+| Text           | TextType         | Text is used to supply parallel multi-lingual textual values for the reported metadata attribute. This will be used if the text format of the metadata attribute has a type of string, and the multi-lingual value is set to true.                                |
+| StructuredText | XHTMLType        | StructuredText is used to supply parallel multi-lingual structured (as XHTML) textual values for the reported metadata attribute. This will be used if the text format of the metadata attribute has a type of XHTML, and the multi-lingual value is set to true. |
 | Attribute      | AttributeType    | Att contains the reported metadata attribute values for the child metadata attributes.                                                                                                                                                                           |
 
 ## Mapping to Structure-Specific Schemas
 
-### General 
+### General
 
-Data structure-specific schemas are each based on one single core
-construct found in the structure-specific namespace;
+Data-structure-specific schemas are each based on one single core
+construct found in the structure-specific namespace:
 
 Data -
-http://www.SDMX.org/resources/SDMXML/schemas/v3_0/data/structurespecific
+<http://www.SDMX.org/resources/SDMXML/schemas/v3_1/data/structurespecific>
 
 #### Basic Terminology
 
@@ -676,10 +634,10 @@ In the subsequent sections, the following namespace prefixes are used:
 
 | **Namespace**                                                             | **Prefix** |
 |---------------------------------------------------------------------------|------------|
-| http://www.w3.org/2001/XMLSchema                                          | xs         |
-| http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common                  | common     |
-| http://www.sdmx.org/resources/sdmxml/schemas/ v3_0/data/structurespecific | dsd        |
-| http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic        | metadata   |
+| <http://www.w3.org/2001/XMLSchema>                                          | xs         |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common>                  | common     |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific>  | dsd        |
+| <http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic>        | metadata   |
 
 It is assumed that in order to use this guide, the reader is familiar
 with schema terminology. However, for convenience the following is list
@@ -702,8 +660,8 @@ and maximum occurrence (minOccurs and maxOccurs attribute).
 **Qualified/Unqualified Element:** A qualified element is an element
 that must be referred to by the namespace in which it was defined. An
 unqualified element does not have a namespace associated with it. The
-structure specific schemas make use of unqualified elements to that the
-structure specific schemas can restrict the base content to meet the
+structure-specific schemas make use of unqualified elements to that the
+structure-specific schemas can restrict the base content to meet the
 specific needs of the structure, while maintaining as much of the
 original document structure as possible.
 
@@ -734,7 +692,7 @@ types are not given names and cannot be abstract. The can however, be
 derived from other types.
 
 **Content Group:** A group which defines a content model for reuse. This
-is contained in the xs:group element, and is defined at the root of the
+is contained in the xs:group element and is defined at the root of the
 schema. It allows for a common sequence or choice of elements to be
 reused across multiple types without having to redefine the sequence or
 choice in each type.
@@ -742,7 +700,7 @@ choice in each type.
 **Uniqueness Constraint:** A uniqueness constraint is defined within an
 element and is used to force descendent elements to be unique based on
 some criteria of it fields (elements or attributes). This is defined in
-an \<xs:unique\> element, and has content of an \<xs:selector\> and
+an \<xs:unique\> element and has content of an \<xs:selector\> and
 multiple \<xs:field\> elements. The selector designates the descendants
 that must be unique (with an xpath attribute) and the field specifies
 which property of the selected element must be unique (also with an
@@ -811,20 +769,20 @@ the attributeFormDefault attribute of the schema) is "unqualified".
 ### General Rules
 
 The following section details the general rules which apply to all
-structure specific schema creation.
+structure-specific schema creation.
 
 #### Component Name Determination
 
 When required to create an XML element or attribute, the name for a
 component is always its identifier. However, the identifier may be
-inherited. Therefore, the general rules is as follows:
+inherited. Therefore, the general rules are as follows:
 
-1.  If the component defines an identifier, the element or attribute
+1. If the component defines an identifier, the element or attribute
     name is the value of that identifier
 
-2.  Otherwise, the element or attribute name is the identifier of the
+2. Otherwise, the element or attribute name is the identifier of the
     concept from which it takes its semantic (Note that this is
-    technically the component identifer).
+    technically the component identifier).
 
 #### Representation Determination
 
@@ -836,16 +794,17 @@ inherited from the concept from which the component takes it semantic
 The representation of a component is determined by the following
 precedence:
 
-1.  The local representation defined by the component
+1. The local representation defined by the component
 
-2.  The core representation defined in the concept from which the
+2. The core representation defined in the concept from which the
     component takes its semantic
 
-3.  A default representation of an un-faceted text format with a data
+3. A default representation of an un-faceted text format with a data
     type of String.
 
-The representation will either define a text format, or an enumeration
-with an enumeration format.
+The representation will either define a text format, an enumeration
+with an enumeration format, or a union of the former with the value
+of a irrelevant representation `~` (tilde).
 
 A text format consists of a data type and an optional collection of
 facets. It is the combination of these which determine the exact nature
@@ -921,8 +880,8 @@ the following conditions are true:
 
 - text format is multi-lingual
 
-IF the representation is not simple, see the rules in the following
-section for complext text formats. If the representation is simple, the
+If the representation is not simple, see the rules in the following
+section for complex text formats. If the representation is simple, the
 first step is to determine the base type from the text format data type:
 
 | **SDMX Data Type**      | **XML Schema Data Type**                              |
@@ -938,12 +897,12 @@ first step is to determine the base type from the text format data type:
 | Decimal                 | xs:decimal                                            |
 | Float                   | xs:float                                              |
 | Double                  | xs:double                                             |
-| Boolean                 | xs:boolean                                            |
+| Boolean                 | xs:Boolean                                            |
 | URI                     | xs:anyURI                                             |
 | Count                   | xs:integer                                            |
 | InclusiveValueRange     | xs:decimal                                            |
-| ExclusiveValueRange     | xs: decimal                                           |
-| Incremental             | xs: decimal                                           |
+| ExclusiveValueRange     | xs:decimal                                           |
+| Incremental             | xs:decimal                                           |
 | ObservationalTimePeriod | common:ObservationalTimePeriodType                    |
 | StandardTimePeriod      | common:StandardTimePeriodType                         |
 | BasicTimePeriod         | common:BasicTimePeriodType                            |
@@ -986,8 +945,163 @@ are mapped as is):
 | decimals<sup>2</sup> | xs:fractionDigits                                               |
 | pattern              | xs:pattern                                                      |
 
-Any other facets are informational only, and will not affect the
+Any other facets are informational only and will not affect the
 determined type.
+
+### Representation for Not Applicable Dimensions
+
+Not applicable dimensions, i.e., when reported measures or attributes are not
+attached to those dimensions, take as value the tilde ‘`~`’ character. This is
+required for datasets defined by a DSD that has the ‘evolving structure’ property
+set to true and that includes data from dataflows, which only use a subset of
+dimensions as defined by a dimension constraint. This is also required for
+data-related higher-level (i.e., attached to dataflow or partial list of
+Dimensions) reference metadata attributes that don’t have a fixed pre-defined attachment.
+
+To support a specific type and allow for a not applicable dimension value, the
+structure-specific schema must union the type with the common:NotApplicableType,
+which enumerates the tilde ‘`~`’ character. This is as shown in the following example:
+
+```xml
+   <xs:simpleType name="DecimalOrNotApplicableType">
+      <xs:union memberTypes="xs:decimal common:NotApplicableType"/>
+   </xs:simpleType>
+```
+
+For enumerated types, the generated structure-specific schema can include the
+special value in the enumeration or create a union between the enumerated type
+and the common:NotApplicableType.
+
+Option 1: Augmenting the enumeration with the special value
+
+```xml
+   <xs:simpleType name="CL\_SUBINDICATOR\_OR\_NOT\_APPLICABLE">
+      <xs:union memberTypes="CL\_SUBINDICATOR common:NotApplicableType"/>
+   </xs:simpleType>
+```
+
+Option 2: Extending the enumeration with the special value
+
+```xml
+   <xs:simpleType name="CL\_ SUBINDICATOR ">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="A"/>
+         <xs:enumeration value="~"/>
+      <xs:restriction>
+   </xs:simpleType>
+```
+
+For convenience the common schema provides the union types for the following
+data types.
+
+| **SDMX Data Type** | **XML Schema Data Type** |
+| --- | --- |
+| AlphaNumeric | common:AlphaNumericOrNotApplicableType |
+| Alpha | common:AlphaOrNotApplicableType |
+| Numeric | common:NumericOrNotApplicableType |
+| BigInteger | common:IntegerOrNotApplicableType |
+| Integer | common:IntOrNotApplicableType |
+| Long | common:LongOrNotApplicableType |
+| Short | common:ShortOrNotApplicableType |
+| Decimal | common:DecimalOrNotApplicableType |
+| Float | common:FloatOrNotApplicableType |
+| Double | common:DoubleOrNotApplicableType |
+| Boolean | common:BooleanOrNotApplicableType |
+| Count | common:IntegerOrNotApplicableType |
+| InclusiveValueRange | common:DecimalOrNotApplicableType |
+| ExclusiveValueRange | common:DecimalOrNotApplicableType |
+| Incremental | common:DecimalOrNotApplicableType |
+| ObservationalTimePeriod | common:ObservationalTimePeriodOrNotApplicableType |
+| StandardTimePeriod | common:StandardTimePeriodOrNotApplicableType |
+| BasicTimePeriod | common:BasicTimePeriodType |
+| GregorianTimePeriod | common:GregorianTimePeriodOrNotApplicableType |
+| ReportingTimePeriod | common:ReportingTimePeriodOrNotApplicableType |
+| ReportingYear | common:ReportingYearOrNotApplicableType |
+| ReportingSemester | common:ReportingSemesterOrNotApplicableType |
+| ReportingTrimester | common:ReportingTrimesterOrNotApplicableType |
+| ReportingQuarter | common:ReportingQuarterOrNotApplicableType |
+| ReportingMonth | common:ReportingMonthOrNotApplicableType |
+| ReportingWeek | common:ReportingWeekOrNotApplicableType |
+| ReportingDay | common:ReportingDayOrNotApplicableType |
+| TimeRange | common:TimeRangeOrNotApplicableType |
+
+### Representation for Intentionally Missing Measure and Attribute Values
+
+For intentionally missing measure and attribute values, even if mandatory, the
+following special values can be used:
+
+- `NaN` for all numeric types (float, double)
+- `#N/A` for all other types
+
+To support a specific type and allow for an intentionally missing measure or
+attribute value, the structure-specific schema must union the type with the
+common:MissingType, which enumerates the `#N/A` string. Note that XML natively
+already supports `NaN` for float and double values.
+
+This union is as shown in the following example:
+
+```xml
+   <xs:simpleType name="DecimalOrMissingType">
+      <xs:union memberTypes="xs:decimal common:MissingType"/>
+   </xs:simpleType>
+```
+
+For enumerated types, the generated structure-specific schema can include the
+special value in the enumeration or create a union between the enumerated type
+and the common:MissingType.
+
+Option 1: Augmenting the enumeration with the special value
+
+```xml
+   <xs:simpleType name="CL\_SUBINDICATOR\_OR\_NOT\_APPLICABLE">
+      <xs:union memberTypes="CL\_SUBINDICATOR common:MissingType"/>
+   </xs:simpleType>
+```
+
+Option 2: Extending the enumeration with the special value
+
+```xml
+   <xs:simpleType name="CL\_ SUBINDICATOR ">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="A"/>
+         <xs:enumeration value="#N/A"/>
+      <xs:restriction>
+   </xs:simpleType>
+```
+
+For convenience the common schema provides the union types for the following
+data types.
+
+| **SDMX Data Type** | **XML Schema Data Type** |
+| --- | --- |
+| AlphaNumeric | common:AlphaNumericOrMissingType |
+| Alpha | common:AlphaOrMissingType |
+| Numeric | common:NumericOrMissingType |
+| BigInteger | common:IntegerOrMissingType |
+| Integer | common:IntOrMissingType |
+| Long | common:LongOrMissingType |
+| Short | common:ShortOrMissingType |
+| Decimal | common:DecimalOrMissingType |
+| Float | common:FloatOrMissingType |
+| Double | common:DoubleOrMissingType |
+| Boolean | common:BooleanOrMissingType |
+| Count | common:IntegerOrMissingType |
+| InclusiveValueRange | common:DecimalOrMissingType |
+| ExclusiveValueRange | common:DecimalOrMissingType |
+| Incremental | common:DecimalOrMissingType |
+| ObservationalTimePeriod | common:ObservationalTimePeriodOrMissingType |
+| StandardTimePeriod | common:StandardTimePeriodOrMissingType |
+| BasicTimePeriod | common:BasicTimePeriodType |
+| GregorianTimePeriod | common:GregorianTimePeriodOrMissingType |
+| ReportingTimePeriod | common:ReportingTimePeriodOrMissingType |
+| ReportingYear | common:ReportingYearOrMissingType |
+| ReportingSemester | common:ReportingSemesterOrMissingType |
+| ReportingTrimester | common:ReportingTrimesterOrMissingType |
+| ReportingQuarter | common:ReportingQuarterOrMissingType |
+| ReportingMonth | common:ReportingMonthOrMissingType |
+| ReportingWeek | common:ReportingWeekOrMissingType |
+| ReportingDay | common:ReportingDayOrMissingType |
+| TimeRange | common:TimeRangeOrMissingType |
 
 #### Representation with Complex Text Format
 
@@ -1019,15 +1133,15 @@ be used:
 
 - if the text format has no additional facets and the data type is:
 
-  - Boolean, common:BooleanValueType can be used
+    - Boolean, common:BooleanValueType can be used
 
-  - String, common:StringValueType can be used
+    - String, common:StringValueType can be used
 
-  - Integer, common:IntValueType can be used
+    - Integer, common:IntValueType can be used
 
-  - Double, common:DoubleValueType can be used
+    - Double, common:DoubleValueType can be used
 
-  - ObservationalTimePeriod, common:ObservationalTimePeriodValueType can
+    - ObservationalTimePeriod, common:ObservationalTimePeriodValueType can
     be used
 
 If a pre-defined type cannot be used, one will have to be created. The
@@ -1057,11 +1171,11 @@ they are unique.
 - If the type is based on a text format of a component local
   representation, and;
 
-  - The component id is required to be unique for all components within
+    - The component id is required to be unique for all components within
     the scope of the structure which defines it (e.g. a dimension), the
     recommended name is \[Component ID\]
 
-  - The component id is only required to be unique within the component
+    - The component id is only required to be unique within the component
     list and which defines it (e.g. a metadata attribute), the recommend
     name is \[Component List ID\].\[Parent Component ID\]\*.\[Component
     ID\]
@@ -1069,16 +1183,16 @@ they are unique.
 #### Type Reuse
 
 It is possible that organisations that manage a large number of
-structure specific schemas my wish to take advantage of the reuse of
-previously defined type in order to simply the structure specific schema
+structure-specific schemas my wish to take advantage of the reuse of
+previously defined type in order to simply the structure-specific schema
 creation and lessen the number of schema elements which are created. The
-structure specific formats are designed in such a way that this would be
+structure-specific formats are designed in such a way that this would be
 allowed without any adverse affects.
 
 For example, an organisation my create predefined types for all of
 codelists and concept schemes which their structures utilize. These
 could be contained in a common schema with any namespace deemed
-appropriate. This would allow the structure specific schemas generation
+appropriate. This would allow the structure-specific schemas generation
 process to recognize the reused components and not be concerned with
 regenerating types. The logical flow for setting the representation of a
 component might be as follows:
@@ -1100,17 +1214,17 @@ target namespace of the structure-specific schema. So long as any other
 generated type conforms to the rules specified, it may exist in any
 namespace.
 
-### Data Structure Specific Schema
+### Data-Structure-Specific Schema
 
 Separate schemas will be created for the data structure depending on
 which dimension occurs at the observation level. The recommended target
 namespace of the data structured specific schema is: \[Data Structure
 URN\]:ObsLevelDim:\[Observation Dimensions\].
 
-The rules for generating the data structure specific-schema are broken
+The rules for generating the data-structure-specific schema are broken
 into sections based on the level within the structure (i.e. data set,
 group, series, attributes, observation). Each section will state the
-rules for each variation of the structure specific format.
+rules for each variation of the structure-specific format.
 
 #### DataSetType
 
@@ -1118,41 +1232,41 @@ A complex type named DataSetType must be created. Its content model will
 be derived via restriction. The base type of the restriction is
 dsd:DataSetType. The complex type content model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  A local element named DataProvider with the type
+    2. A local element named DataProvider with the type
         common:DataProviderReferenceType, a form of unqualified and a
         minimum occurrence of 0
 
-    3.  A choice with a minimum occurrence of 0 and a maximum occurrence
+    3. A choice with a minimum occurrence of 0 and a maximum occurrence
         of unbounded consisting of:
 
-        1.  A local element named Atts with a form of unqualified and a
+        1. A local element named Atts with a form of unqualified and a
             type of AttsType (as defined in the AttsType section which
             follows)
 
-        2.  If the data structure defines groups, a local element named
+        2. If the data structure defines groups, a local element named
             Group with a form of unqualified. The type of this element
             should be the type that is described in the GroupType
             section which follows.
 
-        3.  If the dimension at the observation level is not
+        3. If the dimension at the observation level is not
             AllDimensions, a local element named Series with a form of
             unqualified and a type of SeriesType (as defined in the
             SeriesType section which follows)
 
-        4.  If the dimension at the observation level is AllDimensions,
+        4. If the dimension at the observation level is AllDimensions,
             a local element named Obs with a form of unqualified and a
             type of ObsType (as defined in the ObsType section which
             follows)
 
-    4.  If any metadata attribute usages defined in the data structure
+    4. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship of dataflow, a local
         element named Metadata with the type metadata:MetadataSetType a
-        form of unqualified, and a minimum occurences of 0
+        form of unqualified, and a minimum occurrence of 0
 
 #### GroupType
 
@@ -1162,28 +1276,28 @@ defined. This type is used for the Group element in the DataSetType. Its
 content model will be derived via restriction of the dsd:GroupType. The
 complex type content model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any attributes defined in the data structure that declares an
+    2. If any attributes defined in the data structure that declares an
         attribute relationship with the group, a Comp element with a
         form of unqualified, a minimum occurrence of 0, a maximum
         occurrence of unbounded, and a type of dsd:CompType
 
-    3.  If any metadata attribute usages defined in the data structure
+    3. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship with the group, a local
         element named Metadata with the type metadata:MetadataSetType a
-        form of unqualified, and a minimum occurences of 0
+        form of unqualified, and a minimum occurence of 0
 
-2.  An attribute for each dimension referenced by the group. The XML
+2. An attribute for each dimension referenced by the group. The XML
     attribute [name](#component-name-determination) and
     [type](#simple-primitive-type-determination) are defined according
     to the general rules defined in the previous section, and the usage
     is required
 
-3.  An attribute for each data attribute with simple representation
+3. An attribute for each data attribute with simple representation
     defined in the data structure that declares an attribute
     relationship with the group or specifies the group as an attachment
     group. The XML attribute [name](#component-name-determination) and
@@ -1191,7 +1305,7 @@ complex type content model will be as follows:
     to the general rules defined in the previous section, and the usage
     is optional
 
-4.  An attribute named type with a type of common:IDType, usage of
+4. An attribute named type with a type of common:IDType, usage of
     optional, and a fixed value of the identifier of the group
 
 If the data structure definition defines more than one group, an
@@ -1200,25 +1314,25 @@ used for the Group element in the DataSetType. Its content model will be
 derived via restriction of the dsd:GroupType. The complex type content
 model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any attributes defined in the data structure that declares an
+    2. If any attributes defined in the data structure that declares an
         attribute relationship with a group, a Comp element with a form
         of unqualified, a minimum occurrence of 0, a maximum occurrence
         of unbounded, and a type of dsd:CompType
 
-    3.  If any metadata attribute usages defined in the data structure
+    3. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship with any group, a local
         element named Metadata with the type metadata:MetadataSetType a
-        form of unqualified, and a minimum occurences of 0
+        form of unqualified, and a minimum occurence of 0
 
-2.  An attribute named type with a type of Group.ID, and a usage of
+2. An attribute named type with a type of Group.ID, and a usage of
     optional
 
-3.  An anyAttribute declaration with a namespace of \##local
+3. An anyAttribute declaration with a namespace of \##local
 
 A simple type named Group.ID must be created. This should restrict the
 common:IDType. For each group defined by the data structure definition,
@@ -1230,29 +1344,29 @@ with its name taken from the group identifier is defined. Its content
 model will be derived via restriction of the previously defined
 GroupType. The complex type content model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any attributes with complex representation defined in the
+    2. If any attributes with complex representation defined in the
         data structure declares an attribute relationship with the
         group, a Comp element with a form of unqualified, a minimum
         occurrence of 0, a maximum occurrence of unbounded, and a type
         of dsd:CompType
 
-    3.  If any metadata attribute usages defined in the data structure
+    3. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship with the group, a local
         element named Metadata with the type metadata:MetadataSetType a
-        form of unqualified, and a minimum occurences of 0
+        form of unqualified, and a minimum occurence of 0
 
-2.  An attribute for each dimension referenced by the group. The XML
+2. An attribute for each dimension referenced by the group. The XML
     attribute [name](#component-name-determination) and
     [type](#simple-primitive-type-determination) are defined according
     to the general rules defined in the previous section, and the usage
     is required
 
-3.  An attribute for each data attribute with simple representation
+3. An attribute for each data attribute with simple representation
     defined in the data structure that declares an attribute
     relationship with the group or specifies the group as an attachment
     group. The XML attribute [name](#component-name-determination) and
@@ -1260,7 +1374,7 @@ GroupType. The complex type content model will be as follows:
     to the general rules defined in the previous section, and the usage
     is optional
 
-4.  An attribute named type with a type of Group.ID, usage of optional,
+4. An attribute named type with a type of Group.ID, usage of optional,
     and a fixed value of the identifier of the group
 
 #### SeriesType
@@ -1270,33 +1384,33 @@ name SeriesType must be created. Its content model will be derived via
 restriction of dsd:SeriesType. The complex type content model will be as
 follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any attributes with complex representation defined in the
+    2. If any attributes with complex representation defined in the
         data structure declares an attribute relationship with a
         dimension that is not at the observation level, a Comp element
         with a form of unqualified, a minimum occurrence of 0, a maximum
         occurrence of unbounded, and a type of dsd:CompType
 
-    3.  A local element named Obs with a form of unqualified, a minimum
+    3. A local element named Obs with a form of unqualified, a minimum
         occurrence of 0, a maximum occurrence of unbounded, and a type
         of ObsType (as defined in the ObsType section which follows)
 
-    4.  If any metadata attribute usages defined in the data structure
+    4. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship with the series, a local
         element named Metadata with the type metadata:MetadataSetType a
-        form of unqualified, and a minimum occurences of 0
+        form of unqualified, and a minimum occurence of 0
 
-2.  An attribute named TIME_PERIOD with a type of
+2. An attribute named TIME_PERIOD with a type of
     common:ObservationalTimePeriod. If the dimension at the observation
     level is the time dimension (TIME_PERIOD) or there is no time
-    diemsnion defined by the data structure, a usage of prohibited;
-    otherwise a usage of required
+    dimension defined by the data structure, a usage of prohibited;
+    otherwise, a usage of required
 
-3.  An attribute for each dimension defined by the data structure
+3. An attribute for each dimension defined by the data structure
     definition, except for the dimension at the observation level and
     the time dimension (TIME_PERIOD). The XML attribute
     [name](#component-name-determination) and
@@ -1304,7 +1418,7 @@ follows:
     to the general rules defined in the previous section, and the usage
     is required
 
-4.  An attribute for each data attribute defined with simple
+4. An attribute for each data attribute defined with simple
     representation in the data structure that declares an attribute
     relationship with any dimension outside of the dimension at the
     observation level (so long as it does not also declare an attachment
@@ -1319,27 +1433,27 @@ A a complex type named AttsType must be created. Its content model will
 be derived via restriction of dsd:AttsType. The complex type content
 model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any attributes with complex representation are defined in the
+    2. If any attributes with complex representation are defined in the
         data structure, a Comp element with a form of unqualified, a
         minimum occurrence of 0, a maximum occurrence of unbounded, and
         a type of dsd:CompType
 
-2.  If there is no dimension (TIME_PERIOD) defined by the data
+2. If there is no dimension (TIME_PERIOD) defined by the data
     structure, an attribute named TIME_PERIOD with a type of
     common:ObservationalTimePeriod, and a usage of prohibited
 
-3.  An attribute for all dimension defined by the data structure
+3. An attribute for all dimension defined by the data structure
     definition. The XML attribute [name](#component-name-determination)
     and [type](#simple-primitive-type-determination) are defined
     according to the general rules defined in the previous section, and
     the usage is optional
 
-4.  An attribute for each data attribute defined with simple
+4. An attribute for each data attribute defined with simple
     representation in the data structure. The XML attribute
     [name](#component-name-determination) and
     [type](#simple-primitive-type-determination) are defined according
@@ -1352,30 +1466,30 @@ A complex type name ObsType must be created. Its content model will be
 derived via restriction of the base type dsd:ObsType. The complex type
 content model will be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  If any measures with complex representations are defined in the
+    2. If any measures with complex representations are defined in the
         data structure, any attributes with complex representation that
         declare an attribute relationship with the observation, a Comp
         element with a form of unqualified, a minimum occurrence of 0, a
         maximum occurrence of unbounded, and a type of dsd:CompType
 
-    3.  If any metadata attribute usages defined in the data structure
+    3. If any metadata attribute usages defined in the data structure
         that declares an attribute relationship with the observation, a
         local element named Metadata with the type
         metadata:MetadataSetType a form of unqualified, and a minimum
         occurences of 0
 
-2.  An attribute named TIME_PERIOD with a type of common:TimePeriodType.
+2. An attribute named TIME_PERIOD with a type of common:ObservationalTimePeriodValueType.
     If the dimension at the observation level is the time dimension
     (TIME_PERIOD) or all dimensions and the time dimension is defined by
-    the data structure, a usage of required; otherwise a usage of
+    the data structure, a usage of required; otherwise, a usage of
     prohibited
 
-3.  If the dimension at the observation level is not all dimensions or
+3. If the dimension at the observation level is not all dimensions or
     the time dimension (TIME_PERIOD), an attribute for the dimension at
     the observation level. The XML attribute
     [name](#component-name-determination) and
@@ -1385,7 +1499,7 @@ content model will be as follows:
 
 <!-- -->
 
-5.  If the dimension at the observation level is all dimensions, an
+1. If the dimension at the observation level is all dimensions, an
     attribute for each dimension defined by the data structure
     definition, except for the time dimension (TIME_PERIOD). The XML
     attribute [name](#component-name-determination) and
@@ -1395,16 +1509,16 @@ content model will be as follows:
 
 <!-- -->
 
-4.  An attribute for each measure with simple representation defined by
+1. An attribute for each measure with simple representation defined by
     the data structure definition. The XML attribute
     [name](#component-name-determination) and
     [type](#simple-primitive-type-determination) is defined according to
     the general rules defined in the previous section, and the usage is
     optional
 
-5.  An attribute for each data attribute with simple representation
+2. An attribute for each data attribute with simple representation
     defined in the data structure that declares an attribute
-    relationship with the obseration. The XML attribute
+    relationship with the observation. The XML attribute
     [name](#component-name-determination) and
     [type](#simple-primitive-type-determination) are defined according
     to the general rules defined in the previous section, and the usage
@@ -1417,71 +1531,222 @@ by the data structure definition, a complex type must be derived from
 the restriction of the dsd:CompType. The complex type content model will
 be as follows:
 
-1.  A sequence consisting of:
+1. A sequence consisting of:
 
-    1.  An element reference to common:Annotations, with a minimum
+    1. An element reference to common:Annotations, with a minimum
         occurrence of 0
 
-    2.  A Value element with a form of unqualified, with a minimum
+    2. A Value element with a form of unqualified, with a minimum
         occurrence of 0, a maximum occurrence defined by the
         representation, and a type based on the [complex representation
         type](#representation-with-complex-text-format) defined
         according to the general rules defined in the previous section
 
-2.  An attribute named id with a type of common: NCNameIDType, usage of
+2. An attribute named id with a type of common: NCNameIDType, usage of
     required, and a fixed value of the identifier of the measure or
     attribute
 
-## Special data functions
+# Data and Reference Metadata Actions
 
-### Updates
+## Data Actions
 
-D messages allow for incremental updating of data. This purpose is noted
-in the action for the data set, which is either inherited from the
-header of the data message or explicitly stated at the data set level.
+Data messages allow indicating intended actions when used to update an SDMX
+storage system. This purpose is noted in the action of the data set, which is
+either inherited from the header of the data message or explicitly stated at the
+data set level.
 
-A dataset with an action of Append is assumed to be an incremental
-update. This means that one the information provided explicitly in the
-message should be altered. Any data attribute or observation value that
-is to be changed must be provided. However, the absence of an
-observation value or a data attribute at any level does not imply
-deletion; instead it is simply implied that the value is to remain
-unchanged. Therefore, it is valid and acceptable to send a data message
-with an action of Append which contains only a Series elements with
-attribute values. In this case, the values for the attributes will be
-updated. Note that it is not permissible to update data attributes using
-partial keys (outside of those associated with defined groups). In order
-to update an attribute, a full key must always be provided even if the
-message format does not require this.
+Note that the former *Append* and *Information* actions are deprecated. When
+used to update an SDMX storage system, the *Merge* action is assumed.
 
-### Deletes
+### Merge Action
 
-Data messages allow for incremental deletion of data. This purpose is
-noted in the action for the data set, which is either inherited from the
-header of the data message or explicitly stated at the data set level.
+Data or data-related reference metadata is to be merged, through either update
+or insertion depending on already existing information. This operation does not
+allow deleting any component values. Updating individual values in multi-valued
+measure, attribute or data-related reference metadata values is not supported
+either. The complete multi-valued value is to be provided.
 
-A dataset with an action of Delete is assumed to be an incremental
-deletion. The deletion is assumed to take place of the lowest level of
-detail provided in the message. For example, if a delete message is sent
-with only a data set element, the entire data set will be deleted. On
-the other hand, if that data set contains a data attribute, only that
-data attribute value will be deleted. This same dynamic continues
-through the data set hierarchy. A data set containing only a series with
-no data attributes or observations will result in that entire series
-(all observations and data attributes) being deleted. If the series
-contains data attributes, only the supplied data attributes for that
-series will be deleted. Finally, if a series contains observations, then
-only the specified observations will be deleted. If an entire
-observation is to be deleted (value and data attributes), only the
-observation dimension should be provided. If only the observation value
-or particular data attributes are to be deleted, then these should be
-specified for the observation. Note that a group can only be used to
-delete the data attributes associated with it. Although the format might
-not require it, a full key must be provided to delete a series or
-observation. It is not permissible to wild card a key in order to delete
-more than one series or observation. Finally, to delete a data attribute
-or observation value it is recommended that the value to be deleted be
-supplied; however, it is only required that any valid value be provided.
+Only non-dimensional components (measure, attribute or data-related reference
+metadata values) can be **omitted** (`null` or absent) as long as at least one
+of those components is present. Bulk merges are thus not supported. Only the
+provided values are merged.
+
+Dimension values for higher-level (data-related reference metadata) attributes
+can be **switched-off** (using `~`) when those are not attached to these dimensions.
+
+All observations as well as the sets of data-related reference metadata
+attributes at specific dimension combinations impacted by the *Merge* action
+change their time stamp when used to update an SDMX storage system.
+
+### Replace Action
+
+Data or data-related reference metadata is to be replaced, through either update,
+insert or delete depending on already existing information. A full replacement
+is hereby assumed to take place at specific “replacement levels”: for entire
+observations and for any specific dimension combination for data-related
+reference metadata attributes. Within these “replacement levels” the provided
+values are inserted or updated, and omitted values are deleted. Values provided
+for the other attributes (those above the observation level) are merged
+(see *Merge* action).
+
+Only non-dimensional components (measure, attribute or reference metadata values)
+can be **omitted** (`null` or absent). Bulk replacing is thus not supported.
+
+Dimension values for higher-level (data-related reference metadata) attributes
+can be **switched-off** (using `~`) when those are not attached to these dimensions.
+
+Replacing non-existing elements is not resulting in an error.
+
+All observations as well as the sets of data-related reference metadata
+attributes at specific dimension combinations impacted by the *Replace* action
+change their time stamp when used to update an SDMX storage system.
+
+Because the *replace* action always takes place at specific levels, it cannot
+be used to replace a whole dataset or a whole series. However, a “*replace all*”
+effect can be achieved by combining a *Delete* dataset containing a completely
+wildcarded key (where all dimension values are omitted) with a *Merge* or
+*Replace* dataset within the same data message. Similarly, to replace a whole
+series, a message can combine a *delete* dataset containing only the partial
+key of the series (where the not used dimension values are omitted) with a
+*Merge* or *Replace* dataset for that series.
+
+### Delete Action
+
+Data or data-related reference metadata is to be deleted. Deletion is hereby
+assumed to take place at the lowest level of detail provided in the message.
+
+Any component (including dimensions) can be **omitted** (dimensions: empty,
+others: `null` or absent). Omitting dimension values allows for bulk deletions.
+Partially omitting non-dimension component values allows restricting the
+deletion of measure, attribute or data-related reference metadata values to the
+ones being present. Instead of real values for non-dimensional components, it is
+sufficient to use any valid value.
+
+With this, whole datasets, any slices of observations for dimension groups such
+as time series, observations or individual measure, attribute and data-related
+reference metadata attributes values can be deleted.
+
+Dimension values for higher-level (data-related reference metadata) attributes
+can be **switched-off** (using `~`) when those are not attached to these dimensions.
+
+Deleting non-existing elements or values is not resulting in an error.
+
+All observations as well as the sets of attributes and data-related reference
+metadata at higher partial keys impacted by the *Delete* action change their
+time stamp when used to update an SDMX storage system.
+
+### Further Details
+
+The following convention is used to indicate the state of components in data messages:
+
+|  |  | **Dimension value is** | | **Measure, attribute or reference metadata value is** | |
+| --- | --- | --- | --- | --- | --- |
+|  |  | **Omitted** | **switched off** | **Omitted** | **Present** |
+| Action | Delete | bulk deletion: dimension value doesn't matter | only for irrelevant dimensions:1) higher-level (reference metadata) attributes not attached to this dimension(incl. TIME\_PERIOD)2) measures and attributes not attached to this dimension if the DSD allows for an ‘evolving structure’ (excl. TIME\_PERIOD) | to be deleted only if **all** non-dimension components are omitted | to be deleted |
+| | Merge | *bulk merge is not permitted* | (see above) | not to be changed | to be updated/inserted |
+| | Replace | *bulk replace is not permitted* | (see above) | at permitted replacement levels: to be deleted, otherwise not to be changed | to be updated/inserted |
+| Format | XML | xml element/attribute is absent | ~ | xml element/attribute is absent | any valid or intentionally missing value |
+| | JSON | \<empty\> | “~“ | NULL or absent | (see above) |
+| | CSV | \<empty\> cell or column is absent | ~ | <empty> cell or column is absent | (see above) |
+
+**Important notes:**
+
+The terms “*delete*”, “*merge*” and “*replace*” do **not** imply a physical
+replacement or deletion of values in the underlying database. To minimize the
+physical resource requirements, SDMX web service implementations that do not
+support the *includeHistory* and *asOf* URL parameters might physically replace
+the existing values in the database. SDMX web services that neither support the
+*updatedAfter* URL parameter might also implement physical deletions. However,
+SDMX web services that support these parameters (or other time-machine features),
+would not overwrite or delete the physical values.
+
+SDMX web services that support the *includeHistory* or *asOf* URL parameters
+should never allow deleting their **historic** data content because this would
+interfere with the interests of data consumers, such as data aggregators.
+Therefore, a specific feature to physically delete previous (outdated) content
+is intentionally not added to the SDMX standard syntax. If such a feature is
+required by an organisation, then it needs to be implemented as a custom feature
+outside the SDMX standard.
+
+Likewise, all SDMX-compliant systems that do (or are configured to) support the
+*updatedAfter* URL parameter need to systematically retain the information about
+deleted data (or data-related reference metadata).
+
+All datasets – even with varying actions – within a single data message have
+always to be treated as **ACID transaction** to guarantee “transactional safety”
+(full data consistency and validity despite errors, power failures, and other
+mishaps). These datasets are to be processed in the order of appearance in the
+message. The advantage of such data messages is thus the ability to bundle
+separate *delete* and *replace* or *merge* actions into one transactional data message.
+
+**Recommended[^2] dataset actions in SDMX web service responses to GET data queries:**
+
+1. Without the *updatedAfter*, *includeHistory*, *detail*, *attributes* or
+2. *measures* URL parameters:  
+
+   The response message should contain the retrieved data in a *Replace* dataset
+   (instead of the previous *information* dataset).
+
+3. Without the *updatedAfter* and *includeHistory*, but with *detail*,
+4. *attributes* or *measures* URL parameters:  
+
+   The response message should contain the retrieved data in a *Merge* dataset
+   (instead of the previous *Information* dataset).
+
+5. With the *updatedAfter* URL parameter:  
+
+   The response must include the information of all previously updated, inserted
+   and deleted data or data-related reference metadata, even if bulk deletions
+   have been used. One of the two approaches are possible:
+
+   - a *Delete* dataset for entirely deleted observations and for entirely
+     deleted sets of (data-related reference metadata) attribute values attached
+     to specific dimension combinations and  
+   - a *Replace* dataset for all other changed observations and changed
+     attribute and data-related reference metadata values attached to specific
+     dimension combinations, or  
+   - a *Delete* dataset for entirely deleted observations, for entirely deleted
+     sets of (data-related reference metadata) attribute values attached to
+     specific dimension combinations and for individually deleted mesure,
+     attribute and reference metadata values and  
+   - a *Merge* dataset for all other updated or inserted observation, attribute
+     and data-related reference metadata values.
+
+The DB synchronization use case requires that the generated response must
+always allow achieving to replicate the exact same punctual data content as
+currently stored in the queried data source.
+
+1. With the *includeHistory* URL parameter:  
+
+   Using a number of datasets with *Delete*, *Replace* or *Merge* actions and
+   limited in their validity time span that allow achieving to replicate the
+   exact same punctual data contents as previously stored in the queried data source.
+
+2. With the *asOf* URL parameter:  
+
+   The recommendations of 1 and 2 apply depending on the other parameters. In
+   addition, the returned dataset should have its validity time span limited to
+   the point in time requested in the *asOf* parameter.
+
+[^2]:
+    So far this is recommended for systems that do not require backward-compatibility.
+    Later, with SDMX 4.0, this may generally be made mandatory.
+
+## Reference Metadata Actions
+
+Reference metadata defined by a Metadataflow or a MetadataProvisionAgreement are
+exchanged within reference metadatasets, which are maintainable and thus for
+actions behave like structural metadata (artefacts): When interacting with SDMX
+Rest web services, the HTTP action verbs GET, PUT and POST are used to indicate
+the intended action per web request. Consequently, different actions cannot be
+bundled and executed with “transactional ACIDity”. Note that metadatasets
+retrieved using the HTTP header “Accept-Language” may contain only partial
+languages, and thus should be marked with its *isPartialLanguage* property
+set to true. Submitting such a partial metadataset to update an SDMX storage
+system will only add or update the included languages but not change other languages.
+
+The former message header or metadataset property *DataSetAction* is deprecated.
+To avoid conflicts, it is now ignored if still present.
 
 [^1]: Note that these options only apply to numeric representations and
     should be ignored if the data type is non-numeric
