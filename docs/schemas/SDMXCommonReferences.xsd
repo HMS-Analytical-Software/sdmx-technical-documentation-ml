@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
-
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
 	
 	<xs:annotation>
 		<xs:appinfo>SDMX Common References Module</xs:appinfo>
@@ -116,7 +118,7 @@
 	
 	<xs:simpleType name="UrnMaintainableIdPart">
 		<xs:annotation>
-			<xs:documentation>This refines the prefix, classes, and agnecy patterns to validate the maintainable ID part of the URN (:&lt;maintainable_id(&lt;version_number>)). Note that it does not restrict the version part as it is intended to be further restricted.</xs:documentation>
+			<xs:documentation>This refines the prefix, classes, and agency patterns to validate the maintainable ID part of the URN (:&lt;maintainable_id(&lt;version_number>)). Note that it does not restrict the version part as it is intended to be further restricted.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="UrnAgencyPart">
 			<xs:pattern value=".+:([A-Za-z0-9_@$\-]+)\([0-9A-Za-z\-\.\+]+\)[^(\(\))]*"/>
@@ -125,7 +127,7 @@
 
 	<xs:simpleType name="WildcardUrnMaintainableIdPart">
 		<xs:annotation>
-			<xs:documentation>This refines the prefix, classes, and agnecy patterns to validate the maintainable ID part of a wildcarded URN reference (:&lt;maintainable_id(&lt;version_number>)). Note that it does not restrict the version part as it is intended to be further restricted.</xs:documentation>
+			<xs:documentation>This refines the prefix, classes, and agency patterns to validate the maintainable ID part of a wildcarded URN reference (:&lt;maintainable_id(&lt;version_number>)). Note that it does not restrict the version part as it is intended to be further restricted.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="WildcardUrnAgencyPart">
 			<xs:pattern value=".+:([A-Za-z0-9_@$\-]+)\([0-9A-Za-z\-\.\+\*]+\)[^(\(\))]*"/>
@@ -135,7 +137,7 @@
 
 	<xs:simpleType name="UrnVersionPart">
 		<xs:annotation>
-			<xs:documentation>This refines the prefix, classes, agency, and maintainable id patterns to validate the version number part of the URN ((&lt;version_number)). It accounts for both legacy and semantic versioning, but not wildarding (for referencing). It is meant to be further refined, although all parts after this are optional.</xs:documentation>
+			<xs:documentation>This refines the prefix, classes, agency, and maintainable id patterns to validate the version number part of the URN ((&lt;version_number)). It accounts for both legacy and semantic versioning, but not wildcarding (for referencing). It is meant to be further refined, although all parts after this are optional.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="UrnMaintainableIdPart">
 			<xs:pattern value=".+\((0|[1-9]\d*)(\.(0|[1-9]\d*))?\).*"/>
@@ -152,7 +154,7 @@
 			<xs:pattern value=".+\((0|[1-9]\d*)(\.(0|[1-9]\d*)){2}(\-(([A-Za-z\-]|([A-Za-z\-][A-Za-z0-9\-]+)|([A-Za-z0-9\-]+[A-Za-z\-][A-Za-z0-9\-]*))|(0|[1-9][0-9]*))(\.(([A-Za-z\-]|([A-Za-z\-][A-Za-z0-9\-]+)|([A-Za-z0-9\-]+[A-Za-z\-][A-Za-z0-9\-]*))|(0|[1-9][0-9]*)))*)?\).*"/>
 			<xs:pattern value=".+\(((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*))){2}\).*"/>
 			<xs:pattern value=".+\(((0|[1-9]\d*))(\.((0|[1-9]\d*)\+?))(\.((0|[1-9]\d*)))\).*"/>
-			<xs:pattern value=".+\(((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))\).*"/>
+			<xs:pattern value=".+\(((0|[1-9]\d*))(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))\).*"/>
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -165,7 +167,7 @@
 			<xs:pattern value=".+\((0|[1-9]\d*)(\.(0|[1-9]\d*)){2}(\-(([A-Za-z\-]|([A-Za-z\-][A-Za-z0-9\-]+)|([A-Za-z0-9\-]+[A-Za-z\-][A-Za-z0-9\-]*))|(0|[1-9][0-9]*))(\.(([A-Za-z\-]|([A-Za-z\-][A-Za-z0-9\-]+)|([A-Za-z0-9\-]+[A-Za-z\-][A-Za-z0-9\-]*))|(0|[1-9][0-9]*)))*)?\).*"/>
 			<xs:pattern value=".+\(((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*))){2}\).*"/>
 			<xs:pattern value=".+\(((0|[1-9]\d*))(\.((0|[1-9]\d*)\+?))(\.((0|[1-9]\d*)))\).*"/>
-			<xs:pattern value=".+\(((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))\).*"/>
+			<xs:pattern value=".+\(((0|[1-9]\d*))(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))\).*"/>
 			<xs:pattern value=".+\(\*\).*"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -331,7 +333,7 @@
 			<xs:documentation>Urn type for a categorisation.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnType">
-			<xs:pattern value=".+\.categoryscheme\.Categorisation=.+"/>
+			<xs:pattern value=".+\.categoryscheme\.Categorisation=.+\(1\.0\)"/>
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -544,7 +546,7 @@
 
 	<xs:simpleType name="MetadataAttributeUrnType">
 		<xs:annotation>
-			<xs:documentation>Urn type for a metadata attibute.</xs:documentation>
+			<xs:documentation>Urn type for a metadata attribute.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="UrnType">
 			<xs:pattern value=".+\.metadatastructure\.MetadataAttribute=.+"/>
@@ -670,7 +672,7 @@
 
 	<xs:simpleType name="EpochMapUrnType">
 		<xs:annotation>
-			<xs:documentation>Urn type for a epoch map.</xs:documentation>
+			<xs:documentation>Urn type for an epoch map.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ComponentUrnType">
 			<xs:pattern value=".+\.structuremapping\.EpochMap=.+"/>
@@ -688,7 +690,7 @@
 
 	<xs:simpleType name="OrganisationSchemeMapUrnType">
 		<xs:annotation>
-			<xs:documentation>Urn type for a organisation scheme map.</xs:documentation>
+			<xs:documentation>Urn type for an organisation scheme map.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnType">
 			<xs:pattern value=".+\.structuremapping\.OrganisationSchemeMap=.+"/>
@@ -769,7 +771,7 @@
 
 	<xs:simpleType name="RulesetSchemeUrnType">
 		<xs:annotation>
-			<xs:documentation>Urn type for a ruleste scheme.</xs:documentation>
+			<xs:documentation>Urn type for a ruleset scheme.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="MaintainableUrnType">
 			<xs:pattern value=".+\.transformation\.RulesetScheme=.+"/>
@@ -1354,7 +1356,7 @@
 
 	<xs:simpleType name="FrequencyFormatMappingReferenceType">
 		<xs:annotation>
-			<xs:documentation>A reference type for a frequnecy format mapping.</xs:documentation>
+			<xs:documentation>A reference type for a frequency format mapping.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ComponentUrnReferenceType">
 			<xs:pattern value=".+\.structuremapping\.FrequencyFormatMapping=.+"/>
@@ -1363,7 +1365,7 @@
 
 	<xs:simpleType name="OrganisationSchemeMapReferenceType">
 		<xs:annotation>
-			<xs:documentation>A reference type for a organisation scheme map.</xs:documentation>
+			<xs:documentation>A reference type for an organisation scheme map.</xs:documentation>
 		</xs:annotation>
 
 		<xs:restriction base="MaintainableUrnReferenceType">
@@ -1511,7 +1513,7 @@
 	<!-- Version Referencing -->
 	<xs:simpleType name="VersionReferenceType">
 		<xs:annotation>
-			<xs:documentation>VersionReferenceType defines the structure of version number in a reference. When semantic versioning is used, the major, minor, or patch version parts can be wildcarded using "+" as an extension. For example, 2+.3.1 means the currently latest available version >= 2.3.1 (even if not backwards compatible). Note that wildcarded semantic version references cannot be combined with version extended reference (e.g. 2.3+.1-draft is not permissable). Version-extended (e.g. 1.3.1-draft) and legacy version numbers (e.g. 1 or 1.0) are also supported.</xs:documentation>
+			<xs:documentation>VersionReferenceType defines the structure of version number in a reference. When semantic versioning is used, the major, minor, or patch version parts can be wildcarded using "+" as an extension. For example, 2+.3.1 means the currently latest available version >= 2.3.1 (even if not backwards compatible). Note that wildcarded semantic version references cannot be combined with version extended reference (e.g. 2.3+.1-draft is not permissible). Version-extended (e.g. 1.3.1-draft) and legacy version numbers (e.g. 1 or 1.0) are also supported.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="LegacyVersionNumberType SemanticVersionNumberType SemanticVersionReferenceType"/>
 	</xs:simpleType>
@@ -1523,7 +1525,7 @@
 		<xs:restriction base="xs:string">
 			<xs:pattern value="((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*))){2}"/>
 			<xs:pattern value="((0|[1-9]\d*))(\.((0|[1-9]\d*)\+?))(\.((0|[1-9]\d*)))"/>
-			<xs:pattern value="((0|[1-9]\d*)\+?)(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))"/>
+			<xs:pattern value="((0|[1-9]\d*))(\.((0|[1-9]\d*)))(\.((0|[1-9]\d*)\+?))"/>
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -1605,7 +1607,7 @@
 	
 	<xs:simpleType name="VersionType">
 		<xs:annotation>
-			<xs:documentation>VersionType is used to communicate version information. Semantic versioning, based on 3 or 4 version parts (major.minor.patch[-extension]) is supported. The legency SDMX version format is also support.</xs:documentation>
+			<xs:documentation>VersionType is used to communicate version information. Semantic versioning, based on 3 or 4 version parts (major.minor.patch[-extension]) is supported. The legacy SDMX version format is also supported.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="LegacyVersionNumberType SemanticVersionNumberType"/>
 	</xs:simpleType>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+				xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+				xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+				xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+				xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message https://xml.sdmx.org/3.1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF583870</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2024-07-30T16:53:05Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:MetadataConstraints>
+			<str:MetadataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.MetadataConstraint=DEMO:DEMO_CONSTRAINT(1.0)" isExternalReference="false" agencyID="DEMO" id="DEMO_CONSTRAINT" version="1.0">
+				<com:Name xml:lang="en">Allowed data constraints for the EXR dataflow.</com:Name>
+				<str:ConstraintAttachment>
+					<str:Metadataflow>urn:sdmx:org.sdmx.infomodel.metadatastructure.Metadataflow=ECB:EXR(1.0)</str:Metadataflow>
+				</str:ConstraintAttachment>
+				<str:MetadataTargetRegion>
+					<str:Component id="METADATA_ATT1">
+						<str:Value>Allowed_Value_1</str:Value>
+						<str:Value>Allowed_Value_2</str:Value>
+						<str:Value>Allowed_Value_3</str:Value>
+					</str:Component>
+					<str:Component id="METADATA_ATT1.SUB_ATT1">
+						<str:Value>Allowed_SubValue_1</str:Value>
+					</str:Component>
+				</str:MetadataTargetRegion>
+			</str:MetadataConstraint>
+		</str:MetadataConstraints>
+	</mes:Structures>
+</mes:Structure>
