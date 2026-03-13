@@ -49,7 +49,7 @@ attributes if it weren't for the complete reference requirement.
 
 ### Common Namespace
 
-**http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common**
+**<http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common>**
 
 #### Summary
 
@@ -57,8 +57,8 @@ Referenced Namespaces:
 
 | **Namespace**                    | **Prefix** |
 |----------------------------------|------------|
-| http://www.w3.org/1999/xhtml     | xhtml      |
-| http://www.w3.org/2001/XMLSchema | xs         |
+| <http://www.w3.org/1999/xhtml>     | xhtml      |
+| <http://www.w3.org/2001/XMLSchema> | xs         |
 
 Contents:
 
@@ -284,7 +284,7 @@ Derivation:
 ``` xml
 StatusMessageType (restriction)  
    CodedStatusMessageType
-``` 
+```
 
 Attributes:
 
@@ -575,7 +575,7 @@ Derivation:
 Attributes:
 
 `id, urn?, uri?, version?, validFrom?, validTo?, agencyID,
-isExternalReference?, serviceURL?, structureURL?`
+isPartialLanguage?, isExternalReference?, serviceURL?, structureURL?`
 
 Content:
 
@@ -595,6 +595,7 @@ Attribute Documentation:
 | isExternalReference (default: false) | xs:boolean          | The isExternalReference attribute, if true, indicates that the actual object is not defined the corresponding element, rather its full details are defined elsewhere - indicated by either the registryURL, the repositoryURL, or the structureURL. The purpose of this is so that each structure message does not have to redefine object that are already defined elsewhere. If the isExternalReference attribute is not set, then it is assumed to be false, and the object should contain the full definition of its contents. If more than one of the registryURL, the repositoryURL, and the structureURL are supplied, then the application processing the object can choose the method it finds best suited to retrieve the details of the object. |
 | serviceURL                           | xs:anyURI           | The serviceURL attribute indicates the URL of an SDMX SOAP web service from which the details of the object can be retrieved. Note that this can be a registry or and SDMX structural metadata repository, as they both implement that same web service interface.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | structureURL                         | xs:anyURI           | The structureURL attribute indicates the URL of a SDMX-ML structure message (in the same version as the source document) in which the externally referenced object is contained. Note that this may be a URL of an SDMX RESTful web service which will return the referenced object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| isPartialLanguage (default: false)   | xs:boolean           | The isPartialLanguage attribute, if true, indicates that the object doesn't contain the complete set of all available languages, e.g., when obtained as a response to a GET query that requested specific languages through the HTTP header ‘Accept-Language’.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 Element Documentation:
 
@@ -1123,6 +1124,90 @@ provided on the date or date time.
 Derived by restriction of `TimeRangeValidDateDurationType`.  
 Regular Expression Pattern:
 `.+/P.*T(\d+H)?(\d+M)?(\d+(.\d+)?S)?.+/P[^T]+`
+
+**NotApplicableType:** NotApplicableType is a reusable simple type that allows
+for not applicable dimension values to be reported. This is required for
+datasets against a DSD which includes data from Dataflows, which only use a
+subset of Dimensions as defined by a Dimension Constraint, or for data-related
+reference metadata attributes that are not attached to all dimensions.
+
+Derived by restriction of `xs:string`.  
+Fixed value: `~` (tilde)
+
+**DecimalOrNotApplicableType:** Simple type combining xs:decimal and NotApplicableType.
+
+Union of:
+
+`xs:decimal, NotApplicableType`.  
+
+The following types are derived in a similar manner:
+
+- DoubleOrNotApplicableType
+- BooleanOrNotApplicableType
+- IntOrNotApplicableType
+- IntegerOrNotApplicableType
+- LongOrNotApplicableType
+- ShortOrNotApplicableType
+- FloatOrNotApplicableType
+- AlphaOrNotApplicableType
+- AlphaNumericOrNotApplicableType
+- NumericOrNotApplicableType
+- StandardTimePeriodOrNotApplicableType
+- BasicTimePeriodOrNotApplicableType
+- ObservationalTimePeriodOrNotApplicableType
+- GregorianTimePeriodOrNotApplicableType
+- ReportingTimePeriodOrNotApplicableType
+- ReportingYearOrNotApplicableType
+- ReportingSemesterOrNotApplicableType
+- ReportingTrimesterOrNotApplicableType
+- ReportingQuarterOrNotApplicableType
+- ReportingDayOrNotApplicableType
+- ReportingMonthOrNotApplicableType
+- ReportingWeekOrNotApplicableType
+- RangeValidMonthDayOrNotApplicableType
+- RangeValidTimeOrNotApplicableType
+- RangeValidTimeZoneOrNotApplicableType
+- TimeRangeOrNotApplicableType
+
+**MissingType:** MissingType is a reusable simple type that allows for missing
+values to be reported. This is required for attributes and measures to report an
+intentionally missing value of any other type than double or float.
+
+Derived by restriction of `xs:string`.  
+Fixed value: `#N/A`
+
+**DecimalOrMissingType:** Simple type combining xs:decimal and MissingType.
+
+Union of:
+
+`xs:decimal, MissingType`.  
+
+The following types are derived in a similar manner:
+
+- BooleanOrMissingType
+- IntOrMissingType
+- IntegerOrMissingType
+- LongOrMissingType
+- ShortOrMissingType
+- AlphaOrMissingType
+- AlphaNumericOrMissingType
+- NumericOrMissingType
+- StandardTimePeriodOrMissingType
+- BasicTimePeriodOrMissingType
+- ObservationalTimePeriodOrMissingType
+- GregorianTimePeriodOrMissingType
+- ReportingTimePeriodOrMissingType
+- ReportingYearOrMissingType
+- ReportingSemesterOrMissingType
+- ReportingTrimesterOrMissingType
+- ReportingQuarterOrMissingType
+- ReportingDayOrMissingType
+- ReportingMonthOrMissingType
+- ReportingWeekOrMissingType
+- RangeValidMonthDayOrMissingType
+- RangeValidTimeOrMissingType
+- RangeValidTimeZoneOrMissingType
+- TimeRangeOrMissingType
 
 **TimezoneType:** TimezoneType defines the pattern for a time zone. An
 offset of -14:00 to +14:00 or Z can be specified.

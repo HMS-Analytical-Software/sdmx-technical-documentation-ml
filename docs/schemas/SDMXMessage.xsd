@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message/footer" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:registry="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific" xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message/footer" schemaLocation="SDMXMessageFooter.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" schemaLocation="SDMXStructure.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/registry" schemaLocation="SDMXRegistry.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific" schemaLocation="SDMXDataStructureSpecific.xsd"/>
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/metadata/generic" schemaLocation="SDMXMetadataGeneric.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message" 
+			xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:registry="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" 
+			xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific" 
+			xmlns:metadata="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" 
+			xmlns:xml="http://www.w3.org/XML/1998/namespace" 
+			elementFormDefault="qualified"
+			version="3.1.0">
+			
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message/footer" schemaLocation="SDMXMessageFooter.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" schemaLocation="SDMXStructure.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/registry" schemaLocation="SDMXRegistry.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/data/structurespecific" schemaLocation="SDMXDataStructureSpecific.xsd"/>
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/metadata/generic" schemaLocation="SDMXMetadataGeneric.xsd"/>
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 	
 	<xs:annotation>
@@ -241,7 +254,7 @@
 	
 	<xs:complexType name="BaseHeaderType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>BaseHeaderType in an abstract base type that defines the basis for all message headers. Specific message formats will refine this</xs:documentation>
+			<xs:documentation>BaseHeaderType in an abstract base type that defines the basis for all message headers. Specific message formats will refine this.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="ID" type="common:IDType">

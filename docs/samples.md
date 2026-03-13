@@ -1,4 +1,3 @@
-
 # Samples
 
 ## Introduction
@@ -11,7 +10,7 @@ that the schemas are held locally in a directory called ‘schemas’ and
 are referenced as a relative file path. For example:
 
 ```xml
-xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message
+xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/message
 ../../schemas/SDMXMessage.xsd"
 ```
 

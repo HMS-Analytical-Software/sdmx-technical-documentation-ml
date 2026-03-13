@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" elementFormDefault="qualified" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1_20130301">
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			elementFormDefault="qualified">
+			
 	<xs:include schemaLocation="SDMXCommonReferences.xsd"/>
 	<!-- Note: The following import statement sometimes causes problems with IE 6.* If you have this problem, comment it out. -->
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
@@ -87,7 +91,7 @@
 
 	<xs:complexType name="TextValueType">
 		<xs:annotation>
-			<xs:documentation>TextValueType is a restriction of ValueType that allows mutliple Text elements to expressed a text value in multiple languages. The content of this should be restricted in its use to only allow a langue code (xml:lang) to be used once within an element of this type.</xs:documentation>
+			<xs:documentation>TextValueType is a restriction of ValueType that allows multiple Text elements to express a text value in multiple languages. The content of this should be restricted in its use to only allow a language code (xml:lang) to be used once within an element of this type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ValueType">
@@ -100,7 +104,7 @@
 
 	<xs:complexType name="StructuredTextValueType">
 		<xs:annotation>
-			<xs:documentation>StructuredTextValueType is a restriction of ValueType that allows mutliple StructuredText (XHTML mixed content) elements to expressed a text value in multiple languages. The content of this should be restricted in its use to only allow a langue code (xml:lang) to be used once within an element of this type.</xs:documentation>
+			<xs:documentation>StructuredTextValueType is a restriction of ValueType that allows multiple StructuredText (XHTML mixed content) elements to express a text value in multiple languages. The content of this should be restricted in its use to only allow a language code (xml:lang) to be used once within an element of this type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ValueType">
@@ -229,7 +233,7 @@
 			</xs:element>
 			<xs:element name="AnnotationURL" type="AnnotationURLType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>AnnotationURL is a URI - typically a URL - which points to an external resource which may contain or supplement the annotation. These can be localised by indicating a language for the resource. If a language is not specified, the resource is assumed to not be localised. If a specific behavior is desired, an annotation type should be defined which specifies the use of this field more exactly.</xs:documentation>
+					<xs:documentation>AnnotationURL is a URI - typically a URL - which points to an external resource which may contain or supplement the annotation. These can be localised by indicating a language for the resource. If a language is not specified, the resource is assumed to not be localised. If a specific behaviour is desired, an annotation type should be defined which specifies the use of this field more exactly.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="AnnotationText" type="TextType" minOccurs="0" maxOccurs="unbounded"> 
@@ -324,7 +328,7 @@
 	
 	<xs:complexType name="NameableType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>NameableType is an abstract base type for  all nameable objects.</xs:documentation>
+			<xs:documentation>NameableType is an abstract base type for all nameable objects.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="IdentifiableType">
@@ -395,7 +399,12 @@
 			<xs:extension base="MaintainableBaseType">
 				<xs:attribute name="agencyID" type="NestedNCNameIDType" use="required">
 					<xs:annotation>
-						<xs:documentation>The agencyID must be provided, and identifies the maintenance agency of the object.</xs:documentation>
+						<xs:documentation>The agencyID must be provided and identifies the maintenance agency of the object.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isPartialLanguage" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>The isPartialLanguage attribute, if true, indicates that the object doesn't contain the complete set of all available languages, e.g., when obtained as a response to a GET query that requested specific languages through the HTTP header 'Accept-Language'.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="isExternalReference" type="xs:boolean" use="optional" default="false">
@@ -452,6 +461,7 @@
 		</xs:attribute>	
 	</xs:attributeGroup>
 	
+
 	<xs:simpleType name="AlphaNumericType">
 		<xs:annotation>
 			<xs:documentation>AlphaNumericType is a reusable simple type that allows for only mixed-case alphabetical and numeric characters.</xs:documentation>
@@ -469,7 +479,7 @@
 			<xs:pattern value="[A-Za-z]+"/>
 		</xs:restriction>
 	</xs:simpleType>
-
+	
 	<xs:simpleType name="NumericType">
 		<xs:annotation>
 			<xs:documentation>NumericType is a reusable simple type that allows for only numeric characters. This is not to be confused with an integer, as this may be used to numeric strings which have leading zeros. These leading zeros are not ignored. This is derived from the AlphaNumericType.</xs:documentation>
@@ -492,10 +502,10 @@
 		</xs:annotation>
 		<xs:union memberTypes="BasicTimePeriodType ReportingTimePeriodType"/>
 	</xs:simpleType>	
-
+	
 	<xs:simpleType name="BasicTimePeriodType">
 		<xs:annotation>
-			<xs:documentation>BasicTimePeriodType contains the basic dates and calendar periods. It is a combination of the Gregorian time periods and the date time type..</xs:documentation>
+			<xs:documentation>BasicTimePeriodType contains the basic dates and calendar periods. It is a combination of the Gregorian time periods and the date time type.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="GregorianTimePeriodType xs:dateTime"/>
 	</xs:simpleType>	
@@ -509,7 +519,7 @@
 	
 	<xs:simpleType name="ReportingTimePeriodType">
 		<xs:annotation>
-			<xs:documentation>ReportingTimePeriodType defines standard reporting periods in SDMX, which are all in relation to the start day (day-month) of a reporting year which is specified in the specialized reporting year start day attribute. If the reporting year start day is not defined, a day of January 1 is assumed. The reporting year must be epxressed as the year at the beginning of the period. Therfore, if the reproting year runs from April to March, any given reporting year is expressed as the year for April. The general format of a report period can be described as  [year]-[period][time zone]?, where the type of period is designated with a single character followed by a number representing the period. Note that all periods allow for an optional time zone offset. See the details of each member type for the specifics of its format.</xs:documentation>
+			<xs:documentation>ReportingTimePeriodType defines standard reporting periods in SDMX, which are all in relation to the start day (day-month) of a reporting year which is specified in the specialized reporting year start day attribute. If the reporting year start day is not defined, a day of January 1 is assumed. The reporting year must be expressed as the year at the beginning of the period. Therefore, if the reporting year runs from April to March, any given reporting year is expressed as the year for April. The general format of a report period can be described as [year]-[period][time zone]?, where the type of period is designated with a single character followed by a number representing the period. Note that all periods allow for an optional time zone offset. See the details of each member type for the specifics of its format.</xs:documentation>
 		</xs:annotation>
 		<xs:union memberTypes="ReportingYearType ReportingSemesterType ReportingTrimesterType ReportingQuarterType ReportingMonthType ReportingWeekType ReportingDayType"/>
 	</xs:simpleType>	
@@ -572,7 +582,7 @@
 	
 	<xs:simpleType name="ReportingMonthType">
 		<xs:annotation>
-			<xs:documentation>ReportingMonthType defines a time period of 1 month (P1M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. In this case a reporting month will coincide with a calendar month. The format of a reporting month is YYYY-Mmm (e.g. 2000-M01), where mm is a two digit month (i.e. 01-12).</xs:documentation>
+			<xs:documentation>ReportingMonthType defines a time period of 1 month (P1M) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. In this case a reporting month will coincide with a calendar month. The format of a reporting month is YYYY-Mmm (e.g. 2000-M01), where mm is a two-digit month (i.e. 01-12).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}M(0[1-9]|1[0-2]).*"/>
@@ -581,7 +591,7 @@
 	
 	<xs:simpleType name="ReportingWeekType">
 		<xs:annotation>
-			<xs:documentation>ReportingWeekType defines a time period of 7 days (P7D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. A standard reporting week is based on the ISO 8601 defintion of a week date, in relation to the reporting period start day. The first week is defined as the week with the first Thursday on or after the reporting year start day. An equivalent definition is the week starting with the Monday nearest in time to the reporting year start day. There are other equivalent defintions, all of which should be adjusted based on the reporting year start day. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting week is YYYY-Www (e.g. 2000-W01), where mm is a two digit week (i.e. 01-53).</xs:documentation>
+			<xs:documentation>ReportingWeekType defines a time period of 7 days (P7D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. A standard reporting week is based on the ISO 8601 definition of a week date, in relation to the reporting period start day. The first week is defined as the week with the first Thursday on or after the reporting year start day. An equivalent definition is the week starting with the Monday nearest in time to the reporting year start day. There are other equivalent definitions, all of which should be adjusted based on the reporting year start day. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting week is YYYY-Www (e.g. 2000-W01), where mm is a two-digit week (i.e. 01-53).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}W(0[1-9]|[1-4][0-9]|5[0-3]).*"/>
@@ -590,7 +600,7 @@
 	
 	<xs:simpleType name="ReportingDayType">
 		<xs:annotation>
-			<xs:documentation>ReportingDayType defines a time period of 1 day (P1D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001), where ddd is a three digit day (i.e. 001-366).</xs:documentation>
+			<xs:documentation>ReportingDayType defines a time period of 1 day (P1D) in relation to a reporting year which has a start day (day-month) specified in the specialized reporting year start day attribute. In the absence of a start day for the reporting year, a day of January 1 is assumed. The format of a reporting day is YYYY-Dddd (e.g. 2000-D001), where ddd is a three-digit day (i.e. 001-366).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="ReportPeriodValidTimeZoneType">
 			<xs:pattern value=".{5}D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]).*"/>
@@ -616,6 +626,7 @@
 			<xs:pattern value=".{5}(01|03|05|07|08|10|12)\-(0[1-9]|[1-2][0-9]|3[0-1]).+"/>
 		</xs:restriction>
 	</xs:simpleType>
+	
 	
 	<xs:simpleType name="RangeValidLeapYearType">
 		<xs:annotation>
@@ -667,6 +678,235 @@
 			<xs:pattern value=".+/P[^T]+"/>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<!-- Define a common not applicable value -->
+	<xs:simpleType name="NotApplicableType">
+		<xs:annotation>
+			<xs:documentation>NotApplicableType is a reusable simple type that allows for not applicable dimension values to be reported. This is required for datasets against a DSD which includes data from Dataflows, which only use a subset of Dimensions as defined by a Dimension Constraint, or for data-related reference metadata attributes that are not attached to all dimensions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="~"/>
+		</xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="DecimalOrNotApplicableType">
+		<xs:union memberTypes="xs:decimal NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DoubleOrNotApplicableType">
+		<xs:union memberTypes="xs:double NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BooleanOrNotApplicableType">
+		<xs:union memberTypes="xs:boolean NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntOrNotApplicableType">
+		<xs:union memberTypes="xs:int NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntegerOrNotApplicableType">
+		<xs:union memberTypes="xs:integer NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LongOrNotApplicableType">
+		<xs:union memberTypes="xs:long NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ShortOrNotApplicableType">
+		<xs:union memberTypes="xs:short NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="FloatOrNotApplicableType">
+		<xs:union memberTypes="xs:float NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaOrNotApplicableType">
+		<xs:union memberTypes="AlphaType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaNumericOrNotApplicableType">
+		<xs:union memberTypes="AlphaNumericType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NumericOrNotApplicableType">
+		<xs:union memberTypes="NumericType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="StandardTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="StandardTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BasicTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="BasicTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ObservationalTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="ObservationalTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="GregorianTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="GregorianTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTimePeriodOrNotApplicableType">
+		<xs:union memberTypes="ReportingTimePeriodType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingYearOrNotApplicableType">
+		<xs:union memberTypes="ReportingYearType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingSemesterOrNotApplicableType">
+		<xs:union memberTypes="ReportingSemesterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTrimesterOrNotApplicableType">
+		<xs:union memberTypes="ReportingTrimesterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingQuarterOrNotApplicableType">
+		<xs:union memberTypes="ReportingQuarterType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingDayOrNotApplicableType">
+		<xs:union memberTypes="ReportingDayType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingMonthOrNotApplicableType">
+		<xs:union memberTypes="ReportingMonthType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingWeekOrNotApplicableType">
+		<xs:union memberTypes="ReportingWeekType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidMonthDayOrNotApplicableType">
+		<xs:union memberTypes="RangeValidMonthDayType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeOrNotApplicableType">
+		<xs:union memberTypes="RangeValidTimeType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeZoneOrNotApplicableType">
+		<xs:union memberTypes="RangeValidTimeZoneType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TimeRangeOrNotApplicableType">
+		<xs:union memberTypes="TimeRangeType NotApplicableType"/>
+	</xs:simpleType>
+	
+	<!-- Define a common missing value -->
+	<xs:simpleType name="MissingType">
+		<xs:annotation>
+			<xs:documentation>MissingType is a reusable simple type that allows for missing values to be reported. This is required for attributes and measures to report an intentionally missing value of any other type than double or float.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="#N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DecimalOrMissingType">
+		<xs:union memberTypes="xs:decimal MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BooleanOrMissingType">
+		<xs:union memberTypes="xs:boolean MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntOrMissingType">
+		<xs:union memberTypes="xs:int MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="IntegerOrMissingType">
+		<xs:union memberTypes="xs:integer MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LongOrMissingType">
+		<xs:union memberTypes="xs:long MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ShortOrMissingType">
+		<xs:union memberTypes="xs:short MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaOrMissingType">
+		<xs:union memberTypes="AlphaType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="AlphaNumericOrMissingType">
+		<xs:union memberTypes="AlphaNumericType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NumericOrMissingType">
+		<xs:union memberTypes="NumericType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="StandardTimePeriodOrMissingType">
+		<xs:union memberTypes="StandardTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="BasicTimePeriodOrMissingType">
+		<xs:union memberTypes="BasicTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ObservationalTimePeriodOrMissingType">
+		<xs:union memberTypes="ObservationalTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="GregorianTimePeriodOrMissingType">
+		<xs:union memberTypes="GregorianTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTimePeriodOrMissingType">
+		<xs:union memberTypes="ReportingTimePeriodType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingYearOrMissingType">
+		<xs:union memberTypes="ReportingYearType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingSemesterOrMissingType">
+		<xs:union memberTypes="ReportingSemesterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingTrimesterOrMissingType">
+		<xs:union memberTypes="ReportingTrimesterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingQuarterOrMissingType">
+		<xs:union memberTypes="ReportingQuarterType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingDayOrMissingType">
+		<xs:union memberTypes="ReportingDayType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingMonthOrMissingType">
+		<xs:union memberTypes="ReportingMonthType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ReportingWeekOrMissingType">
+		<xs:union memberTypes="ReportingWeekType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidMonthDayOrMissingType">
+		<xs:union memberTypes="RangeValidMonthDayType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeOrMissingType">
+		<xs:union memberTypes="RangeValidTimeType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="RangeValidTimeZoneOrMissingType">
+		<xs:union memberTypes="RangeValidTimeZoneType MissingType"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TimeRangeOrMissingType">
+		<xs:union memberTypes="TimeRangeType MissingType"/>
+	</xs:simpleType>
+
 
 	<xs:simpleType name="TimezoneType">
 		<xs:annotation>
@@ -725,27 +965,32 @@
 	
 	<xs:simpleType name="ActionType">
 		<xs:annotation>
-			<xs:documentation>ActionType provides a list of actions, describing the intention of the data transmission from the sender's side. Each action provided at the data or metadata set level applies to the entire data set for which it is given. Note that the actions indicated in the Message Header are optional, and used to summarize specific actions indicated with this data type for all registry interactions. The "Informational" value is used when the message contains information in response to a query, rather than being used to invoke a maintenance activity.</xs:documentation>
+			<xs:documentation>ActionType provides a list of actions, describing the intention of the data transmission from the sender's side. Each action provided at the data or metadata set level applies to the entire data set for which it is given. Note that the actions indicated in the Message Header are optional, and used to summarize specific actions indicated with this data type for all registry interactions. When absent (not recommended), Merge is assumed.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Merge">
+				<xs:annotation>
+					<xs:documentation>Merge - Data or data-related reference metadata is to be merged, through either update or insertion depending on already existing information. This operation does not allow deleting any component values. Updating individual values in multi-valued measure, attribute or data-related reference metadata values is not supported either. The complete multi-valued value is to be provided. Only non-dimensional components (measure, attribute or data-related reference metadata values) can be omitted (null or absent) as long as at least one of those components is present. Bulk merges are thus not supported. Only the provided values are merged. Dimension values for higher-level (data-related reference metadata) attributes can be switched-off (using ~) when those are not attached to these dimensions. All observations as well as the sets of data-related reference metadata attributes at specific dimension combinations impacted by the Merge action change their time stamp when used to update an SDMX storage system.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="Append">
 				<xs:annotation>
-					<xs:documentation>Append - this is an incremental update for an existing data/metadata set or the provision of new data or documentation (attribute values) formerly absent. If any of the supplied data or metadata is already present, it will not replace that data or metadata. This corresponds to the "Update" value found in version 1.0 of the SDMX Technical Standards.</xs:documentation>
+					<xs:documentation>Append - Deprecated. When used to update an SDMX storage system, the Merge action is assumed.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Replace">
 				<xs:annotation>
-					<xs:documentation>Replace - data/metadata is to be replaced, and may also include additional data/metadata to be appended. The replacement occurs at the level of the observation - that is, it is not possible to replace an entire series.</xs:documentation>
+					<xs:documentation>Replace - Data or data-related reference metadata is to be replaced, through either update, insert or delete depending on already existing information. A full replacement is hereby assumed to take place at specific “replacement levels”: for entire observations and for any specific dimension combination for data-related reference metadata attributes. Within these “replacement levels” the provided values are inserted or updated, and omitted values are deleted. Values provided for the other attributes (those above the observation level) are merged (see Merge action). Only non-dimensional components (measure, attribute or data-related reference metadata values) can be omitted (null or absent). Bulk replacing is thus not supported. Dimension values for higher-level (data-related reference metadata) attributes can be switched-off (using ~) when those are not attached to these dimensions. Replacing non-existing elements is not resulting in an error. All observations as well as the sets of data-related reference metadata attributes at specific dimension combinations impacted by the replace action change their time stamp when used to update an SDMX storage system. Because the Replace action always takes place at specific levels, it cannot be used to replace a whole dataset or a whole series. However, a “replace all” effect can be achieved by combining an `Delete` dataset containing a completely wildcarded key (where all dimension values are omitted) with a `Merge` or `Replace` dataset within the same data message. Similarly, to replace a whole series, a message can combine a `Delete` dataset containing only the partial key of the series (where the not used dimension values are omitted) with a `Merge` or `Replace` dataset for that series.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>			
 			<xs:enumeration value="Delete">
 				<xs:annotation>
-					<xs:documentation>Delete - data/metadata is to be deleted. Deletion occurs at the lowest level object. For instance, if a delete data message contains a series with no observations, then the entire series will be deleted. If the series contains observations, then only those observations specified will be deleted. The same basic concept applies for attributes. If a series or observation in a delete message contains attributes, then only those attributes will be deleted.</xs:documentation>
+					<xs:documentation>Delete - Data or data-related reference metadata is to be deleted. Deletion is hereby assumed to take place at the lowest level of detail provided in the message. Any component (including dimensions) can be omitted (dimensions: empty, others: null or absent). Omitting dimension values allows for bulk deletions. Partially omitting non-dimension component values allows restricting the deletion of measure, attribute or data-related reference metadata values to the ones being present. Instead of real values for non-dimensional components, it is sufficient to use any valid value. With this, whole datasets, any slices of observations for dimension groups such as time series, observations or individual measure, attribute and data-related reference metadata attributes values can be deleted. Dimension values for higher-level (data-related reference metadata) attributes can be switched-off (using ~) when those are not attached to these dimensions. Deleting non-existing elements or values is not resulting in an error. All observations as well as the sets of attributes and data-related reference metadata at higher partial keys impacted by the Delete action change their time stamp when used to update an SDMX storage system.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Information">
 				<xs:annotation>
-					<xs:documentation>Informational - data/metadata is being exchanged for informational purposes only, and not meant to update a system.</xs:documentation>
+					<xs:documentation>Information - Deprecated. When used to update an SDMX storage system, the Merge action is assumed.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>			
 		</xs:restriction>
@@ -753,7 +998,7 @@
 
 	<xs:simpleType name="WildCardValueType">
 		<xs:annotation>
-			<xs:documentation>WildCardValueType is a single value code list, used to include the '%' character - indicating that an entire field is wild carded.</xs:documentation>
+			<xs:documentation>WildCardValueType is a single value code list, used to include the '%' character - indicating that an entire field is wildcarded.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="%">
@@ -766,7 +1011,7 @@
 
 	<xs:complexType name="QueryableDataSourceType">
 		<xs:annotation>
-			<xs:documentation>QueryableDataSourceType describes a data source which is accepts an standard SDMX Query message and responds appropriately.</xs:documentation>
+			<xs:documentation>QueryableDataSourceType describes a data source which is accepts a standard SDMX Query message and responds appropriately.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="DataURL" type="xs:anyURI">
@@ -1008,7 +1253,7 @@
 			</xs:enumeration>
 			<xs:enumeration value="Alpha">
 				<xs:annotation>
-					<xs:documentation>A string datatype which only allows for the simple aplhabetic charcter set of A-Z, a-z.</xs:documentation>
+					<xs:documentation>A string datatype which only allows for the simple alphabetic character set of A-Z, a-z.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="AlphaNumeric">

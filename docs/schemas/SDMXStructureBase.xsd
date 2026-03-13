@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright SDMX 2021 - http://www.sdmx.org -->
-<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
-	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" schemaLocation="SDMXCommon.xsd"/>
+<!-- Copyright SDMX 2025 - http://www.sdmx.org -->
+<xs:schema targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common"
+			xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/structure" 
+			elementFormDefault="qualified">
+
+	<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v3_1/common" schemaLocation="SDMXCommon.xsd"/>
 	
 	<xs:annotation>
 		<xs:appinfo>SDMX Base Structure Module</xs:appinfo>
@@ -53,12 +59,12 @@
 
 	<xs:complexType name="ItemType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>ItemType is an abstract base type for all items with in an item scheme. Concrete instances of this type may or may not utilize the nested item, but if so should restrict the actual types of item allowed.</xs:documentation>
+			<xs:documentation>ItemType is an abstract base type for all items within an item scheme. Concrete instances of this type may or may not utilize the nested item, but if so should restrict the actual types of item allowed.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="ItemBaseType">
 				<xs:choice minOccurs="0">
-					<xs:element name="Parent" type="common:NestedIDType"/>
+					<xs:element name="Parent" type="common:IDType"/>
 					<xs:sequence maxOccurs="unbounded">
 						<xs:element ref="Item"/>
 					</xs:sequence>
@@ -69,7 +75,7 @@
 
 	<xs:complexType name="UnnestedItemType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>UnnestedItemType is an abstract base type for all items with in an item scheme that do not contain nested items.</xs:documentation>
+			<xs:documentation>UnnestedItemType is an abstract base type for all items within an item scheme that do not contain nested items.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="ItemType">
@@ -202,7 +208,7 @@
 
 	<xs:complexType name="RepresentationType" abstract="true">
 		<xs:annotation>
-			<xs:documentation>RepresentationType is an abstract type that defines a representation. Because the type of item schemes that are allowed as the an enumeration vary based on the object in which this is defined, this type is abstract to force that the enumeration reference be restricted to the proper type of item scheme reference.</xs:documentation>
+			<xs:documentation>RepresentationType is an abstract type that defines a representation. Because the type of item schemes that are allowed as the enumeration vary based on the object in which this is defined, this type is abstract to force that the enumeration reference be restricted to the proper type of item scheme reference.</xs:documentation>
 		</xs:annotation>
 		<xs:choice>
 			<xs:element name="TextFormat" type="TextFormatType">
@@ -225,7 +231,7 @@
 		</xs:choice>
 		<xs:attribute name="minOccurs" type="xs:nonNegativeInteger" use="optional" default="1">
 			<xs:annotation>
-				<xs:documentation>The minOccurs attribute indicates the minimum number of value that must be reported for the component.</xs:documentation>
+				<xs:documentation>The minOccurs attribute indicates the minimum number of values that must be reported for the component.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="maxOccurs" type="common:OccurenceType" use="optional">
@@ -253,7 +259,7 @@
 		</xs:attribute>
 		<xs:attribute name="isSequence" type="xs:boolean" use="optional">
 			<xs:annotation>
-				<xs:documentation>The isSequence attribute indicates whether the values are intended to be ordered, and it may work in combination with the interval, startValue, and endValue attributes or the timeInterval, startTime, and endTime, attributes. If this attribute holds a value of true, a start value or time and a numeric or time interval must supplied. If an end value is not given, then the sequence continues indefinitely.</xs:documentation>
+				<xs:documentation>The isSequence attribute indicates whether the values are intended to be ordered, and it may work in combination with the interval, startValue, and endValue attributes or the timeInterval, startTime, and endTime, attributes. If this attribute holds a value of true, a start value or time and a numeric or time interval must be supplied. If an end value is not given, then the sequence continues indefinitely.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="interval" type="xs:decimal" use="optional">
@@ -316,7 +322,7 @@
 				<xs:documentation>The pattern attribute holds any regular expression permitted in the similar facet in W3C XML Schema.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="isMultiLingual" type="xs:boolean" use="optional" default="true">
+		<xs:attribute name="isMultiLingual" type="xs:boolean" use="optional" default="false">
 			<xs:annotation>
 				<xs:documentation>The isMultiLingual attribute indicates for a text format of type "string", whether the value should allow for multiple values in different languages.</xs:documentation>
 			</xs:annotation>
@@ -369,7 +375,7 @@
 
 	<xs:complexType name="CodedTextFormatType">
 		<xs:annotation>
-			<xs:documentation>CodedTextFormatType is a restricted version of the SimpleComponentTextFormatType that only allows factets and text types applicable to codes. Although the time facets permit any value, an actual code identifier does not support the necessary characters for time. Therefore these facets should not contain time in their values.</xs:documentation>
+			<xs:documentation>CodedTextFormatType is a restricted version of the SimpleComponentTextFormatType that only allows facets and text types applicable to codes. Although the time facets permit any value, an actual code identifier does not support the necessary characters for time. Therefore these facets should not contain time in their values.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:restriction base="SimpleComponentTextFormatType">
@@ -393,7 +399,7 @@
 	
 	<xs:simpleType name="CodeDataType">
 		<xs:annotation>
-			<xs:documentation>CodeDataType is a restriction of the basic data types that are applicable to codes. Although some of the higher level time period formats are perimitted, it should be noted that any value which contains time (which includes a time zone offset) is not allowable as a code identifier.</xs:documentation>
+			<xs:documentation>CodeDataType is a restriction of the basic data types that are applicable to codes. Although some of the higher level time period formats are permitted, it should be noted that any value which contains time (which includes a time zone offset) is not allowable as a code identifier.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="common:SimpleDataType">
 			<xs:enumeration value="String"/>
